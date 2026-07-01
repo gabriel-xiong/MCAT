@@ -3,15 +3,37 @@
 **Status:** Design locked (2026-07-01). Wednesday build keeps 4-button
 self-report (Decision §9). This spec is the v2 mechanism.
 
+**Rebalance (2026-07-01):** the live engine (`infer_error_type` in
+`pylib/anki/mcat_perf.py`) was retuned to stop over-abstaining and then made
+**demand-aware** to stop over-applying `application`. It **commits a diagnosis
+in the common miss** but the content-presumed-held default now branches on
+`cognitive_demand`: an `application`/`synthesis` miss → `application`; a
+**`recall` miss → `content_gap`** (a recall item has no reasoning step to fail,
+so `application` is a category error there); an un-typed miss leans
+`content_gap`. `unresolved` is reserved for the truly-dark miss. Honesty is
+carried by **confidence that varies with signal strength** (strong when `M` is
+clearly high/low or a tag/trap is authored; weaker when `M` is imputed/
+ambiguous) — **not** by a single flat number and **not** by abstaining. This
+**supersedes** the earlier "Cold-start honesty", the "fast alone is weak →
+`unresolved`", and the first-rebalance "`application` is the default for any
+content-presumed-held miss / moderate 0.55–0.60" guidance in the sections below
+(all now reframed inline). See Decision §21 and `LOOSE-ENDS.md`.
+
 ## In one paragraph (the mechanism)
 
 **We infer the likely cause of a miss from independent signals — what the item
 tests, how the student behaved, and whether the memory system says they hold the
 content — validate content availability with a targeted recall probe when it's
-decision-relevant, and abstain when confidence is low.** Everything below is that
-sentence plus the honesty guards that keep it from over-claiming. (The rigor /
-caveats are for internal architecture; for demo/team framing, lead with this
-paragraph.)
+decision-relevant, and commit a diagnosis at a confidence that reflects how much
+signal we actually have.** In the common case we **do commit** (a content-tagged
+or low-`M` miss → `content_gap`; a trap landing → `misread`; otherwise a
+**demand-aware** default — an `application`/`synthesis` miss → `application`, a
+`recall` miss → `content_gap`, an un-typed miss leans `content_gap`), carrying
+honesty in a *confidence that varies with signal strength* rather than
+abstaining; we fall back to `unresolved` / self-report only for the genuinely
+no-signal miss (and, as a separate track, for every CARS miss). Everything below is that sentence plus the honesty guards that
+keep it from over-claiming. (The rigor / caveats are for internal architecture;
+for demo/team framing, lead with this paragraph.)
 
 ## Problem
 
@@ -103,6 +125,12 @@ item-encoded types are **mutually exclusive**:
   probe** are **science-only** — CARS has no mastery/flashcards, so no oracle.
 - **CARS does not use the inference/confirm error-typing machinery** (see
   "CARS diagnosis" below); the generic taxonomy collapses there.
+- **CARS-abstains rule (engine guard):** `PerformanceSession.answer` hard-guards
+  every CARS miss to `unresolved` (confidence 0.0) *before* the science engine
+  runs — so the rebalanced science default (which now commits `application` on a
+  content-presumed-held miss, below) can never mislabel a CARS miss. CARS routes
+  to its own skill-archetype + pacing track and to the self-report fallback,
+  never to `content_gap` / `application` / `misread`.
 
 ### CARS diagnosis (separate, simpler, objective)
 
@@ -165,11 +193,25 @@ knows Michaelis–Menten but can't map a passage's inhibitor data onto competiti
 inhibition); it is dormant in the current dev bank (standalone stems) but is a
 real, reserved failure mode under `application`, **not** a retired type.
 
-**Honesty constraint (content presence gate):** only label a miss `application`
-when content presence is *actually established* — high `M` **or** a re-check
-probe PASS. If content presence is uncertain, the miss stays `content_gap` /
-`unresolved`. We never infer "applied reasoning failed" without first showing
-the content was there.
+**Honesty constraint (content presence gate) — demand-aware:** the *strong*
+`application` call (high confidence, ≥0.7) still requires content presence
+*actually established* — high `M` **and** applied/synthesis demand
+(cross-system divergence), or a re-check probe PASS. `application` is also the
+**default coarse bucket** for a content-presumed-held miss where content
+presence is only *presumed* — **but only on an `application`/`synthesis`
+item** (mid `M`, or ambiguous/imputed `M`): those commit `application` at
+**lower confidence** (rising with `M`·`d`) rather than abstaining, justified by
+the gate-defines-content confound (gated applied misses lean `application` by
+construction — see that section). A **`recall` miss is never `application`** —
+it has no reasoning step to fail, so a presumed-held recall miss routes to
+`content_gap` (the fact itself) at confidence that varies with `M` (low when
+`M` is high — contradictory). The honesty is carried by the **varying
+confidence**, not by staying `unresolved`. What still protects against silently
+absorbing a real gap: a low `M` or an authored content tag routes to
+`content_gap` first (branches 1–2 below), the demand split keeps recall misses
+out of `application`, and the moderate confidence flags applied cases for the
+re-check probe. We never fire *high-confidence* `application` without
+established content.
 
 **An applied-reasoning slip can land on any distractor** (and a misread often,
 but not always, lands on a *predictable* trap) — so "the process-error option"
@@ -185,7 +227,7 @@ plausible trap).
 | 1 | **Cross-system divergence** — high card retrievability (current FSRS-R) yet missed a synthesis item | High (two independent measurements; FSRS-R is a signal, not proof of momentary availability) | Strongest `application` vs `content_gap` discriminator (science) |
 | 2 | **Content re-check probe** — post-miss recall of the backing sub-concept | **FAIL** = high (objective `content_gap`); **PASS** = weak (priming-inflated) | Settles `content_gap` vs process (asymmetrically); the validation label |
 | 3 | **Distractor content tag** — the misconception a wrong option encodes (authored) | Medium-high (expert-labeled), **content axis only** | Prior weight toward `content_gap` |
-| 4 | **Timing** relative to a per-item/per-student baseline | Medium (confounded) | Process axis — fast **alone is weak**; fast+high `M`+trap→misread; long dwell→application |
+| 4 | **Timing** relative to a per-item/per-student baseline | Medium (confounded) | Process axis — fast **alone (no trap) is weak** (→ the demand-aware default, not `misread`); fast+high `M`+trap→misread (highest conf); a bare trap landing still commits `misread` at moderate conf |
 | 5 | **Answer changes / churn** (needs select-then-confirm UI) | Medium | Process axis — correct→wrong switch signals `application` |
 | 6 | **Student confirmation** (observation prompt) | Low (self-report) | Agency + cheap consistency check — **not** ground truth (see ground-truth problem) |
 
@@ -197,7 +239,14 @@ hypothesis** and prefers `unresolved` over a shaky guess.
 
 These are **not** authored on choices — they're inferred from behavior, and
 it's the most confounded signal we have. No single input is trusted; we combine
-several, and abstain (`unresolved`) when they're weak or conflicting.
+several. **Rebalanced (2026-07-01, demand-aware):** rather than abstaining when
+the behavioral signal is weak or conflicting, the engine now commits — a trap
+landing → a (moderate) `misread`, and everything else content-presumed-held → a
+**demand-aware default** (an `application`/`synthesis` miss → `application`; a
+`recall` miss → `content_gap`, since a recall item has no reasoning step to
+fail; an un-typed miss leans `content_gap`) — and carries the honesty in a
+confidence that **varies with signal strength**. `unresolved` is reserved for
+the truly no-signal miss (see "Inference rule").
 
 ### Strongest signal: cross-system divergence (memory ⟂ performance)
 
@@ -229,12 +278,19 @@ much harder to fake than a timing threshold, and it's exactly the SPOV-3 case
   `application`/`synthesis`; a missed *recall* item you've "mastered" is more
   likely a misread or a stale card, not an applied-reasoning failure.
 
-**Honesty guard:** fire `application` with high confidence only when *every*
-prerequisite is mastered **and** demand is application/synthesis. If even one
-prerequisite is weak, stay conservative (`content_gap` / `unresolved`) — we
-can't tell "applied it wrong" from "was missing piece 3." (This is the same
-content-presence gate stated above: no `application` without established content
-presence.)
+**Honesty guard (rebalanced 2026-07-01):** fire `application` with **high
+confidence (≥0.7)** only when *every* prerequisite is mastered (high `M`) **and**
+demand is application/synthesis. If a prerequisite is clearly weak (low `M`) or
+the chosen distractor carries a content tag, route to `content_gap` instead — we
+can't tell "applied it wrong" from "was missing piece 3." The change from the
+old stance: a merely *ambiguous* or mid-`M` miss **on an application/synthesis
+item** no longer stays `unresolved`; it still commits `application`, but at
+**lower confidence** (rising with `M`·`d`), with the honesty carried by that
+number and the case flagged for the re-check probe. A **`recall` miss is not
+governed by this at all** — it commits `content_gap`, never `application`
+(no reasoning step to fail). So the content-presence gate governs the
+**confidence of an applied `application`**, not whether we commit it — and the
+demand tag governs *which* type we commit; only the truly-dark miss abstains.
 
 ### The gate-defines-content confound (important)
 
@@ -339,6 +395,17 @@ the asymmetry) leans it back toward `application`. So the misconception term
 *surfaces* the shallow-mastery hypothesis for objective checking; it never
 silently overrides `M`.
 
+**How the live engine realizes this (rebalanced 2026-07-01):** rather than
+computing a normalized contested distribution, `infer_error_type` collapses the
+`w_mis` idea into its **first branch** — an authored `content_gap` tag on the
+chosen distractor commits `content_gap` outright, **independent of `M`**, at
+confidence 0.65 (or 0.75 when low `M` corroborates). That moderate 0.65 *is* the
+"contested, medium-confidence" state: high enough to route the shallow-mastery
+student to the flashcards they actually need instead of the `application`
+default, low enough to flag the case for the re-check probe. The engine does not
+emit a blended `content_gap`/`application` distribution; it prioritizes the tag
+and carries the contest in the confidence.
+
 ### Behavioral axis (splits application vs misread once content_gap is ruled out)
 
 **Fingerprints**
@@ -348,13 +415,22 @@ silently overrides `M`.
 | Timing (vs baseline) | **fast** — confident, didn't deliberate (**fast alone is weak**; see below) | **slow / long dwell** — worked at it |
 | Knowledge | should get it (high mastery / FSRS R) | has the pieces but chained/transferred them wrong |
 | Answer churn | low — one confident pick | high — switches, esp. correct→wrong |
-| Landing option | a *predictable* trap (negation/unit) — required for a `misread` call | any option |
+| Landing option | a *predictable* trap (negation/unit) — the trigger for a `misread` call | any option |
 
-**`misread` is a fragile call.** The rule is **fast + high `M` + trap-option**,
-*not* "fast + wrong." **Fast alone is a weak signal** — a fast wrong answer can
-equally be a blind guess, a trap pick, time pressure, or fatigue. When we only
-have "fast + wrong" without high `M` and a trap landing, default toward
-`unresolved`, **not** `misread`.
+**`misread` rides on a *predictable-trap landing*, and its confidence scales
+with the behavioral evidence (rebalanced 2026-07-01).** Once content is ruled
+in/out (branches 1–2), a trap-option pick commits `misread`: **strongest (0.75)
+when fast + high `M`** (confident, didn't deliberate, on an item they should
+get), **moderate (0.6) when fast *or* high `M`**, and **committed but low-
+confidence (0.55)** for a bare trap landing otherwise. **Fast *alone* (no trap)
+is still not `misread`** — a fast wrong answer with no trap can be a blind
+guess, time pressure, or fatigue, so it falls through to the demand-aware
+default (`application` on an applied/synthesis item, `content_gap` on a recall
+item — not `misread`, and no longer `unresolved` unless the miss is truly
+dark). This diverges from the earlier "fast + high `M` + trap *required* for any
+misread call" stance: a trap landing now commits `misread` at moderate
+confidence even when slow / mid-`M`, because the predictable-trap option is
+itself the execution-slip signal.
 
 **Three inputs, combined**
 
@@ -370,12 +446,25 @@ have "fast + wrong" without high `M` and a trap landing, default toward
    ruled `content_gap` in or out — high `M` (knows it) makes fast+trap→misread,
    slow/churn→application; low `M` pulls toward `content_gap` regardless.
 
-Rough disambiguation (given `M`):
+Rough disambiguation (given `M`; content tag takes precedence — see "Inference
+rule"). Cells show the committed type; parentheses note confidence:
 
-| | fast + trap | fast, no trap | slow / churn |
-|---|------|------|--------------|
-| **high `M` (knows it)** | misread | `unresolved` (fast alone is weak) | application |
-| **low `M`** | content_gap | content_gap | content_gap |
+| | trap landing | no trap, applied/synth demand | no trap, recall demand | no trap, unknown/missing demand |
+|---|------|------|--------------|--------------|
+| **high `M` (knows it)** | misread (0.75 if fast, else 0.6) | **application** (≥0.7) | **content_gap** (~0.40, contradictory) | **content_gap** (~0.40) |
+| **mid `M`** | misread (0.6 if fast, else 0.55) | **application** (0.50–0.68) | **content_gap** (~0.60) | **content_gap** (~0.60) |
+| **ambiguous / imputed `M`** (`None`) | misread (0.55, or 0.6 if fast) | **application** (0.55) | **content_gap** (~0.45) | **`unresolved`** (truly dark) |
+| **low `M`** | content_gap | content_gap | content_gap | content_gap |
+
+Read the shift from the earlier (demand-blind) table here: the
+`recall`/`unknown`-demand column no longer commits `application` — a recall miss
+has no reasoning step to fail, so it routes to `content_gap` (the fact itself),
+and confidence *varies* (higher as `M` drops; deliberately low ~0.40 for a
+high-`M` recall miss, which is contradictory and a probe candidate). The one
+surviving `unresolved` cell is the bottom-right — `M` unavailable, no trap, no
+tag, and **unknown/missing** demand: the truly-dark miss. (A `recall`-demand
+miss with `M` unavailable is *not* dark: the demand alone routes it to
+`content_gap` at ~0.45.)
 
 **Partial item encoding for misread:** negation/`EXCEPT`/`LEAST` stems and
 unit-swap distractors have a predictable misread landing spot. Optional
@@ -383,9 +472,26 @@ distractor flag `trap: "negation"` \| `"unit"` **raises the misread prior** when
 that option is picked quickly — bridging the axes without pretending every
 misread is item-encoded.
 
-**Cold-start honesty:** with no baselines, the process axis is weak → most
-misses go `unresolved` → 3-button self-report. It strengthens as per-item /
-per-student baselines accumulate; the agreement metric says when to trust it.
+**Cold-start honesty (superseded 2026-07-01 — commit, but demand-aware, and
+vary the confidence):** the *original* stance here was that with no baselines
+the process axis is weak, so **most misses should go `unresolved`** → 3-button
+self-report. The live engine **no longer does this.** In practice cold-start
+`M` is imputed by the gate to the `UNCOVERED_R0` prior (~0.5, landing in the
+ambiguous `[LOW_M, HIGH_M)` band) for nearly every attempt with no review
+history, and ~78% of science distractors are untagged. The *first* rebalance
+committed all such misses to `application` @ 0.55 — but that emitted a **single
+constant label at a single constant confidence** across every miss, including
+the ~61% `recall`-demand items where `application` is a category error (no
+reasoning step exists to fail). The demand-aware fix keeps "commit, don't
+abstain" but routes by demand: a cold-start **`recall`** miss → `content_gap`
+(they likely don't truly hold the fact), an **applied/synthesis** miss →
+`application`, an un-typed miss leans `content_gap` — and **confidence varies**
+(moderate ~0.6 at the imputed mid-`M`, low ~0.40 when `M` is high yet a recall
+fact was missed, strong when `M` is clearly high/low or a tag/trap is authored).
+`unresolved` is reserved for the truly-dark miss (`M` unavailable **and**
+unknown/missing demand **and** no tag **and** no trap). As per-item / per-student
+baselines accumulate the *confidence* sharpens; the agreement metric still says
+when to trust the label.
 
 ## Content re-check probe (objective disambiguator)
 
@@ -462,7 +568,9 @@ make the confirm prompt concrete and to guide authoring. Validator (when
 present): length == choices, the correct index is `null`, `maps_to` is
 `content_gap`/`null` only, and `choice_diagnosis` does not appear on CARS
 questions. Questions without it degrade gracefully (content axis = none → lean
-on process/behavior, else `unresolved`).
+on process/behavior and the demand-aware default — `application` on an
+applied/synthesis item, `content_gap` on a recall or un-typed item; `unresolved`
+only for the truly-dark miss).
 
 #### Choice tagging methodology
 
@@ -547,61 +655,84 @@ in this slice.
 
 ### Inference rule (v1, probabilistic, two-axis)
 
-Inference is **probabilistic, not a hard label.** Each signal contributes a
-weight to a **distribution over the track's 3 types**, and the engine emits the
-top type **plus a confidence** (`p_top`, and margin over runner-up). Confidence
-gates everything downstream (see UX + validation). The rules below define the
-*weights*; they are a **bootstrap**, not the final model (see "Confidence & ML
-path"). Order shows relative signal strength:
+Inference **commits a single type + a confidence** (`p_top`) rather than
+abstaining in the common case (rebalanced 2026-07-01). It is still uncertainty-
+aware: the confidence, not abstention, carries the honesty, and a low-`M` or
+tagged miss is still routed to `content_gap` so real gaps are not absorbed. The
+branches below are the **live `infer_error_type` order — first match wins** (a
+priority ladder, not a normalized distribution); they are a **bootstrap**, not
+the final model (see "Confidence & ML path"). Setup:
+`high_M = M ≥ 0.7`, `low_M = M < 0.4`, `mid_M` = `M` known and in `[0.4, 0.7)`,
+`fast = time < 8s`, `applied_demand = demand ∈ {application, synthesis}`.
 
 ```
-correct answer                         -> error_type = none
+correct answer                         -> none            (confidence 1.0)
 
-# 1. STRONGEST: cross-system divergence (memory ⟂ performance)
-wrong AND demand in {application, synthesis} AND every prerequisite mastered (high M)
-    AND chosen distractor is NOT a distinctive-misconception content_gap
-                                       -> top = application (high confidence)
-wrong AND high M AND chosen distractor IS a distinctive-misconception content_gap
-                                       -> CONTESTED: content_gap and application
-                                          both weighted (w_mis keeps content_gap
-                                          in play) -> medium confidence
-                                          -> trigger content re-check probe
-                                          (shallow-mastery / application_gap case)
-wrong AND some prerequisite NOT mastered (low M)
-                                       -> top = content_gap on that prerequisite
+# 1. Authored content misconception on the chosen distractor (M-INDEPENDENT):
+#    acting on a specific wrong belief is direct content evidence, so this wins
+#    even at high M (this is how the shallow-mastery / w_mis case is realized).
+wrong AND chosen distractor has a content_gap tag
+                                       -> content_gap     (0.75 if low_M else 0.65)
 
-# 2. process axis (behavior) — splits misread from application (content already ruled out):
-#    NOTE: fast ALONE is a weak signal (blind guess / trap / time-pressure / fatigue).
-wrong AND time < fast_threshold AND high M AND landed on a trap option
-                                       -> top = misread          (trap option)
-wrong AND high M AND (long dwell OR correct->wrong switch)
-                                       -> top = application       (any option)
-wrong AND fast BUT (M not high OR no trap)
-                                       -> unresolved             (do NOT call misread)
+# 2. Low mastery: content demonstrably not held:
+wrong AND low_M                        -> content_gap     (>= 0.6)
 
-# 3. content axis (authored on the chosen distractor, science only):
-else if chosen distractor maps_to content_gap
-                                       -> top = content_gap
-        (if maps_to is a list, top = the list; confirm asks the most likely)
+# 3. Predictable-trap landing -> misread (execution slip; content ruled out
+#    above; applies regardless of demand — a trap is a slip even on recall):
+wrong AND trap-option pick             -> misread         (0.75 fast+high_M
+                                                           / 0.6 fast OR high_M
+                                                           / 0.55 otherwise)
 
-# 4. nothing to go on:
-else (no content tag, quiet behavior)  -> unresolved -> 3-button self-report
-                                          (error_source = self_report)
+# 4. DEFAULT: content presumed held -> DEMAND-AWARE (what the item TESTS decides
+#    the failure mode; never a demand-blind constant):
+# 4a. application/synthesis demand -> application (the expected gated-miss: had
+#     the pieces, deployment/transfer failed). Gate-defines-content confound.
+wrong AND applied_demand AND high_M    -> application     (>= 0.7)  # strongest
+wrong AND applied_demand (M mid/ambiguous/imputed/unknown)
+                                       -> application     (0.55 if M None
+                                                           else 0.50–0.68,
+                                                           rising with M·d)
+# 4b. recall demand -> content_gap (the FACT itself; a recall item has NO
+#     reasoning step to fail, so NEVER application). low_M/tag/trap routed above.
+wrong AND recall_demand                -> content_gap     (0.40–0.60, higher as
+                                                           M drops; ~0.40 when
+                                                           high_M — contradictory)
+# 4c. unknown/missing demand, any M reading -> lean content_gap (honest un-typed
+#     default), NOT application:
+wrong AND demand unknown AND M known   -> content_gap     (0.40–0.60, as 4b)
+
+# 5. Truly no signal: M unavailable AND unknown/missing demand AND no tag AND no
+#    trap (INCLUDING fast-but-no-trap) -> abstain:
+else                                   -> unresolved      (0.0) -> 3-button
+                                          self-report (error_source = self_report)
 ```
 
-The cross-system check carries the most weight because independent memory +
-performance measurements are harder to fake than a single behavioral threshold.
-**One exception to "high `M` → application":** if the chosen distractor is a
-*distinctive-misconception* `content_gap`, that pick is independent content-gap
-evidence (from *which wrong belief was acted on*, not from `M`), so high `M` does
-**not** unconditionally downrank `content_gap` — the case goes *contested* and
-triggers the re-check probe rather than a confident `application` (see
-"Discriminating shallow mastery"). Behavior then splits misread vs application
-once content_gap is downweighted — but only fires `misread` on the conservative
-fast+high-`M`+trap conjunction; fast alone abstains. When several signals fire, surface the top and its
-runner-up in the confirm prompt. Thresholds are per-item medians once we have
-data; until then use conservative absolute fallbacks and prefer `unresolved`
-over a shaky guess (honesty rule).
+Three things define the demand-aware rebalance. **(a) The content-presumed-held
+default branches on `cognitive_demand` (branch 4)**, it is no longer a
+demand-blind `application`: an `application`/`synthesis` miss commits
+`application` (high-`M` + applied demand is the **strongest**, ≥0.7,
+cross-system divergence; mid/ambiguous/imputed `M` commits at honestly lower
+confidence via the gate-defines-content confound), while a **`recall` miss
+commits `content_gap`** — a pure-recall item has no application step to fail, so
+`application` there is a category error; the honest read is that the student
+does not truly hold the fact. An un-typed miss leans `content_gap`. **(b)
+Confidence VARIES with signal strength** rather than sitting at a flat 0.55: it
+is strong when `M` is clearly high or low, when a tag/trap is authored, or when
+demand strongly matches the label, and weaker (honestly) when `M` is
+imputed/ambiguous — a high-`M` recall miss is deliberately *low* confidence
+(FSRS says held yet a recall fact was missed → contradictory, a probe
+candidate). No single constant dominates. **(c)** The distinctive-misconception
+/ shallow-mastery case is realized as branch 1: an authored `content_gap` tag on
+the chosen distractor commits `content_gap` directly (M-independent, 0.65,
+rising to 0.8 corroborated by low `M`, 0.7 weakly opposed by high `M`) — the
+concrete form of `w_mis` "keeping `content_gap` in play at high `M`." The
+**exact `unresolved` condition** is narrow: `M` unavailable **and**
+unknown/missing demand **and** no content tag **and** no trap (this includes a
+fast-but-no-trap miss). Everything else commits. When several signals could
+fire, the first matching branch wins; surface the runner-up in the confirm
+prompt where useful. Confidences are conservative absolute fallbacks until
+per-item baselines exist; they sharpen (not the branch choice) as data
+accumulates.
 
 **Distractor priors, not hard tags:** a distractor's `maps_to` contributes a
 *prior weight* toward its content type (e.g. 0.7 `content_gap`, 0.3 nothing),
@@ -617,9 +748,17 @@ prompt:
 
 | Confidence | Behavior (if a prompt is triggered + budget allows) |
 |-----------|----------|
-| High (`p_top` ≥ ~0.8, clear margin) | assert silently; **confirm only** if a salient signal makes it worth one tap |
-| Medium | show **top-2** ("looks like applied reasoning, maybe misread — which?") |
-| Low / conflict | `unresolved` → 3-button self-report (or nothing) |
+| High (`p_top` ≥ ~0.7, clear margin — corroborated cross-system `application`, a clearly-low-`M` or low-`M`-corroborated-tag `content_gap`) | assert silently; **confirm only** if a salient signal makes it worth one tap |
+| Moderate (~0.5–0.68 — the committed demand-aware default: mid/ambiguous-`M` `application` on an applied item, a mid-`M` recall `content_gap`, a bare-trap `misread`, an uncorroborated content tag) | **still commit** the type (this is where the honesty lives); optionally show **top-2** or a one-tap confirm, and prefer the re-check probe when content vs application is what's uncertain |
+| Low-but-committed (~0.40–0.45 — a *contradictory* signal, e.g. a high-`M` recall miss routed to `content_gap`, or a recall/un-typed miss with `M` unavailable) | commit the type but treat as a **prime re-check-probe candidate**; the low number is the honest flag, not an abstention |
+| `unresolved` (0.0 — the truly-dark miss, *not* merely "low confidence") | 3-button self-report (`error_source = self_report`), or nothing |
+
+Note the distinction the rebalance draws: **moderate/low confidence is a
+committed diagnosis, not an abstention.** `unresolved` is no longer "confidence
+below a threshold" — it is the specific truly-dark branch (5) above. A
+moderate-`p_top` `application`, or a low-`p_top` `content_gap` on a high-`M`
+recall miss, is a real, logged, actionable diagnosis carrying its own honesty in
+the number (and, when low, flagging itself for the re-check probe).
 
 **Later (learned model):** the rules are deliberately a **data generator**, not
 the destination. Every attempt logs a **feature vector** + the **confirmed
@@ -656,7 +795,10 @@ tap through it (which corrupts the signal anyway). Prompts fire only when
   an **abnormally fast** answer → *"That was quick — did you read the whole
   question, or skim it?"*; a **correct→wrong switch** → *"You changed your
   answer — what made you switch?"*. Quiet, unremarkable misses get **no prompt**
-  (log silently, `unresolved`).
+  — but they are **still committed and logged** with the inferred type (the
+  demand-aware default — `application` on an applied miss, `content_gap` on a
+  recall/un-typed miss — at its varying confidence), *not* logged as
+  `unresolved`. Only a truly-dark miss logs `unresolved`.
 - **Confidence gate** — only prompt when the answer would actually move the
   diagnosis (borderline/medium), not when inference is already confident or
   hopeless.
@@ -675,10 +817,13 @@ tap through it (which corrupts the signal anyway). Prompts fire only when
    did you catch that?"* [Yes/No]; application → *"Did you know [sub-concept] but
    combine/apply it wrong?"*. Yes → `confirmed=1`; No → `confirmed=0` (+ optional
    override).
-4. **Medium confidence, within budget:** ask the one discriminating observation
-   between top-2.
-5. **Low / `unresolved`:** 3-button self-report for the track
-   (`error_source=self_report`), logged as weak signal only.
+4. **Moderate confidence, within budget:** the type is **already committed and
+   logged**; optionally ask the one discriminating observation between top-2, or
+   trigger the re-check probe when content vs application is the open question.
+5. **`unresolved` (truly-dark miss) or CARS:** 3-button self-report for the
+   track (`error_source=self_report`), logged as weak signal only. Note this
+   fires only for the narrow truly-dark branch (and every CARS miss), **not** for
+   an ordinary moderate-confidence diagnosis.
 
 ## Validation — two tiers (do not confuse them)
 
@@ -807,9 +952,31 @@ contaminated (PASS inflated by priming — see the asymmetry) or `M` is
 mis-estimated (stale/decayed cards, uncovered prerequisites), **`application`
 will silently absorb real content gaps** — mislabeling a student who *doesn't
 know it* as one who *couldn't apply it*, and sending them to applied practice
-instead of the flashcards they need. This is the **named residual risk** of the
-rename; it is mitigated (not eliminated) by the asymmetric probe (FAIL strong)
-and the content-presence honesty gate, and it is tracked in `LOOSE-ENDS.md`.
+instead of the flashcards they need.
+
+**The rebalance (2026-07-01) deliberately raises this exposure and must be
+audited.** By committing `application` on a content-presumed-held **applied**
+miss — including mid-`M` and ambiguous/imputed-`M` applied misses that formerly
+went `unresolved` — more applied misses now land in `application` by
+construction. That is the intended trade (commit + varying confidence beats
+over-abstaining), but it means the `content_gap`↔`application` boundary now
+carries *more* weight, not less. What holds the line: (1) an authored
+`content_gap` tag or low `M` still pre-empts `application` (branches 1–2 run
+first), so tag coverage and `M` quality are the real safeguards; (2) **the
+demand split** keeps `recall` misses out of `application` entirely (they route
+to `content_gap`), so the exposure is confined to genuinely applied/synthesis
+items; (3) the applied default fires at **lower confidence** on
+mid/ambiguous-`M`, which flags it as a probe candidate rather than a settled
+fact; (4) persistent student overrides of `application`→`content_gap` are the
+measurable audit signal that the default is over-firing. The **inverse risk**
+the demand split introduces — a genuinely applied miss authored (or left) as
+`recall`, or a shallow-mastery recall item — now routes to `content_gap`
+instead, i.e. toward flashcards; that is the conservative direction (re-drill
+the fact) and is caught by the same override/probe audit. This is the **named
+residual risk** of the rename *and* the rebalance; it is mitigated (not
+eliminated) by the asymmetric probe (FAIL strong), the demand split, the
+varying-confidence framing, and tag/`M` coverage, and it is tracked in
+`LOOSE-ENDS.md`.
 
 ## Migration from the Wednesday 4-button enum
 

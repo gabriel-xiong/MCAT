@@ -33,8 +33,15 @@ def snippet(text: str, n: int = 95) -> str:
     return text if len(text) <= n else text[: n - 1] + "…"
 
 
+# Column order emitted by build_flashcards.py::row(); the CSV no longer carries a
+# header row — it leads with Anki '#' import directives (skipped here).
+_COLUMNS = ["note_type", "text", "back", "tags", "supports_question"]
+
+
 def load_cards() -> list[dict]:
-    rows = list(csv.DictReader((DATA / "flashcards-dev.csv").open(encoding="utf-8")))
+    text = (DATA / "flashcards-dev.csv").read_text(encoding="utf-8")
+    data_lines = [ln for ln in text.splitlines() if ln and not ln.startswith("#")]
+    rows = list(csv.DictReader(data_lines, fieldnames=_COLUMNS))
     cards = []
     for r in rows:
         tag = r.get("tags", "")

@@ -13,6 +13,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the isocitrate→α-ketoglutarate step (an oxidative decarboxylation yielding NADH+CO₂) performs substrate-level phosphorylation"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the fumarate→malate hydration step produces GTP/ATP"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the malate→oxaloacetate step (which yields NADH) produces GTP/ATP"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7 Review Q9",
@@ -32,6 +47,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses the energy-charge signal — believes high ADP inhibits respiratory enzymes"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ADP is not an allosteric regulator of respiration"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7 Review Q16",
@@ -51,6 +78,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes it is false that endergonic reactions have +ΔG and exergonic −ΔG — misassigns the ΔG sign of spontaneity"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes it is false that endergonic reactions consume and exergonic release energy"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes exergonic reactions need no activation energy — thinks spontaneous means no energy barrier"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q7",
@@ -70,6 +112,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a larger/more favorable ΔG means a faster reaction — confuses thermodynamic magnitude with rate"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the ideal environmental conditions reveal activation energy"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks spontaneous reactions are necessarily fast — confuses spontaneity with kinetics"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q8",
@@ -89,6 +146,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes an allosteric activator (increases affinity), not an inhibitor"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes competitive inhibition (binds the active site) rather than allosteric (binds elsewhere)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes a substrate-mimic binding the active site, not an allosteric site"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q14",
@@ -108,6 +180,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks adding a base (NaOH) drives NH₃→NH₄⁺; NaOH consumes H⁺ and shifts the opposite way"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "adds NH₄Cl (the common-ion product), which shifts back toward NH₃ and lowers conversion"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks adding more NH₃ raises the fraction converted to NH₄⁺"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14 Exercises Q48",
@@ -127,6 +214,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "picks F⁻ — reverses the inverse relation (HF is the stronger acid, so F⁻ is the weaker conjugate base)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the two conjugate bases are equally strong, ignoring the difference in parent-acid strength"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks conjugate bases of weak acids do not act as bases in water"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14 Exercises Q44",
@@ -146,6 +248,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses electrode roles — puts oxidation at the cathode and electron flow toward the anode"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks electrons flow toward the anode rather than to the cathode"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks oxidation occurs at the cathode"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -165,6 +282,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses the sign relation — thinks +E°cell means nonspontaneous (ΔG°>0)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a nonzero standard potential means the cell is at equilibrium (ΔG°=0)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a spontaneous galvanic reaction needs an external power source (confuses it with electrolysis)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
@@ -184,6 +316,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the salt bridge carries electrons to the cathode (electrons travel through the external wire, not the bridge)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the salt bridge catalyzes the electrode reactions"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -203,6 +347,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a buffer is a strong acid plus a strong base"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a weak acid fully neutralized by strong base (equal moles) is a buffer, missing that excess weak acid is needed"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a neutral salt in pure water buffers pH"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers",
@@ -222,6 +381,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "picks ΔH>0, ΔS<0 (never spontaneous) — the reversed sign combination"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔH<0, ΔS<0 is spontaneous at all T (it is only at low T)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔH>0, ΔS>0 is spontaneous at all T (it is only at high T)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -241,6 +415,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "misremembers the Gibbs relation with +TΔS (wrong sign on the entropy term)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "misremembers the Gibbs relation as TΔS−ΔH (terms rearranged, sign inverted)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the entropy term is multiplied (ΔH×TΔS) rather than subtracted"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -260,6 +449,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks spontaneous means fast — conflates spontaneity with rate"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks spontaneous means exothermic / always releases heat"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a spontaneous process always requires a catalyst"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.3 Spontaneity",
@@ -279,6 +483,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks temperature raises ΔG and that this speeds the reaction"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks raising temperature lowers the activation energy (only a catalyst lowers Ea)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks temperature makes the reaction more exothermic and that this raises the rate"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -298,6 +517,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a catalyst works by raising the system temperature"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a catalyst makes the reaction more exothermic (changes ΔH)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a catalyst shifts the equilibrium toward products (it speeds both directions, not the position)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.7 Catalysis",
@@ -317,6 +551,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the rate constant k depends on reactant concentrations (those change rate, not k)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks k changes as the reaction proceeds over time"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -336,6 +582,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses continuity — thinks narrowing the pipe slows the fluid"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks speed is unchanged when the pipe narrows (ignores continuity)"
+      },
+      null
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity",
@@ -355,6 +613,15 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "attributes constant flow rate to Bernoulli's principle rather than continuity/conservation of mass"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity",
@@ -374,6 +641,18 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "partial"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives the total aerobic yield (~36) — conflates substrate-level glycolysis with full oxidative phosphorylation"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -393,6 +672,15 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks glycolysis occurs in the mitochondrial matrix (confuses it with the citric acid cycle)"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -412,6 +700,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks glycolysis produces FADH₂ (FADH₂ comes from the citric acid cycle)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses NADPH (anabolic / pentose-phosphate carrier) with the NADH glycolysis makes"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks GTP is a reduced electron carrier (it is a nucleotide, not an electron carrier)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -431,6 +734,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "names citrate (the first cycle product) rather than the regenerated acceptor oxaloacetate"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "names pyruvate (upstream of the cycle) as the acetyl acceptor"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "names acetyl-CoA — the group donated, not the acceptor that is regenerated"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -450,6 +768,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks Vmax is reached at low substrate concentration (reverses the saturation relationship)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a denatured enzyme reaches Vmax (denaturation abolishes activity)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a competitive inhibitor's presence produces Vmax"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -469,6 +802,15 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the membrane's lipid framework with a cell-wall polymer (peptidoglycan is a bacterial cell wall)"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -488,6 +830,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses amphipathic character — thinks the phosphate head is hydrophobic and the tails hydrophilic"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks both head and tails are hydrophilic (misses the nonpolar tails)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks both head and tails are hydrophobic (misses the polar phosphate head)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -507,6 +864,18 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes the conservative model (a daughter with two newly synthesized strands)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks both strands are parental — no new synthesis"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.3 Basics of DNA Replication",
@@ -526,6 +895,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks helicase synthesizes DNA (helicase unwinds the helix)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks primase synthesizes the new strand (primase lays RNA primers)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ligase synthesizes DNA (ligase joins fragments)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -545,6 +929,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks helicase joins fragments (helicase unwinds DNA)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks primase joins fragments (primase makes RNA primers)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks polymerase seals the final nick (ligase forms that phosphodiester bond)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -564,6 +963,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives 1:1 (a testcross ratio) for a monohybrid heterozygote cross"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives the dihybrid 9:3:3:1 ratio for a single-gene cross"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives the genotypic ratio 1:2:1 instead of the phenotypic 3:1"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -583,6 +997,15 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "swaps the definitions of genotype and phenotype"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -602,6 +1025,15 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives conditioning terms (acquisition, extinction, recovery) as memory processes — confuses learning stages with memory stages"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -621,6 +1053,15 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks short-term/working memory is essentially unlimited (confuses it with long-term capacity)"
+      },
+      null,
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.2 Parts of the Brain Involved in Memory",
@@ -640,6 +1081,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses chunking (grouping items) with rehearsal (repetition)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses retrieval (getting info out) with rehearsal (maintaining it)"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -659,6 +1112,21 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "labels the natural (unlearned) stimulus as the conditioned stimulus — reverses learned vs innate"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "labels a stimulus as a response (confuses the US with the conditioned response)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "calls the food a neutral stimulus (food innately elicits salivation)"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -678,6 +1146,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a reinforcer decreases behavior (confuses reinforcement with punishment)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "equates reinforcement with physical punishment"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -697,6 +1177,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks introducing a new US causes extinction"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the conditioned response becomes permanent (opposite of extinction)"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -716,6 +1208,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the self-serving bias (protecting one's own esteem) with the fundamental attribution error"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the just-world hypothesis with the fundamental attribution error"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.1 What Is Social Psychology?",
@@ -735,6 +1239,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses obedience (following authority) with conformity (matching group norms)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses persuasion (attitude change via argument) with conformity"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -754,6 +1270,18 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks health disparities are random with no social pattern"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "attributes health disparities solely to genetics, ignoring social determinants"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -773,6 +1301,15 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "mistakes an inherited biological trait (blood type) for a social determinant of health"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -792,6 +1329,15 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks applied pressure is proportional to fluid temperature (confuses Pascal's principle with thermal/gas behavior)"
+      },
+      null
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.5 Pascal's Principle",
@@ -811,6 +1357,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks dissonance arises from being rewarded (confuses it with reinforcement)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks dissonance comes from group consensus (confuses it with conformity/groupthink)"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -830,6 +1388,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses codominance with incomplete dominance (an intermediate blend)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes complete dominance (only the dominant allele shows), not codominance"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance",
@@ -957,6 +1527,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "names the oxidizing agent (Cu²⁺, which is reduced) as the reducing agent — reverses the roles"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "names the product Zn²⁺ (already oxidized) as the reducing agent"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "names Cu(s) (the product of reduction) as the reducing agent"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -976,6 +1561,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "wrong direction — thinks raising product-ion concentration increases Ecell"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ion concentrations don't affect Ecell (ignores the Nernst dependence)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks changing concentration reverses the sign of E° (confuses Ecell with the fixed standard E°)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
@@ -995,6 +1595,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "describes a galvanic cell (energy from a spontaneous reaction) — reverses electrolysis"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks electrolysis does not involve oxidation–reduction"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks electrolysis has a positive E°cell (it drives nonspontaneous, negative-E° reactions)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.7 Electrolysis",
@@ -1014,6 +1629,15 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks reduction occurs at the anode (reverses the electrode definitions)"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -1033,6 +1657,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "scaling"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "reports pOH (14−pH=12.0) — treats the strong acid as if computing the basic scale"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "reports the concentration (0.010) as the pH — omits taking −log[H⁺]"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 pH and pOH",
@@ -1052,6 +1691,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a strong acid + strong base (HCl/NaOH) are a conjugate pair (they are not related by one H⁺)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks H₃O⁺ and O²⁻ are a conjugate pair (they differ by more than one proton)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "pairs an acid with an unrelated anion (CH₃COOH/Cl⁻ are not conjugates)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.2 Brønsted-Lowry Acids and Bases",
@@ -1071,6 +1725,18 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "uses Kw (10⁻¹⁴) itself as [H⁺] rather than its square root"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks neutral water has zero H⁺ (no autoionization)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.1 Ionization of Water",
@@ -1090,6 +1756,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "treats the pH scale as linear — takes the difference (6−4=2) instead of 10^Δ"
+      },
+      {
+        "maps_to": null,
+        "trap": "scaling"
+      },
+      null,
+      null
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 pH and pOH",
@@ -1109,6 +1787,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses the temperature dependence — thinks ΔH>0,ΔS>0 is spontaneous at low T"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔH>0,ΔS>0 is spontaneous at all temperatures"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔH>0,ΔS>0 is never spontaneous (ignores that TΔS overtakes ΔH at high T)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1128,6 +1821,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative ΔG means the reaction is fast (confuses spontaneity with rate)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative ΔG means endothermic (confuses the free-energy sign with enthalpy)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative ΔG means at equilibrium (equilibrium is ΔG=0)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1147,6 +1855,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔG is large and negative at equilibrium (confuses spontaneity with the equilibrium condition)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔG is large and positive at equilibrium"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔG always equals ΔG° (they are equal only at standard conditions)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1166,6 +1889,15 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses entropy with the total energy of the system"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.2 Entropy",
@@ -1185,6 +1917,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": null,
+        "trap": "partial"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "reports the largest single exponent (2, the order in B) as the overall order — doesn't know overall order is the sum"
+      },
+      null,
+      null
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -1204,6 +1948,21 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "scaling"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks changing concentration doesn't change the rate (zero-order reasoning despite the stated first order)"
+      },
+      {
+        "maps_to": null,
+        "trap": "inverse"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -1223,6 +1982,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a zero-order rate is proportional to [A] (that is first order)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a zero-order rate is proportional to [A]² (that is second order)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks 'zero order' means the rate is literally zero (misreads the order as the rate value)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.4 Integrated Rate Laws",
@@ -1242,6 +2016,21 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses activation energy with the products−reactants energy difference (ΔH/ΔG)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks activation energy equals ΔG"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks raising temperature lowers Ea (temperature raises the fraction of molecules with ≥Ea, not Ea itself)"
+      }
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -1261,6 +2050,18 @@
     "section": "CP",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses Bernoulli — thinks faster flow means higher pressure"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks fluid speed does not affect pressure"
+      },
+      null
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.2 Bernoulli's Equation",
@@ -1280,6 +2081,18 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the buoyant force equals the entire weight of the fluid, not the weight of displaced fluid"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses buoyant force with atmospheric pressure"
+      }
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.7 Archimedes' Principle",
@@ -1299,6 +2112,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives lactate — the anaerobic fermentation product — under aerobic conditions"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks glycolysis directly yields acetyl-CoA (pyruvate becomes acetyl-CoA only after entering the mitochondrion)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives ethanol — a yeast fermentation product — for human aerobic glycolysis"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -1318,6 +2146,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "names hexokinase (the first step) as the committed rate-limiting step"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "names pyruvate kinase (the last step) as the rate-limiting step"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -1337,6 +2177,15 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the 4 ATP produced in the payoff phase with the 2 consumed in the investment phase"
+      },
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -1356,6 +2205,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives ethanol (yeast fermentation) for human muscle anaerobic metabolism"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks pyruvate → acetyl-CoA (the aerobic pathway) regenerates NAD⁺ anaerobically"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.5 Fermentation",
@@ -1375,6 +2236,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks only one CO₂ is released per turn"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks three CO₂ are released per turn"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -1394,6 +2267,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the cycle captures most energy as ATP directly (it makes mostly reduced carriers)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks GTP is the main energy product (only 1 GTP/turn; most energy is in NADH/FADH₂)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -1413,6 +2298,12 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -1432,6 +2323,15 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the allosteric (regulatory) site with the active (catalytic) site"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -1451,6 +2351,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the enzyme is consumed in the reaction (enzymes are catalysts, not consumed)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the substrate is left chemically unchanged (it is converted to product)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks enzymes increase activation energy (they lower it)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -1470,6 +2385,15 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks higher temperature always increases enzyme activity without limit (ignores denaturation)"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -1489,6 +2413,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks simple diffusion requires ATP (confuses it with active transport)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks simple diffusion needs a transport protein (that is facilitated diffusion)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks simple diffusion moves molecules against their gradient"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.2 Passive Transport",
@@ -1508,6 +2447,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks simple diffusion moves solutes against their gradient"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks facilitated diffusion moves solutes against their gradient (it is passive, down-gradient)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks osmosis (water movement) is the energy-requiring solute transport"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.3 Active Transport",
@@ -1527,6 +2481,15 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks cholesterol forms the hydrophilic head groups (it sits among the tails, modulating fluidity)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -1546,6 +2509,18 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks osmosis is the diffusion of solutes rather than water"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks osmosis is the diffusion of ions specifically"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.2 Passive Transport",
@@ -1565,6 +2540,21 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "swaps the pairing partners (A–C, G–T)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "uses uracil (RNA) for adenine's partner and mispairs guanine — RNA/DNA base confusion"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "pairs guanine with adenine (two purines) — violates purine–pyrimidine pairing"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.2 DNA Structure",
@@ -1584,6 +2574,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ligase unwinds the helix (ligase seals nicks)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks polymerase unwinds the helix (polymerase synthesizes DNA)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks primase unwinds the helix (primase makes RNA primers)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -1603,6 +2608,15 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks Okazaki fragments form on the leading strand"
+      },
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -1622,6 +2636,18 @@
     "section": "BB",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the two strands are identical and parallel (they are complementary and antiparallel)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the bases are joined by covalent bonds (they pair via hydrogen bonds)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.2 DNA Structure",
@@ -1641,6 +2667,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives the phenotypic ratio 3:1 instead of the genotypic 1:2:1"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives a 1:1 ratio (testcross) for a heterozygote × heterozygote cross"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks all offspring are heterozygous Aa (ignores segregation into AA and aa)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -1660,6 +2701,21 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the law of segregation with the law of independent assortment"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks dominant alleles are always more common (dominance ≠ frequency)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "endorses blending inheritance (Mendel's work refuted blending)"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -1679,6 +2735,18 @@
     "section": "BB",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a testcross uses a homozygous dominant partner (which would mask recessive alleles)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks a testcross uses a heterozygous partner"
+      },
+      null
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -1698,6 +2766,21 @@
     "section": "BB",
     "skill": "3",
     "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks genes on the same chromosome are always inherited together (ignores crossing over)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks genes far apart never recombine (they recombine frequently)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "misreads the premise — treats same-chromosome genes as being on different chromosomes"
+      }
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance",
@@ -1717,6 +2800,18 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses sensory memory (brief, fleeting) with the permanent long-term store"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses short-term memory (limited, seconds) with the permanent long-term store"
+      },
+      null,
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -1736,6 +2831,21 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the misinformation effect (memory distortion) with context-dependent retrieval"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses proactive interference (old memories disrupting new) with context matching"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the self-reference effect (better memory for self-relevant info) with context-dependent memory"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.3 Ways to Enhance Memory",
@@ -1755,6 +2865,18 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses the spacing effect (distributed practice) with the serial position effect"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses priming (implicit activation) with the serial position effect"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -1774,6 +2896,18 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "classifies a motor skill (riding a bike) as explicit memory (it is implicit/procedural)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "classifies conditioned reflexes as explicit memory (they are implicit)"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -1793,6 +2927,21 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "calls the learned (conditioned) stimulus the unconditioned stimulus — reverses learned vs innate"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "labels a stimulus as a response (confuses the CS with the unconditioned response)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "uses the operant term 'reinforcer' for a classical-conditioning stimulus"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -1812,6 +2961,21 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative reinforcement decreases behavior by adding a stimulus (describes positive punishment)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative reinforcement decreases behavior (confuses reinforcement with punishment)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks negative reinforcement adds a stimulus (describes positive reinforcement)"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -1831,6 +2995,21 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses fixed-ratio (predictable count) with variable-ratio (unpredictable count)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses fixed-interval (time-based) with variable-ratio (response-based)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses continuous reinforcement (every response) with a variable-ratio schedule"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -1850,6 +3029,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses conformity (matching peers) with obedience (following an authority's orders)"
+      },
+      null,
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses groupthink (consensus-seeking) with obedience to authority"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.5 Obedience",
@@ -1869,6 +3060,18 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses the bystander effect — thinks more onlookers increase helping"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks the number of bystanders has no effect on helping"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.6 Prosocial Behavior",
@@ -1888,6 +3091,18 @@
     "section": "PS",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks an attitude is a fixed genetic trait (attitudes are learned evaluations)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses an attitude with an involuntary reflex"
+      },
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -1907,6 +3122,12 @@
     "section": "PS",
     "skill": "2",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      null,
+      null,
+      null
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -1926,6 +3147,21 @@
     "section": "PS",
     "skill": "3",
     "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "denies any relationship between social position and health"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "threshold misconception — thinks only the very poorest have worse health, missing the stepwise gradient"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks wealth directly causes disease (misreads the gradient's causality)"
+      }
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -2053,6 +3289,18 @@
     "section": "CP",
     "skill": "1",
     "cognitive_demand": "recall",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives units of force (kg·m/s² = N), not pressure (force per area)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives N·m (energy/torque) instead of N/m² for pressure"
+      }
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.2 Pressure",

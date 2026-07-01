@@ -1354,13 +1354,696 @@ SYNTHESIS: list[dict] = [
 ]
 
 
+# --- Bulk content-axis tags for the recall bank (q_dev_* / q_ho_*) ----------
+# The 30 q_syn_* items author choice_diagnosis inline (above). This dict adds
+# the same content-axis tagging to the existing recall-heavy DEV/HELD_OUT
+# science items, keyed by their generated id (assigned in main() by position).
+#
+# Discipline (docs/ERROR-DIAGNOSIS-SPEC.md "Choice tagging methodology"):
+#   - cg(<misconception>)  : distractor encodes a SPECIFIC false belief; each
+#                            cg within a question is a DISTINCT misconception.
+#   - trap(<kind>)         : predictable EXECUTION landing (kind in the enum
+#                            negation|unit|inverse|scaling|transpose|partial);
+#                            rides on maps_to null, no misconception.
+#   - None                 : genuinely non-diagnostic (arbitrary number /
+#                            unrelated grab) — carries no content or trap signal.
+# The correct choice is ALWAYS None. CARS items are never listed here.
+# Traps are rare in this recall-heavy bank (they need an execution/attractor
+# landing, which mainly occurs on the numeric CP items) — conceptual "which/
+# what/define" distractors are honest content confusions, not traps.
+CHOICE_DIAGNOSIS: dict[str, list] = {
+    # --- DEV science --------------------------------------------------------
+    "q_dev_001": [  # GTP/ATP-producing TCA step (correct B: succinyl CoA→succinate)
+        cg("thinks the isocitrate→α-ketoglutarate step (an oxidative "
+           "decarboxylation yielding NADH+CO₂) performs substrate-level "
+           "phosphorylation"),
+        None,
+        cg("thinks the fumarate→malate hydration step produces GTP/ATP"),
+        cg("thinks the malate→oxaloacetate step (which yields NADH) produces "
+           "GTP/ATP")],
+    "q_dev_002": [  # high ADP effect (correct A: increases enzyme activity)
+        None,
+        cg("reverses the energy-charge signal — believes high ADP inhibits "
+           "respiratory enzymes"),
+        cg("thinks ADP is not an allosteric regulator of respiration"),
+        None],  # 'slow the pathway' repeats B's reversal belief → non-diagnostic
+    "q_dev_003": [  # false endergonic/exergonic statement (correct D)
+        cg("believes it is false that endergonic reactions have +ΔG and "
+           "exergonic −ΔG — misassigns the ΔG sign of spontaneity"),
+        cg("believes it is false that endergonic reactions consume and "
+           "exergonic release energy"),
+        cg("believes exergonic reactions need no activation energy — thinks "
+           "spontaneous means no energy barrier"),
+        None],
+    "q_dev_004": [  # judge relative activation energies (correct B: rates)
+        cg("thinks a larger/more favorable ΔG means a faster reaction — "
+           "confuses thermodynamic magnitude with rate"),
+        None,
+        cg("thinks the ideal environmental conditions reveal activation "
+           "energy"),
+        cg("thinks spontaneous reactions are necessarily fast — confuses "
+           "spontaneity with kinetics")],
+    "q_dev_005": [  # allosteric inhibitor (correct C)
+        cg("describes an allosteric activator (increases affinity), not an "
+           "inhibitor"),
+        cg("describes competitive inhibition (binds the active site) rather "
+           "than allosteric (binds elsewhere)"),
+        None,
+        cg("describes a substrate-mimic binding the active site, not an "
+           "allosteric site")],
+    "q_dev_006": [  # increase NH3→NH4+ conversion (correct B: add HCl)
+        cg("thinks adding a base (NaOH) drives NH₃→NH₄⁺; NaOH consumes H⁺ and "
+           "shifts the opposite way"),
+        None,
+        cg("adds NH₄Cl (the common-ion product), which shifts back toward "
+           "NH₃ and lowers conversion"),
+        cg("thinks adding more NH₃ raises the fraction converted to NH₄⁺")],
+    "q_dev_007": [  # stronger conjugate base F- vs CN- (correct B: CN-)
+        cg("picks F⁻ — reverses the inverse relation (HF is the stronger "
+           "acid, so F⁻ is the weaker conjugate base)"),
+        None,
+        cg("thinks the two conjugate bases are equally strong, ignoring the "
+           "difference in parent-acid strength"),
+        cg("thinks conjugate bases of weak acids do not act as bases in "
+           "water")],
+    "q_dev_008": [  # oxidation site + e- flow (correct A: anode; cathode)
+        None,
+        cg("reverses electrode roles — puts oxidation at the cathode and "
+           "electron flow toward the anode"),
+        cg("thinks electrons flow toward the anode rather than to the "
+           "cathode"),
+        cg("thinks oxidation occurs at the cathode")],
+    "q_dev_009": [  # +E°cell meaning (correct B: spontaneous, ΔG°<0)
+        cg("reverses the sign relation — thinks +E°cell means nonspontaneous "
+           "(ΔG°>0)"),
+        None,
+        cg("thinks a nonzero standard potential means the cell is at "
+           "equilibrium (ΔG°=0)"),
+        cg("thinks a spontaneous galvanic reaction needs an external power "
+           "source (confuses it with electrolysis)")],
+    "q_dev_010": [  # salt bridge function (correct B: maintain neutrality)
+        cg("thinks the salt bridge carries electrons to the cathode "
+           "(electrons travel through the external wire, not the bridge)"),
+        None,
+        None,  # 'increase voltage without limit' — implausible, non-diagnostic
+        cg("thinks the salt bridge catalyzes the electrode reactions")],
+    "q_dev_011": [  # buffer composition (correct B: weak acid + conj. base)
+        cg("thinks a buffer is a strong acid plus a strong base"),
+        None,
+        cg("thinks a weak acid fully neutralized by strong base (equal moles) "
+           "is a buffer, missing that excess weak acid is needed"),
+        cg("thinks a neutral salt in pure water buffers pH")],
+    "q_dev_012": [  # spontaneous at all T (correct A: ΔH<0, ΔS>0)
+        None,
+        cg("picks ΔH>0, ΔS<0 (never spontaneous) — the reversed sign "
+           "combination"),
+        cg("thinks ΔH<0, ΔS<0 is spontaneous at all T (it is only at low T)"),
+        cg("thinks ΔH>0, ΔS>0 is spontaneous at all T (it is only at high T)")],
+    "q_dev_013": [  # Gibbs relation (correct B: ΔG=ΔH−TΔS)
+        cg("misremembers the Gibbs relation with +TΔS (wrong sign on the "
+           "entropy term)"),
+        None,
+        cg("misremembers the Gibbs relation as TΔS−ΔH (terms rearranged, "
+           "sign inverted)"),
+        cg("thinks the entropy term is multiplied (ΔH×TΔS) rather than "
+           "subtracted")],
+    "q_dev_014": [  # spontaneous process (correct A: no continuous energy input)
+        None,
+        cg("thinks spontaneous means fast — conflates spontaneity with rate"),
+        cg("thinks spontaneous means exothermic / always releases heat"),
+        cg("thinks a spontaneous process always requires a catalyst")],
+    "q_dev_015": [  # temperature raises rate (correct B: more collisions ≥ Ea)
+        cg("thinks temperature raises ΔG and that this speeds the reaction"),
+        None,
+        cg("thinks raising temperature lowers the activation energy (only a "
+           "catalyst lowers Ea)"),
+        cg("thinks temperature makes the reaction more exothermic and that "
+           "this raises the rate")],
+    "q_dev_016": [  # catalyst mechanism (correct B: lower-Ea pathway)
+        cg("thinks a catalyst works by raising the system temperature"),
+        None,
+        cg("thinks a catalyst makes the reaction more exothermic (changes "
+           "ΔH)"),
+        cg("thinks a catalyst shifts the equilibrium toward products (it "
+           "speeds both directions, not the position)")],
+    "q_dev_017": [  # what k depends on (correct B: temperature + catalyst)
+        cg("thinks the rate constant k depends on reactant concentrations "
+           "(those change rate, not k)"),
+        None,
+        None,  # 'container volume only' — implausible, non-diagnostic
+        cg("thinks k changes as the reaction proceeds over time")],
+    "q_dev_018": [  # continuity, narrowing pipe (correct A: speed increases)
+        None,
+        cg("reverses continuity — thinks narrowing the pipe slows the fluid"),
+        cg("thinks speed is unchanged when the pipe narrows (ignores "
+           "continuity)"),
+        None],  # 'drops to zero' — implausible, non-diagnostic
+    "q_dev_019": [  # Q=A·v constancy is from (correct B: continuity)
+        cg("attributes constant flow rate to Bernoulli's principle rather "
+           "than continuity/conservation of mass"),
+        None,
+        None,  # Pascal's principle — unrelated law grab
+        None],  # Archimedes' principle — unrelated law grab
+    "q_dev_020": [  # net glycolysis ATP (correct A: 2)
+        None,
+        trap("partial"),  # gross 4, forgot to subtract the 2 ATP invested
+        cg("gives the total aerobic yield (~36) — conflates substrate-level "
+           "glycolysis with full oxidative phosphorylation"),
+        None],  # '0 ATP' — arbitrary
+    "q_dev_021": [  # glycolysis location (correct B: cytoplasm)
+        cg("thinks glycolysis occurs in the mitochondrial matrix (confuses it "
+           "with the citric acid cycle)"),
+        None,
+        None,  # nucleus — unrelated organelle grab
+        None],  # ER — unrelated organelle grab
+    "q_dev_022": [  # glycolysis electron carrier (correct C: NADH)
+        cg("thinks glycolysis produces FADH₂ (FADH₂ comes from the citric "
+           "acid cycle)"),
+        cg("confuses NADPH (anabolic / pentose-phosphate carrier) with the "
+           "NADH glycolysis makes"),
+        None,
+        cg("thinks GTP is a reduced electron carrier (it is a nucleotide, not "
+           "an electron carrier)")],
+    "q_dev_023": [  # TCA acetyl acceptor regenerated (correct B: oxaloacetate)
+        cg("names citrate (the first cycle product) rather than the "
+           "regenerated acceptor oxaloacetate"),
+        None,
+        cg("names pyruvate (upstream of the cycle) as the acetyl acceptor"),
+        cg("names acetyl-CoA — the group donated, not the acceptor that is "
+           "regenerated")],
+    "q_dev_024": [  # Vmax reached when (correct B: sites saturated)
+        cg("thinks Vmax is reached at low substrate concentration (reverses "
+           "the saturation relationship)"),
+        None,
+        cg("thinks a denatured enzyme reaches Vmax (denaturation abolishes "
+           "activity)"),
+        cg("thinks a competitive inhibitor's presence produces Vmax")],
+    "q_dev_025": [  # membrane framework (correct B: phospholipid bilayer)
+        cg("confuses the membrane's lipid framework with a cell-wall polymer "
+           "(peptidoglycan is a bacterial cell wall)"),
+        None,
+        None,  # cellulose — repeats the cell-wall confusion (non-diagnostic)
+        None],  # glycogen — unrelated storage-molecule grab
+    "q_dev_026": [  # phospholipid head/tails (correct B: philic; phobic)
+        cg("reverses amphipathic character — thinks the phosphate head is "
+           "hydrophobic and the tails hydrophilic"),
+        None,
+        cg("thinks both head and tails are hydrophilic (misses the nonpolar "
+           "tails)"),
+        cg("thinks both head and tails are hydrophobic (misses the polar "
+           "phosphate head)")],
+    "q_dev_027": [  # semiconservative replication (correct B)
+        cg("describes the conservative model (a daughter with two newly "
+           "synthesized strands)"),
+        None,
+        cg("thinks both strands are parental — no new synthesis"),
+        None],  # 'only RNA' — implausible grab
+    "q_dev_028": [  # synthesizes DNA 5'→3' (correct B: DNA polymerase)
+        cg("thinks helicase synthesizes DNA (helicase unwinds the helix)"),
+        None,
+        cg("thinks primase synthesizes the new strand (primase lays RNA "
+           "primers)"),
+        cg("thinks ligase synthesizes DNA (ligase joins fragments)")],
+    "q_dev_029": [  # joins Okazaki fragments (correct C: ligase)
+        cg("thinks helicase joins fragments (helicase unwinds DNA)"),
+        cg("thinks primase joins fragments (primase makes RNA primers)"),
+        None,
+        cg("thinks polymerase seals the final nick (ligase forms that "
+           "phosphodiester bond)")],
+    "q_dev_030": [  # Aa×Aa phenotypic ratio (correct B: 3:1)
+        cg("gives 1:1 (a testcross ratio) for a monohybrid heterozygote "
+           "cross"),
+        None,
+        cg("gives the dihybrid 9:3:3:1 ratio for a single-gene cross"),
+        cg("gives the genotypic ratio 1:2:1 instead of the phenotypic 3:1")],
+    "q_dev_031": [  # genotype/phenotype definitions (correct B)
+        cg("swaps the definitions of genotype and phenotype"),
+        None,
+        None,  # allele; gene — unrelated term-pair grab
+        None],  # gamete; zygote — unrelated term-pair grab
+    "q_dev_032": [  # three memory processes (correct B: encode/store/retrieve)
+        None,  # sensation/perception/cognition — unrelated triad grab
+        None,
+        None,  # input/output/feedback — unrelated triad grab
+        cg("gives conditioning terms (acquisition, extinction, recovery) as "
+           "memory processes — confuses learning stages with memory stages")],
+    "q_dev_033": [  # STM capacity (correct A: 7±2)
+        None,
+        cg("thinks short-term/working memory is essentially unlimited "
+           "(confuses it with long-term capacity)"),
+        None,  # '1 item' — arbitrary
+        None],  # '~100 items' — arbitrary
+    "q_dev_034": [  # maintenance by repetition (correct B: rehearsal)
+        cg("confuses chunking (grouping items) with rehearsal (repetition)"),
+        None,
+        cg("confuses retrieval (getting info out) with rehearsal (maintaining "
+           "it)"),
+        None],  # 'encoding failure' — unrelated grab
+    "q_dev_035": [  # food = which stimulus (correct B: US)
+        cg("labels the natural (unlearned) stimulus as the conditioned "
+           "stimulus — reverses learned vs innate"),
+        None,
+        cg("labels a stimulus as a response (confuses the US with the "
+           "conditioned response)"),
+        cg("calls the food a neutral stimulus (food innately elicits "
+           "salivation)")],
+    "q_dev_036": [  # reinforcer definition (correct B: increases behavior)
+        cg("thinks a reinforcer decreases behavior (confuses reinforcement "
+           "with punishment)"),
+        None,
+        None,  # 'no effect' — implausible grab
+        cg("equates reinforcement with physical punishment")],
+    "q_dev_037": [  # classical extinction (correct A: CS without US)
+        None,
+        cg("thinks introducing a new US causes extinction"),
+        None,  # 'reinforcer doubled' — mixes an operant term in; non-diagnostic
+        cg("thinks the conditioned response becomes permanent (opposite of "
+           "extinction)")],
+    "q_dev_038": [  # attribute others to traits (correct B: FAE)
+        cg("confuses the self-serving bias (protecting one's own esteem) with "
+           "the fundamental attribution error"),
+        None,
+        cg("confuses the just-world hypothesis with the fundamental "
+           "attribution error"),
+        None],  # bystander effect — unrelated social concept grab
+    "q_dev_039": [  # align with group standard (correct B: conformity)
+        cg("confuses obedience (following authority) with conformity "
+           "(matching group norms)"),
+        None,
+        None,  # aggression — unrelated grab
+        cg("confuses persuasion (attitude change via argument) with "
+           "conformity")],
+    "q_dev_040": [  # health disparities (correct B: preventable, social)
+        cg("thinks health disparities are random with no social pattern"),
+        None,
+        cg("attributes health disparities solely to genetics, ignoring "
+           "social determinants"),
+        None],  # 'cannot be measured' — implausible grab
+    "q_dev_041": [  # social determinant example (correct B: education/income)
+        cg("mistakes an inherited biological trait (blood type) for a social "
+           "determinant of health"),
+        None,
+        None,  # genetic mutation — repeats the biological-vs-social confusion
+        None],  # eye color — repeats the biological-vs-social confusion
+    "q_dev_042": [  # Pascal's principle (correct A: transmitted undiminished)
+        None,
+        None,  # 'lost as heat' — implausible grab
+        cg("thinks applied pressure is proportional to fluid temperature "
+           "(confuses Pascal's principle with thermal/gas behavior)"),
+        None],  # 'zero at the bottom' — implausible grab
+    "q_dev_043": [  # cognitive dissonance (correct A: conflicting attitudes)
+        None,
+        cg("thinks dissonance arises from being rewarded (confuses it with "
+           "reinforcement)"),
+        None,  # 'neutral stimulus repeated' — classical-conditioning grab
+        cg("thinks dissonance comes from group consensus (confuses it with "
+           "conformity/groupthink)")],
+    "q_dev_044": [  # codominance (correct B: both alleles fully expressed)
+        cg("confuses codominance with incomplete dominance (an intermediate "
+           "blend)"),
+        None,
+        cg("describes complete dominance (only the dominant allele shows), "
+           "not codominance"),
+        None],  # 'always nonviable' — implausible grab
+
+    # --- HELD_OUT science ---------------------------------------------------
+    "q_ho_001": [  # reducing agent for Zn+Cu²⁺ (correct A: Zn)
+        None,
+        cg("names the oxidizing agent (Cu²⁺, which is reduced) as the "
+           "reducing agent — reverses the roles"),
+        cg("names the product Zn²⁺ (already oxidized) as the reducing agent"),
+        cg("names Cu(s) (the product of reduction) as the reducing agent")],
+    "q_ho_002": [  # Nernst: more product ions → Ecell (correct B: decrease)
+        cg("wrong direction — thinks raising product-ion concentration "
+           "increases Ecell"),
+        None,
+        cg("thinks ion concentrations don't affect Ecell (ignores the Nernst "
+           "dependence)"),
+        cg("thinks changing concentration reverses the sign of E° (confuses "
+           "Ecell with the fixed standard E°)")],
+    "q_ho_003": [  # electrolysis vs galvanic (correct B: drives nonspontaneous)
+        cg("describes a galvanic cell (energy from a spontaneous reaction) — "
+           "reverses electrolysis"),
+        None,
+        cg("thinks electrolysis does not involve oxidation–reduction"),
+        cg("thinks electrolysis has a positive E°cell (it drives "
+           "nonspontaneous, negative-E° reactions)")],
+    "q_ho_004": [  # reduction occurs at (correct B: cathode)
+        cg("thinks reduction occurs at the anode (reverses the electrode "
+           "definitions)"),
+        None,
+        None,  # salt bridge — not an electrode; grab
+        None],  # electrolyte — not an electrode; grab
+    "q_ho_005": [  # pH of 0.010 M HCl (correct A: 2.0)
+        None,
+        trap("scaling"),  # used 0.10 M (off by one power of ten) → pH 1.0
+        cg("reports pOH (14−pH=12.0) — treats the strong acid as if computing "
+           "the basic scale"),
+        cg("reports the concentration (0.010) as the pH — omits taking "
+           "−log[H⁺]")],
+    "q_ho_006": [  # conjugate acid–base pair (correct B: H₂CO₃/HCO₃⁻)
+        cg("thinks a strong acid + strong base (HCl/NaOH) are a conjugate "
+           "pair (they are not related by one H⁺)"),
+        None,
+        cg("thinks H₃O⁺ and O²⁻ are a conjugate pair (they differ by more "
+           "than one proton)"),
+        cg("pairs an acid with an unrelated anion (CH₃COOH/Cl⁻ are not "
+           "conjugates)")],
+    "q_ho_007": [  # neutral-water [H⁺] (correct A: 1e-7)
+        None,
+        cg("uses Kw (10⁻¹⁴) itself as [H⁺] rather than its square root"),
+        None,  # '1.0 M' — arbitrary
+        cg("thinks neutral water has zero H⁺ (no autoionization)")],
+    "q_ho_008": [  # pH 4 vs pH 6 acidity ratio (correct C: 100)
+        cg("treats the pH scale as linear — takes the difference (6−4=2) "
+           "instead of 10^Δ"),
+        trap("scaling"),  # used one pH unit (10¹) instead of two (10²)
+        None,
+        None],  # '1000' (10³) — arbitrary over-count
+    "q_ho_009": [  # ΔH>0, ΔS>0 spontaneous when (correct A: high T)
+        None,
+        cg("reverses the temperature dependence — thinks ΔH>0,ΔS>0 is "
+           "spontaneous at low T"),
+        cg("thinks ΔH>0,ΔS>0 is spontaneous at all temperatures"),
+        cg("thinks ΔH>0,ΔS>0 is never spontaneous (ignores that TΔS overtakes "
+           "ΔH at high T)")],
+    "q_ho_010": [  # negative ΔG indicates (correct A: spontaneous)
+        None,
+        cg("thinks negative ΔG means the reaction is fast (confuses "
+           "spontaneity with rate)"),
+        cg("thinks negative ΔG means endothermic (confuses the free-energy "
+           "sign with enthalpy)"),
+        cg("thinks negative ΔG means at equilibrium (equilibrium is ΔG=0)")],
+    "q_ho_011": [  # ΔG at equilibrium (correct A: 0)
+        None,
+        cg("thinks ΔG is large and negative at equilibrium (confuses "
+           "spontaneity with the equilibrium condition)"),
+        cg("thinks ΔG is large and positive at equilibrium"),
+        cg("thinks ΔG always equals ΔG° (they are equal only at standard "
+           "conditions)")],
+    "q_ho_012": [  # entropy is (correct B: dispersal/disorder)
+        cg("confuses entropy with the total energy of the system"),
+        None,
+        None,  # 'reaction rate' — unrelated grab
+        None],  # 'activation energy' — unrelated grab
+    "q_ho_013": [  # overall order of k[A][B]² (correct C: 3)
+        trap("partial"),  # took only [A]'s order (1); didn't sum the exponents
+        cg("reports the largest single exponent (2, the order in B) as the "
+           "overall order — doesn't know overall order is the sum"),
+        None,
+        None],  # '0' — arbitrary
+    "q_ho_014": [  # first order in A, double [A] (correct A: ×2)
+        None,
+        trap("scaling"),  # applied 2² (squared) despite the stated first order
+        cg("thinks changing concentration doesn't change the rate (zero-order "
+           "reasoning despite the stated first order)"),
+        trap("inverse")],  # took the reciprocal of the factor (0.5×)
+    "q_ho_015": [  # zero-order rate (correct B: independent of conc.)
+        cg("thinks a zero-order rate is proportional to [A] (that is first "
+           "order)"),
+        None,
+        cg("thinks a zero-order rate is proportional to [A]² (that is second "
+           "order)"),
+        cg("thinks 'zero order' means the rate is literally zero (misreads "
+           "the order as the rate value)")],
+    "q_ho_016": [  # activation energy is (correct B: min energy to react)
+        cg("confuses activation energy with the products−reactants energy "
+           "difference (ΔH/ΔG)"),
+        None,
+        cg("thinks activation energy equals ΔG"),
+        cg("thinks raising temperature lowers Ea (temperature raises the "
+           "fraction of molecules with ≥Ea, not Ea itself)")],
+    "q_ho_017": [  # Bernoulli: higher speed → pressure (correct B: lower)
+        cg("reverses Bernoulli — thinks faster flow means higher pressure"),
+        None,
+        cg("thinks fluid speed does not affect pressure"),
+        None],  # 'zero' — implausible grab
+    "q_ho_018": [  # object floats when buoyant force = (correct A: its weight)
+        None,
+        None,  # 'zero' — implausible grab
+        cg("thinks the buoyant force equals the entire weight of the fluid, "
+           "not the weight of displaced fluid"),
+        cg("confuses buoyant force with atmospheric pressure")],
+    "q_ho_019": [  # aerobic end product of glycolysis (correct A: 2 pyruvate)
+        None,
+        cg("gives lactate — the anaerobic fermentation product — under "
+           "aerobic conditions"),
+        cg("thinks glycolysis directly yields acetyl-CoA (pyruvate becomes "
+           "acetyl-CoA only after entering the mitochondrion)"),
+        cg("gives ethanol — a yeast fermentation product — for human aerobic "
+           "glycolysis")],
+    "q_ho_020": [  # committed rate-limiting step (correct B: PFK-1)
+        cg("names hexokinase (the first step) as the committed rate-limiting "
+           "step"),
+        None,
+        cg("names pyruvate kinase (the last step) as the rate-limiting step"),
+        None],  # aldolase — a glycolytic-enzyme grab, not a regulatory step
+    "q_ho_021": [  # ATP consumed in investment phase (correct A: 2)
+        None,
+        cg("confuses the 4 ATP produced in the payoff phase with the 2 "
+           "consumed in the investment phase"),
+        None,  # '0' — arbitrary
+        None],  # '6' — arbitrary
+    "q_ho_022": [  # anaerobic muscle: pyruvate → (correct B: lactate)
+        cg("gives ethanol (yeast fermentation) for human muscle anaerobic "
+           "metabolism"),
+        None,
+        cg("thinks pyruvate → acetyl-CoA (the aerobic pathway) regenerates "
+           "NAD⁺ anaerobically"),
+        None],  # citrate — TCA-intermediate grab
+    "q_ho_023": [  # CO₂ released per TCA turn (correct B: 2)
+        cg("thinks only one CO₂ is released per turn"),
+        None,
+        cg("thinks three CO₂ are released per turn"),
+        None],  # '0' — arbitrary
+    "q_ho_024": [  # most cycle energy captured as (correct B: NADH/FADH₂)
+        cg("thinks the cycle captures most energy as ATP directly (it makes "
+           "mostly reduced carriers)"),
+        None,
+        None,  # 'heat' — grab
+        cg("thinks GTP is the main energy product (only 1 GTP/turn; most "
+           "energy is in NADH/FADH₂)")],
+    "q_ho_025": [  # NADH per acetyl-CoA (correct C: 3) — count near-misses
+        None,  # '1' — non-diagnostic count near-miss
+        None,  # '2' — non-diagnostic count near-miss
+        None,
+        None],  # '4' — non-diagnostic count near-miss
+    "q_ho_026": [  # active site (correct B)
+        cg("confuses the allosteric (regulatory) site with the active "
+           "(catalytic) site"),
+        None,
+        None,  # 'R group' — grab
+        None],  # 'peptide backbone' — grab
+    "q_ho_027": [  # induced-fit model (correct B: active site reshapes)
+        cg("thinks the enzyme is consumed in the reaction (enzymes are "
+           "catalysts, not consumed)"),
+        None,
+        cg("thinks the substrate is left chemically unchanged (it is "
+           "converted to product)"),
+        cg("thinks enzymes increase activation energy (they lower it)")],
+    "q_ho_028": [  # heat above optimum (correct B: denatures)
+        cg("thinks higher temperature always increases enzyme activity "
+           "without limit (ignores denaturation)"),
+        None,
+        None,  # 'no effect' — implausible grab
+        None],  # 'lowers only the Km' — grab
+    "q_ho_029": [  # simple diffusion of nonpolar molecule (correct B)
+        cg("thinks simple diffusion requires ATP (confuses it with active "
+           "transport)"),
+        None,
+        cg("thinks simple diffusion needs a transport protein (that is "
+           "facilitated diffusion)"),
+        cg("thinks simple diffusion moves molecules against their gradient")],
+    "q_ho_030": [  # against-gradient + energy (correct C: active transport)
+        cg("thinks simple diffusion moves solutes against their gradient"),
+        cg("thinks facilitated diffusion moves solutes against their gradient "
+           "(it is passive, down-gradient)"),
+        None,
+        cg("thinks osmosis (water movement) is the energy-requiring solute "
+           "transport")],
+    "q_ho_031": [  # cholesterol function (correct B: modulate fluidity)
+        None,  # 'store genetic information' — implausible grab
+        None,
+        None,  # 'catalyze glycolysis' — implausible grab
+        cg("thinks cholesterol forms the hydrophilic head groups (it sits "
+           "among the tails, modulating fluidity)")],
+    "q_ho_032": [  # osmosis is diffusion of (correct B: water)
+        cg("thinks osmosis is the diffusion of solutes rather than water"),
+        None,
+        None,  # 'proteins' — grab
+        cg("thinks osmosis is the diffusion of ions specifically")],
+    "q_ho_033": [  # base pairing (correct A: thymine; cytosine)
+        None,
+        cg("swaps the pairing partners (A–C, G–T)"),
+        cg("uses uracil (RNA) for adenine's partner and mispairs guanine — "
+           "RNA/DNA base confusion"),
+        cg("pairs guanine with adenine (two purines) — violates purine–"
+           "pyrimidine pairing")],
+    "q_ho_034": [  # unwinds helix at fork (correct B: helicase)
+        cg("thinks ligase unwinds the helix (ligase seals nicks)"),
+        None,
+        cg("thinks polymerase unwinds the helix (polymerase synthesizes "
+           "DNA)"),
+        cg("thinks primase unwinds the helix (primase makes RNA primers)")],
+    "q_ho_035": [  # Okazaki fragments on which strand (correct B: lagging)
+        cg("thinks Okazaki fragments form on the leading strand"),
+        None,
+        None,  # 'template-only' — grab
+        None],  # 'RNA' — grab
+    "q_ho_036": [  # DNA strands are (correct B: antiparallel/complementary)
+        cg("thinks the two strands are identical and parallel (they are "
+           "complementary and antiparallel)"),
+        None,
+        None,  # 'both RNA' — grab
+        cg("thinks the bases are joined by covalent bonds (they pair via "
+           "hydrogen bonds)")],
+    "q_ho_037": [  # Aa×Aa genotypic ratio (correct A: 1:2:1)
+        None,
+        cg("gives the phenotypic ratio 3:1 instead of the genotypic 1:2:1"),
+        cg("gives a 1:1 ratio (testcross) for a heterozygote × heterozygote "
+           "cross"),
+        cg("thinks all offspring are heterozygous Aa (ignores segregation "
+           "into AA and aa)")],
+    "q_ho_038": [  # law of segregation (correct B: alleles separate)
+        cg("confuses the law of segregation with the law of independent "
+           "assortment"),
+        None,
+        cg("thinks dominant alleles are always more common (dominance ≠ "
+           "frequency)"),
+        cg("endorses blending inheritance (Mendel's work refuted blending)")],
+    "q_ho_039": [  # testcross partner (correct B: homozygous recessive)
+        cg("thinks a testcross uses a homozygous dominant partner (which "
+           "would mask recessive alleles)"),
+        None,
+        cg("thinks a testcross uses a heterozygous partner"),
+        None],  # 'haploid' — grab
+    "q_ho_040": [  # genes far apart on same chromosome (correct B)
+        cg("thinks genes on the same chromosome are always inherited together "
+           "(ignores crossing over)"),
+        None,
+        cg("thinks genes far apart never recombine (they recombine "
+           "frequently)"),
+        cg("misreads the premise — treats same-chromosome genes as being on "
+           "different chromosomes")],
+    "q_ho_041": [  # permanent unlimited store (correct C: long-term memory)
+        cg("confuses sensory memory (brief, fleeting) with the permanent "
+           "long-term store"),
+        cg("confuses short-term memory (limited, seconds) with the permanent "
+           "long-term store"),
+        None,
+        None],  # 'iconic memory' — a sensory-memory subtype; repeats A's error
+    "q_ho_042": [  # context-dependent memory (correct B)
+        cg("confuses the misinformation effect (memory distortion) with "
+           "context-dependent retrieval"),
+        None,
+        cg("confuses proactive interference (old memories disrupting new) "
+           "with context matching"),
+        cg("confuses the self-reference effect (better memory for "
+           "self-relevant info) with context-dependent memory")],
+    "q_ho_043": [  # first/last items best (correct B: serial position)
+        cg("confuses the spacing effect (distributed practice) with the "
+           "serial position effect"),
+        None,
+        None,  # 'misinformation effect' — unrelated grab
+        cg("confuses priming (implicit activation) with the serial position "
+           "effect")],
+    "q_ho_044": [  # explicit memory includes (correct B: facts/events)
+        cg("classifies a motor skill (riding a bike) as explicit memory (it "
+           "is implicit/procedural)"),
+        None,
+        cg("classifies conditioned reflexes as explicit memory (they are "
+           "implicit)"),
+        None],  # 'motor skills' — repeats the procedural-vs-explicit error
+    "q_ho_045": [  # neutral→elicits response (correct B: conditioned stimulus)
+        cg("calls the learned (conditioned) stimulus the unconditioned "
+           "stimulus — reverses learned vs innate"),
+        None,
+        cg("labels a stimulus as a response (confuses the CS with the "
+           "unconditioned response)"),
+        cg("uses the operant term 'reinforcer' for a classical-conditioning "
+           "stimulus")],
+    "q_ho_046": [  # negative reinforcement (correct B: increases; removing)
+        cg("thinks negative reinforcement decreases behavior by adding a "
+           "stimulus (describes positive punishment)"),
+        None,
+        cg("thinks negative reinforcement decreases behavior (confuses "
+           "reinforcement with punishment)"),
+        cg("thinks negative reinforcement adds a stimulus (describes positive "
+           "reinforcement)")],
+    "q_ho_047": [  # unpredictable # responses (correct B: variable-ratio)
+        cg("confuses fixed-ratio (predictable count) with variable-ratio "
+           "(unpredictable count)"),
+        None,
+        cg("confuses fixed-interval (time-based) with variable-ratio "
+           "(response-based)"),
+        cg("confuses continuous reinforcement (every response) with a "
+           "variable-ratio schedule")],
+    "q_ho_048": [  # Milgram (correct B: obedience to authority)
+        cg("confuses conformity (matching peers) with obedience (following an "
+           "authority's orders)"),
+        None,
+        None,  # bystander effect — unrelated grab
+        cg("confuses groupthink (consensus-seeking) with obedience to "
+           "authority")],
+    "q_ho_049": [  # bystander effect (correct B: decreases helping)
+        cg("reverses the bystander effect — thinks more onlookers increase "
+           "helping"),
+        None,
+        cg("thinks the number of bystanders has no effect on helping"),
+        None],  # 'guarantees' — implausible grab
+    "q_ho_050": [  # attitude defined as (correct B: an evaluation)
+        cg("thinks an attitude is a fixed genetic trait (attitudes are "
+           "learned evaluations)"),
+        None,
+        cg("confuses an attitude with an involuntary reflex"),
+        None],  # 'type of long-term memory' — grab
+    "q_ho_051": [  # SES measured by (correct B: occupation) — grabs
+        None,  # blood type — arbitrary biological grab
+        None,
+        None,  # height — arbitrary grab
+        None],  # personality type — grab
+    "q_ho_052": [  # social gradient means (correct A)
+        None,
+        cg("denies any relationship between social position and health"),
+        cg("threshold misconception — thinks only the very poorest have worse "
+           "health, missing the stepwise gradient"),
+        cg("thinks wealth directly causes disease (misreads the gradient's "
+           "causality)")],
+    "q_ho_059": [  # pascal (Pa) equals (correct A: N/m²)
+        None,
+        cg("gives units of force (kg·m/s² = N), not pressure (force per "
+           "area)"),
+        None,  # 'J·s' — unrelated (action) units grab
+        cg("gives N·m (energy/torque) instead of N/m² for pressure")],
+}
+
+
+def _attach_choice_diagnosis(item: dict) -> None:
+    """Attach a bulk-authored content-axis choice_diagnosis by id.
+
+    q_syn_* items author it inline; this covers the DEV/HELD_OUT science bank.
+    CARS is never tagged. Fails loudly on length or correct-index mismatch so a
+    positional id miscount can't silently mis-tag a question.
+    """
+    cd = CHOICE_DIAGNOSIS.get(item["id"])
+    if cd is None:
+        return
+    assert item["section"] != "CARS", f"{item['id']}: CARS must not carry choice_diagnosis"
+    assert len(cd) == len(item["choices"]), f"{item['id']}: choice_diagnosis length mismatch"
+    correct_idx = LETTERS.index(item["correct"])
+    assert cd[correct_idx] is None, f"{item['id']}: correct index choice_diagnosis must be None"
+    item["choice_diagnosis"] = cd
+
+
 def main() -> None:
     out = []
     for i, item in enumerate(DEV, 1):
         item["id"] = f"q_dev_{i:03d}"
+        _attach_choice_diagnosis(item)
         out.append(item)
     for i, item in enumerate(HELD_OUT, 1):
         item["id"] = f"q_ho_{i:03d}"
+        _attach_choice_diagnosis(item)
         out.append(item)
     # Synthesis items carry their own stable ids (q_syn_*) — never renumbered.
     out.extend(SYNTHESIS)

@@ -1,7 +1,12 @@
-note_type,text,back,tags,supports_question
+#separator:Comma
+#html:false
+#notetype:Cloze
+#columns:note_type,Text,back,tags,supports_question
+#tags column:4
 Cloze,"The citric acid cycle takes place in the {{c1::mitochondrial matrix}}.",,topic:bb_citric_acid,
 Cloze,"The citric acid cycle oxidizes {{c1::acetyl-CoA}} to CO₂ and transfers electrons to carriers used by the ETC.",,topic:bb_citric_acid,
-Cloze,"Each turn of the TCA cycle makes one {{c1::ATP or GTP}} via substrate-level phosphorylation (not via the ETC).",,topic:bb_citric_acid,q_dev_001|q_syn_016
+Cloze,"Each turn of the TCA cycle makes one {{c1::ATP or GTP}} via substrate-level phosphorylation (not via the ETC).",,topic:bb_citric_acid,q_syn_016
+Cloze,"In the citric acid cycle, GTP/ATP is made by substrate-level phosphorylation during the conversion of {{c1::succinyl-CoA to succinate}}.",,topic:bb_citric_acid,q_dev_001
 Cloze,"High {{c1::ADP}} signals low ATP and increases catabolic flux through key enzymes.",,topic:bb_citric_acid,q_dev_002
 Cloze,"Acetyl-CoA joins {{c1::oxaloacetate}} to form {{c1::citrate}} at the start of each cycle turn.",,topic:bb_citric_acid,q_dev_023
 Cloze,"Per turn, the citric acid cycle releases {{c1::2}} CO₂ and makes {{c1::3}} NADH.",,topic:bb_citric_acid,q_ho_023|q_ho_025
@@ -87,6 +92,9 @@ Cloze,"SES is commonly measured by income, education, and {{c1::occupation}}.",,
 Cloze,"A competitive inhibitor binds the enzyme's {{c1::active site}}, directly competing with substrate for binding.",,topic:bb_enzymes,q_syn_001|q_syn_002
 Cloze,"Noncompetitive inhibition: Vmax {{c1::decreases}} while Km stays {{c1::unchanged}}.",,topic:bb_enzymes,q_syn_001
 Cloze,"Km is the substrate concentration at {{c1::half of Vmax}}; a higher Km means lower substrate affinity.",,topic:bb_enzymes,q_syn_001
+Cloze,"A competitive inhibitor raises the enzyme's {{c1::apparent Km}} (more substrate is needed to reach a given velocity) because it competes for the active site.",,topic:bb_enzymes,q_syn_001
+Cloze,"Uncompetitive inhibition lowers {{c1::both}} Vmax and Km, because the inhibitor binds only the enzyme–substrate complex.",,topic:bb_enzymes,q_syn_001
+Cloze,"Competitive inhibition is {{c1::surmountable}}: the inhibitor binds reversibly at the active site, so adding excess substrate outcompetes it.",,topic:bb_enzymes,q_syn_002
 Cloze,"E°cell = E°(cathode) − E°(anode); the half-cell with the {{c1::higher (more positive)}} reduction potential is the cathode.",,topic:cp_electrochem,q_syn_005
 Cloze,"ΔG° = {{c1::−nFE°cell}}, so a positive E°cell gives a {{c1::negative}} ΔG° (spontaneous).",,topic:cp_electrochem,q_syn_006
 Cloze,"Ecell (the actual potential) changes with ion concentrations via the Nernst equation, but E°cell (standard) is {{c1::fixed}}.",,topic:cp_electrochem,q_syn_007

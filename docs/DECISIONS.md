@@ -28,6 +28,8 @@
 | 17 | Builder | Solo; friend = held-out performance participant |
 | 18 | AI (Friday) | Optional; not on critical path for Q bank |
 | 19 | `M` signal source | **Per-card FSRS-R** (pure Python) replaces topic-level fallback; question schema extended with `cognitive_demand` + `choice_diagnosis` (additive) |
+| 20 | Attempt data collection | **Local sidecar is source of truth**; full `feature_json` captured per attempt; **export script** (`tools/mcat_export_perf.py`) is the eval collection path; external telemetry backend **deferred** |
+| 21 | Inference abstention balance | **Commit, don't over-abstain:** `infer_error_type` commits a diagnosis in the common miss — **`application` is the DEFAULT** for a content-presumed-held miss; honesty carried by **moderate confidence (0.55–0.60)**, not abstention. `unresolved` reserved for the truly-dark miss; CARS misses hard-guarded to `unresolved`. **Supersedes** the spec's "cold-start / fast-alone → unresolved" stance |
 
 ---
 
@@ -165,6 +167,13 @@ line, which rests on `M` + the re-check probe (the least-tested pieces). See
 `LOOSE-ENDS.md`. The Wednesday 4-button enum stays frozen; the v2 rename/fold
 migration happens when v2 is built.
 
+**Abstention rebalance (2026-07-01) — see §21:** the inference engine was later
+retuned to **commit** a diagnosis in the common miss (`application` as the
+default for a content-presumed-held miss) rather than over-abstaining, carrying
+honesty in **moderate confidence (0.55–0.60)** instead of `unresolved`. This
+supersedes the spec's earlier cold-start/fast-alone "stay unresolved" guidance
+and *elevates* the residual `content_gap`↔`application` boundary risk above.
+
 Full mechanism, schema, and validation metric: [`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md).
 
 ---
@@ -265,6 +274,116 @@ the inference engine reads (see §9).
 **References:** [`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md),
 [`LOOSE-ENDS.md`](LOOSE-ENDS.md) (coarse-`M` item, now RESOLVED),
 [`SYNTHESIS-QUESTIONS-DRAFT.md`](SYNTHESIS-QUESTIONS-DRAFT.md).
+
+---
+
+## 19. Performance attempt data collection + export (2026-07-01)
+
+**Decision (a) — the local sidecar is the source of truth for attempt data.**
+Every performance attempt (correct *and* incorrect) records the full observable
+signal vector as a `feature_json` blob on `perf_attempts` (added via the additive
+ALTER-if-missing migration), plus the objective label columns (`chosen_index`,
+`mastery_snapshot`, `inferred_error_type`, `inferred_confidence`, `error_source`).
+`feature_json` is stored with `ensure_ascii=False` and stamped with
+`FEATURE_SCHEMA_VERSION` (`mcat_perf_features_v1`).
+
+**feature_json schema (v1)** — captured at classify time in
+`PerformanceSession._feature_vector`:
+`schema`, `question_id`, `topic_id`, `section`, `split`, `chosen_index`,
+`correct`, `time_seconds`, `mastery_snapshot`, `cognitive_demand`, `is_trap`,
+`trap_type`, `has_content_tag`, `maps_to`, `misconception`,
+`inferred_error_type`, `inferred_confidence`, `error_source`,
+`self_report_error_type`, `interleaved`.
+
+**Decision (b) — export is the collection path for eval.** A read-only export
+(`tools/mcat_export_perf.py` → `anki.mcat_perf.export_attempts`, also wired as
+Tools → **"MCAT: Export performance data…"**) dumps `perf_attempts` joined with
+`perf_questions` to CSV and/or JSON (`--format csv|json|both`). No AI, no network.
+
+**Decision (c) — external telemetry backend deferred.** No cloud/telemetry sink
+in v1 (consistent with §5's local-first ethos). Eval happens by exporting the
+sidecar and analyzing offline.
+
+**Tension with the AGENTS.md lock (flagged honestly):** `AGENTS.md` still lists
+"perf tables in the collection DB + stock Anki sync" as a locked decision. The
+implementation instead uses a **non-syncing sidecar** (`collection.mcat_perf.db`),
+revised in §5 for durability (a full sync would silently wipe embedded custom
+tables). The consequence for *collection*: **stock Anki sync only reaches
+AnkiWeb, not a queryable DB we can pull attempt data from** — even the original
+"tables in the collection DB" plan would not have produced a queryable analytics
+store, only AnkiWeb-synced rows. So attempt-data collection for eval relies on
+the **export path**, not sync. Cross-device perf sync remains the open item in §5
+(build step 7).
+
+**Deferred capture (NOT faked):** `first_choice_index`, `answer_changes`, and the
+re-check probe outcomes (`recheck_card_id` / `recheck_correct` / `recheck_timing`)
+are left NULL — they need select-then-confirm churn logging + a re-check probe the
+dialog does not provide yet. We capture only what is genuinely observed. See
+`LOOSE-ENDS.md` ("Deferred v2 UX").
+
+**References:** `pylib/anki/mcat_perf.py`, `tools/mcat_export_perf.py`,
+`qt/aqt/mcat/__init__.py`, `pylib/tests/test_mcat_perf.py`.
+
+---
+
+## 21. Inference abstention rebalance — commit, don't over-abstain (2026-07-01)
+
+**Decision:** retune `infer_error_type` (`pylib/anki/mcat_perf.py`) to **commit a
+diagnosis in the common miss** instead of falling through to `unresolved` /
+self-report, and make **`application` the DEFAULT** diagnosis for a
+content-presumed-held miss. **Honesty is now carried by moderate CONFIDENCE
+(0.55–0.60), not by abstaining.**
+
+**Problem it fixes:** the previous engine over-abstained. Cold-start / gate-imputed
+`M` lands in the ambiguous `[LOW_M, HIGH_M)` band, ~78% of science distractors are
+untagged, and ~67% of items are recall-demand — so the old "ambiguous-`M`" and
+"fast-alone" fall-throughs sent the *majority* of misses to `unresolved`,
+defeating the product's core "infer, don't ask" goal (SPOV-3).
+
+**The rebalanced decision order (first match wins):**
+1. Chosen distractor carries a `content_gap` tag → `content_gap` (M-independent;
+   0.75 if low `M` corroborates, else 0.65).
+2. Low `M` → `content_gap` (≥0.6).
+3. Predictable-trap landing → `misread` (0.75 fast+high-`M` / 0.6 fast-or-high-`M`
+   / 0.55 otherwise).
+4. **Content presumed held → `application` (the DEFAULT):** high `M` + applied
+   demand ≥0.7 (strongest, cross-system divergence); high `M` any demand 0.6;
+   applied demand with ambiguous/unknown/mid `M` 0.6; mid `M` 0.55.
+5. **Truly-dark miss only** (`M` unavailable **and** recall/unknown demand
+   **and** no tag **and** no trap, *including* fast-but-no-trap) → `unresolved` →
+   self-report.
+
+Plus a **CARS guard:** `PerformanceSession.answer` hard-forces every CARS miss to
+`unresolved` (0.0) before the science engine runs, so the science default can
+never mislabel a CARS miss (CARS is a separate skill-archetype + pacing track).
+
+**Rationale (why `application` as default is honest):** the performance gate
+(≥3 seen, ≥5 Good/Easy) supplies a content baseline *by construction*, so gated
+misses lean `application` by design (the "gate-defines-content confound" already
+in the spec). Committing those to `application` at *moderate* confidence — rather
+than abstaining — is more useful and no less honest, because the confidence
+transparently reflects the weak signal, and a real content gap is still caught
+first by branches 1–2 (authored tag or low `M`).
+
+**Deliberate divergence from the prior spec (now reconciled):** this **supersedes**
+`ERROR-DIAGNOSIS-SPEC.md`'s "Cold-start honesty" (ambiguous-`M` → `unresolved`)
+and "fast alone is weak → `unresolved`" guidance. Both cases now commit
+`application` at moderate confidence. The spec was updated (2026-07-01) to match:
+the "In one paragraph", "Inference rule", "Cold-start honesty", process-axis
+disambiguation table, confidence table, and residual-risk sections were rewritten;
+the honest content_gap↔application boundary caveat is retained and, because
+`application` is now the default, explicitly **elevated** (more misses land in
+`application`, so the boundary carries more weight — audited via student overrides).
+
+**Residual risk (tracked in `LOOSE-ENDS.md`):** making `application` the default
+raises exposure to the `content_gap`↔`application` mislabel if `M` is
+mis-estimated or tag coverage is thin. Mitigations: branches 1–2 pre-empt with
+`content_gap`; moderate confidence flags probe candidates; persistent
+`application`→`content_gap` overrides are the audit signal.
+
+**References:** `pylib/anki/mcat_perf.py` (`infer_error_type`,
+`PerformanceSession.answer` CARS guard),
+[`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md), [`LOOSE-ENDS.md`](LOOSE-ENDS.md).
 
 ---
 

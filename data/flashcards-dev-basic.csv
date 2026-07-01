@@ -1,4 +1,8 @@
-note_type,text,back,tags,supports_question
+#separator:Comma
+#html:false
+#notetype:Basic
+#columns:note_type,Front,Back,tags,supports_question
+#tags column:4
 Basic,"When ADP is high, why do metabolic pathways generally speed up?","Allosteric activation of rate-limiting enzymes — the cell needs to regenerate ATP.",topic:bb_citric_acid,q_dev_002
 Basic,"Why does the citric acid cycle itself produce little ATP directly?","Most of its energy is captured as NADH and FADH₂, which feed the electron transport chain — where the bulk of ATP is actually made.",topic:bb_citric_acid,q_ho_024
 Basic,"Why compare reaction rates (not ΔG) to judge activation energy?","ΔG reflects spontaneity/energy change; Ea sets the barrier that controls rate at a given temperature.",topic:bb_enzymes,q_dev_004

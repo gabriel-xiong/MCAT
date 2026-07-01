@@ -1,18 +1,21 @@
 # Wednesday checklist (Speedrun)
 
-_Status as of 2026-06-30 (overnight build). Engineering + content are done;
-what's left is committing, the installer build, and capturing recordings._
+_Last updated: 2026-07-01. Engineering + content are done; what's left is
+committing, and capturing the two desktop recordings. See
+`docs/RECORDING-RUNBOOK.md` for the "hit record and follow" shot-lists._
 
 ## Proof artifacts to capture
 
 - [ ] Commit hash of `anki-MCAT` — **blocked: work is still uncommitted** (see
       `docs/RELEASE-INSTALLER.md`; needs your go-ahead to commit + push)
-- [ ] Screen recording: memory review session (desktop) — **you record**
+- [ ] Screen recording: desktop memory review + performance/diagnosis demo —
+      **you record** (shot-list A in `docs/RECORDING-RUNBOOK.md`)
 - [x] Screen recording: phone review session (AnkiDroid) — captured to
       `assets/` during the mobile track (import + graded review on emulator)
-- [ ] Clean-machine install recording — installer **built** locally
-      (`anki-MCAT/out/installer/dist/anki-26.05-win-x64.msi`); run on a clean VM
-      and record
+- [ ] Clean-machine install recording — installer **already built** locally
+      (`anki-MCAT/out/installer/dist/anki-26.05-win-x64.msi`); run the existing
+      `.msi` on a clean VM and record (shot-list B in
+      `docs/RECORDING-RUNBOOK.md`). Note: the `.msi` predates today's UI changes.
 - [x] Rust test output — 4 mastery unit tests pass (`cargo test -p anki mcat`);
       re-run and screen-capture for the proof packet
 - [x] **No AI** in build or runtime — verified: MCAT runtime modules contain no
@@ -26,17 +29,31 @@ what's left is committing, the installer build, and capturing recordings._
 - [x] ≥3 Rust unit tests + 1 Python integration test (4 Rust + Python tests in
       `pylib/tests/test_mcat_*.py`)
 - [x] Performance mode reads `data/questions.json` (loader + sidecar DB)
-- [x] Error typing UI on performance miss (4 buttons)
+- [x] Error typing UI on performance miss — **v2 confidence-gated diagnosis
+      panel**: shows the *inferred* type + confidence ("Looks like: <type> ·
+      NN%") with one-tap **Confirm** and an **"Actually, something else"**
+      override (which excludes the suggested type); a 3-button
+      content_gap / applied-reasoning / misread self-report is the low-confidence
+      fallback. (Inferred, not blank self-report.)
 - [x] Memory score + range + give-up on dashboard (three-score home screen)
 - [x] Topic tags on deck (`data/deck-tagging.md`)
+- [x] Tools-menu MCAT actions: Load question bank, Export performance data,
+      Reset performance data; plus **auto-reset of performance/readiness when an
+      MCAT-tagged deck is deleted** (dashboard falls back to "not enough data")
 
 ## Content (parallel — you)
 
-- [x] ≥30 questions in `data/questions.json` (`split: dev`) — **50 dev** now
-      (110 total: 50 dev / 60 held_out across all 18 topics)
+- [x] ≥30 questions in `data/questions.json` (`split: dev`) — **65 dev** now
+      (**140 total: 65 dev / 75 held_out** across all **18 topics**; 127 science
+      + 13 CARS). Science-question coverage **127/127** and choice-tag coverage
+      **127/127** (287 content_gap / 18 trap / 76 null distractors).
 - [x] Update `data/curation-status.json` counts (auto-refreshed by builder)
 - [x] `python scripts/validate_data.py` passes
-- [x] Small test deck tagged across ≥5 topics — **79 notes across 15 topics**
+- [x] Flashcards regenerated: **133 cards (106 cloze / 27 basic)** in
+      `data/flashcards-dev-cloze.csv` + `data/flashcards-dev-basic.csv`. CSVs now
+      carry Anki import directives (`#notetype` / `#columns` / `#tags column`) →
+      **one-click import**, no header note to delete.
+- [x] Small test deck tagged across ≥5 topics — 133-card deck across 18 topics
 
 ## Docs
 
@@ -51,8 +68,9 @@ what's left is committing, the installer build, and capturing recordings._
    (`anki-MCAT/out/installer/dist/anki-26.05-win-x64.msi`) — just run it on a
    clean VM and record. (CI path documented as a fallback in
    `docs/RELEASE-INSTALLER.md`.)
-3. **Recordings**: desktop memory review + clean-machine install (phone review
-   already captured).
+3. **Recordings**: desktop memory-review + performance/diagnosis demo, and the
+   clean-machine install of the existing `.msi` (phone review already captured).
+   Follow `docs/RECORDING-RUNBOOK.md` for both shot-lists.
 
 ## Explicitly not Wednesday
 

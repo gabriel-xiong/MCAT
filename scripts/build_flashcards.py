@@ -43,7 +43,9 @@ CARDS: list[tuple[str, str, str, str, str]] = [
     ("Cloze", "The citric acid cycle oxidizes {{c1::acetyl-CoA}} to CO₂ and transfers electrons to carriers used by the ETC.",
      "", "bb_citric_acid", ""),
     ("Cloze", "Each turn of the TCA cycle makes one {{c1::ATP or GTP}} via substrate-level phosphorylation (not via the ETC).",
-     "", "bb_citric_acid", "q_dev_001|q_syn_016"),
+     "", "bb_citric_acid", "q_syn_016"),
+    ("Cloze", "In the citric acid cycle, GTP/ATP is made by substrate-level phosphorylation during the conversion of {{c1::succinyl-CoA to succinate}}.",
+     "", "bb_citric_acid", "q_dev_001"),
     ("Cloze", "High {{c1::ADP}} signals low ATP and increases catabolic flux through key enzymes.",
      "", "bb_citric_acid", "q_dev_002"),
     ("Cloze", "Acetyl-CoA joins {{c1::oxaloacetate}} to form {{c1::citrate}} at the start of each cycle turn.",
@@ -309,6 +311,12 @@ CARDS: list[tuple[str, str, str, str, str]] = [
     ("Basic", "How does Km differ in kind from Keq?",
      "Km is a kinetic quantity — the [S] at half-Vmax, describing how the enzyme handles substrate. Keq is a thermodynamic quantity — the equilibrium ratio set by the free-energy difference between reactants and products.",
      "bb_enzymes", "q_syn_004"),
+    ("Cloze", "A competitive inhibitor raises the enzyme's {{c1::apparent Km}} (more substrate is needed to reach a given velocity) because it competes for the active site.",
+     "", "bb_enzymes", "q_syn_001"),
+    ("Cloze", "Uncompetitive inhibition lowers {{c1::both}} Vmax and Km, because the inhibitor binds only the enzyme–substrate complex.",
+     "", "bb_enzymes", "q_syn_001"),
+    ("Cloze", "Competitive inhibition is {{c1::surmountable}}: the inhibitor binds reversibly at the active site, so adding excess substrate outcompetes it.",
+     "", "bb_enzymes", "q_syn_002"),
 
     # ---- cp_electrochem (NEW-EC1..EC5) ------------------------------------
     ("Cloze", "E°cell = E°(cathode) − E°(anode); the half-cell with the {{c1::higher (more positive)}} reduction potential is the cathode.",
@@ -403,11 +411,42 @@ def row(note_type: str, text: str, back: str, topic_id: str, supports: str) -> s
     ])
 
 
-HEADER = "note_type,text,back,tags,supports_question"
+# Anki import directives (verified against the fork's parser,
+# rslib/src/import_export/text/csv/metadata.rs::parse_meta_value).
+#
+# Every leading line beginning with '#' is treated as import config, NOT a note
+# (parse_line strips '#'; the CSV reader is built with .comment(Some(b'#'))), so
+# these blocks guarantee the old `note_type,text,back,...` header can never be
+# imported as a junk note — no manual "first row is field names" toggle needed.
+#
+# Column order emitted by row(): 1=note_type 2=text 3=back 4=tags 5=supports_question
+#   - #separator:Comma    -> delimiter is comma (must precede #columns:)
+#   - #html:false         -> fields are escaped, so literal '<'/'>' (e.g. "ΔG < 0") render as text
+#   - #notetype:...        -> pins the notetype for the split files
+#   - #columns:...         -> labels; matching a label to a field name maps that column;
+#                             unmatched labels (note_type, supports_question) stay unmapped/ignored
+#   - #tags column:4       -> column 4 supplies tags (excluded from field mapping)
+# Combined file mixes note types, so it uses #notetype column:1 (per-row notetype).
+_COMMON = ["#separator:Comma", "#html:false"]
+
+DIRECTIVES_CLOZE = _COMMON + [
+    "#notetype:Cloze",
+    "#columns:note_type,Text,back,tags,supports_question",
+    "#tags column:4",
+]
+DIRECTIVES_BASIC = _COMMON + [
+    "#notetype:Basic",
+    "#columns:note_type,Front,Back,tags,supports_question",
+    "#tags column:4",
+]
+DIRECTIVES_ALL = _COMMON + [
+    "#notetype column:1",
+    "#tags column:4",
+]
 
 
-def write_csv(path: Path, rows: list[str]) -> None:
-    path.write_text("\n".join([HEADER, *rows]) + "\n", encoding="utf-8")
+def write_csv(path: Path, directives: list[str], rows: list[str]) -> None:
+    path.write_text("\n".join([*directives, *rows]) + "\n", encoding="utf-8")
 
 
 def coverage_check() -> None:
@@ -441,9 +480,9 @@ def main() -> None:
         else:
             basic_rows.append(line)
 
-    write_csv(DATA / "flashcards-dev.csv", all_rows)
-    write_csv(DATA / "flashcards-dev-cloze.csv", cloze_rows)
-    write_csv(DATA / "flashcards-dev-basic.csv", basic_rows)
+    write_csv(DATA / "flashcards-dev.csv", DIRECTIVES_ALL, all_rows)
+    write_csv(DATA / "flashcards-dev-cloze.csv", DIRECTIVES_CLOZE, cloze_rows)
+    write_csv(DATA / "flashcards-dev-basic.csv", DIRECTIVES_BASIC, basic_rows)
 
     topics = sorted({c[3] for c in CARDS})
     print(f"wrote {len(all_rows)} notes "

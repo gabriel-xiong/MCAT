@@ -1052,3 +1052,80 @@ Items that remain all-`content_gap` (q_syn_001–004, 010, 015, 017, 018, 021,
 022, 024–026, 029, 030) genuinely have three distinct misconception distractors
 each — the rubric says not to force a `trap`/`null` where the choice doesn't
 honestly support it.
+
+---
+
+## Bank-wide choice-tagging expansion — FINALIZED (2026-07-01)
+
+> **This section extends the re-tag pass above from the 30 `q_syn_*` items to
+> the *entire* science bank.** The synthesis-item counts above are unchanged
+> and remain a subset of the totals below.
+
+**Why:** the `q_syn_*` pass tagged only 30 of 127 science questions, so 291 of
+381 science distractors (78%) carried **no** `choice_diagnosis` at all. That
+thin coverage was the ceiling on the engine's ability to tell `content_gap`
+(a real misconception) from `application` (content held, not deployed) — the
+whole shallow-mastery signal. This pass applies the **same 3-axis methodology**
+(`ERROR-DIAGNOSIS-SPEC.md` → "Choice tagging methodology") to the 97
+recall-heavy `q_dev_*` / `q_ho_*` science items. Authoring lives in
+`scripts/build_question_bank.py` (`CHOICE_DIAGNOSIS` dict, keyed by id, wired in
+`main()`); `data/questions.json` was regenerated. No stems, choices, or answer
+keys were touched — only `choice_diagnosis`. CARS is untouched (0 of 13 CARS
+questions carry choice tags, by design).
+
+**Science-distractor tally (381 distractors = 127 items × 3 non-correct
+choices; the correct index is always `null` and excluded):**
+
+| axis | before | after | notes |
+|------|--------|-------|-------|
+| `content_gap` (specific misconception) | 71 | **287** | distinct within each question |
+| `trap: <type>` (execution landing) | 12 | **18** | enum-only; breakdown below |
+| `null` (non-diagnostic) | 7 | **76** | arbitrary number / unrelated grab |
+| untagged (no `choice_diagnosis`) | 291 | **0** | every science item now tagged |
+| **science questions carrying choice tags** | 30 / 127 | **127 / 127** | |
+
+**Trap breakdown (18 total):** `partial` ×6, `scaling` ×4, `inverse` ×4,
+`negation` ×2, `unit` ×1, `transpose` ×1. The 6 *new* traps (beyond the 12 from
+`q_syn_*`) are honest execution/attractor landings on the **numeric CP items**,
+where an arithmetic slip by a student who holds the concept genuinely exists:
+
+| item / choice | trap | landing |
+|---------------|------|---------|
+| q_dev_020 B (net glycolysis ATP = 2) | `partial` | reports gross 4 — forgot to subtract the 2 ATP invested |
+| q_ho_005 B (pH of 0.010 M HCl) | `scaling` | used 0.10 M (off by one power of ten) → pH 1.0 |
+| q_ho_008 B (pH 4 vs pH 6, ×100) | `scaling` | used one pH unit (10¹) instead of two (10²) |
+| q_ho_013 A (overall order of k[A][B]²) | `partial` | took only [A]'s order (1); didn't sum the exponents |
+| q_ho_014 B (double [A], first order) | `scaling` | squared the factor (2²) despite the stated first order |
+| q_ho_014 D (double [A], first order) | `inverse` | took the reciprocal of the factor (0.5×) |
+
+**Honesty notes — where the choices are deliberately `null`-heavy.** Traps stay
+rare because this bank is recall-heavy ("which/what/define"): a wrong pick on a
+conceptual recall item is almost always a genuine **content confusion**, not an
+execution slip, so it is tagged `content_gap` — not manufactured into a trap.
+Conversely, several recall items have distractors that are **arbitrary numbers
+or unrelated term-grabs** with no nameable misconception; forcing a
+`content_gap` onto those would fabricate a belief and dilute the content axis,
+so they are honestly `null`:
+
+- **All-`null` items** (all three distractors non-diagnostic): **q_ho_025**
+  (NADH per acetyl-CoA — 1/2/4 are bare count near-misses) and **q_ho_051**
+  (SES components — blood type / height / personality type are arbitrary
+  non-SES grabs). Tagged but carry no content or trap signal.
+- **`null`-heavy items** (single `content_gap` + two grabs): e.g. q_dev_019
+  (continuity vs Pascal/Archimedes — only the Bernoulli near-miss is a real
+  confusion), q_dev_021 (glycolysis location — only the mitochondria answer is
+  diagnostic; nucleus/ER are grabs), q_dev_025 (membrane framework —
+  peptidoglycan is the one nameable cell-wall confusion; cellulose repeats it,
+  glycogen is a grab), q_dev_041 (social-determinant — blood type is the one
+  biological-vs-social confusion; the genetic/eye-color choices repeat it).
+- **Redundant-belief distractors** demoted to `null`: where two distractors
+  encode the *same* underlying false belief, only one is `content_gap` (the
+  rubric forbids repeating a misconception within a question), and the twin is
+  `null` — e.g. q_dev_002 D ("slow the pathway" repeats B's ADP-reversal),
+  q_ho_041 D (iconic memory repeats A's sensory-memory error), q_ho_044 D
+  ("motor skills" repeats A's procedural-vs-explicit error).
+
+**Result:** the content axis can now discriminate on **all** 127 science items
+(was 30). Where the spec's shallow-mastery term (`w_mis·g`) needs a
+distinctive-misconception distractor to keep `content_gap` in contention at high
+`M`, the recall bank now supplies one on 287 distractors instead of 71.

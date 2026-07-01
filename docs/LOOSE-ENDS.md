@@ -24,6 +24,12 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
     be promoted back toward a real signal. If stronger: lean harder on the
     objective re-check probe + gold set.
 
+## UI / polish
+
+- [ ] **Move the "Show Answer" button to center.** In the review UI the
+  Show Answer button should be horizontally centered (currently not). Small
+  UI/CSS fix in the reviewer bottom bar.
+
 ## Design — not yet settled
 
 - [ ] **Application-practice bank does not exist yet (required for the
@@ -82,19 +88,30 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   `application` (the named residual risk below). Also open: whether `w_mis`
   should scale with *how distinctive* the misconception is (per-distractor)
   rather than a single global weight.
-- [ ] **Residual content↔application boundary risk (from the 3-bucket rename).**
-  *Named (2026-07-01):* collapsing the science taxonomy to `content_gap` /
-  `application` / `misread` **moves** the hardest boundary rather than removing
-  it — the whole split now hinges on the `content_gap`↔`application` line, which
-  rests on the two least-tested pieces: the content-held score `M` and the
-  content re-check probe. If the probe is contaminated (PASS is priming-inflated)
-  or `M` is mis-estimated (stale cards, uncovered prerequisites), **`application`
-  will silently absorb real content gaps** → student sent to applied practice
-  instead of the flashcards they need. Mitigations in place: asymmetric probe
-  (FAIL strong, PASS weak) + content-presence honesty gate (no `application`
-  without established content). *To firm up:* validate `M` calibration and probe
-  contamination on the gold set before trusting the `application` label on the
-  dashboard. See `ERROR-DIAGNOSIS-SPEC.md` → "Residual risk — the boundary moved".
+- [ ] **Residual content↔application boundary risk (from the 3-bucket rename;
+  ELEVATED by the abstention rebalance).** *Named (2026-07-01):* collapsing the
+  science taxonomy to `content_gap` / `application` / `misread` **moves** the
+  hardest boundary rather than removing it — the whole split now hinges on the
+  `content_gap`↔`application` line, which rests on the two least-tested pieces:
+  the content-held score `M` and the content re-check probe. If the probe is
+  contaminated (PASS is priming-inflated) or `M` is mis-estimated (stale cards,
+  uncovered prerequisites), **`application` will silently absorb real content
+  gaps** → student sent to applied practice instead of the flashcards they need.
+  **Rebalance update (2026-07-01, DECISIONS §21):** `infer_error_type` now makes
+  **`application` the DEFAULT** for a content-presumed-held miss (committing
+  mid/ambiguous/imputed-`M` and fast-but-no-trap misses at moderate confidence
+  0.55–0.60 instead of abstaining). This is the right product call (commit +
+  honest confidence beats over-abstaining), but it **raises exposure** to this
+  boundary risk: more misses land in `application` by construction, so `M`
+  quality and tag coverage carry more weight. Mitigations in place: authored
+  `content_gap` tag and low `M` pre-empt `application` (engine branches 1–2);
+  the default fires at moderate confidence (probe candidate, not settled fact);
+  asymmetric probe (FAIL strong, PASS weak); and **persistent
+  `application`→`content_gap` student overrides are the measurable audit signal**
+  that the default is over-firing. *To firm up:* validate `M` calibration and
+  probe contamination on the gold set, and watch the override rate, before
+  trusting the `application` label on the dashboard. See `ERROR-DIAGNOSIS-SPEC.md`
+  → "Residual risk — the boundary moved" and DECISIONS §21.
 - [x] **`M` uses topic-level retrievability, not per-card FSRS-R (v2 slice
   limitation).** *Named (2026-07-01):* `content_held_score` (`M`) in
   `mcat_perf.py` currently uses the **topic-level** `avg_retrievability` from the
@@ -147,13 +164,35 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   the three scores) that launches the matching practice in one click. Logic in
   `mcat_scores.py`, tile in `deckbrowser.py`. See `ERROR-DIAGNOSIS-SPEC.md` →
   "Next-action mapping".
-- [ ] **Deferred v2 UX (build later, not in the current slice):** re-check probe
+- [~] **Deferred v2 UX (build later, not in the current slice):** re-check probe
   UI (pre-reveal micro-probe + delayed natural check), select-then-confirm churn
   logging (`first_choice_index` / `answer_changes`), sparing observation-confirm
-  prompts, bulk `choice_diagnosis` authoring for all questions, and
-  `feature_json`/ML training. Also the Wednesday 4-button → 3-button enum
-  migration (rename `reasoning`→`application`, fold `passage_mapping`), done when
-  v2 ships.
+  prompts, and bulk `choice_diagnosis` authoring for all questions. Also the
+  Wednesday 4-button → 3-button enum migration (rename `reasoning`→`application`,
+  fold `passage_mapping`), done when v2 ships.
+  - **Done (2026-07-01): `feature_json` capture.** Every attempt (correct *and*
+    incorrect) now writes the full observed signal vector to a `feature_json`
+    column (schema `mcat_perf_features_v1`; see DECISIONS §19 for the key list) plus
+    the objective label columns. This is the labeled-data pipeline substrate; an
+    actual ML *model* is still deferred (small-n — see "Small-n honesty" below).
+  - **Still NULL (needs dialog/probe wiring, NOT faked): `first_choice_index`,
+    `answer_changes`, `recheck_card_id`, `recheck_correct`, `recheck_timing`.**
+    The shipped performance dialog is single-submit with no re-check probe, so
+    these are not observable yet — capturing them requires select-then-confirm
+    churn logging + the re-check micro-probe. Left NULL by design; the code path
+    is commented accordingly (`mcat_perf.py`).
+- [ ] **Attempt-data collection relies on export, not sync (sidecar ⟂ AGENTS
+  lock).** *Named (2026-07-01):* `AGENTS.md` still lists "perf tables in the
+  collection DB + stock Anki sync" as locked, but the implementation uses a
+  **non-syncing sidecar** (`collection.mcat_perf.db`; revised in DECISIONS §5 for
+  durability). Stock Anki sync only reaches **AnkiWeb**, not a queryable analytics
+  DB — even the original in-collection plan would only have produced AnkiWeb rows,
+  not something we can pull for eval. So attempt-data **collection for eval goes
+  through the read-only export path** (`tools/mcat_export_perf.py` / Tools →
+  "MCAT: Export performance data…"), and an external telemetry backend is
+  **deferred**. Open: cross-device perf sync design (DECISIONS §5, build step 7) —
+  export/import vs self-hosted sync vs (only if cloud features are adopted) a
+  backend; reconcile or formally supersede the AGENTS lock.
 - [x] **CARS track has no objective oracle.** *Resolved (2026-07-01):* CARS
   doesn't use the error-typing engine at all — generic types collapse there.
   Instead it uses **skill-archetype accuracy** (group by existing CARS
@@ -162,10 +201,23 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   diagnosis". *Remaining:* finalize the pacing thresholds and whether to report
   finer question archetypes (inference / tone / strengthen-weaken) beyond the 3
   AAMC skills.
-- [ ] **Cold-start behavior.** Before per-item / per-student timing baselines and
-  item p-values exist, the process axis is near-useless. Decide defaults
-  (conservative absolutes vs mostly `unresolved`) and how fast we transition to
-  learned baselines.
+- [~] **Cold-start behavior — earlier "stay `unresolved`" stance SUPERSEDED
+  (2026-07-01).** Before per-item / per-student timing baselines and item
+  p-values exist, the process axis is near-useless. The **original** spec answer
+  was "with no baselines, most misses go `unresolved` → self-report" (and,
+  relatedly, "fast alone is weak → `unresolved`"). *Decided (2026-07-01,
+  DECISIONS §21):* that stance is **reversed** — over-abstaining defeated the
+  "infer, don't ask" goal (cold-start `M` sits in the ambiguous band, most
+  distractors are untagged, most items are recall-demand), so `infer_error_type`
+  now **commits `application` as the default** for these cold-start misses at
+  **moderate confidence (0.55–0.60)**, carrying honesty in the confidence rather
+  than abstaining. `unresolved` is reserved for the truly-dark miss (`M`
+  unavailable + recall/unknown demand + no tag + no trap). The confidence (not
+  the branch choice) is what sharpens as baselines accumulate. *Remaining:* how
+  fast to transition to learned per-item/per-student baselines, and whether the
+  moderate cold-start confidences (0.55/0.60) are well-calibrated once gold-set
+  data exists. See `ERROR-DIAGNOSIS-SPEC.md` → "Cold-start honesty (superseded)"
+  and "Inference rule".
 - [ ] **Re-check probe placement + fatigue.** Pre-reveal micro-probe vs delayed
   natural review; how often to trigger without annoying the user; contamination
   from the post-answer explanation.
