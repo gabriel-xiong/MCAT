@@ -1,0 +1,63 @@
+{
+  "version": "v1",
+  "performance_eligibility": {
+    "min_distinct_cards_reviewed": 3,
+    "min_good_or_easy_reviews": 5,
+    "cars_bypasses_memory_gate": true
+  },
+  "give_up": {
+    "memory": {
+      "min_total_reviews": 200,
+      "message": "Memory score needs at least 200 graded reviews."
+    },
+    "performance": {
+      "min_total_attempts": 30,
+      "min_unlocked_topics": 1,
+      "message": "Performance score needs at least 30 attempts on unlocked topics."
+    },
+    "readiness": {
+      "min_total_reviews": 200,
+      "min_performance_attempts": 30,
+      "min_coverage_pct": 50,
+      "min_attempts_per_science_section": 5,
+      "min_cars_attempts": 5,
+      "message": "Readiness withheld until coverage, review, and performance thresholds are met."
+    }
+  },
+  "error_types": [
+    {
+      "id": "content_gap",
+      "label": "Content gap",
+      "next_action_template": "Review {{count}} memory cards in {{topic_name}}."
+    },
+    {
+      "id": "passage_mapping",
+      "label": "Passage / mapping",
+      "next_action_template": "Complete {{count}} passage-style questions in {{topic_name}}."
+    },
+    {
+      "id": "reasoning",
+      "label": "Reasoning / calculation",
+      "next_action_template": "Complete {{count}} hard Skill 2–4 questions (interleaved) in {{topic_name}}."
+    },
+    {
+      "id": "misread",
+      "label": "Misread / careless",
+      "next_action_template": "Retry {{count}} timed questions — no new content."
+    }
+  ],
+  "readiness_mapping": {
+    "note": "Section accuracy on eligible topics → section band 118–132; sum → total. Widen range when coverage or attempt n is low.",
+    "abstain_below_coverage_pct": 50
+  },
+  "study_feature": {
+    "id": "interleaved_performance",
+    "hypothesis": "Interleaved performance sessions improve mixed-topic question accuracy vs blocked sessions at equal time."
+  },
+  "eval_splits": {
+    "review_train_ratio": 0.7,
+    "question_split_field": "split",
+    "question_split_dev": "dev",
+    "question_split_held_out": "held_out"
+  }
+}

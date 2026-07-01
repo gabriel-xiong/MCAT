@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "python .cursor/hooks/shell-gate.py",
+        "timeout": 10,
+        "failClosed": true
+      }
+    ]
+  }
+}

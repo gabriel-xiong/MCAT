@@ -1,0 +1,35 @@
+[
+  {
+    "id": "q_dev_001",
+    "stem": "Example: Which enzyme catalyzes the conversion of phosphoenolpyruvate (PEP) to pyruvate in glycolysis?",
+    "choices": [
+      "Hexokinase",
+      "Phosphofructokinase-1",
+      "Pyruvate kinase",
+      "Lactate dehydrogenase"
+    ],
+    "correct": "C",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Chapter 7 Review — replace with actual question ID when curated",
+    "split": "dev"
+  },
+  {
+    "id": "q_held_001",
+    "stem": "Example held-out question — replace with curated OpenStax item before eval freeze.",
+    "choices": ["A", "B", "C", "D"],
+    "correct": "B",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "TBD",
+    "split": "held_out"
+  }
+]

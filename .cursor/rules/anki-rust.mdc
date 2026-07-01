@@ -1,0 +1,42 @@
+---
+description: Anki Rust engine changes — mastery query, tests, sync safety
+globs: "**/*.{rs,py,proto}"
+alwaysApply: false
+---
+
+# Anki Rust Conventions
+
+## Required Rust change (v1)
+
+**Per-topic mastery query** — fast stats for eligibility + dashboard at 50k cards.
+
+Deliverables:
+- ≥ 3 Rust unit tests
+- ≥ 1 Python integration test calling the Rust API
+- Undo still works; no collection corruption
+- Document touched upstream files + merge difficulty
+
+## Rejected for v1 (unless explicitly requested)
+
+- Rewriting FSRS scheduling logic
+- Points-at-stake queue without mastery query shipped first
+
+## Custom data in collection
+
+- Performance questions/attempts in **same SQLite collection** as Anki sync expects
+- Performance attempts: **append-only** (avoid sync merge conflicts)
+- Revlog conflicts: union entries and recompute FSRS — document the rule
+
+## Performance targets (report via `make bench`)
+
+- Button ack p95 < 50ms; next card p95 < 100ms
+- Dashboard first load p95 < 1s; refresh p95 < 500ms
+
+## Python/UI layer
+
+- Call Rust via existing Anki protobuf/PyO3 patterns — do not duplicate scheduling in Python
+- Performance mode UI is separate from review screen
+
+## Licensing
+
+AGPL-3.0-or-later. Preserve Anki copyright notices in modified files.

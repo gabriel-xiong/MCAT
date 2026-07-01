@@ -1,0 +1,3078 @@
+[
+  {
+    "id": "q_dev_001",
+    "stem": "GTP or ATP is produced during the conversion of ________.",
+    "choices": [
+      "isocitrate into α-ketoglutarate",
+      "succinyl CoA into succinate",
+      "fumarate into malate",
+      "malate into oxaloacetate"
+    ],
+    "correct": "B",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7 Review Q9",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_002",
+    "stem": "The effect of high levels of ADP is to ________ in cellular respiration.",
+    "choices": [
+      "increase the activity of specific enzymes",
+      "decrease the activity of specific enzymes",
+      "have no effect on the activity of specific enzymes",
+      "slow down the pathway"
+    ],
+    "correct": "A",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7 Review Q16",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_003",
+    "stem": "Which of the following comparisons or contrasts between endergonic and exergonic reactions is false?",
+    "choices": [
+      "Endergonic reactions have a positive ∆G and exergonic reactions have a negative ∆G.",
+      "Endergonic reactions consume energy and exergonic reactions release energy.",
+      "Both endergonic and exergonic reactions require a small amount of energy to overcome an activation barrier.",
+      "Endergonic reactions take place slowly and exergonic reactions take place quickly."
+    ],
+    "correct": "D",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6 Review Q7",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_004",
+    "stem": "Which of the following is the best way to judge the relative activation energies between two given chemical reactions?",
+    "choices": [
+      "Compare the ∆G values between the two reactions.",
+      "Compare their reaction rates.",
+      "Compare their ideal environmental conditions.",
+      "Compare the spontaneity between the two reactions."
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6 Review Q8",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_005",
+    "stem": "An allosteric inhibitor does which of the following?",
+    "choices": [
+      "Binds to an enzyme away from the active site and changes the conformation of the active site, increasing its affinity for substrate binding.",
+      "Binds to the active site and blocks it from binding substrate.",
+      "Binds to an enzyme away from the active site and changes the conformation of the active site, decreasing its affinity for the substrate.",
+      "Binds directly to the active site and mimics the substrate."
+    ],
+    "correct": "C",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6 Review Q14",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_006",
+    "stem": "Which of the following will increase the percent of NH3 that is converted to the ammonium ion in water?",
+    "choices": [
+      "addition of NaOH",
+      "addition of HCl",
+      "addition of NH4Cl",
+      "addition of NH3 gas only"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14 Exercises Q48",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_007",
+    "stem": "Both HF and HCN ionize in water to a limited extent. Which of the conjugate bases, F− or CN−, is the stronger base?",
+    "choices": [
+      "F−",
+      "CN−",
+      "They are equally strong bases.",
+      "Neither acts as a base in water."
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14 Exercises Q44",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_008",
+    "stem": "In a galvanic (voltaic) cell, oxidation occurs at the ______ and electrons travel through the external wire toward the ______.",
+    "choices": [
+      "anode; cathode",
+      "cathode; anode",
+      "anode; anode",
+      "cathode; cathode"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.2 Galvanic Cells",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_009",
+    "stem": "A standard cell has E°cell = +1.10 V. What does the positive standard cell potential indicate about the reaction as written?",
+    "choices": [
+      "It is nonspontaneous (ΔG° > 0).",
+      "It is spontaneous (ΔG° < 0).",
+      "It is at equilibrium (ΔG° = 0).",
+      "It cannot occur without an external power source."
+    ],
+    "correct": "B",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_010",
+    "stem": "The salt bridge in a galvanic cell functions primarily to:",
+    "choices": [
+      "supply electrons directly to the cathode",
+      "maintain electrical neutrality by allowing ion flow between half-cells",
+      "increase the cell voltage without limit",
+      "catalyze the electrode reactions"
+    ],
+    "correct": "B",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.2 Galvanic Cells",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_011",
+    "stem": "A buffer resists changes in pH because it contains appreciable amounts of both a ______.",
+    "choices": [
+      "strong acid and strong base",
+      "weak acid and its conjugate base",
+      "weak acid and a strong base in equal moles",
+      "neutral salt and pure water"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.6 Buffers",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_012",
+    "stem": "A reaction is spontaneous at all temperatures when:",
+    "choices": [
+      "ΔH < 0 and ΔS > 0",
+      "ΔH > 0 and ΔS < 0",
+      "ΔH < 0 and ΔS < 0",
+      "ΔH > 0 and ΔS > 0"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_013",
+    "stem": "Which expression correctly relates Gibbs free energy to enthalpy and entropy at constant temperature?",
+    "choices": [
+      "ΔG = ΔH + TΔS",
+      "ΔG = ΔH − TΔS",
+      "ΔG = TΔS − ΔH",
+      "ΔG = ΔH × TΔS"
+    ],
+    "correct": "B",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_014",
+    "stem": "A spontaneous process is one that:",
+    "choices": [
+      "occurs without a continuous external input of energy",
+      "always occurs rapidly",
+      "always releases heat to the surroundings",
+      "always requires a catalyst"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.3 Spontaneity",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_015",
+    "stem": "Increasing temperature generally increases reaction rate primarily because:",
+    "choices": [
+      "it increases ΔG for the reaction",
+      "a larger fraction of collisions have energy ≥ the activation energy",
+      "it lowers the activation energy of the reaction",
+      "it makes the reaction more exothermic"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.5 Collision Theory",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_016",
+    "stem": "A catalyst increases the rate of a reaction by:",
+    "choices": [
+      "raising the temperature of the system",
+      "providing an alternate pathway with a lower activation energy",
+      "making the reaction more exothermic",
+      "shifting the equilibrium toward products"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.7 Catalysis",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_017",
+    "stem": "The rate constant k of a reaction depends on:",
+    "choices": [
+      "the concentrations of the reactants",
+      "temperature and the presence of a catalyst",
+      "the volume of the container only",
+      "how much time has elapsed"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.5 Collision Theory",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_018",
+    "stem": "For an ideal fluid in streamline flow through a horizontal pipe that narrows, as the cross-sectional area decreases the fluid speed:",
+    "choices": [
+      "increases (equation of continuity)",
+      "decreases",
+      "stays constant",
+      "drops to zero"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 12.1 Flow Rate and Continuity",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_019",
+    "stem": "The volume flow rate (Q = A·v) staying constant in a pipe of varying width is a direct consequence of:",
+    "choices": [
+      "Bernoulli's principle",
+      "the equation of continuity (conservation of mass)",
+      "Pascal's principle",
+      "Archimedes' principle"
+    ],
+    "correct": "B",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 12.1 Flow Rate and Continuity",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_020",
+    "stem": "The net ATP yield from the glycolysis of one glucose molecule (by substrate-level phosphorylation) is:",
+    "choices": [
+      "2 ATP",
+      "4 ATP",
+      "36 ATP",
+      "0 ATP"
+    ],
+    "correct": "A",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_021",
+    "stem": "Glycolysis takes place in the ______ of the cell.",
+    "choices": [
+      "mitochondrial matrix",
+      "cytoplasm (cytosol)",
+      "nucleus",
+      "endoplasmic reticulum"
+    ],
+    "correct": "B",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_022",
+    "stem": "Besides ATP, glycolysis produces which reduced electron carrier?",
+    "choices": [
+      "FADH₂",
+      "NADPH",
+      "NADH",
+      "GTP"
+    ],
+    "correct": "C",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_023",
+    "stem": "Which molecule is regenerated at the end of each citric acid cycle turn to accept another acetyl group?",
+    "choices": [
+      "citrate",
+      "oxaloacetate",
+      "pyruvate",
+      "acetyl-CoA"
+    ],
+    "correct": "B",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7.3 Citric Acid Cycle",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_024",
+    "stem": "The maximum reaction velocity (Vmax) of an enzyme-catalyzed reaction is reached when:",
+    "choices": [
+      "substrate concentration is very low",
+      "all enzyme active sites are saturated with substrate",
+      "the enzyme has been denatured",
+      "a competitive inhibitor is present"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_025",
+    "stem": "The fundamental structural framework of the plasma membrane is the:",
+    "choices": [
+      "peptidoglycan wall",
+      "phospholipid bilayer",
+      "cellulose matrix",
+      "glycogen network"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.1 Components and Structure",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_026",
+    "stem": "In a membrane phospholipid, the phosphate head is ______ and the fatty-acid tails are ______.",
+    "choices": [
+      "hydrophobic; hydrophilic",
+      "hydrophilic; hydrophobic",
+      "hydrophilic; hydrophilic",
+      "hydrophobic; hydrophobic"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.1 Components and Structure",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_027",
+    "stem": "DNA replication is described as semiconservative because each daughter molecule contains:",
+    "choices": [
+      "two newly synthesized strands",
+      "one parental (template) strand and one new strand",
+      "two parental strands",
+      "only RNA"
+    ],
+    "correct": "B",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.3 Basics of DNA Replication",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_028",
+    "stem": "Which enzyme synthesizes new DNA strands by adding nucleotides in the 5'→3' direction?",
+    "choices": [
+      "DNA helicase",
+      "DNA polymerase",
+      "primase",
+      "DNA ligase"
+    ],
+    "correct": "B",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_029",
+    "stem": "Which enzyme joins adjacent Okazaki fragments by forming phosphodiester bonds?",
+    "choices": [
+      "helicase",
+      "primase",
+      "DNA ligase",
+      "polymerase"
+    ],
+    "correct": "C",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_030",
+    "stem": "A cross between two heterozygotes (Aa × Aa) for a simple dominant trait gives an expected phenotypic ratio of:",
+    "choices": [
+      "1:1",
+      "3:1",
+      "9:3:3:1",
+      "1:2:1"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_031",
+    "stem": "An organism's ______ is its genetic makeup, while its ______ is its observable characteristics.",
+    "choices": [
+      "phenotype; genotype",
+      "genotype; phenotype",
+      "allele; gene",
+      "gamete; zygote"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_032",
+    "stem": "The three basic processes of memory are:",
+    "choices": [
+      "sensation, perception, cognition",
+      "encoding, storage, retrieval",
+      "input, output, feedback",
+      "acquisition, extinction, recovery"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.1 How Memory Functions",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_033",
+    "stem": "Classic research suggests short-term (working) memory holds about how many items at once?",
+    "choices": [
+      "7 ± 2 items",
+      "essentially unlimited",
+      "1 item",
+      "about 100 items"
+    ],
+    "correct": "A",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.2 Parts of the Brain Involved in Memory",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_034",
+    "stem": "Maintaining information in short-term memory through repetition is called:",
+    "choices": [
+      "chunking",
+      "rehearsal",
+      "retrieval",
+      "encoding failure"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.1 How Memory Functions",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_035",
+    "stem": "In Pavlov's experiments, the food that naturally elicits salivation is the:",
+    "choices": [
+      "conditioned stimulus (CS)",
+      "unconditioned stimulus (US)",
+      "conditioned response (CR)",
+      "neutral stimulus"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.2 Classical Conditioning",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_036",
+    "stem": "In operant conditioning, a reinforcer:",
+    "choices": [
+      "decreases the behavior it follows",
+      "increases the likelihood of the behavior it follows",
+      "has no effect on behavior",
+      "always involves physical punishment"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.3 Operant Conditioning",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_037",
+    "stem": "Extinction in classical conditioning occurs when:",
+    "choices": [
+      "the CS is repeatedly presented without the US, weakening the CR",
+      "a new unconditioned stimulus is introduced",
+      "the reinforcer is doubled",
+      "the response becomes permanent"
+    ],
+    "correct": "A",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.2 Classical Conditioning",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_038",
+    "stem": "The tendency to attribute others' behavior to internal traits while underestimating situational factors is the:",
+    "choices": [
+      "self-serving bias",
+      "fundamental attribution error",
+      "just-world hypothesis",
+      "bystander effect"
+    ],
+    "correct": "B",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.1 What Is Social Psychology?",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_039",
+    "stem": "Adjusting one's behavior or thinking to align with a group standard is:",
+    "choices": [
+      "obedience",
+      "conformity",
+      "aggression",
+      "persuasion"
+    ],
+    "correct": "B",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.3 Attitudes and Persuasion",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_040",
+    "stem": "Health disparities are best described as:",
+    "choices": [
+      "random differences in health with no pattern",
+      "preventable differences in health outcomes across social groups",
+      "differences caused solely by genetics",
+      "differences that cannot be measured"
+    ],
+    "correct": "B",
+    "topic_id": "ps_demographics",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
+    "source_location": "Ch. 14.3 Stress and Illness",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_041",
+    "stem": "Which is an example of a social determinant of health?",
+    "choices": [
+      "a person's blood type",
+      "access to education, income, and safe housing",
+      "a spontaneous genetic mutation",
+      "eye color"
+    ],
+    "correct": "B",
+    "topic_id": "ps_demographics",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
+    "source_location": "Ch. 14.3 Stress and Illness",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_042",
+    "stem": "Pascal's principle states that pressure applied to an enclosed fluid is:",
+    "choices": [
+      "transmitted undiminished to every part of the fluid",
+      "quickly lost as heat",
+      "proportional to the fluid's temperature",
+      "zero at the bottom of the container"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 11.5 Pascal's Principle",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_043",
+    "stem": "Cognitive dissonance refers to the psychological discomfort felt when:",
+    "choices": [
+      "one holds two conflicting attitudes or a behavior clashes with an attitude",
+      "one is rewarded for a behavior",
+      "a neutral stimulus is repeated",
+      "a group reaches unanimous consensus"
+    ],
+    "correct": "A",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.3 Attitudes and Persuasion",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_044",
+    "stem": "In codominance, the heterozygote:",
+    "choices": [
+      "shows an intermediate blend of the two alleles",
+      "expresses both alleles fully and simultaneously",
+      "expresses only the dominant allele",
+      "is always nonviable"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.3 Laws of Inheritance",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_045",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nThe passage's central claim is that:",
+    "choices": [
+      "history is essentially a form of fiction",
+      "objectivity in history comes from acknowledging and testing one's perspective, not from having none",
+      "historians should avoid relying on documents",
+      "only eyewitnesses can write accurate history"
+    ],
+    "correct": "B",
+    "topic_id": "cars_comprehension",
+    "section": "CARS",
+    "skill": "1",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q1",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_046",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nAccording to the passage, freedom is best understood as:",
+    "choices": [
+      "the sheer number of options available",
+      "the capacity to choose well among options",
+      "the complete absence of constraints",
+      "the ability to avoid making decisions"
+    ],
+    "correct": "B",
+    "topic_id": "cars_comprehension",
+    "section": "CARS",
+    "skill": "1",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q1",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_047",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nThe author would most likely agree that a historian who 'pretends to have none' (no assumptions):",
+    "choices": [
+      "is thereby more objective than her peers",
+      "is less likely to reach truth than one who examines her assumptions",
+      "produces the most reliable history",
+      "should be trusted without question"
+    ],
+    "correct": "B",
+    "topic_id": "cars_reasoning_within",
+    "section": "CARS",
+    "skill": "3",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q2",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_048",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nThe phrase 'expand liberty in name while eroding it in practice' most nearly suggests the author believes:",
+    "choices": [
+      "nominal freedom can coincide with reduced real freedom",
+      "liberty and number of choices are identical",
+      "practical outcomes do not matter",
+      "society should prohibit consumer choices"
+    ],
+    "correct": "A",
+    "topic_id": "cars_reasoning_within",
+    "section": "CARS",
+    "skill": "3",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q2",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_049",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nWhich real-world scenario best illustrates the passage's argument?",
+    "choices": [
+      "A student with two electives quickly picks one and is satisfied.",
+      "A diner handed a 12-page menu feels overwhelmed, takes a long time to order, and later regrets the choice.",
+      "A shopper finds a store closed and goes home.",
+      "A person with no available options feels content."
+    ],
+    "correct": "B",
+    "topic_id": "cars_reasoning_beyond",
+    "section": "CARS",
+    "skill": "4",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q3",
+    "split": "dev"
+  },
+  {
+    "id": "q_dev_050",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nApplying the passage's logic, which practice would most improve a historian's objectivity?",
+    "choices": [
+      "ignoring sources that conflict with her interpretation",
+      "actively seeking evidence that could disprove her assumptions",
+      "writing without consulting primary documents",
+      "adopting whichever interpretation is most popular"
+    ],
+    "correct": "B",
+    "topic_id": "cars_reasoning_beyond",
+    "section": "CARS",
+    "skill": "4",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q3",
+    "split": "dev"
+  },
+  {
+    "id": "q_ho_001",
+    "stem": "For the reaction Zn(s) + Cu²⁺ → Zn²⁺ + Cu(s), which species is the reducing agent?",
+    "choices": [
+      "Zn(s)",
+      "Cu²⁺",
+      "Zn²⁺",
+      "Cu(s)"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.2 Galvanic Cells",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_002",
+    "stem": "According to the Nernst equation, increasing the concentration of product ions (relative to reactants) will generally ______ Ecell.",
+    "choices": [
+      "increase",
+      "decrease",
+      "not change",
+      "reverse the sign of E°"
+    ],
+    "correct": "B",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_003",
+    "stem": "Electrolysis differs from a galvanic cell in that electrolysis:",
+    "choices": [
+      "produces electrical energy from a spontaneous reaction",
+      "uses electrical energy to drive a nonspontaneous reaction",
+      "cannot involve oxidation–reduction",
+      "always has a positive E°cell"
+    ],
+    "correct": "B",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.7 Electrolysis",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_004",
+    "stem": "In any electrochemical cell, reduction always occurs at the:",
+    "choices": [
+      "anode",
+      "cathode",
+      "salt bridge",
+      "electrolyte"
+    ],
+    "correct": "B",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.2 Galvanic Cells",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_005",
+    "stem": "What is the pH of a 0.010 M aqueous solution of HCl (a strong acid) at 25 °C?",
+    "choices": [
+      "2.0",
+      "1.0",
+      "12.0",
+      "0.010"
+    ],
+    "correct": "A",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.3 pH and pOH",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_006",
+    "stem": "Which pair is a conjugate acid–base pair?",
+    "choices": [
+      "HCl and NaOH",
+      "H₂CO₃ and HCO₃⁻",
+      "H₃O⁺ and O²⁻",
+      "CH₃COOH and Cl⁻"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.2 Brønsted-Lowry Acids and Bases",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_007",
+    "stem": "At 25 °C, Kw = 1.0×10⁻¹⁴. In a neutral aqueous solution, [H⁺] equals:",
+    "choices": [
+      "1.0×10⁻⁷ M",
+      "1.0×10⁻¹⁴ M",
+      "1.0 M",
+      "0 M"
+    ],
+    "correct": "A",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.1 Ionization of Water",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_008",
+    "stem": "A solution of pH 4 is how many times more acidic (in [H⁺]) than a solution of pH 6?",
+    "choices": [
+      "2",
+      "10",
+      "100",
+      "1000"
+    ],
+    "correct": "C",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.3 pH and pOH",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_009",
+    "stem": "For a process with ΔH > 0 and ΔS > 0, the reaction becomes spontaneous:",
+    "choices": [
+      "at high temperature",
+      "at low temperature",
+      "at all temperatures",
+      "at no temperature"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_010",
+    "stem": "A negative ΔG for a reaction indicates that the reaction is:",
+    "choices": [
+      "thermodynamically favorable (spontaneous)",
+      "necessarily fast",
+      "endothermic",
+      "at equilibrium"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_011",
+    "stem": "At equilibrium, the value of ΔG for the reaction is:",
+    "choices": [
+      "0",
+      "large and negative",
+      "large and positive",
+      "equal to ΔG° always"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_012",
+    "stem": "Entropy (S) is best described as a measure of:",
+    "choices": [
+      "the total energy of a system",
+      "the dispersal (disorder) of energy and matter",
+      "the reaction rate",
+      "the activation energy"
+    ],
+    "correct": "B",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.2 Entropy",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_013",
+    "stem": "For the rate law rate = k[A][B]², the overall reaction order is:",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "correct": "C",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.3 Rate Laws",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_014",
+    "stem": "If a reaction is first order in A, doubling [A] changes the rate by a factor of:",
+    "choices": [
+      "2",
+      "4",
+      "1 (no change)",
+      "0.5"
+    ],
+    "correct": "A",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.3 Rate Laws",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_015",
+    "stem": "For a zero-order reaction, the rate is:",
+    "choices": [
+      "proportional to [A]",
+      "independent of reactant concentration",
+      "proportional to [A]²",
+      "always zero"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.4 Integrated Rate Laws",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_016",
+    "stem": "The activation energy of a reaction is:",
+    "choices": [
+      "the energy difference between products and reactants",
+      "the minimum energy reactants need to form products",
+      "always equal to ΔG",
+      "lowered simply by raising the temperature"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.5 Collision Theory",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_017",
+    "stem": "By Bernoulli's principle, where an ideal fluid's speed is higher (at constant height), its pressure is:",
+    "choices": [
+      "higher",
+      "lower",
+      "unchanged",
+      "zero"
+    ],
+    "correct": "B",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 12.2 Bernoulli's Equation",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_018",
+    "stem": "An object floats in a fluid when the buoyant force equals:",
+    "choices": [
+      "its own weight",
+      "zero",
+      "the entire weight of the fluid",
+      "atmospheric pressure"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 11.7 Archimedes' Principle",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_019",
+    "stem": "Under aerobic conditions, the end product of glycolysis (per glucose) that enters the mitochondrion is:",
+    "choices": [
+      "two molecules of pyruvate",
+      "two molecules of lactate",
+      "one molecule of acetyl-CoA",
+      "two molecules of ethanol"
+    ],
+    "correct": "A",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_020",
+    "stem": "The committed, rate-limiting step of glycolysis is catalyzed by:",
+    "choices": [
+      "hexokinase",
+      "phosphofructokinase-1 (PFK-1)",
+      "pyruvate kinase",
+      "aldolase"
+    ],
+    "correct": "B",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_021",
+    "stem": "The initial 'energy investment' phase of glycolysis consumes how many ATP?",
+    "choices": [
+      "2",
+      "4",
+      "0",
+      "6"
+    ],
+    "correct": "A",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.2 Glycolysis",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_022",
+    "stem": "Under anaerobic conditions in human muscle, pyruvate is converted to ______ to regenerate NAD⁺.",
+    "choices": [
+      "ethanol",
+      "lactate",
+      "acetyl-CoA",
+      "citrate"
+    ],
+    "correct": "B",
+    "topic_id": "bb_glycolysis",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+    "source_location": "Ch. 7.5 Fermentation",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_023",
+    "stem": "Per turn of the citric acid cycle, how many CO₂ molecules are released?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "correct": "B",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7.3 Citric Acid Cycle",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_024",
+    "stem": "Most of the energy harvested by the citric acid cycle is captured as:",
+    "choices": [
+      "ATP directly",
+      "reduced electron carriers NADH and FADH₂",
+      "heat",
+      "GTP only"
+    ],
+    "correct": "B",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7.3 Citric Acid Cycle",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_025",
+    "stem": "For each acetyl-CoA oxidized, the citric acid cycle produces how many NADH?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": "C",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7.3 Citric Acid Cycle",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_026",
+    "stem": "The region of an enzyme where substrate binds and catalysis occurs is the:",
+    "choices": [
+      "allosteric site",
+      "active site",
+      "R group",
+      "peptide backbone"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_027",
+    "stem": "According to the induced-fit model, when substrate binds an enzyme:",
+    "choices": [
+      "the enzyme is permanently consumed",
+      "the active site changes shape to fit the substrate more snugly",
+      "the substrate is left chemically unchanged",
+      "the activation energy increases"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_028",
+    "stem": "Raising temperature well above an enzyme's optimum typically:",
+    "choices": [
+      "increases activity without limit",
+      "denatures the enzyme and decreases activity",
+      "has no effect on activity",
+      "lowers only the Km"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_029",
+    "stem": "Simple diffusion of a small nonpolar molecule (e.g., O₂) across a membrane:",
+    "choices": [
+      "requires ATP hydrolysis",
+      "moves the molecule down its concentration gradient without energy input",
+      "requires a specific transport protein",
+      "moves the molecule against its gradient"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.2 Passive Transport",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_030",
+    "stem": "Which process moves solutes against their concentration gradient and requires energy?",
+    "choices": [
+      "simple diffusion",
+      "facilitated diffusion",
+      "active transport",
+      "osmosis"
+    ],
+    "correct": "C",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.3 Active Transport",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_031",
+    "stem": "Cholesterol in animal cell membranes primarily functions to:",
+    "choices": [
+      "store genetic information",
+      "modulate membrane fluidity",
+      "catalyze glycolysis",
+      "form the hydrophilic head groups"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.1 Components and Structure",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_032",
+    "stem": "Osmosis is the diffusion of ______ across a selectively permeable membrane.",
+    "choices": [
+      "solutes",
+      "water",
+      "proteins",
+      "ions only"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.2 Passive Transport",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_033",
+    "stem": "In DNA, adenine pairs with ______ and guanine pairs with ______.",
+    "choices": [
+      "thymine; cytosine",
+      "cytosine; thymine",
+      "uracil; guanine",
+      "thymine; adenine"
+    ],
+    "correct": "A",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.2 DNA Structure",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_034",
+    "stem": "The enzyme that unwinds the DNA double helix at the replication fork is:",
+    "choices": [
+      "ligase",
+      "helicase",
+      "polymerase",
+      "primase"
+    ],
+    "correct": "B",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_035",
+    "stem": "Okazaki fragments are synthesized on the ______ strand during replication.",
+    "choices": [
+      "leading",
+      "lagging",
+      "template-only",
+      "RNA"
+    ],
+    "correct": "B",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_036",
+    "stem": "The two strands of a DNA double helix are:",
+    "choices": [
+      "identical and parallel",
+      "antiparallel and complementary",
+      "both composed of RNA",
+      "held together by covalent bonds between bases"
+    ],
+    "correct": "B",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.2 DNA Structure",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_037",
+    "stem": "In a monohybrid cross Aa × Aa, the expected genotypic ratio is:",
+    "choices": [
+      "1:2:1 (AA:Aa:aa)",
+      "3:1",
+      "1:1",
+      "all Aa"
+    ],
+    "correct": "A",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_038",
+    "stem": "Mendel's law of segregation states that:",
+    "choices": [
+      "alleles of different genes assort independently",
+      "the two alleles for a gene separate during gamete formation",
+      "dominant alleles are always more common",
+      "traits blend evenly in offspring"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_039",
+    "stem": "A testcross is performed by crossing an individual of unknown genotype with one that is:",
+    "choices": [
+      "homozygous dominant",
+      "homozygous recessive",
+      "heterozygous",
+      "haploid"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_040",
+    "stem": "Two genes located far apart on the same chromosome tend to:",
+    "choices": [
+      "always be inherited together",
+      "assort nearly independently due to crossing over",
+      "never undergo recombination",
+      "be located on different chromosomes"
+    ],
+    "correct": "B",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "3",
+    "cognitive_demand": "synthesis",
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.3 Laws of Inheritance",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_041",
+    "stem": "The relatively permanent, seemingly unlimited store of memory is:",
+    "choices": [
+      "sensory memory",
+      "short-term memory",
+      "long-term memory",
+      "iconic memory"
+    ],
+    "correct": "C",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.1 How Memory Functions",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_042",
+    "stem": "Retrieval is easier when the context at recall matches the context at encoding; this is:",
+    "choices": [
+      "the misinformation effect",
+      "context-dependent memory (encoding specificity)",
+      "proactive interference",
+      "the self-reference effect"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.3 Ways to Enhance Memory",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_043",
+    "stem": "The tendency to recall the first and last items of a list better than the middle is the:",
+    "choices": [
+      "spacing effect",
+      "serial position effect",
+      "misinformation effect",
+      "priming effect"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.1 How Memory Functions",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_044",
+    "stem": "Explicit (declarative) memory includes:",
+    "choices": [
+      "riding a bicycle",
+      "facts and events you can consciously recall",
+      "conditioned reflexes",
+      "motor skills"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.1 How Memory Functions",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_045",
+    "stem": "In classical conditioning, the previously neutral stimulus that comes to elicit a response after pairing is the:",
+    "choices": [
+      "unconditioned stimulus",
+      "conditioned stimulus",
+      "unconditioned response",
+      "reinforcer"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.2 Classical Conditioning",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_046",
+    "stem": "Negative reinforcement ______ a behavior by ______ an aversive stimulus.",
+    "choices": [
+      "decreases; adding",
+      "increases; removing",
+      "decreases; removing",
+      "increases; adding"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.3 Operant Conditioning",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_047",
+    "stem": "A schedule that reinforces behavior after an unpredictable number of responses is a:",
+    "choices": [
+      "fixed-ratio schedule",
+      "variable-ratio schedule",
+      "fixed-interval schedule",
+      "continuous schedule"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.3 Operant Conditioning",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_048",
+    "stem": "In Milgram's experiments, participants' willingness to administer shocks demonstrated the power of:",
+    "choices": [
+      "conformity to peers",
+      "obedience to authority",
+      "the bystander effect",
+      "groupthink"
+    ],
+    "correct": "B",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.5 Obedience",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_049",
+    "stem": "The bystander effect describes how the presence of others ______ the likelihood that any one person will help.",
+    "choices": [
+      "increases",
+      "decreases",
+      "does not change",
+      "guarantees"
+    ],
+    "correct": "B",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.6 Prosocial Behavior",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_050",
+    "stem": "An attitude is best defined as:",
+    "choices": [
+      "a permanent genetic trait",
+      "an evaluation (favorable or unfavorable) of a person, object, or idea",
+      "an involuntary physical reflex",
+      "a type of long-term memory"
+    ],
+    "correct": "B",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.3 Attitudes and Persuasion",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_051",
+    "stem": "Socioeconomic status (SES) is typically measured using income, education, and:",
+    "choices": [
+      "blood type",
+      "occupation",
+      "height",
+      "personality type"
+    ],
+    "correct": "B",
+    "topic_id": "ps_demographics",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
+    "source_location": "Ch. 14.3 Stress and Illness",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_052",
+    "stem": "A social gradient in health means that:",
+    "choices": [
+      "health tends to improve as one moves up the socioeconomic ladder",
+      "health is unrelated to social position",
+      "only the very poorest experience worse health",
+      "wealth directly causes disease"
+    ],
+    "correct": "A",
+    "topic_id": "ps_demographics",
+    "section": "PS",
+    "skill": "3",
+    "cognitive_demand": "synthesis",
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
+    "source_location": "Ch. 14.3 Stress and Illness",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_053",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nAs used in the passage, 'vantage point' most nearly means:",
+    "choices": [
+      "a physical location",
+      "a particular perspective or standpoint",
+      "a factual error",
+      "a specific historical period"
+    ],
+    "correct": "B",
+    "topic_id": "cars_comprehension",
+    "section": "CARS",
+    "skill": "1",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q4",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_054",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nThe author's overall attitude toward simply increasing the number of options is best described as:",
+    "choices": [
+      "unqualified enthusiasm",
+      "cautious skepticism",
+      "total rejection of all choice",
+      "complete indifference"
+    ],
+    "correct": "B",
+    "topic_id": "cars_comprehension",
+    "section": "CARS",
+    "skill": "2",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q4",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_055",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nThe sentence 'This does not make history mere fiction' functions primarily to:",
+    "choices": [
+      "concede that history is fiction",
+      "anticipate and rebut a likely misreading of the argument",
+      "introduce an unrelated topic",
+      "contradict the passage's thesis"
+    ],
+    "correct": "B",
+    "topic_id": "cars_reasoning_within",
+    "section": "CARS",
+    "skill": "3",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q5",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_056",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nThe passage is organized primarily to:",
+    "choices": [
+      "reject the possibility of meaningful choice",
+      "qualify a common assumption by redefining freedom",
+      "list the steps of good decision-making",
+      "compare two brands of products"
+    ],
+    "correct": "B",
+    "topic_id": "cars_reasoning_within",
+    "section": "CARS",
+    "skill": "3",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q5",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_057",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nWhich finding, if true, would most WEAKEN the author's argument?",
+    "choices": [
+      "People given many options consistently report greater satisfaction and decide easily.",
+      "Shoppers facing many options take longer to decide.",
+      "Some people report disliking shopping.",
+      "Good judgment can be taught over time."
+    ],
+    "correct": "A",
+    "topic_id": "cars_reasoning_beyond",
+    "section": "CARS",
+    "skill": "4",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q6",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_058",
+    "stem": "PASSAGE\nHistorians often claim to reconstruct the past 'as it actually happened,' yet every history is written from a vantage point. The selection of which events matter, which documents to trust, and which voices to amplify reflects the historian's own moment. This does not make history mere fiction. Rather, it means objectivity in history is not the absence of perspective but the disciplined awareness of it. A historian who acknowledges her assumptions, and tests them against evidence that might overturn them, comes closer to truth than one who pretends to have none.\n\nQUESTION\nThe passage's reasoning about historians could best be extended to:",
+    "choices": [
+      "a journalist who acknowledges her biases and checks them against evidence",
+      "a calculator that never makes arithmetic errors",
+      "a witness who refuses to testify",
+      "a novelist inventing fictional characters"
+    ],
+    "correct": "A",
+    "topic_id": "cars_reasoning_beyond",
+    "section": "CARS",
+    "skill": "4",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage A (History & Objectivity), Q6",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_059",
+    "stem": "The SI unit of pressure, the pascal (Pa), is equivalent to:",
+    "choices": [
+      "N/m²",
+      "kg·m/s²",
+      "J·s",
+      "N·m"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "1",
+    "cognitive_demand": "recall",
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 11.2 Pressure",
+    "split": "held_out"
+  },
+  {
+    "id": "q_ho_060",
+    "stem": "PASSAGE\nWe often assume that more options make us freer. But beyond a certain point, additional choices can paralyze rather than liberate. Faced with dozens of nearly identical products, a shopper may spend more effort deciding, enjoy the decision less, and second-guess it afterward. Freedom, on this view, is not simply the quantity of available options but the capacity to choose well among them. A society that multiplies choices without cultivating judgment may expand liberty in name while eroding it in practice.\n\nQUESTION\nThe 'shopper' example in the passage is used primarily to:",
+    "choices": [
+      "prove that all shopping is harmful",
+      "illustrate how an excess of options can reduce satisfaction",
+      "argue for banning nearly identical products",
+      "describe the author's personal shopping habits"
+    ],
+    "correct": "B",
+    "topic_id": "cars_comprehension",
+    "section": "CARS",
+    "skill": "2",
+    "source_name": "Original passage (CC0, MCAT Speedrun)",
+    "source_url": "",
+    "source_location": "Passage B (Choice & Freedom), Q7",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_001",
+    "stem": "PASSAGE\nAn enzyme converts substrate S to product P. A researcher measures the initial reaction velocity (v0) at several substrate concentrations, first with enzyme alone and then with the same amount of enzyme plus a fixed concentration of inhibitor X. Enzyme amount and temperature are identical in both runs.\n\n  [S] (mM) | v0, enzyme only (umol/min) | v0, enzyme + X (umol/min)\n  ---------+---------------------------+--------------------------\n     1     |            33             |            14\n     2     |            50             |            25\n     4     |            67             |            40\n     8     |            80             |            57\n    16     |            89             |            73\n\nAt very high (saturating) [S], both curves approach the same maximum velocity (Vmax ~ 100 umol/min). The substrate concentration giving half-maximal velocity is about 2 mM without X and about 6 mM with X.\n\nQUESTION\nWhich type of inhibition does X most likely exhibit?",
+    "choices": [
+      "Competitive",
+      "Noncompetitive",
+      "Uncompetitive",
+      "Irreversible (covalent)"
+    ],
+    "correct": "A",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "4",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "expects Vmax to fall; confuses noncompetitive (Vmax↓, Km unchanged) with the observed Vmax-unchanged/Km-up pattern"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "uncompetitive lowers both Vmax and Km; misreads the table"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes higher apparent Km implies irreversible/covalent inhibition"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes (inhibition; Michaelis–Menten)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_002",
+    "stem": "PASSAGE\nAn enzyme converts substrate S to product P. A researcher measures the initial reaction velocity (v0) at several substrate concentrations, first with enzyme alone and then with the same amount of enzyme plus a fixed concentration of inhibitor X. Enzyme amount and temperature are identical in both runs.\n\n  [S] (mM) | v0, enzyme only (umol/min) | v0, enzyme + X (umol/min)\n  ---------+---------------------------+--------------------------\n     1     |            33             |            14\n     2     |            50             |            25\n     4     |            67             |            40\n     8     |            80             |            57\n    16     |            89             |            73\n\nAt very high (saturating) [S], both curves approach the same maximum velocity (Vmax ~ 100 umol/min). The substrate concentration giving half-maximal velocity is about 2 mM without X and about 6 mM with X.\n\nQUESTION\nIf [S] is raised to very high (saturating) levels in the presence of X, the reaction velocity will:",
+    "choices": [
+      "approach the same maximum as without X",
+      "remain below the uninhibited velocity at every [S], including saturating",
+      "exceed the uninhibited Vmax",
+      "become independent of [S] at all concentrations"
+    ],
+    "correct": "A",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "does not know competitive inhibition is overcome by excess substrate"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes adding substrate can push velocity past Vmax"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses saturation with zero-order independence at all [S]"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_003",
+    "stem": "PASSAGE\nAn enzyme converts substrate S to product P. A researcher measures the initial reaction velocity (v0) at several substrate concentrations, first with enzyme alone and then with the same amount of enzyme plus a fixed concentration of inhibitor X. Enzyme amount and temperature are identical in both runs.\n\n  [S] (mM) | v0, enzyme only (umol/min) | v0, enzyme + X (umol/min)\n  ---------+---------------------------+--------------------------\n     1     |            33             |            14\n     2     |            50             |            25\n     4     |            67             |            40\n     8     |            80             |            57\n    16     |            89             |            73\n\nAt very high (saturating) [S], both curves approach the same maximum velocity (Vmax ~ 100 umol/min). The substrate concentration giving half-maximal velocity is about 2 mM without X and about 6 mM with X.\n\nQUESTION\nSubstrate concentration is the independent variable (deliberately ranged across rows) and the presence of inhibitor X is the treatment being compared. Which other quantity most needed to be identical in both runs so that any difference in velocity can be attributed to X?",
+    "choices": [
+      "the substrate concentration",
+      "the total amount of enzyme",
+      "the measured reaction velocity",
+      "the presence of inhibitor X"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "3",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "the stem names [S] as the independent variable; selecting it ignores that [S] is varied on purpose, not a control"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "names the dependent variable — the measured outcome, not a control"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "X presence is the treatment being compared, so it cannot be held constant"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes; experimental design (AAMC Skill 4)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_004",
+    "stem": "PASSAGE\nAn enzyme converts substrate S to product P. A researcher measures the initial reaction velocity (v0) at several substrate concentrations, first with enzyme alone and then with the same amount of enzyme plus a fixed concentration of inhibitor X. Enzyme amount and temperature are identical in both runs.\n\n  [S] (mM) | v0, enzyme only (umol/min) | v0, enzyme + X (umol/min)\n  ---------+---------------------------+--------------------------\n     1     |            33             |            14\n     2     |            50             |            25\n     4     |            67             |            40\n     8     |            80             |            57\n    16     |            89             |            73\n\nAt very high (saturating) [S], both curves approach the same maximum velocity (Vmax ~ 100 umol/min). The substrate concentration giving half-maximal velocity is about 2 mM without X and about 6 mM with X.\n\nQUESTION\nInhibitor X changes the apparent Km measured for this enzyme. Does X change the reaction's ΔG or its equilibrium constant (Keq)?",
+    "choices": [
+      "Yes — it makes S→P less thermodynamically favorable",
+      "No — it changes the rate/kinetics but not ΔG or Keq",
+      "Yes — raising Km lowers Keq",
+      "It changes ΔG only at high [S]"
+    ],
+    "correct": "B",
+    "topic_id": "bb_enzymes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "treats a kinetic inhibitor as changing thermodynamic favorability"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses Km (kinetic, [S] at ½Vmax) with Keq (thermodynamic)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔG depends on substrate concentration"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+    "source_location": "Ch. 6.5 Enzymes; Ch. 6.3 (ΔG / spontaneity)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_005",
+    "stem": "PASSAGE\nA galvanic cell is built from two standard half-cells at 25 C:\n\n  Cu2+(aq) + 2e- -> Cu(s)     E deg = +0.34 V\n  Zn2+(aq) + 2e- -> Zn(s)     E deg = -0.76 V\n\nThe two metals are connected by an external wire and the half-cells by a salt bridge. (F ~ 96,500 C/mol.)\n\nQUESTION\nWhich electrode is the cathode, and what is the standard cell potential E°cell?",
+    "choices": [
+      "Cu is the cathode; E°cell = +1.10 V",
+      "Zn is the cathode; E°cell = +1.10 V",
+      "Cu is the cathode; E°cell = +0.42 V",
+      "Cu is the cathode; E°cell = −1.10 V"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "assigns cathode to the more negative electrode (reverses anode/cathode)"
+      },
+      {
+        "maps_to": null,
+        "trap": "inverse"
+      },
+      {
+        "maps_to": null,
+        "trap": "negation"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.2 Galvanic Cells; Ch. 17.3 Standard Reduction Potentials",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_006",
+    "stem": "PASSAGE\nA galvanic cell is built from two standard half-cells at 25 C:\n\n  Cu2+(aq) + 2e- -> Cu(s)     E deg = +0.34 V\n  Zn2+(aq) + 2e- -> Zn(s)     E deg = -0.76 V\n\nThe two metals are connected by an external wire and the half-cells by a salt bridge. (F ~ 96,500 C/mol.)\n\nQUESTION\nUsing ΔG° = −nFE°cell, what is ΔG° for this cell reaction, and is it spontaneous?",
+    "choices": [
+      "≈ −212 kJ; spontaneous",
+      "≈ +212 kJ; nonspontaneous",
+      "≈ −106 kJ; spontaneous",
+      "ΔG° = 0; the cell is at equilibrium"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "negation"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "used n = 1 instead of n = 2 electrons"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes a standard cell is at equilibrium (confuses E°cell with Ecell = 0)"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_007",
+    "stem": "PASSAGE\nA galvanic cell is built from two standard half-cells at 25 C:\n\n  Cu2+(aq) + 2e- -> Cu(s)     E deg = +0.34 V\n  Zn2+(aq) + 2e- -> Zn(s)     E deg = -0.76 V\n\nThe two metals are connected by an external wire and the half-cells by a salt bridge. (F ~ 96,500 C/mol.)\n\nQUESTION\nIf the concentration of Zn²⁺ (a product ion) is increased while Cu²⁺ is held constant, what happens to the actual cell potential Ecell?",
+    "choices": [
+      "Ecell decreases",
+      "Ecell increases",
+      "E°cell decreases",
+      "no change, because E° is fixed"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "wrong direction of the Nernst shift"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses Ecell with E°cell — standard potential is fixed, so this option is a category error"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes ion concentration cannot affect the actual potential"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.4 (Nernst equation)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_008",
+    "stem": "PASSAGE\nA galvanic cell is built from two standard half-cells at 25 C:\n\n  Cu2+(aq) + 2e- -> Cu(s)     E deg = +0.34 V\n  Zn2+(aq) + 2e- -> Zn(s)     E deg = -0.76 V\n\nThe two metals are connected by an external wire and the half-cells by a salt bridge. (F ~ 96,500 C/mol.)\n\nQUESTION\nAs the cell operates and the reaction proceeds toward equilibrium, Ecell trends toward ____ and ΔG trends toward ____.",
+    "choices": [
+      "Ecell → 0; ΔG → 0",
+      "Ecell increases; ΔG becomes more negative",
+      "Ecell → E°cell; ΔG → ΔG°",
+      "Ecell → 0; ΔG → a large negative value"
+    ],
+    "correct": "A",
+    "topic_id": "cp_electrochem",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks an operating cell gains potential over time"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses approaching equilibrium with returning to standard conditions"
+      },
+      {
+        "maps_to": null,
+        "trap": "partial"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+    "source_location": "Ch. 17.4; Ch. 16.4 Free Energy",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_009",
+    "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nWhat is the pH of the initial buffer?",
+    "choices": [
+      "4.74",
+      "7.00",
+      "9.26",
+      "2.37"
+    ],
+    "correct": "A",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes equal concentrations imply a neutral pH of 7"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "used 14 − pKa (pOH/pKb confusion) or inverted the ratio"
+      },
+      null
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.6 Buffers (Henderson–Hasselbalch)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_010",
+    "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nA small amount of strong acid (HCl) is added to the buffer. What happens to the pH, and why?",
+    "choices": [
+      "pH drops sharply, as it would in pure water",
+      "pH decreases only slightly; acetate (A⁻) reacts with the added H⁺ to form acetic acid",
+      "pH increases, because acetate is a base",
+      "pH does not change at all, because buffers hold pH perfectly constant"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "does not understand buffering — treats buffer like unbuffered water"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "wrong direction: adding acid cannot raise pH here"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "over-generalizes buffers as infinite/perfect capacity"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.6 Buffers",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_011",
+    "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nTo instead prepare a buffer at pH 5.74 (one unit above the pKa), what ratio of [CH₃COO⁻] to [CH₃COOH] is needed?",
+    "choices": [
+      "1 : 10",
+      "10 : 1",
+      "1 : 1",
+      "100 : 1"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": null,
+        "trap": "inverse"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes every buffer is 1:1 regardless of target pH"
+      },
+      {
+        "maps_to": null,
+        "trap": "scaling"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.6 Buffers",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_012",
+    "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nSolid sodium acetate is dissolved into a solution of pure acetic acid (adding CH₃COO⁻). What happens to the acetic-acid dissociation equilibrium, to its percent dissociation, and to the pH?",
+    "choices": [
+      "shifts left; percent dissociation of acetic acid decreases; pH rises",
+      "shifts right; more H⁺ is released; pH drops",
+      "no shift; acetate is only a spectator ion",
+      "shifts left; but pH drops"
+    ],
+    "correct": "A",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "wrong Le Chatelier direction for adding a common ion"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "does not recognize the common-ion effect"
+      },
+      {
+        "maps_to": null,
+        "trap": "partial"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.6 Buffers; Le Chatelier (common-ion effect)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_013",
+    "stem": "PASSAGE\nIn pea plants, seed color and seed shape are controlled by two genes on different chromosomes (they assort independently). Yellow (Y) is dominant to green (y); round (R) is dominant to wrinkled (r). Two doubly heterozygous plants are crossed:  YyRr x YyRr.\n\nQUESTION\nWhat is the probability that a given offspring is homozygous recessive for both genes (yyrr)?",
+    "choices": [
+      "1/16",
+      "9/16",
+      "1/4",
+      "3/16"
+    ],
+    "correct": "A",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reports the both-dominant phenotype fraction (9/16)"
+      },
+      {
+        "maps_to": null,
+        "trap": "partial"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses with a one-dominant/one-recessive class (3/16)"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.3 Laws of Inheritance (independent assortment; product rule)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_014",
+    "stem": "PASSAGE\nIn pea plants, seed color and seed shape are controlled by two genes on different chromosomes (they assort independently). Yellow (Y) is dominant to green (y); round (R) is dominant to wrinkled (r). Two doubly heterozygous plants are crossed:  YyRr x YyRr.\n\nQUESTION\nWhat fraction of offspring are expected to be yellow and wrinkled (Y_ rr)?",
+    "choices": [
+      "3/16",
+      "9/16",
+      "1/16",
+      "3/4"
+    ],
+    "correct": "A",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives the both-dominant 9/16 (ignores that shape is recessive)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "computes both-recessive instead of one dominant/one recessive"
+      },
+      {
+        "maps_to": null,
+        "trap": "partial"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.3 Laws of Inheritance",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_015",
+    "stem": "PASSAGE\nIn pea plants, seed color and seed shape are controlled by two genes on different chromosomes (they assort independently). Yellow (Y) is dominant to green (y); round (R) is dominant to wrinkled (r). Two doubly heterozygous plants are crossed:  YyRr x YyRr.\n\nQUESTION\nSeparately, a yellow, round plant of unknown genotype is testcrossed with a green, wrinkled plant (yyrr). The offspring are ½ yellow : ½ green, and all are round. What is the unknown plant's genotype?",
+    "choices": [
+      "YyRR",
+      "YYRr",
+      "YyRr",
+      "YYRR"
+    ],
+    "correct": "A",
+    "topic_id": "bb_genetics",
+    "section": "BB",
+    "skill": "3",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "maps the ratios to the wrong genes (reads color data onto shape)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes both genes heterozygous, ignoring the 'all round' result"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes fully homozygous dominant despite the ½ green offspring"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+    "source_location": "Ch. 12.2 Characteristics and Traits (testcross); Ch. 12.3",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_016",
+    "stem": "Under aerobic conditions, one glucose molecule is fully oxidized: glycolysis yields 2 pyruvate, each pyruvate is converted to acetyl-CoA, and each acetyl-CoA is oxidized in the citric acid cycle. Counting only substrate-level phosphorylation (not the electron transport chain), how many net ATP/GTP are produced from one glucose through the end of the citric acid cycle?",
+    "choices": [
+      "2",
+      "4",
+      "36",
+      "30"
+    ],
+    "correct": "B",
+    "topic_id": "bb_citric_acid",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "counts only glycolysis; forgets the 2 GTP from the two TCA turns"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "gives total aerobic yield (~36) — conflates substrate-level with oxidative phosphorylation"
+      },
+      null
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+    "source_location": "Ch. 7.2 Glycolysis; Ch. 7.3 Citric Acid Cycle",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_017",
+    "stem": "A red blood cell with an internal solute concentration of about 300 mOsm is placed into a 100 mOsm solution. What is the net movement of water and the likely outcome?",
+    "choices": [
+      "water leaves the cell; it shrinks (crenates)",
+      "water enters the cell; it swells and may lyse",
+      "no net movement; the solutions are isotonic",
+      "solutes diffuse out of the cell to equalize concentrations"
+    ],
+    "correct": "B",
+    "topic_id": "bb_membranes",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses osmosis direction (treats the cell as if it were in a hypertonic bath)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "misjudges tonicity (300 vs 100 mOsm are not equal)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks solute crosses rather than water — misunderstands osmosis"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+    "source_location": "Ch. 5.2 Passive Transport (osmosis, tonicity)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_018",
+    "stem": "One strand of DNA reads 5'-TACGGA-3'. Written in the conventional 5'→3' direction, the newly synthesized complementary strand is:",
+    "choices": [
+      "5'-TCCGTA-3'",
+      "5'-ATGCCT-3'",
+      "5'-TACGGA-3'",
+      "5'-UCCGUA-3'"
+    ],
+    "correct": "A",
+    "topic_id": "bb_dna",
+    "section": "BB",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "writes the base complement but ignores antiparallel orientation (reports it 3'→5')"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "copies the template instead of pairing complementary bases"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "uses uracil (RNA) instead of thymine for DNA"
+      }
+    ],
+    "source_name": "OpenStax Biology 2e",
+    "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
+    "source_location": "Ch. 14.2 DNA Structure (base pairing, antiparallel strands)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_019",
+    "stem": "A reaction has ΔH = +50 kJ/mol and ΔS = +150 J/(mol·K). Above approximately what temperature does the reaction become spontaneous?",
+    "choices": [
+      "333 K",
+      "0.33 K",
+      "3.0 K",
+      "It is never spontaneous"
+    ],
+    "correct": "A",
+    "topic_id": "cp_thermo",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "unit"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks ΔH>0 means never spontaneous, ignoring the TΔS term at high T"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
+    "source_location": "Ch. 16.4 Free Energy (ΔG=ΔH−TΔS; temperature dependence)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_020",
+    "stem": "Initial-rate data for A + B → products:\n\n```\nExp | [A] (M) | [B] (M) | rate (M/s)\n 1  |  0.10   |  0.10   |   2.0\n 2  |  0.20   |  0.10   |   4.0\n 3  |  0.10   |  0.20   |   8.0\n```\nWhat is the rate law?",
+    "choices": [
+      "rate = k[A][B]²",
+      "rate = k[A]²[B]",
+      "rate = k[A][B]",
+      "rate = k[A]²[B]²"
+    ],
+    "correct": "A",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "4",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "transpose"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "reads B as first order (misses the ×4 → square)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "misreads A as second order"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 12.3 Rate Laws (method of initial rates)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_021",
+    "stem": "A reaction has ΔG = −100 kJ/mol yet proceeds imperceptibly slowly at room temperature. Which statement best explains this?",
+    "choices": [
+      "ΔG must actually be positive",
+      "The reaction is thermodynamically favorable but has a high activation energy, so it is kinetically slow",
+      "The reaction is already at equilibrium",
+      "A catalyst would speed it up by making ΔG more negative"
+    ],
+    "correct": "B",
+    "topic_id": "cp_kinetics",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "conflates slow with nonspontaneous (thinks rate reveals ΔG)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses 'slow' with 'at equilibrium'"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "believes catalysts change ΔG (they change Ea only)"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+    "source_location": "Ch. 16.4 Free Energy; Ch. 12.5 Collision Theory / 12.7 Catalysis",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_022",
+    "stem": "Water in streamline flow moves through a horizontal pipe that narrows from cross-sectional area A₁ to A₂ = A₁/2. Compared with the wide section, in the narrow section the water's speed and pressure are:",
+    "choices": [
+      "speed doubles; pressure decreases",
+      "speed halves; pressure increases",
+      "speed doubles; pressure increases",
+      "speed is unchanged; pressure decreases"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses continuity (smaller area → slower)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "gets continuity right but violates Bernoulli (thinks faster → higher pressure)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "ignores continuity entirely"
+      }
+    ],
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 12.1 Flow Rate and Continuity; Ch. 12.2 Bernoulli's Equation",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_023",
+    "stem": "Water flows at 2.0 m/s through a pipe of cross-sectional area 6.0 cm². The pipe then narrows to 2.0 cm². What is the water's speed in the narrow section?",
+    "choices": [
+      "6.0 m/s",
+      "0.67 m/s",
+      "2.0 m/s",
+      "18 m/s"
+    ],
+    "correct": "A",
+    "topic_id": "cp_fluids",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": null,
+        "trap": "inverse"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes speed is unchanged"
+      },
+      null
+    ],
+    "source_name": "OpenStax College Physics",
+    "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+    "source_location": "Ch. 12.1 Flow Rate and Continuity",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_024",
+    "stem": "Equal volumes of 0.10 M HCl and 0.10 M acetic acid (Ka = 1.8×10⁻⁵) are compared. Which statement about their pH is correct?",
+    "choices": [
+      "Both have the same pH because their concentrations are equal",
+      "HCl has the lower pH because it ionizes completely",
+      "Acetic acid has the lower pH because it is the stronger acid",
+      "Both are neutral (pH 7)"
+    ],
+    "correct": "B",
+    "topic_id": "cp_acids_bases",
+    "section": "CP",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes equal concentration ⇒ equal pH, ignoring ionization extent"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses acid strength (calls acetic acid the stronger acid)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "thinks acids can be pH-neutral"
+      }
+    ],
+    "source_name": "OpenStax Chemistry 2e",
+    "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+    "source_location": "Ch. 14.3 pH and pOH; Ch. 14.2 (strong vs weak acids)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_025",
+    "stem": "A slot machine pays out after an unpredictable number of plays. Gamblers keep pulling the lever at a high, steady rate, and the behavior is very resistant to extinction. This pattern best illustrates:",
+    "choices": [
+      "a fixed-interval schedule",
+      "a variable-ratio schedule",
+      "negative reinforcement",
+      "a fixed-ratio schedule"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses interval (time-based) with ratio (response-based) schedules"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "mislabels a reinforcement schedule as negative reinforcement"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses fixed with variable ratio (misses 'unpredictable')"
+      }
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.3 Operant Conditioning (reinforcement schedules)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_026",
+    "stem": "A person takes aspirin whenever they have a headache; the relief that follows makes them more likely to take aspirin the next time. This is an example of:",
+    "choices": [
+      "positive reinforcement",
+      "negative reinforcement",
+      "positive punishment",
+      "negative punishment"
+    ],
+    "correct": "B",
+    "topic_id": "ps_learning",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "assumes any behavior increase is positive reinforcement (adding a stimulus)"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses reinforcement (increases behavior) with punishment (decreases it)"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses negative reinforcement with negative punishment"
+      }
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
+    "source_location": "Ch. 6.3 Operant Conditioning",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_027",
+    "stem": "Jordan watches a classmate trip and thinks, 'How clumsy.' Later, when Jordan trips, they blame the uneven floor. The judgment of the classmate illustrates ____, and Jordan's judgment of their own stumble illustrates ____.",
+    "choices": [
+      "the fundamental attribution error; the actor–observer bias",
+      "the self-serving bias; the fundamental attribution error",
+      "the just-world hypothesis; conformity",
+      "the bystander effect; obedience"
+    ],
+    "correct": "A",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "reverses the two biases"
+      },
+      null,
+      null
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.1 What Is Social Psychology? (attribution)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_028",
+    "stem": "A person who values their health but smokes daily feels uncomfortable, then persuades themselves that 'the health risks are exaggerated.' Resolving the discomfort by changing a belief best illustrates:",
+    "choices": [
+      "reduction of cognitive dissonance",
+      "classical conditioning",
+      "the bystander effect",
+      "negative reinforcement"
+    ],
+    "correct": "A",
+    "topic_id": "ps_social",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses attitude change with associative (classical) learning"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses a cognitive process with operant reinforcement"
+      }
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
+    "source_location": "Ch. 12.3 Attitudes and Persuasion (cognitive dissonance)",
+    "split": "held_out"
+  },
+  {
+    "id": "q_syn_029",
+    "stem": "Students who study in a quiet room recall more when tested in a quiet room than when tested in a noisy one; those who studied with background noise show the reverse. This is best explained by:",
+    "choices": [
+      "the serial position effect",
+      "context-dependent memory (encoding specificity)",
+      "proactive interference",
+      "chunking"
+    ],
+    "correct": "B",
+    "topic_id": "ps_memory",
+    "section": "PS",
+    "skill": "2",
+    "cognitive_demand": "application",
+    "choice_diagnosis": [
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses a list-position effect with context effects"
+      },
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses interference (competing memories) with context matching"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "confuses an encoding strategy with a retrieval-context effect"
+      }
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
+    "source_location": "Ch. 8.3 Ways to Enhance Memory (context-dependent memory)",
+    "split": "dev"
+  },
+  {
+    "id": "q_syn_030",
+    "stem": "A study reports age-adjusted mortality by income quintile:\n\n```\nIncome quintile | deaths per 1,000/yr\n lowest         |        12\n second         |        10\n middle         |         8\n fourth         |         6\n highest        |         5\n```\nWhich concept does this pattern best illustrate, and what does it imply?",
+    "choices": [
+      "a social gradient in health — outcomes improve stepwise with rising SES, not only for the poorest",
+      "health disparities are essentially random",
+      "only the very poorest have worse health (a threshold effect)",
+      "the differences are fully explained by genetics"
+    ],
+    "correct": "A",
+    "topic_id": "ps_demographics",
+    "section": "PS",
+    "skill": "4",
+    "cognitive_demand": "synthesis",
+    "choice_diagnosis": [
+      null,
+      {
+        "maps_to": "content_gap",
+        "misconception": "denies the clear monotonic pattern in the data"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "threshold misconception — misses that risk falls at every step, not just at the bottom"
+      },
+      {
+        "maps_to": "content_gap",
+        "misconception": "attributes a social-gradient pattern solely to genetics, ignoring social determinants"
+      }
+    ],
+    "source_name": "OpenStax Psychology 2e",
+    "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
+    "source_location": "Ch. 14.3 Stress and Illness (SES, social determinants)",
+    "split": "held_out"
+  }
+]

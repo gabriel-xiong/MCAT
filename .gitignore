@@ -1,0 +1,22 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+*-credentials.json
+*service-account*.json
+*serviceAccount*.json
+
+# Cursor local state (MCP config may contain API keys)
+.cursor/mcp.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Common local overrides
+*.local
+.local/

@@ -1,0 +1,125 @@
+{
+  // MCAT Speedrun — inspection-oriented terminal allowlist (project-scoped).
+  // Auto-run disabled by policy: prefer Run Mode "Ask Every Time" in Cursor Settings.
+  // This file defines commands that MAY skip approval when Run Mode is Allowlist or Auto-review.
+  // It is NOT a security boundary — pair with .cursor/hooks/shell-gate.py for hard blocks.
+  // Prefix matching is case-sensitive; use specific entries (never bare "git" or "npm").
+  // See .cursor/rules/command-allowlist.mdc for full policy and blocked commands.
+
+  "terminalAllowlist": [
+    "pwd",
+    "ls",
+    "ls -la",
+    "tree",
+    "find .",
+    "find . -name",
+    "cat",
+    "head",
+    "tail",
+    "less",
+    "wc",
+    "du",
+    "df",
+    "file",
+    "stat",
+    "which",
+    "where",
+    "whoami",
+    "date",
+
+    "grep",
+    "rg",
+    "rg -n",
+    "rg --files",
+
+    "git status",
+    "git diff",
+    "git diff --stat",
+    "git log",
+    "git log --oneline",
+    "git branch",
+    "git branch --show-current",
+    "git remote -v",
+    "git show",
+    "git blame",
+    "git ls-files",
+
+    "npm run dev",
+    "npm run start",
+    "npm run preview",
+    "npm run build",
+    "npm test",
+    "npm run test",
+    "npm run test:watch",
+    "npm run test:unit",
+    "npm run lint",
+    "npm run format",
+    "npm run typecheck",
+    "npm list",
+    "npm outdated",
+    "npm audit",
+
+    "pytest",
+    "python -m pytest",
+    "unittest",
+    "python -m unittest",
+    "python app.py",
+    "python main.py",
+    "python manage.py runserver",
+    "python --version",
+    "python -V",
+    "uvicorn",
+    "fastapi dev",
+    "flask run",
+    "vite",
+
+    "eslint",
+    "prettier --check",
+    "tsc --noEmit",
+    "ruff check",
+    "ruff format",
+    "black --check",
+    "isort --check-only",
+    "mypy",
+    "pyright",
+
+    "pip list",
+    "pip show",
+    "pip freeze",
+    "node --version",
+    "npm --version",
+    "pnpm --version",
+    "yarn --version",
+
+    "sqlite3",
+    "psql",
+    "prisma studio",
+    "npx prisma studio",
+    "npx prisma generate",
+    "npx prisma validate",
+    "npx prisma format",
+
+    "docker ps",
+    "docker images",
+    "docker logs",
+    "docker compose ps",
+    "docker compose logs",
+
+    "echo $NODE_ENV",
+    "echo $PYTHONPATH"
+  ],
+
+  "autoRun": {
+    "block_instructions": [
+      "Always Run is enabled — shell-gate.py hard-blocks still apply (failClosed). Prefer inspection, read-only git, check-only linters, and local dev servers from the allowlist.",
+      "Never commit or stage secrets: .env, .env.* (except .env.example), *.pem, *.key, credentials.json, secrets.json, service-account JSON.",
+      "Never read secret files via shell: cat/type/head/tail/less .env, grep/rg on env or key files, source .env.",
+      "Never auto-run destructive git: git reset --hard, git clean, git push (includes --force), git rebase, git checkout .",
+      "Never auto-run environment dumps: printenv, env (secrets risk).",
+      "Never auto-run Prisma migrations or db push: npx prisma db push, npx prisma migrate.",
+      "Never auto-run Docker mutation: docker run, docker exec, docker compose up, docker system prune.",
+      "Hold off E2E until explicitly approved: npm run test:e2e.",
+      "Never auto-run package installs (npm install, pip install) unless the user explicitly requests them."
+    ]
+  }
+}

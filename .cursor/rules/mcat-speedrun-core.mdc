@@ -1,0 +1,46 @@
+---
+description: MCAT Speedrun core product rules — three scores, modes, honesty, scope
+alwaysApply: true
+---
+
+# MCAT Speedrun — Core Rules
+
+## Product scope
+
+- MCAT exam (472–528). Prototype on **~15–25 topics**, not a full prep course.
+- Fork Anki + AnkiDroid; **shared Rust engine**. No parallel scheduler in other languages.
+
+## Three scores (never blend)
+
+1. **Memory** — FSRS / revlog recall
+2. **Performance** — accuracy on curated exam-style MCQs (separate from cards)
+3. **Readiness** — mapped range with coverage penalty; abstain if coverage < ~50%
+
+## Two modes
+
+- **Memory mode:** normal Anki reviews
+- **Performance mode:** separate session; only **topic-gated** content (≥3 cards seen, ≥5 Good/Easy)
+- **CARS:** performance-only, no flashcard gate
+- Never: flip card → instant performance question
+
+## Question bank
+
+- Curated from **named sources** (OpenStax primary); store `source_name`, `source_url`, `topic_id`, `split`
+- Runtime performance mode reads **local bank** — no live LLM during review
+- Wednesday deliverable: **no AI**
+
+## Error typing (BrainLift)
+
+On performance miss, support: `content_gap`, `passage_mapping`, `reasoning`, `misread` → drives dashboard next action.
+
+## Honesty (Speedrun — automatic fail if violated)
+
+No readiness without: range, coverage %, confidence, missing-data note, single next action.
+
+## Study feature
+
+Interleaved vs blocked **performance** sessions; 3-build ablation vs plain Anki.
+
+## Docs
+
+Before large changes, align with `docs/PRD.md` and `docs/DECISIONS.md`.

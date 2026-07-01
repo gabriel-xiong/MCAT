@@ -1,0 +1,49 @@
+---
+description: Shell command allowlist policy — inspection-first under Always Run
+alwaysApply: true
+---
+
+# Command allowlist (inspection-first)
+
+**Always Run enabled.** Agents may auto-execute allowlisted shell commands. Hard blocks in `.cursor/hooks/shell-gate.py` still apply (`failClosed: true`).
+
+Configuration: `.cursor/permissions.json` (terminal allowlist) + `.cursor/hooks/shell-gate.py` (hard blocks).
+
+## Secrets policy (never violate)
+
+- **Never commit** `.env`, `.env.*` (except `.env.example`), `*.pem`, `*.key`, `credentials.json`, `secrets.json`, or service-account JSON.
+- **Never read secret files via shell** — no `cat .env`, `type .env`, `head`/`tail`/`less` on env or key files, no `grep`/`rg` against them, no `source .env`.
+- **Never stage secrets** — no `git add .env` or `git add` paths matching ignored credential files.
+- **Never dump environment** — no `printenv` or bare `env`; use `echo $NODE_ENV` or `echo $PYTHONPATH` only when needed.
+- **Templates only** — copy from `.env.example`; keep real values in local `.env` (gitignored).
+
+## Allowed categories (prefix-matched)
+
+| Category | Examples |
+|----------|----------|
+| Navigation + inspection | `pwd`, `ls`, `ls -la`, `tree`, `find .`, `cat`, `head`, `tail`, `wc`, `du`, `df`, `file`, `stat`, `which`, `whoami`, `date` |
+| Code search | `grep`, `rg`, `rg -n`, `rg --files`, `find . -name` |
+| Git read-only | `git status`, `git diff`, `git log`, `git branch`, `git show`, `git blame`, `git ls-files` |
+| Local dev servers | `npm run dev/start/preview/build`, `python app.py`, `uvicorn`, `vite`, `flask run` |
+| Tests | `npm test`, `pytest`, `python -m pytest`, `python -m unittest` |
+| Linters (check-only) | `npm run lint/format/typecheck`, `eslint`, `prettier --check`, `tsc --noEmit`, `ruff check`, `mypy` |
+| Package info (no install) | `npm list/outdated/audit`, `pip list/show/freeze`, `node --version`, `npm --version` |
+| DB inspection (local/dev) | `sqlite3`, `psql`, `npx prisma studio/generate/validate/format` |
+| Docker inspection | `docker ps/images/logs`, `docker compose ps/logs` |
+| Env (limited) | `echo $NODE_ENV`, `echo $PYTHONPATH` |
+
+## Explicitly blocked (hook denies)
+
+- **Git write/destructive:** `git reset --hard`, `git clean`, `git push` (includes `--force`), `git rebase`, `git checkout .`
+- **Secrets:** `printenv`, `env`; reading/searching/staging `.env`, keys, or credential JSON via shell
+- **Prisma mutate:** `npx prisma db push`, `npx prisma migrate`
+- **Docker mutate:** `docker run`, `docker exec`, `docker compose up`, `docker system prune`
+- **E2E (optional hold):** `npm run test:e2e` — ask user first
+
+## Agent behavior
+
+1. Prefer read-only inspection commands from the allowlist when exploring.
+2. Do not use broad prefixes like bare `git` or `npm` in proposed commands — use specific subcommands.
+3. Never run blocked commands; request explicit user approval for anything outside the allowlist.
+4. Do not run allowlisted commands speculatively — only when needed for the task.
+5. Before any commit, confirm no secret paths are staged (`git diff --cached --name-only`).

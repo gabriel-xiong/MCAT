@@ -1,0 +1,133 @@
+{
+  "milestones": {
+    "wednesday": {
+      "dev_questions": 30,
+      "topics_with_questions": 5
+    },
+    "friday": {
+      "dev_questions": 50,
+      "held_out_questions": 20
+    },
+    "sunday": {
+      "total_questions": 80,
+      "held_out_questions": 60,
+      "paraphrase_cards": 30
+    }
+  },
+  "topics": {
+    "cp_electrochem": {
+      "dev": 7,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cp_acids_bases": {
+      "dev": 3,
+      "held_out": 9,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cp_thermo": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cp_kinetics": {
+      "dev": 4,
+      "held_out": 5,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cp_fluids": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 1,
+      "target_held_out": 1
+    },
+    "bb_glycolysis": {
+      "dev": 3,
+      "held_out": 4,
+      "target_dev": 3,
+      "target_held_out": 2
+    },
+    "bb_citric_acid": {
+      "dev": 4,
+      "held_out": 3,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "bb_enzymes": {
+      "dev": 4,
+      "held_out": 7,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "bb_membranes": {
+      "dev": 2,
+      "held_out": 5,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "bb_dna": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "bb_genetics": {
+      "dev": 6,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "ps_memory": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "ps_learning": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "ps_social": {
+      "dev": 4,
+      "held_out": 4,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "ps_demographics": {
+      "dev": 2,
+      "held_out": 3,
+      "target_dev": 1,
+      "target_held_out": 1
+    },
+    "cars_comprehension": {
+      "dev": 2,
+      "held_out": 3,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cars_reasoning_within": {
+      "dev": 2,
+      "held_out": 2,
+      "target_dev": 2,
+      "target_held_out": 1
+    },
+    "cars_reasoning_beyond": {
+      "dev": 2,
+      "held_out": 2,
+      "target_dev": 2,
+      "target_held_out": 1
+    }
+  },
+  "generated_totals": {
+    "total": 140,
+    "dev": 65,
+    "held_out": 75,
+    "topics_with_questions": 18
+  }
+}

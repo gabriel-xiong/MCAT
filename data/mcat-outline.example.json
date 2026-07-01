@@ -1,0 +1,38 @@
+{
+  "exam": "MCAT",
+  "version": "example-v1",
+  "sections": [
+    {
+      "id": "CP",
+      "name": "Chemical and Physical Foundations of Biological Systems",
+      "topics": [
+        { "id": "cp_electrochem", "name": "Electrochemistry", "weight": 1.0 },
+        { "id": "cp_acids_bases", "name": "Acids and Bases", "weight": 1.0 }
+      ]
+    },
+    {
+      "id": "CARS",
+      "name": "Critical Analysis and Reasoning Skills",
+      "topics": [
+        { "id": "cars_comprehension", "name": "Foundations of Comprehension", "weight": 1.0 },
+        { "id": "cars_reasoning", "name": "Reasoning Within and Beyond Text", "weight": 1.0 }
+      ]
+    },
+    {
+      "id": "BB",
+      "name": "Biological and Biochemical Foundations of Living Systems",
+      "topics": [
+        { "id": "bb_glycolysis", "name": "Glycolysis and Glucose Metabolism", "weight": 1.0 },
+        { "id": "bb_enzymes", "name": "Enzyme Kinetics and Regulation", "weight": 1.0 }
+      ]
+    },
+    {
+      "id": "PS",
+      "name": "Psychological, Social, and Biological Foundations of Behavior",
+      "topics": [
+        { "id": "ps_memory", "name": "Memory and Cognition", "weight": 1.0 },
+        { "id": "ps_social", "name": "Social Processes and Behavior", "weight": 1.0 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "exam": "MCAT",
+  "version": "v1-subset",
+  "description": "Representative topic subset for speedrun v1. Coverage % uses this list as denominator — not the full AAMC outline.",
+  "sections": [
+    {
+      "id": "CP",
+      "name": "Chemical and Physical Foundations of Biological Systems",
+      "topics": [
+        { "id": "cp_electrochem", "name": "Electrochemistry", "weight": 1.0 },
+        { "id": "cp_acids_bases", "name": "Acids, Bases, and Buffers", "weight": 1.0 },
+        { "id": "cp_thermo", "name": "Thermodynamics and Spontaneity", "weight": 1.0 },
+        { "id": "cp_kinetics", "name": "Chemical Kinetics", "weight": 1.0 },
+        { "id": "cp_fluids", "name": "Fluids and Circulation (physics)", "weight": 0.8 }
+      ]
+    },
+    {
+      "id": "CARS",
+      "name": "Critical Analysis and Reasoning Skills",
+      "topics": [
+        { "id": "cars_comprehension", "name": "Foundations of Comprehension", "weight": 1.0 },
+        { "id": "cars_reasoning_within", "name": "Reasoning Within the Text", "weight": 1.0 },
+        { "id": "cars_reasoning_beyond", "name": "Reasoning Beyond the Text", "weight": 1.0 }
+      ]
+    },
+    {
+      "id": "BB",
+      "name": "Biological and Biochemical Foundations of Living Systems",
+      "topics": [
+        { "id": "bb_glycolysis", "name": "Glycolysis and Glucose Metabolism", "weight": 1.0 },
+        { "id": "bb_citric_acid", "name": "Citric Acid Cycle and Oxidative Phosphorylation", "weight": 1.0 },
+        { "id": "bb_enzymes", "name": "Enzyme Kinetics and Regulation", "weight": 1.0 },
+        { "id": "bb_membranes", "name": "Membrane Structure and Transport", "weight": 1.0 },
+        { "id": "bb_dna", "name": "DNA Structure and Replication", "weight": 1.0 },
+        { "id": "bb_genetics", "name": "Mendelian Genetics and Inheritance", "weight": 0.9 }
+      ]
+    },
+    {
+      "id": "PS",
+      "name": "Psychological, Social, and Biological Foundations of Behavior",
+      "topics": [
+        { "id": "ps_memory", "name": "Memory and Cognition", "weight": 1.0 },
+        { "id": "ps_learning", "name": "Learning and Conditioning", "weight": 1.0 },
+        { "id": "ps_social", "name": "Social Processes and Behavior", "weight": 1.0 },
+        { "id": "ps_demographics", "name": "Demographics and Health Disparities", "weight": 0.8 }
+      ]
+    }
+  ]
+}

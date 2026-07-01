@@ -1,0 +1,149 @@
+{
+  "description": "Named OpenStax chapters to pull end-of-chapter/review MCQs from. Copy stem + choices + answer key; tag topic_id.",
+  "books": {
+    "biology_2e": {
+      "name": "OpenStax Biology 2e",
+      "base_url": "https://openstax.org/books/biology-2e/pages/"
+    },
+    "chemistry_2e": {
+      "name": "OpenStax Chemistry 2e",
+      "base_url": "https://openstax.org/books/chemistry-2e/pages/"
+    },
+    "physics": {
+      "name": "OpenStax College Physics",
+      "base_url": "https://openstax.org/books/college-physics/pages/"
+    },
+    "psychology_2e": {
+      "name": "OpenStax Psychology 2e",
+      "base_url": "https://openstax.org/books/psychology-2e/pages/"
+    }
+  },
+  "topics": [
+    {
+      "topic_id": "cp_electrochem",
+      "section": "CP",
+      "source_name": "OpenStax Chemistry 2e",
+      "chapter_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
+      "notes": "Chapter 17 — electrochemistry review questions"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "source_name": "OpenStax Chemistry 2e",
+      "chapter_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
+      "notes": "Chapter 14 — acids/bases review questions"
+    },
+    {
+      "topic_id": "cp_thermo",
+      "section": "CP",
+      "source_name": "OpenStax Chemistry 2e",
+      "chapter_url": "https://openstax.org/books/chemistry-2e/pages/16-2-spontaneity",
+      "notes": "Chapter 16 — thermodynamics"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "source_name": "OpenStax Chemistry 2e",
+      "chapter_url": "https://openstax.org/books/chemistry-2e/pages/12-4-reaction-rates-and-rate-laws",
+      "notes": "Chapter 12 — kinetics"
+    },
+    {
+      "topic_id": "cp_fluids",
+      "section": "CP",
+      "source_name": "OpenStax College Physics",
+      "chapter_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
+      "notes": "Fluids chapter review questions"
+    },
+    {
+      "topic_id": "bb_glycolysis",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
+      "notes": "Chapter 7 — glycolysis"
+    },
+    {
+      "topic_id": "bb_citric_acid",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
+      "notes": "Chapter 7 — TCA / OXPHOS adjacent sections"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
+      "notes": "Chapter 6 — enzymes"
+    },
+    {
+      "topic_id": "bb_membranes",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
+      "notes": "Chapter 5 — membranes"
+    },
+    {
+      "topic_id": "bb_dna",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/14-5-replication-in-eukaryotes",
+      "notes": "Chapter 14 — DNA replication"
+    },
+    {
+      "topic_id": "bb_genetics",
+      "section": "BB",
+      "source_name": "OpenStax Biology 2e",
+      "chapter_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
+      "notes": "Chapter 12 — Mendelian genetics"
+    },
+    {
+      "topic_id": "ps_memory",
+      "section": "PS",
+      "source_name": "OpenStax Psychology 2e",
+      "chapter_url": "https://openstax.org/books/psychology-2e/pages/8-1-memories-as-types-and-stages",
+      "notes": "Chapter 8 — memory"
+    },
+    {
+      "topic_id": "ps_learning",
+      "section": "PS",
+      "source_name": "OpenStax Psychology 2e",
+      "chapter_url": "https://openstax.org/books/psychology-2e/pages/6-1-overview-of-classical-conditioning",
+      "notes": "Chapter 6 — learning"
+    },
+    {
+      "topic_id": "ps_social",
+      "section": "PS",
+      "source_name": "OpenStax Psychology 2e",
+      "chapter_url": "https://openstax.org/books/psychology-2e/pages/12-1-social-influence",
+      "notes": "Chapter 12 — social psychology"
+    },
+    {
+      "topic_id": "ps_demographics",
+      "section": "PS",
+      "source_name": "OpenStax Psychology 2e",
+      "chapter_url": "https://openstax.org/books/psychology-2e/pages/15-1-health-disparities",
+      "notes": "Health / disparities adjacent content"
+    },
+    {
+      "topic_id": "cars_comprehension",
+      "section": "CARS",
+      "source_name": "AAMC / Khan CARS-style",
+      "chapter_url": "https://www.khanacademy.org/test-prep/mcat/critical-analysis-and-reasoning-skills",
+      "notes": "Passage practice — no OpenStax; use short passages + 2–3 MCQs each"
+    },
+    {
+      "topic_id": "cars_reasoning_within",
+      "section": "CARS",
+      "source_name": "AAMC / Khan CARS-style",
+      "chapter_url": "https://www.khanacademy.org/test-prep/mcat/critical-analysis-and-reasoning-skills",
+      "notes": "Same pool; tag by skill in performance bank"
+    },
+    {
+      "topic_id": "cars_reasoning_beyond",
+      "section": "CARS",
+      "source_name": "AAMC / Khan CARS-style",
+      "chapter_url": "https://www.khanacademy.org/test-prep/mcat/critical-analysis-and-reasoning-skills",
+      "notes": "Same pool; tag by skill in performance bank"
+    }
+  ]
+}
