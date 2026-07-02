@@ -135,3 +135,27 @@ Cloze,"A {{c1::variable-ratio}} schedule (e.g., gambling) produces a high, stead
 Basic,"How is negative reinforcement different from punishment?","Negative reinforcement removes an aversive stimulus and thereby increases a behavior; punishment (positive or negative) decreases a behavior.",topic:ps_learning,q_syn_026
 Cloze,"{{c1::Actor–observer}} bias: we attribute our own behavior to the situation but others' behavior to their disposition (the latter overlaps the fundamental attribution error).",,topic:ps_social,q_syn_027
 Basic,"How does a social gradient in health differ from a simple poverty threshold?","A gradient means health improves at every step up the SES ladder — not only the poorest are worse off. A threshold would mean only those below a cutoff suffer.",topic:ps_demographics,q_syn_030
+Cloze,"An {{c1::endergonic}} reaction absorbs (consumes) energy; an {{c1::exergonic}} reaction releases energy.",,topic:bb_enzymes,q_dev_003
+Cloze,"Both endergonic and exergonic reactions must first overcome an {{c1::activation-energy}} barrier before they proceed.",,topic:bb_enzymes,q_dev_003
+Cloze,"Activation energy is a {{c1::kinetic}} property, so it cannot be inferred from ΔG or spontaneity (which are {{c1::thermodynamic}}).",,topic:bb_enzymes,q_dev_004
+Cloze,"An allosteric {{c1::activator}} raises, while an allosteric {{c1::inhibitor}} lowers, the active site's affinity for substrate.",,topic:bb_enzymes,q_dev_005
+Cloze,"The {{c1::allosteric}} site is a regulatory binding site separate from the active site.",,topic:bb_enzymes,q_ho_026
+Cloze,"An enzyme is a catalyst, so it is {{c1::not consumed}} by the reaction it speeds up.",,topic:bb_enzymes,q_ho_027
+Cloze,"During catalysis the substrate is {{c1::chemically transformed}} into product (it is not left unchanged).",,topic:bb_enzymes,q_ho_027
+Cloze,"{{c1::Denaturation}} is the loss of a protein's 3-D shape, which distorts the enzyme's active site and lowers activity.",,topic:bb_enzymes,q_ho_028
+Cloze,"A {{c1::controlled}} variable is held constant so any change in the outcome can be attributed to the treatment.",,topic:bb_enzymes,q_syn_003
+Cloze,"In an experiment the {{c1::independent}} variable is deliberately changed and the {{c1::dependent}} variable is measured.",,topic:bb_enzymes,q_syn_003
+Cloze,"ΔG and Keq depend only on the {{c1::free-energy difference}} between reactants and products, which a catalyst or inhibitor cannot change.",,topic:bb_enzymes,q_syn_004
+Cloze,"Ammonia is a weak base: NH₃ + H₂O ⇌ {{c1::NH₄⁺}} + {{c1::OH⁻}}.",,topic:cp_acids_bases,q_dev_006
+Cloze,"Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to acetic acid) {{c1::suppresses}} the weak acid/base ionization.",,topic:cp_acids_bases,q_dev_006|q_syn_012
+Cloze,"The {{c1::weaker}} the acid, the stronger its conjugate base (and the reverse).",,topic:cp_acids_bases,q_dev_007
+Cloze,"A strong acid and strong base cannot form a buffer — they simply {{c1::react to completion}}.",,topic:cp_acids_bases,q_dev_011
+Cloze,"At 25 °C the water autoionization constant Kw = [H⁺][OH⁻] = {{c1::1.0×10⁻¹⁴}}.",,topic:cp_acids_bases,q_ho_007
+Cloze,"A neutral aqueous solution is defined by {{c1::[H⁺] = [OH⁻]}}.",,topic:cp_acids_bases,q_ho_007
+Cloze,"By Henderson–Hasselbalch, raising pH by 1 unit above the pKa multiplies the [A⁻]/[HA] ratio by {{c1::10}}.",,topic:cp_acids_bases,q_syn_011
+Cloze,"Suppressing a weak acid's ionization lowers its {{c1::percent dissociation}}.",,topic:cp_acids_bases,q_syn_012
+Cloze,"Raising temperature increases reaction rate but does {{c1::not}} lower the activation energy or change ΔG.",,topic:cp_kinetics,q_dev_015
+Cloze,"The temperature dependence of the rate constant k is described by the {{c1::Arrhenius}} equation.",,topic:cp_kinetics,q_dev_017
+Cloze,"Activation energy is the barrier to reach the {{c1::transition state}}; it is not the reactant–product energy difference (ΔH/ΔG).",,topic:cp_kinetics,q_ho_016
+Cloze,"Method of initial rates: find a reactant's order by comparing experiments in which only {{c1::that reactant's}} concentration changes.",,topic:cp_kinetics,q_syn_020
+Cloze,"Thermodynamic favorability (ΔG) and reaction rate are {{c1::independent}} — a spontaneous reaction can still be very slow.",,topic:cp_kinetics,q_syn_021

@@ -495,11 +495,34 @@ when to trust the label.
 
 ## Content re-check probe (objective disambiguator)
 
+**Status: IMPLEMENTED — IMMEDIATE variant (2026-07-02).** Shipped in
+`pylib/anki/mcat_perf.py` (`resolve_probe_target`, `card_retrievability`
+weakest-link selection, `infer_error_type(recheck_correct=...)` branch 0,
+`PerformanceSession.probe_target` / `record_probe_outcome`) and wired into the Qt
+dialog (`qt/aqt/mcat/performance_dialog.py`): on a SCIENCE miss the probe fires
+**immediately**, before the explanation/diagnosis panels — plain recall of the
+backing sub-concept → reveal → "I knew it" / "I didn't" self-grade → the
+probe-informed diagnosis. Outcomes persist to `recheck_card_id` /
+`recheck_correct` and travel in the sync bundle.
+
+**Accepted tradeoff (team decision).** Because the probe fires **immediately**
+after the miss (not delayed), a PASS carries a mild "the MCQ just cued recall"
+priming bias. The team has **chosen to accept this for the demo** and treats a
+PASS as **solid evidence** that content was available (it is *not* heavily
+discounted for priming). The asymmetry that is kept is only that **FAIL is the
+single strongest content signal** (committed at high confidence 0.9); a PASS
+suppresses `content_gap` and routes to `application`/`misread` at *raised*
+confidence. The delayed natural-review variant (read the backing card's next
+memory-session outcome) remains a future refinement to remove the priming bias
+entirely, but is out of scope for this slice.
+
 The strongest way to separate `content_gap` from `application`/`misread` without
 self-diagnosis: after a miss, objectively test whether the required content was
 actually retrievable, using the backing cards (`supports_question`). This turns
 memory mode into an **oracle** for performance-mode error typing — but an
-**asymmetric** one (FAIL is strong, PASS is weak; see below).
+**asymmetric** one (FAIL is strong, PASS is weak in principle; per the accepted
+tradeoff above the IMMEDIATE build treats PASS as solid, keeping only the FAIL-is-
+strongest asymmetry).
 
 **Placement (avoid contamination):**
 - **Pre-reveal micro-probe** — probe the atomic prerequisite immediately after
@@ -522,8 +545,23 @@ gap **localized to that specific card** → precise next action + handoff to
 memory mode. **All** pass → *lean* toward `application` (weakly, per the
 asymmetry above), corroborated by high `M` and the delayed review.
 
-**Trigger policy:** only when decision-relevant (ambiguous `M`), and sampled to
-avoid fatigue — not after every miss. Never reveal the MCQ answer via the probe.
+**Trigger policy:** the design intent is to fire only when decision-relevant
+(ambiguous `M`) and sampled to avoid fatigue. **As implemented (IMMEDIATE
+variant, 2026-07-02) the probe fires on every SCIENCE miss with a resolvable
+backing sub-concept** (CARS and unmapped misses skip it and use the inference
+path unchanged) — kept simple and demo-reliable; confidence-gated / budgeted
+triggering is a later refinement. Never reveal the MCQ answer via the probe (the
+probe shows a backing *component* card, not the answer).
+
+**Probe target resolution (as implemented):** `resolve_probe_target` inverts
+`supports_question` → backing card ids and probes the **weakest link first**
+(lowest current per-card FSRS-R; a card with no memory state sorts first). The
+resolved **real collection `card_id`** is stored in `recheck_card_id`. If no card
+can be cleanly resolved/rendered at runtime it **falls back** to a plain
+concept-recall prompt derived from the question's backing topic (recorded with
+`recheck_card_id = NULL`, `fallback = true`). CARS or a genuinely unmapped item
+returns `None` → the probe is **skipped** and the existing inference path runs
+unchanged.
 
 Logged: `recheck_card_id`, `recheck_correct`, `recheck_timing`
 (`immediate` | `delayed`), `recheck_latency`. These are **objective labels**
@@ -638,7 +676,7 @@ in this slice.
 | `inferred_confidence` | `p_top` of the inferred type (gates confirm vs top-2 vs unresolved) |
 | `recheck_card_id` | backing card probed to disambiguate content vs application (localizes the gap) |
 | `recheck_correct` | probe outcome — **objective** content-availability label (not self-report) |
-| `error_source` | `inferred_confirmed` · `self_report_override` · `self_report` · `unresolved` |
+| `error_source` | `inferred_confirmed` · `inference+recheck` (probe-informed + self-report agreed) · `self_report_override` · `self_report` · `unresolved` |
 | `error_type` | *(exists)* **resolved** type used downstream = override → else confirmed inference |
 
 **Deferred (until select-then-confirm UI + ML exist):**
@@ -667,6 +705,15 @@ the final model (see "Confidence & ML path"). Setup:
 
 ```
 correct answer                         -> none            (confidence 1.0)
+
+# 0. Content re-check probe outcome (OBJECTIVE oracle; evaluated FIRST when a
+#    probe fired — recheck_correct is not None). Strongest single content signal.
+wrong AND recheck FAIL (recheck_correct == False)
+                                       -> content_gap     (0.9)  # strongest gap
+wrong AND recheck PASS (recheck_correct == True):        # content_gap SUPPRESSED
+    trap-option pick                   -> misread         (0.8)
+    applied/synthesis demand           -> application     (>= 0.75)
+    else (held recall/un-typed miss)   -> misread         (0.6)  # careless slip
 
 # 1. Authored content misconception on the chosen distractor (M-INDEPENDENT):
 #    acting on a specific wrong belief is direct content evidence, so this wins
@@ -808,10 +855,13 @@ tap through it (which corrupts the signal anyway). Prompts fire only when
   and never blocks the next question.
 
 1. Grade the choice; if wrong, compute `(inferred_error_type, confidence)`.
-2. **Content re-check probe** — only when inference hinges on content_gap vs
-   application *and* the trigger/budget allows; plain recall of the backing
-   sub-concept → objective disambiguation, logged as `recheck_correct`
-   (remember: FAIL is strong, PASS is weak).
+2. **Content re-check probe** — *(design: only when inference hinges on
+   content_gap vs application and the trigger/budget allows.)* **As implemented
+   (IMMEDIATE variant): fires on every science miss with a resolvable backing
+   sub-concept, before the explanation/diagnosis** — plain recall → reveal →
+   self-grade → objective disambiguation, logged as `recheck_card_id` /
+   `recheck_correct`. FAIL is strong; PASS is treated as solid per the accepted
+   immediate-variant tradeoff.
 3. **Salient signal + actionable confidence:** confirm via an **observation**
    grounded in the hypothesis, e.g. misread → *"The question asked for EXCEPT —
    did you catch that?"* [Yes/No]; application → *"Did you know [sub-concept] but
@@ -857,6 +907,17 @@ clears the bar available at that n; otherwise abstain or label "self-reported"
 *"error-diagnosis accuracy = X% on gold set (n=…)"* (or, at low n, only the
 directional content-vs-not signal), never dressing up self-report agreement as
 ground truth.
+
+**Upstream sanity check (memory ⟂ performance).** The §7d **paraphrase-gap
+instrument** (`docs/PARAPHRASE-TEST.md`) validates the premise this whole engine
+rests on — that a performance miss can be a *transfer* failure distinct from a
+*recall* failure. It compares flashcard recall against accuracy on reworded
+questions of the same concept (`paraphrase_gap = card_recall_rate −
+question_accuracy`); a persistently near-zero gap at high recall would mean
+performance is echoing memory and the `content_gap`↔`application` split has little
+to separate. It is a bank-level instrument, not a per-attempt label — kept
+separate from the two tiers above (don't conflate its gap with diagnosis
+accuracy).
 
 ## Next-action mapping (dashboard "Focus area")
 
@@ -907,13 +968,46 @@ application gap are *not* fixed the same way, and a misread is fixed by neither:
 | Resolved type | Channel | Concrete remediation |
 |---------------|---------|----------------------|
 | `content_gap` | **Memory (spaced)** | Down-weight the **specific backing COMPONENT card**'s FSRS state (lapse) so it returns in a **future** memory-mode review — not an immediate re-show. |
-| `application` (incl. shallow-mastery / `application_gap`) | **Performance (practice)** | Targeted **practice on similar integration items** in that topic — the component facts are already held; the missing skill is chaining them. **Not** a flashcard. |
+| `application` (incl. shallow-mastery / `application_gap`) | **Performance (practice)** | **WIRED (2026-07-02):** launches a **real short practice set** from the isolated application-practice pool — targeted **practice on similar integration items** in that topic. The component facts are already held; the missing skill is chaining them. **Not** a flashcard. |
 | `misread` (`trap`) | **Behavioral nudge** | A pacing / careful-reading nudge (watch signs, units, `EXCEPT`) — no card, no practice bank; the concept and application were both fine. |
 
 The key asymmetry: routing an `application` miss to flashcards re-drills facts
 the student already knows (false comfort, no skill gain), and routing a
 `content_gap` to more integration practice asks them to chain a component they
 don't yet hold. Route to the channel that fixes the *actual* failure.
+
+### `application` channel — the wired remediation pool (2026-07-02)
+
+The `application` next-action is no longer a generic message with nothing to
+launch. On a **resolved `application`** miss the performance dialog
+(`qt/aqt/mcat/performance_dialog.py`) surfaces a concrete, launchable practice
+set drawn from the **application-practice pool** (`data/application-practice.json`
+— 45 science integration items, 3 per topic). See
+[`APPLICATION-PRACTICE-POOL.md`](APPLICATION-PRACTICE-POOL.md) for the pool and
+its schema.
+
+**Selection rule** (deterministic, AI-off — `select_application_practice` in
+`pylib/anki/mcat_perf.py`): on a miss with diagnosis `application`, topic `T`,
+just-missed concept `C` → (1) filter the pool to `topic_id == T` and
+`pool == 'application_practice'`; (2) exclude items whose `concept == C` (fall
+back to same-concept items if that empties the set); (3) exclude already-seen
+pool ids (the seen-set); (4) rank for concept variety (distinct concepts first,
+deterministic id order); (5) take **N = 2** (`N_APPLICATION_PRACTICE`, a config
+constant). The set is served as a **separate, clearly-unscored** practice window
+(`RemediationDialog`). **Degradation contract preserved:** when the pool yields
+no eligible items (e.g. a topic with no pool coverage, or everything already
+seen) the action falls back to the generic *"practice more applied items in
+\[topic]"* message rather than promising a bank that isn't there.
+
+**Never-scored guarantee (isolation invariant).** The pool lives in its own
+sidecar table `remediation_items` (a DB `CHECK (split = 'remediation')` rejects
+any scored item), and practice attempts are logged to a separate
+`remediation_attempts` channel via `PerfStore.log_remediation_attempt` — **never**
+`perf_questions` / `perf_attempts`. Nothing on this path is read by `accuracy()`,
+`eligible_questions()`, or the sync bundle, so an `application` remediation item
+can **never** enter the Performance or Readiness scores, nor a held_out/dev
+scored session. This is only the **`application`** channel; `content_gap` (review
+the backing concept) and `misread` (pacing nudge) routing are unchanged.
 
 ## Component cards, not answer cards
 

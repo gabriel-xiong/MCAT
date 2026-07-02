@@ -10,17 +10,17 @@ A flashcard **backs** a performance question when the question id is listed in t
 |-------|--------------------------|-------------------------|---------------|
 | `bb_citric_acid` | 4/3 | 7/7 | 10 |
 | `bb_dna` | 4/4 | 8/8 | 7 |
-| `bb_enzymes` | 4/7 | 11/11 | 18 |
+| `bb_enzymes` | 4/18 | 11/22 | 29 |
 | `bb_genetics` | 6/4 | 10/10 | 9 |
 | `bb_glycolysis` | 3/4 | 7/7 | 6 |
 | `bb_membranes` | 2/5 | 7/7 | 7 |
 | `cars_comprehension` | 2/3 | — (CARS) | 0 |
 | `cars_reasoning_beyond` | 2/2 | — (CARS) | 0 |
 | `cars_reasoning_within` | 2/2 | — (CARS) | 0 |
-| `cp_acids_bases` | 3/9 | 12/12 | 15 |
+| `cp_acids_bases` | 3/20 | 12/23 | 23 |
 | `cp_electrochem` | 7/4 | 11/11 | 11 |
 | `cp_fluids` | 4/4 | 8/8 | 6 |
-| `cp_kinetics` | 4/5 | 9/9 | 9 |
+| `cp_kinetics` | 4/13 | 9/17 | 14 |
 | `cp_thermo` | 4/4 | 8/8 | 8 |
 | `ps_demographics` | 2/3 | 5/5 | 5 |
 | `ps_learning` | 4/4 | 8/8 | 8 |
@@ -77,20 +77,50 @@ A flashcard **backs** a performance question when the question id is listed in t
     - ↳ (Cloze) Enzymes speed a reaction by lowering its [activation energy], without changing [ΔG].
     - ↳ (Cloze) ΔG > 0 → [endergonic]; ΔG < 0 → [exergonic].
     - ↳ (Cloze) Reaction rate depends on [activation energy], not ΔG.
+    - ↳ (Cloze) An [endergonic] reaction absorbs (consumes) energy; an [exergonic] reaction releases energy.
+    - ↳ (Cloze) Both endergonic and exergonic reactions must first overcome an [activation-energy] barrier bef…
 - `q_dev_004` (dev) — Which of the following is the best way to judge the relative activation energies between two g…
     - ↳ (Cloze) Enzymes speed a reaction by lowering its [activation energy], without changing [ΔG].
     - ↳ (Basic) Why compare reaction rates (not ΔG) to judge activation energy?
+    - ↳ (Cloze) Activation energy is a [kinetic] property, so it cannot be inferred from ΔG or spontaneity (wh…
 - `q_dev_005` (dev) — An allosteric inhibitor does which of the following?
     - ↳ (Cloze) [Competitive] inhibitors bind the active site; allosteric inhibitors bind [elsewhere] and chan…
     - ↳ (Basic) How does an allosteric inhibitor differ from a competitive inhibitor?
+    - ↳ (Cloze) An allosteric [activator] raises, while an allosteric [inhibitor] lowers, the active site's af…
 - `q_dev_024` (dev) — The maximum reaction velocity (Vmax) of an enzyme-catalyzed reaction is reached when:
     - ↳ (Cloze) An enzyme reaches [Vmax] when its active sites are [saturated] with substrate.
 - `q_ho_026` (held_out) — The region of an enzyme where substrate binds and catalysis occurs is the:
     - ↳ (Cloze) The [active site] is the region of an enzyme where substrate binds and catalysis occurs.
+    - ↳ (Cloze) The [allosteric] site is a regulatory binding site separate from the active site.
 - `q_ho_027` (held_out) — According to the induced-fit model, when substrate binds an enzyme:
     - ↳ (Cloze) Induced fit: when substrate binds, the enzyme's [active site] changes shape to fit it more snu…
+    - ↳ (Cloze) An enzyme is a catalyst, so it is [not consumed] by the reaction it speeds up.
+    - ↳ (Cloze) During catalysis the substrate is [chemically transformed] into product (it is not left unchan…
 - `q_ho_028` (held_out) — Raising temperature well above an enzyme's optimum typically:
     - ↳ (Cloze) Heating an enzyme far above its optimum [denatures] it, lowering its activity.
+    - ↳ (Cloze) [Denaturation] is the loss of a protein's 3-D shape, which distorts the enzyme's active site a…
+- `q_ho_072` (held_out) — An enzyme increases the rate of a biochemical reaction primarily by:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_073` (held_out) — A reaction that has a positive Gibbs free energy change (ΔG > 0) is best described as:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_074` (held_out) — A competitive inhibitor decreases enzyme activity by:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_075` (held_out) — As substrate concentration becomes very high, the rate of an enzyme-catalyzed reaction levels …
+    - ↳ ⚠️ **no backing card**
+- `q_ho_076` (held_out) — A mutation alters an amino acid in the exact pocket where an enzyme's substrate normally binds…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_077` (held_out) — The induced-fit model of enzyme action differs from the older lock-and-key model in that it pr…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_078` (held_out) — A solution of an enzyme is heated to a temperature far above the enzyme's optimum. The most li…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_079` (held_out) — The reduced activity caused by a competitive inhibitor can be reversed by:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_080` (held_out) — Adding a reversible inhibitor slows an enzyme-catalyzed reaction. Does the inhibitor change th…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_081` (held_out) — The Michaelis constant (Km) of an enzyme is defined as the substrate concentration at which th…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_082` (held_out) — Enzyme X and enzyme Y act on the same substrate, but enzyme X has a much higher Km. Compared w…
+    - ↳ ⚠️ **no backing card**
 - `q_syn_001` (held_out) — An enzyme converts substrate S to product P. A researcher measures the initial reaction veloci…
     - ↳ (Cloze) [Competitive] inhibitors bind the active site; allosteric inhibitors bind [elsewhere] and chan…
     - ↳ (Cloze) A competitive inhibitor binds the enzyme's [active site], directly competing with substrate fo…
@@ -104,9 +134,12 @@ A flashcard **backs** a performance question when the question id is listed in t
     - ↳ (Cloze) Competitive inhibition is [surmountable]: the inhibitor binds reversibly at the active site, s…
 - `q_syn_003` (held_out) — An enzyme converts substrate S to product P. A researcher measures the initial reaction veloci…
     - ↳ (Basic) In an enzyme assay comparing 'with inhibitor' vs 'without', which variable is held constant an…
+    - ↳ (Cloze) A [controlled] variable is held constant so any change in the outcome can be attributed to the…
+    - ↳ (Cloze) In an experiment the [independent] variable is deliberately changed and the [dependent] variab…
 - `q_syn_004` (held_out) — An enzyme converts substrate S to product P. A researcher measures the initial reaction veloci…
     - ↳ (Cloze) Enzymes speed a reaction by lowering its [activation energy], without changing [ΔG].
     - ↳ (Basic) How does Km differ in kind from Keq?
+    - ↳ (Cloze) ΔG and Keq depend only on the [free-energy difference] between reactants and products, which a…
 
 ### `bb_genetics`
 
@@ -211,21 +244,49 @@ A flashcard **backs** a performance question when the question id is listed in t
     - ↳ (Cloze) Brønsted–Lowry acids [donate] H⁺; bases [accept] H⁺.
     - ↳ (Cloze) When product is added to a reaction at equilibrium, the reaction shifts toward [reactants].
     - ↳ (Cloze) Increasing [[H⁺]] shifts a base toward its [protonated] (conjugate acid) form.
+    - ↳ (Cloze) Ammonia is a weak base: NH₃ + H₂O ⇌ [NH₄⁺] + [OH⁻].
+    - ↳ (Cloze) Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to …
 - `q_dev_007` (dev) — Both HF and HCN ionize in water to a limited extent. Which of the conjugate bases, F− or CN−, …
     - ↳ (Cloze) Brønsted–Lowry acids [donate] H⁺; bases [accept] H⁺.
     - ↳ (Cloze) CH₃COOH is a [weaker] acid than HCl (conjugate base strength runs opposite to acid strength).
     - ↳ (Cloze) HF and HCN in water: the ionization equilibrium lies to the [left], so both are [weak] acids (…
     - ↳ (Basic) Why is the conjugate base of a strong acid a very weak base?
+    - ↳ (Cloze) The [weaker] the acid, the stronger its conjugate base (and the reverse).
 - `q_dev_011` (dev) — A buffer resists changes in pH because it contains appreciable amounts of both a ______.
     - ↳ (Cloze) A buffer contains a [weak acid] and its [conjugate base], so it resists pH change.
+    - ↳ (Cloze) A strong acid and strong base cannot form a buffer — they simply [react to completion].
 - `q_ho_005` (held_out) — What is the pH of a 0.010 M aqueous solution of HCl (a strong acid) at 25 °C?
     - ↳ (Cloze) For a strong acid, pH = −log[H⁺]; a 0.010 M HCl solution has pH [2].
 - `q_ho_006` (held_out) — Which pair is a conjugate acid–base pair?
     - ↳ (Cloze) A conjugate acid–base pair differs by one H⁺, e.g. [H₂CO₃] / [HCO₃⁻].
 - `q_ho_007` (held_out) — At 25 °C, Kw = 1.0×10⁻¹⁴. In a neutral aqueous solution, [H⁺] equals:
     - ↳ (Cloze) At 25 °C a neutral solution has [H⁺] = [1×10⁻⁷ M] and pH = [7].
+    - ↳ (Cloze) At 25 °C the water autoionization constant Kw = [H⁺][OH⁻] = [1.0×10⁻¹⁴].
+    - ↳ (Cloze) A neutral aqueous solution is defined by [[H⁺] = [OH⁻]].
 - `q_ho_008` (held_out) — A solution of pH 4 is how many times more acidic (in [H⁺]) than a solution of pH 6?
     - ↳ (Cloze) Each pH unit is a 10× change in [H⁺], so pH 4 is [100]× more acidic than pH 6.
+- `q_ho_061` (held_out) — In the reaction NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, which species acts as the Brønsted–Lowry acid (the pro…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_062` (held_out) — A Brønsted–Lowry base is best defined as a substance that:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_063` (held_out) — Hydrochloric acid (HCl) is a very strong acid. Its conjugate base, Cl⁻, is therefore:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_064` (held_out) — Which of the following mixtures would function as an effective pH buffer?
+    - ↳ ⚠️ **no backing card**
+- `q_ho_065` (held_out) — At 25 °C, pure water self-ionizes so that [H⁺] and [OH⁻] are equal. What is the pH of this neu…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_066` (held_out) — A strong monoprotic acid is dissolved in water to a concentration of 1.0×10⁻³ M and ionizes co…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_067` (held_out) — What is the conjugate base of the bicarbonate ion, HCO₃⁻?
+    - ↳ ⚠️ **no backing card**
+- `q_ho_068` (held_out) — If the hydrogen-ion concentration [H⁺] of a solution increases by a factor of 1000, how does i…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_069` (held_out) — For a weak-acid buffer, when the concentration of the conjugate base equals the concentration …
+    - ↳ ⚠️ **no backing card**
+- `q_ho_070` (held_out) — A student adds sodium formate (HCOONa) to a solution of formic acid (HCOOH). What happens to t…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_071` (held_out) — Two solutions are prepared at the same concentration: one of a strong acid and one of a weak a…
+    - ↳ ⚠️ **no backing card**
 - `q_syn_009` (held_out) — A chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate…
     - ↳ (Cloze) Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]); when [A⁻] = [HA], pH = [pKa].
 - `q_syn_010` (held_out) — A chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate…
@@ -233,9 +294,12 @@ A flashcard **backs** a performance question when the question id is listed in t
     - ↳ (Basic) In a buffer, which species neutralizes a small amount of added strong acid (H⁺), and what does…
 - `q_syn_011` (held_out) — A chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate…
     - ↳ (Cloze) Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]); when [A⁻] = [HA], pH = [pKa].
+    - ↳ (Cloze) By Henderson–Hasselbalch, raising pH by 1 unit above the pKa multiplies the [A⁻]/[HA] ratio by…
 - `q_syn_012` (held_out) — A chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate…
     - ↳ (Cloze) When product is added to a reaction at equilibrium, the reaction shifts toward [reactants].
     - ↳ (Basic) If something suppresses a weak acid's dissociation, what happens to [H⁺] and pH?
+    - ↳ (Cloze) Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to …
+    - ↳ (Cloze) Suppressing a weak acid's ionization lowers its [percent dissociation].
 - `q_syn_024` (held_out) — Equal volumes of 0.10 M HCl and 0.10 M acetic acid (Ka = 1.8×10⁻⁵) are compared. Which stateme…
     - ↳ (Cloze) For a strong acid, pH = −log[H⁺]; a 0.010 M HCl solution has pH [2].
     - ↳ (Cloze) A strong acid ionizes [completely] (lower pH); a weak acid at equal concentration ionizes only…
@@ -295,11 +359,13 @@ A flashcard **backs** a performance question when the question id is listed in t
 
 - `q_dev_015` (dev) — Increasing temperature generally increases reaction rate primarily because:
     - ↳ (Cloze) Raising temperature speeds a reaction because more molecules exceed the [activation energy].
+    - ↳ (Cloze) Raising temperature increases reaction rate but does [not] lower the activation energy or chan…
 - `q_dev_016` (dev) — A catalyst increases the rate of a reaction by:
     - ↳ (Cloze) A catalyst lowers the [activation energy]; it does not change [ΔG] or the equilibrium.
     - ↳ (Basic) Why doesn't a catalyst change the equilibrium position?
 - `q_dev_017` (dev) — The rate constant k of a reaction depends on:
     - ↳ (Cloze) The rate constant k depends on [temperature] and a [catalyst], not on reactant concentration.
+    - ↳ (Cloze) The temperature dependence of the rate constant k is described by the [Arrhenius] equation.
 - `q_ho_013` (held_out) — For the rate law rate = k[A][B]², the overall reaction order is:
     - ↳ (Cloze) For rate = k[A][B]², the overall reaction order is [3].
 - `q_ho_014` (held_out) — If a reaction is first order in A, doubling [A] changes the rate by a factor of:
@@ -308,13 +374,32 @@ A flashcard **backs** a performance question when the question id is listed in t
     - ↳ (Cloze) A [zero-order] reaction's rate is independent of reactant concentration.
 - `q_ho_016` (held_out) — The activation energy of a reaction is:
     - ↳ (Cloze) Activation energy is the [minimum] energy reactants need in order to react.
+    - ↳ (Cloze) Activation energy is the barrier to reach the [transition state]; it is not the reactant–produ…
+- `q_ho_083` (held_out) — A catalyst is added to a reaction mixture that has already reached equilibrium. What effect do…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_084` (held_out) — Raising the temperature of a reaction usually increases its rate markedly. The main reason is …
+    - ↳ ⚠️ **no backing card**
+- `q_ho_085` (held_out) — Which of the following changes would alter the numerical value of a reaction's rate constant, …
+    - ↳ ⚠️ **no backing card**
+- `q_ho_086` (held_out) — A reaction follows the rate law rate = k[X]²[Y]. What is its overall reaction order?
+    - ↳ ⚠️ **no backing card**
+- `q_ho_087` (held_out) — A reaction is first order with respect to reactant A. If the concentration of A is tripled (wi…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_088` (held_out) — For a reaction that is zero order in reactant A, doubling the concentration of A will:
+    - ↳ ⚠️ **no backing card**
+- `q_ho_089` (held_out) — In a chemical reaction, the minimum energy that colliding reactant molecules must possess in o…
+    - ↳ ⚠️ **no backing card**
+- `q_ho_090` (held_out) — In the rate law rate = k[A]^m[B]^n, the exponent m represents:
+    - ↳ ⚠️ **no backing card**
 - `q_syn_020` (held_out) — Initial-rate data for A + B → products: ``` Exp | [A] (M) | [B] (M) | rate (M/s) 1 | 0.10 | 0.…
     - ↳ (Cloze) For rate = k[A][B]², the overall reaction order is [3].
     - ↳ (Cloze) For a reaction first order in A, doubling [A] multiplies the rate by [2].
     - ↳ (Cloze) In a rate law rate = k[A]^m[B]^n, the exponent on each reactant is its [order]; the sum m+n is…
+    - ↳ (Cloze) Method of initial rates: find a reactant's order by comparing experiments in which only [that …
 - `q_syn_021` (dev) — A reaction has ΔG = −100 kJ/mol yet proceeds imperceptibly slowly at room temperature. Which s…
     - ↳ (Basic) Does a negative ΔG mean the reaction is fast?
     - ↳ (Cloze) A catalyst lowers the [activation energy]; it does not change [ΔG] or the equilibrium.
+    - ↳ (Cloze) Thermodynamic favorability (ΔG) and reaction rate are [independent] — a spontaneous reaction c…
 
 ### `cp_thermo`
 

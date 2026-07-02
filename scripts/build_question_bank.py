@@ -938,6 +938,254 @@ HELD_OUT: list[dict] = [
        "argue for banning nearly identical products",
        "describe the author's personal shopping habits"], 1,
       "Passage B (Choice & Freedom), Q7", "held_out"),
+
+    # ======================================================================
+    # §7d PARAPHRASE-GAP INSTRUMENT — reworded held_out probes (q_ho_061+)
+    # Each item is the fresh, held_out second stem of an anchor-concept pair
+    # authored for data/paraphrase-test.json. It tests the SAME idea as an
+    # existing dev/held_out question in genuinely different wording (never a
+    # numeric clone) so we can compare flashcard recall against accuracy on
+    # reworded questions. Kept held_out so a volunteer has not seen them in a
+    # dev performance session. See docs/PARAPHRASE-TEST.md.
+    # ======================================================================
+
+    # ---- cp_acids_bases (q_ho_061..071) -----------------------------------
+    q("cp_acids_bases", "2",
+      "In the reaction NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, which species acts as the "
+      "Brønsted–Lowry acid (the proton donor)?",
+      ["H₂O", "NH₃", "NH₄⁺", "OH⁻"], 0,
+      "Ch. 14.1 Brønsted-Lowry Acids and Bases", "held_out"),
+    q("cp_acids_bases", "2",
+      "A Brønsted–Lowry base is best defined as a substance that:",
+      ["donates a proton (H⁺) to another species",
+       "accepts a proton (H⁺) from another species",
+       "increases the H⁺ concentration of a solution",
+       "produces OH⁻ only by dissociating in water"], 1,
+      "Ch. 14.1 Brønsted-Lowry Acids and Bases", "held_out"),
+    q("cp_acids_bases", "2",
+      "Hydrochloric acid (HCl) is a very strong acid. Its conjugate base, "
+      "Cl⁻, is therefore:",
+      ["an extremely weak base that barely accepts protons",
+       "a strong base that readily accepts protons",
+       "a strong acid itself",
+       "amphoteric, acting equally as an acid and a base"], 0,
+      "Ch. 14.3 Relative Strengths of Acids and Bases", "held_out"),
+    q("cp_acids_bases", "2",
+      "Which of the following mixtures would function as an effective pH "
+      "buffer?",
+      ["HCl and NaCl (a strong acid and its salt)",
+       "CH₃COOH and CH₃COONa (acetic acid and sodium acetate)",
+       "NaOH and NaCl (a strong base and a neutral salt)",
+       "NaCl dissolved in water alone"], 1,
+      "Ch. 14.6 Buffers", "held_out", demand="application"),
+    q("cp_acids_bases", "2",
+      "At 25 °C, pure water self-ionizes so that [H⁺] and [OH⁻] are equal. "
+      "What is the pH of this neutral water?",
+      ["0", "7", "14", "It depends on how much water is present"], 1,
+      "Ch. 14.2 pH and pOH", "held_out"),
+    q("cp_acids_bases", "2",
+      "A strong monoprotic acid is dissolved in water to a concentration of "
+      "1.0×10⁻³ M and ionizes completely. What is the pH of the solution at "
+      "25 °C?",
+      ["1", "2", "3", "11"], 2,
+      "Ch. 14.2 pH and pOH", "held_out", demand="application"),
+    q("cp_acids_bases", "2",
+      "What is the conjugate base of the bicarbonate ion, HCO₃⁻?",
+      ["H₂CO₃", "CO₃²⁻", "CO₂", "OH⁻"], 1,
+      "Ch. 14.1 Brønsted-Lowry Acids and Bases", "held_out", demand="application"),
+    q("cp_acids_bases", "2",
+      "If the hydrogen-ion concentration [H⁺] of a solution increases by a "
+      "factor of 1000, how does its pH change?",
+      ["it decreases by 3 units", "it increases by 3 units",
+       "it decreases by 1000 units", "it does not change"], 0,
+      "Ch. 14.2 pH and pOH", "held_out", demand="application"),
+    q("cp_acids_bases", "2",
+      "For a weak-acid buffer, when the concentration of the conjugate base "
+      "equals the concentration of the weak acid, the pH of the buffer is:",
+      ["equal to the acid's pKa", "equal to 7 regardless of the acid",
+       "one unit above the pKa", "equal to 14 − pKa"], 0,
+      "Ch. 14.6 Buffers (Henderson–Hasselbalch)", "held_out",
+      demand="application"),
+    q("cp_acids_bases", "2",
+      "A student adds sodium formate (HCOONa) to a solution of formic acid "
+      "(HCOOH). What happens to the percent ionization of the formic acid?",
+      ["it decreases, because added formate shifts the ionization "
+       "equilibrium toward the un-ionized acid",
+       "it increases, because more ions are now present",
+       "it is unchanged, because formate does not take part in the "
+       "equilibrium",
+       "it increases, because the solution becomes more acidic"], 0,
+      "Ch. 14.6 Buffers; Le Chatelier (common-ion effect)", "held_out",
+      demand="application"),
+    q("cp_acids_bases", "2",
+      "Two solutions are prepared at the same concentration: one of a strong "
+      "acid and one of a weak acid. Compared with the strong-acid solution, "
+      "the weak-acid solution will have:",
+      ["a lower pH, because weak acids ionize completely",
+       "a higher pH, because the weak acid ionizes only partially",
+       "exactly the same pH, because the concentrations are equal",
+       "a higher pH, because weak acids do not ionize at all"], 1,
+      "Ch. 14.3 Relative Strengths of Acids and Bases", "held_out",
+      demand="application"),
+
+    # ---- bb_enzymes (q_ho_072..082) ---------------------------------------
+    q("bb_enzymes", "2",
+      "An enzyme increases the rate of a biochemical reaction primarily by:",
+      ["lowering the activation energy of the reaction",
+       "making the reaction more exergonic (more negative ΔG)",
+       "raising the temperature of the cell",
+       "shifting the reaction's equilibrium toward products"], 0,
+      "Ch. 6.5 Enzymes", "held_out", demand="application"),
+    q("bb_enzymes", "2",
+      "A reaction that has a positive Gibbs free energy change (ΔG > 0) is "
+      "best described as:",
+      ["exergonic and energy-releasing",
+       "endergonic and energy-requiring",
+       "spontaneous under standard conditions",
+       "impossible under any conditions"], 1,
+      "Ch. 6.3 The Laws of Thermodynamics; Ch. 6.5 Enzymes", "held_out"),
+    q("bb_enzymes", "2",
+      "A competitive inhibitor decreases enzyme activity by:",
+      ["binding directly in the active site and blocking substrate access",
+       "binding at a site away from the active site and changing the "
+       "enzyme's shape",
+       "permanently destroying the enzyme by forming covalent bonds",
+       "lowering the temperature of the reaction"], 0,
+      "Ch. 6.5 Enzymes (inhibition)", "held_out"),
+    q("bb_enzymes", "2",
+      "As substrate concentration becomes very high, the rate of an "
+      "enzyme-catalyzed reaction levels off at a maximum value (Vmax). This "
+      "plateau occurs because:",
+      ["the enzyme's active sites become saturated with substrate",
+       "the substrate begins to inhibit the enzyme",
+       "the enzyme is used up (consumed) by the reaction",
+       "the activation energy increases at high substrate levels"], 0,
+      "Ch. 6.5 Enzymes (Michaelis–Menten; saturation)", "held_out",
+      demand="application"),
+    q("bb_enzymes", "2",
+      "A mutation alters an amino acid in the exact pocket where an enzyme's "
+      "substrate normally binds and is converted to product. Which part of "
+      "the enzyme has been changed?",
+      ["the active site", "an allosteric (regulatory) site",
+       "a disulfide bridge far from catalysis", "the signal peptide"], 0,
+      "Ch. 6.5 Enzymes (active site)", "held_out", demand="application"),
+    q("bb_enzymes", "2",
+      "The induced-fit model of enzyme action differs from the older "
+      "lock-and-key model in that it proposes:",
+      ["the enzyme's active site changes shape as the substrate binds",
+       "the substrate must match the active site perfectly and rigidly "
+       "beforehand",
+       "enzymes bind substrate without any physical contact",
+       "the substrate permanently alters the enzyme's primary sequence"], 0,
+      "Ch. 6.5 Enzymes (induced fit)", "held_out"),
+    q("bb_enzymes", "2",
+      "A solution of an enzyme is heated to a temperature far above the "
+      "enzyme's optimum. The most likely result is that the enzyme's "
+      "catalytic activity will:",
+      ["drop sharply as the enzyme denatures and loses its "
+       "three-dimensional shape",
+       "keep rising indefinitely because higher temperature always speeds "
+       "reactions",
+       "stay exactly constant, since temperature does not affect enzymes",
+       "increase because denaturation exposes more active sites"], 0,
+      "Ch. 6.5 Enzymes (temperature, denaturation)", "held_out",
+      demand="application"),
+    q("bb_enzymes", "2",
+      "The reduced activity caused by a competitive inhibitor can be "
+      "reversed by:",
+      ["adding a large excess of substrate",
+       "removing all substrate from the solution",
+       "lowering the enzyme concentration",
+       "adding still more of the competitive inhibitor"], 0,
+      "Ch. 6.5 Enzymes (competitive inhibition)", "held_out",
+      demand="application"),
+    q("bb_enzymes", "2",
+      "Adding a reversible inhibitor slows an enzyme-catalyzed reaction. "
+      "Does the inhibitor change the reaction's equilibrium constant (Keq)?",
+      ["No — it changes the reaction's rate (kinetics) but not its "
+       "equilibrium or ΔG",
+       "Yes — slowing the reaction lowers its Keq",
+       "Yes — it makes the products less thermodynamically stable",
+       "Only at very high substrate concentrations"], 0,
+      "Ch. 6.5 Enzymes; Ch. 6.3 (ΔG / equilibrium)", "held_out",
+      demand="application"),
+    q("bb_enzymes", "2",
+      "The Michaelis constant (Km) of an enzyme is defined as the substrate "
+      "concentration at which the reaction rate is:",
+      ["equal to half of Vmax", "equal to Vmax", "zero",
+       "at its absolute maximum"], 0,
+      "Ch. 6.5 Enzymes (Km, Michaelis–Menten)", "held_out"),
+    q("bb_enzymes", "2",
+      "Enzyme X and enzyme Y act on the same substrate, but enzyme X has a "
+      "much higher Km. Compared with enzyme Y, enzyme X:",
+      ["binds the substrate less tightly (has lower affinity)",
+       "binds the substrate more tightly (has higher affinity)",
+       "must have a higher Vmax by definition",
+       "is fully saturated at a lower substrate concentration"], 0,
+      "Ch. 6.5 Enzymes (Km and affinity)", "held_out", demand="application"),
+
+    # ---- cp_kinetics (q_ho_083..090) --------------------------------------
+    q("cp_kinetics", "2",
+      "A catalyst is added to a reaction mixture that has already reached "
+      "equilibrium. What effect does it have?",
+      ["it speeds the forward and reverse reactions equally, leaving the "
+       "equilibrium position unchanged",
+       "it shifts the equilibrium toward the products",
+       "it shifts the equilibrium toward the reactants",
+       "it increases the amount of product present at equilibrium"], 0,
+      "Ch. 12.7 Catalysis", "held_out", demand="application"),
+    q("cp_kinetics", "2",
+      "Raising the temperature of a reaction usually increases its rate "
+      "markedly. The main reason is that at higher temperature:",
+      ["a larger fraction of molecular collisions have energy greater than "
+       "the activation energy",
+       "the activation energy of the reaction decreases",
+       "the ΔG of the reaction becomes more negative",
+       "the reactant molecules become larger"], 0,
+      "Ch. 12.5 Collision Theory", "held_out", demand="application"),
+    q("cp_kinetics", "2",
+      "Which of the following changes would alter the numerical value of a "
+      "reaction's rate constant, k?",
+      ["increasing the temperature",
+       "increasing the concentration of a reactant",
+       "increasing the volume of the container",
+       "increasing the total pressure at constant temperature"], 0,
+      "Ch. 12.5 Collision Theory; Ch. 12.4 Rate Laws", "held_out",
+      demand="application"),
+    q("cp_kinetics", "2",
+      "A reaction follows the rate law rate = k[X]²[Y]. What is its overall "
+      "reaction order?",
+      ["1", "2", "3", "0"], 2,
+      "Ch. 12.3 Rate Laws", "held_out", demand="application"),
+    q("cp_kinetics", "2",
+      "A reaction is first order with respect to reactant A. If the "
+      "concentration of A is tripled (with everything else held constant), "
+      "the reaction rate will:",
+      ["triple (increase by a factor of 3)",
+       "double (increase by a factor of 2)",
+       "increase by a factor of 9", "stay the same"], 0,
+      "Ch. 12.3 Rate Laws (order and rate)", "held_out",
+      demand="application"),
+    q("cp_kinetics", "2",
+      "For a reaction that is zero order in reactant A, doubling the "
+      "concentration of A will:",
+      ["have no effect on the reaction rate", "double the reaction rate",
+       "quadruple the reaction rate", "halve the reaction rate"], 0,
+      "Ch. 12.4 Integrated Rate Laws (zero order)", "held_out",
+      demand="application"),
+    q("cp_kinetics", "2",
+      "In a chemical reaction, the minimum energy that colliding reactant "
+      "molecules must possess in order to react is called the:",
+      ["activation energy", "free energy (ΔG)",
+       "bond dissociation enthalpy", "heat of reaction (ΔH)"], 0,
+      "Ch. 12.5 Collision Theory (activation energy)", "held_out"),
+    q("cp_kinetics", "2",
+      "In the rate law rate = k[A]^m[B]^n, the exponent m represents:",
+      ["the order of the reaction with respect to A",
+       "the number of moles of A in the balanced equation",
+       "the rate constant for A",
+       "the concentration of A at equilibrium"], 0,
+      "Ch. 12.3 Rate Laws", "held_out", demand="application"),
 ]
 
 
@@ -2015,6 +2263,225 @@ CHOICE_DIAGNOSIS: dict[str, list] = {
            "area)"),
         None,  # 'J·s' — unrelated (action) units grab
         cg("gives N·m (energy/torque) instead of N/m² for pressure")],
+
+    # --- §7d paraphrase-gap probes (q_ho_061..090) -------------------------
+    "q_ho_061": [  # BL acid in NH₃+H₂O (correct A: H₂O)
+        None,
+        cg("identifies NH₃ as the acid; NH₃ accepts the proton, so it is the "
+           "Brønsted–Lowry base here"),
+        cg("names the conjugate acid NH₄⁺ (a product), not the reactant that "
+           "donated the proton"),
+        cg("names OH⁻, the conjugate base of water, rather than the proton "
+           "donor")],
+    "q_ho_062": [  # define BL base (correct B: accepts H⁺)
+        cg("gives the definition of a Brønsted–Lowry acid (proton donor), the "
+           "exact opposite of a base"),
+        None,
+        cg("describes the effect of adding an acid, not the definition of a "
+           "base"),
+        cg("restricts bases to the narrower Arrhenius (OH⁻-producing) "
+           "definition rather than the broader proton-acceptor definition")],
+    "q_ho_063": [  # conjugate base of strong acid (correct A: very weak base)
+        None,
+        cg("reverses the inverse relationship — thinks a strong acid yields a "
+           "strong conjugate base"),
+        cg("confuses the conjugate base with an acid; Cl⁻ has no proton to "
+           "donate"),
+        cg("treats Cl⁻ as amphoteric, ignoring that a strong acid's conjugate "
+           "base is essentially inert")],
+    "q_ho_064": [  # effective buffer (correct B: acetic acid + acetate)
+        cg("thinks a strong acid plus its salt buffers; a fully-ionized strong "
+           "acid has no weak-acid/conjugate-base equilibrium to resist pH "
+           "change"),
+        None,
+        cg("thinks a strong base and a neutral salt form a buffer; there is no "
+           "conjugate weak-acid/base pair"),
+        cg("thinks a neutral salt solution alone can buffer pH")],
+    "q_ho_065": [  # pH of neutral water (correct B: 7)
+        cg("thinks neutral means pH 0, confusing neutrality with strong "
+           "acidity"),
+        None,
+        cg("assigns pH 14 (the strongly basic extreme) to neutral water"),
+        cg("thinks pH depends on the quantity of water rather than on [H⁺]")],
+    "q_ho_066": [  # pH of 1.0×10⁻³ M strong acid (correct C: 3)
+        cg("uses the wrong exponent, treating the concentration as 0.1 M"),
+        cg("uses 0.01 M instead of 0.001 M for the concentration"),
+        None,
+        trap("negation")],  # 11 = 14 − 3, computes pOH then forgets to convert
+    "q_ho_067": [  # conjugate base of HCO₃⁻ (correct B: CO₃²⁻)
+        cg("gives the conjugate ACID (adds a proton to HCO₃⁻) instead of the "
+           "conjugate base"),
+        None,
+        cg("names a decomposition product (CO₂), not the species differing by "
+           "one H⁺"),
+        cg("grabs hydroxide, a generic base, rather than the species one "
+           "proton removed from HCO₃⁻")],
+    "q_ho_068": [  # [H⁺] ×1000 → pH (correct A: −3 units)
+        None,
+        trap("inverse"),  # right magnitude, wrong direction (more H⁺ = lower pH)
+        cg("treats pH as a linear (not logarithmic) function of [H⁺]"),
+        cg("thinks changing [H⁺] does not affect pH")],
+    "q_ho_069": [  # buffer with [A⁻]=[HA] (correct A: pH = pKa)
+        None,
+        cg("assumes equal concentrations force a neutral pH of 7, ignoring the "
+           "acid's pKa"),
+        cg("mis-applies Henderson–Hasselbalch; a 1:1 ratio gives log 1 = 0, so "
+           "pH = pKa, not pKa + 1"),
+        cg("uses a pOH/pKb-style 14 − pKa relationship that does not apply "
+           "here")],
+    "q_ho_070": [  # common-ion effect on formic acid (correct A: decreases)
+        None,
+        cg("predicts the wrong Le Chatelier direction — thinks the added "
+           "conjugate base drives more ionization"),
+        cg("does not recognize formate as the common ion shared with the "
+           "acid's ionization equilibrium"),
+        cg("assumes the solution becomes more acidic and that this raises "
+           "percent ionization")],
+    "q_ho_071": [  # weak vs strong acid at equal conc (correct B: higher pH)
+        cg("thinks weak acids ionize completely, reversing the strong/weak "
+           "distinction"),
+        None,
+        cg("assumes equal concentration means equal pH, ignoring differences "
+           "in ionization"),
+        cg("believes a weak acid does not ionize at all, rather than only "
+           "partially")],
+    "q_ho_072": [  # enzyme increases rate by (correct A: lowers Ea)
+        None,
+        cg("thinks an enzyme changes the reaction's ΔG/thermodynamics rather "
+           "than only its kinetics"),
+        cg("attributes the rate increase to heating rather than to a lowered "
+           "energy barrier"),
+        cg("believes an enzyme shifts the equilibrium position instead of "
+           "speeding both directions equally")],
+    "q_ho_073": [  # positive ΔG (correct B: endergonic)
+        cg("swaps the definitions — assigns the exergonic (ΔG < 0) label to a "
+           "positive ΔG"),
+        None,
+        cg("calls a positive-ΔG reaction spontaneous, reversing the sign "
+           "convention for spontaneity"),
+        cg("thinks ΔG > 0 makes a reaction impossible, ignoring that energy "
+           "input or coupling can drive it")],
+    "q_ho_074": [  # competitive inhibitor mechanism (correct A: active site)
+        None,
+        cg("describes allosteric/noncompetitive inhibition (binds away from "
+           "the active site), not competitive"),
+        cg("describes irreversible covalent inhibition rather than reversible "
+           "competitive binding"),
+        cg("attributes inhibition to temperature rather than to occupying the "
+           "active site")],
+    "q_ho_075": [  # Vmax plateau (correct A: saturation)
+        None,
+        cg("invokes substrate inhibition rather than simple saturation of "
+           "active sites"),
+        cg("thinks the enzyme is consumed; a catalyst is regenerated, not used "
+           "up"),
+        cg("claims activation energy rises with substrate, which does not "
+           "cause the Vmax plateau")],
+    "q_ho_076": [  # mutation in substrate pocket (correct A: active site)
+        None,
+        cg("names the allosteric (regulatory) site rather than the "
+           "substrate-binding catalytic pocket"),
+        cg("picks a distant structural feature unrelated to substrate binding "
+           "or catalysis"),
+        cg("names a targeting sequence, not the catalytic region")],
+    "q_ho_077": [  # induced fit vs lock-and-key (correct A: shape changes)
+        None,
+        cg("describes the rigid lock-and-key view, the model that induced fit "
+           "revised"),
+        cg("denies the physical binding interaction that both models require"),
+        cg("confuses a conformational (shape) change with a permanent change "
+           "to the amino-acid sequence")],
+    "q_ho_078": [  # heating far above optimum (correct A: denatures)
+        None,
+        cg("assumes rate rises without limit with temperature, ignoring "
+           "denaturation above the optimum"),
+        cg("thinks enzyme activity is independent of temperature"),
+        cg("believes denaturation creates more functional active sites rather "
+           "than destroying them")],
+    "q_ho_079": [  # reverse competitive inhibition (correct A: excess substrate)
+        None,
+        cg("thinks removing substrate relieves competitive inhibition; it "
+           "would only slow the reaction further"),
+        cg("thinks lowering enzyme amount outcompetes the inhibitor; it just "
+           "reduces total activity"),
+        cg("thinks adding more inhibitor reverses inhibition rather than "
+           "deepening it")],
+    "q_ho_080": [  # inhibitor and Keq (correct A: no, only kinetics)
+        None,
+        cg("thinks a kinetic slowdown lowers the equilibrium constant, "
+           "conflating rate with equilibrium"),
+        cg("believes the inhibitor alters product thermodynamic stability "
+           "(ΔG)"),
+        cg("makes the thermodynamic outcome depend on substrate "
+           "concentration")],
+    "q_ho_081": [  # Km definition (correct A: half of Vmax)
+        None,
+        cg("confuses Km with the substrate level that gives full Vmax rather "
+           "than half"),
+        cg("thinks Km is the substrate concentration where the rate is zero"),
+        cg("equates Km with the point of maximum velocity")],
+    "q_ho_082": [  # higher Km meaning (correct A: lower affinity)
+        None,
+        cg("reverses the relationship — treats a higher Km as tighter binding "
+           "(higher affinity)"),
+        cg("assumes Km fixes Vmax; the two parameters are independent"),
+        cg("thinks a higher Km means saturation at lower [S]; it actually "
+           "requires more substrate")],
+    "q_ho_083": [  # catalyst at equilibrium (correct A: no shift)
+        None,
+        cg("thinks a catalyst favors the forward reaction and shifts "
+           "equilibrium toward products"),
+        cg("thinks a catalyst shifts equilibrium toward reactants"),
+        cg("believes a catalyst increases equilibrium yield rather than only "
+           "the rate")],
+    "q_ho_084": [  # temperature raises rate (correct A: fraction exceed Ea)
+        None,
+        cg("thinks temperature lowers the activation energy; only a catalyst "
+           "does that"),
+        cg("attributes the rate increase to a thermodynamic (ΔG) change rather "
+           "than collision energetics"),
+        cg("invokes an irrelevant change in molecular size")],
+    "q_ho_085": [  # what changes k (correct A: temperature)
+        None,
+        cg("thinks reactant concentration changes k; concentration affects "
+           "rate but not the constant"),
+        cg("confuses a volume change (a concentration effect) with a change in "
+           "k"),
+        cg("thinks pressure at constant T changes k rather than just "
+           "concentrations")],
+    "q_ho_086": [  # overall order of k[X]²[Y] (correct C: 3)
+        cg("counts only one reactant instead of summing the exponents"),
+        cg("reports the order in X alone (2) rather than the overall order"),
+        None,
+        cg("treats the reaction as zero order despite nonzero exponents")],
+    "q_ho_087": [  # first order, triple [A] (correct A: triple)
+        None,
+        cg("applies a factor of 2 regardless of the actual change in "
+           "concentration"),
+        cg("treats the reaction as second order (3² = 9) rather than first "
+           "order"),
+        cg("thinks concentration does not affect the rate of a first-order "
+           "reaction")],
+    "q_ho_088": [  # zero order, double [A] (correct A: no effect)
+        None,
+        cg("treats the reaction as first order (rate doubles) rather than zero "
+           "order"),
+        cg("treats the reaction as second order (rate quadruples)"),
+        trap("inverse")],
+    "q_ho_089": [  # activation energy definition (correct A)
+        None,
+        cg("confuses the kinetic energy barrier with the thermodynamic "
+           "free-energy change (ΔG)"),
+        cg("names bond dissociation enthalpy, a specific bond quantity, not "
+           "the reaction's energy barrier"),
+        cg("names the enthalpy change of reaction (ΔH) rather than the barrier "
+           "to reacting")],
+    "q_ho_090": [  # exponent m in rate law (correct A: order wrt A)
+        None,
+        cg("assumes the exponent equals the stoichiometric coefficient, which "
+           "holds only for elementary steps"),
+        cg("confuses the order exponent with the rate constant"),
+        cg("confuses the exponent with an equilibrium concentration")],
 }
 
 
@@ -2035,6 +2502,929 @@ def _attach_choice_diagnosis(item: dict) -> None:
     item["choice_diagnosis"] = cd
 
 
+# ---------------------------------------------------------------------------
+# Correct-answer explanations (static, NO-AI). Every question carries a concise
+# rationale for WHY the correct answer is correct, grounded in that item's named
+# source (OpenStax for science; the original CC0 passage for CARS). Shown to the
+# student AFTER they answer, and reused as the app's AI-off fallback / baseline
+# for the AI "explain your miss" feature (which only READs this field). Keep it
+# source-grounded prose, authoritative (no hedging), 1–4 sentences, self-
+# contained, and factually consistent with the stored correct answer. Keyed by
+# stable question id; every id in the emitted bank MUST have a non-empty entry.
+# ---------------------------------------------------------------------------
+EXPLANATIONS: dict[str, str] = {
+    # --- DEV: biochemistry / biology --------------------------------------
+    "q_dev_001": (
+        "In the citric acid cycle the conversion of succinyl-CoA to succinate "
+        "is the cycle's only substrate-level phosphorylation: energy from "
+        "cleaving the high-energy thioester bond drives direct synthesis of one "
+        "GTP (or ATP). The other listed steps are redox or hydration reactions "
+        "that reduce NAD⁺/FAD rather than making a nucleoside triphosphate."
+    ),
+    "q_dev_002": (
+        "A high ADP level signals that the cell's energy charge is low, so ADP "
+        "acts as an allosteric activator of key respiratory enzymes (such as "
+        "isocitrate dehydrogenase), increasing their activity to accelerate ATP "
+        "production. Abundant ATP would have the opposite, inhibitory effect."
+    ),
+    "q_dev_003": (
+        "Whether a reaction is endergonic (+ΔG) or exergonic (−ΔG) describes its "
+        "thermodynamics — energy absorbed or released — not its speed. Reaction "
+        "rate is set by the activation-energy barrier, so an exergonic reaction "
+        "can be slow and an endergonic one need not be; that makes the "
+        "speed-based statement the false comparison. The other statements "
+        "correctly describe ΔG signs, energy flow, and the shared activation "
+        "barrier."
+    ),
+    "q_dev_004": (
+        "Activation energy governs kinetics, not thermodynamics, so it cannot be "
+        "read from ΔG or spontaneity. Because a lower activation energy lets more "
+        "collisions succeed per unit time, comparing the two reactions' rates is "
+        "the best available proxy for their relative activation energies."
+    ),
+    "q_dev_005": (
+        "An allosteric inhibitor binds a site other than the active site and "
+        "induces a conformational change that reshapes the active site, lowering "
+        "its affinity for substrate. This distinguishes it from a competitive "
+        "inhibitor, which binds the active site directly."
+    ),
+    "q_dev_006": (
+        "Ammonia ionizes as NH₃ + H₂O ⇌ NH₄⁺ + OH⁻. Adding HCl supplies H⁺ that "
+        "neutralizes OH⁻ (and protonates NH₃), pulling the equilibrium toward "
+        "NH₄⁺ by Le Châtelier's principle and increasing the percent converted. "
+        "Adding NaOH, NH₄Cl, or more NH₃ would instead suppress conversion."
+    ),
+    "q_dev_007": (
+        "The weaker the acid, the stronger its conjugate base. HCN (Ka ≈ 6×10⁻¹⁰) "
+        "is a much weaker acid than HF (Ka ≈ 7×10⁻⁴), so its conjugate base CN⁻ "
+        "is the stronger base of the two."
+    ),
+    "q_dev_008": (
+        "By definition, oxidation occurs at the anode, and the electrons it "
+        "releases travel through the external wire to the cathode, where "
+        "reduction occurs (mnemonic: 'an ox' oxidation at the anode, 'red cat' "
+        "reduction at the cathode)."
+    ),
+    "q_dev_009": (
+        "Because ΔG° = −nFE°cell, a positive E°cell makes ΔG° negative, so the "
+        "reaction as written is spontaneous under standard conditions. This is "
+        "why a galvanic cell delivers electrical work without an external power "
+        "source."
+    ),
+    "q_dev_010": (
+        "As the cell operates, one half-cell tends to build up positive charge "
+        "and the other negative; the salt bridge lets ions migrate between them "
+        "to keep each half-cell electrically neutral so current can continue. It "
+        "does not carry electrons or catalyze the electrode reactions."
+    ),
+    "q_dev_011": (
+        "A buffer resists pH change because it contains appreciable amounts of "
+        "both a weak acid and its conjugate base: the conjugate base neutralizes "
+        "added acid and the weak acid neutralizes added base. A strong acid/base "
+        "pair would simply react to completion and provide no buffering."
+    ),
+    "q_dev_012": (
+        "From ΔG = ΔH − TΔS, ΔG is negative at every temperature only when ΔH is "
+        "negative and ΔS is positive, because then both terms drive ΔG negative "
+        "regardless of T. Any other sign combination makes spontaneity "
+        "temperature-dependent or impossible."
+    ),
+    "q_dev_013": (
+        "The Gibbs free-energy change at constant temperature is defined as "
+        "ΔG = ΔH − TΔS, combining the enthalpy change with the "
+        "temperature-weighted entropy change."
+    ),
+    "q_dev_014": (
+        "A spontaneous process proceeds on its own once initiated, without a "
+        "continuous external supply of energy. Spontaneity says nothing about "
+        "speed and does not require heat release or a catalyst."
+    ),
+    "q_dev_015": (
+        "Raising the temperature broadens the molecular energy distribution so a "
+        "larger fraction of collisions meet or exceed the activation energy, "
+        "increasing the reaction rate. Temperature does not lower Ea or change ΔG."
+    ),
+    "q_dev_016": (
+        "A catalyst speeds a reaction by providing an alternative pathway with a "
+        "lower activation energy, so more collisions succeed. It does not shift "
+        "the equilibrium position or change ΔG — it only helps the system reach "
+        "equilibrium faster."
+    ),
+    "q_dev_017": (
+        "The rate constant k is independent of reactant concentrations; it "
+        "depends on temperature (via the Arrhenius equation) and on whether a "
+        "catalyst is present. Concentrations affect the rate through the rate "
+        "law, not through k itself."
+    ),
+    "q_dev_018": (
+        "By the equation of continuity (A·v = constant) for an incompressible "
+        "fluid, when the cross-sectional area decreases the speed must increase "
+        "to keep the volume flow rate constant."
+    ),
+    "q_dev_019": (
+        "A constant volume flow rate (Q = A·v) in a pipe of varying width follows "
+        "directly from conservation of mass for an incompressible fluid — the "
+        "equation of continuity. Bernoulli's principle instead relates speed to "
+        "pressure."
+    ),
+    "q_dev_020": (
+        "Glycolysis invests 2 ATP in its early phase and generates 4 ATP by "
+        "substrate-level phosphorylation, for a net gain of 2 ATP per glucose."
+    ),
+    "q_dev_021": (
+        "Glycolysis occurs in the cytosol (cytoplasm) and requires no membranes "
+        "or organelles, unlike the citric acid cycle (mitochondrial matrix) and "
+        "oxidative phosphorylation."
+    ),
+    "q_dev_022": (
+        "Besides a net 2 ATP, glycolysis reduces NAD⁺ to NADH (2 per glucose) at "
+        "the glyceraldehyde-3-phosphate dehydrogenase step. NADPH and FADH₂ are "
+        "not products of glycolysis."
+    ),
+    "q_dev_023": (
+        "Each turn of the citric acid cycle begins when acetyl-CoA combines with "
+        "oxaloacetate to form citrate and ends by regenerating oxaloacetate, "
+        "which is then free to accept another acetyl group."
+    ),
+    "q_dev_024": (
+        "Vmax is the maximum rate reached when the substrate concentration is "
+        "high enough to saturate all enzyme active sites, so adding still more "
+        "substrate cannot increase the rate further."
+    ),
+    "q_dev_025": (
+        "The plasma membrane's basic structural framework is the phospholipid "
+        "bilayer, within which proteins, cholesterol, and carbohydrates are "
+        "embedded (the fluid-mosaic model). Peptidoglycan and cellulose are "
+        "cell-wall materials, not the animal-cell membrane framework."
+    ),
+    "q_dev_026": (
+        "A membrane phospholipid is amphipathic: its phosphate-containing head is "
+        "hydrophilic (polar) and its fatty-acid tails are hydrophobic (nonpolar). "
+        "This dual character drives spontaneous bilayer formation in water."
+    ),
+    "q_dev_027": (
+        "Replication is semiconservative because each daughter double helix keeps "
+        "one original (parental) template strand paired with one newly "
+        "synthesized strand, as shown by Meselson and Stahl."
+    ),
+    "q_dev_028": (
+        "DNA polymerase adds nucleotides only to the 3′ end of a growing strand, "
+        "synthesizing in the 5′→3′ direction. Helicase unwinds the helix, primase "
+        "lays RNA primers, and ligase seals nicks."
+    ),
+    "q_dev_029": (
+        "DNA ligase forms the phosphodiester bonds that join adjacent Okazaki "
+        "fragments on the lagging strand into a continuous strand. Polymerase "
+        "extends strands, primase makes primers, and helicase unwinds the helix."
+    ),
+    "q_dev_030": (
+        "A monohybrid cross of two heterozygotes (Aa × Aa) gives a 3:1 phenotypic "
+        "ratio (3 dominant : 1 recessive), because only the homozygous-recessive "
+        "quarter shows the recessive phenotype. The 1:2:1 ratio is genotypic and "
+        "9:3:3:1 is a dihybrid ratio."
+    ),
+    "q_dev_031": (
+        "An organism's genotype is its genetic (allelic) makeup, whereas its "
+        "phenotype is its observable characteristics arising from that genotype "
+        "interacting with the environment."
+    ),
+    "q_dev_032": (
+        "Memory involves three basic processes: encoding (getting information "
+        "in), storage (retaining it over time), and retrieval (accessing it when "
+        "needed)."
+    ),
+    "q_dev_033": (
+        "Classic work by George Miller estimated the capacity of short-term "
+        "(working) memory at about seven, plus or minus two, items — 'the "
+        "magical number seven.'"
+    ),
+    "q_dev_034": (
+        "Keeping information active in short-term memory by repeating it is "
+        "(maintenance) rehearsal. Chunking instead groups items into larger "
+        "units, and encoding is the initial entry of information."
+    ),
+    "q_dev_035": (
+        "In Pavlov's paradigm the food automatically triggers salivation without "
+        "prior learning, so it is the unconditioned stimulus; the salivation it "
+        "elicits is the unconditioned response."
+    ),
+    "q_dev_036": (
+        "By definition a reinforcer increases the likelihood of the behavior it "
+        "follows — whether by adding a pleasant stimulus (positive) or removing "
+        "an aversive one (negative). Punishment, by contrast, decreases behavior."
+    ),
+    "q_dev_037": (
+        "Extinction occurs when the conditioned stimulus is presented repeatedly "
+        "without the unconditioned stimulus, so the conditioned response "
+        "gradually weakens and disappears."
+    ),
+    "q_dev_038": (
+        "The fundamental attribution error is the tendency to over-attribute "
+        "others' behavior to internal dispositions while underweighting "
+        "situational causes. The self-serving bias instead concerns how we "
+        "explain our own outcomes."
+    ),
+    "q_dev_039": (
+        "Conformity is adjusting one's behavior or thinking to match a group "
+        "standard. Obedience differs in that it involves following the orders of "
+        "an authority."
+    ),
+    "q_dev_040": (
+        "Health disparities are preventable differences in health outcomes linked "
+        "to social, economic, or environmental disadvantage across groups — not "
+        "random or purely genetic differences."
+    ),
+    "q_dev_041": (
+        "Social determinants of health are the conditions in which people live "
+        "and work — such as access to education, income, and safe housing — that "
+        "shape health. Blood type, mutations, and eye color are biological, not "
+        "social, factors."
+    ),
+    "q_dev_042": (
+        "Pascal's principle states that a pressure change applied to an enclosed, "
+        "incompressible fluid is transmitted undiminished to every portion of the "
+        "fluid and the walls of its container — the basis of hydraulic systems."
+    ),
+    "q_dev_043": (
+        "Cognitive dissonance is the psychological discomfort that arises when a "
+        "person holds two conflicting cognitions or acts in a way that clashes "
+        "with an attitude, motivating them to reduce the inconsistency."
+    ),
+    "q_dev_044": (
+        "In codominance the heterozygote expresses both alleles fully and "
+        "simultaneously (e.g., type AB blood), rather than showing a blended "
+        "intermediate (incomplete dominance) or only the dominant allele."
+    ),
+    # --- DEV: CARS (original CC0 passages) ---------------------------------
+    "q_dev_045": (
+        "The passage explicitly redefines objectivity as 'not the absence of "
+        "perspective but the disciplined awareness of it,' concluding that a "
+        "historian who acknowledges and tests her assumptions comes closer to "
+        "truth. That is the central claim; the author expressly denies that "
+        "history is 'mere fiction.'"
+    ),
+    "q_dev_046": (
+        "The passage states outright that freedom 'is not simply the quantity of "
+        "available options but the capacity to choose well among them,' directly "
+        "supporting the 'choose well' reading over the mere-number or "
+        "no-constraints interpretations."
+    ),
+    "q_dev_047": (
+        "The closing sentence says a historian who acknowledges and tests her "
+        "assumptions 'comes closer to truth than one who pretends to have none,' "
+        "so the author treats pretending to have no assumptions as an obstacle to "
+        "truth, not a mark of objectivity."
+    ),
+    "q_dev_048": (
+        "'Expand liberty in name while eroding it in practice' contrasts freedom "
+        "as merely labeled with freedom as actually experienced, so the author "
+        "means nominal freedom can increase even as real freedom declines."
+    ),
+    "q_dev_049": (
+        "The passage's thesis is that too many options can paralyze, reduce "
+        "enjoyment, and prompt second-guessing. The overwhelmed diner who takes "
+        "long to order and later regrets the choice mirrors this 'paradox of "
+        "choice' exactly; the other scenarios involve few or no options."
+    ),
+    "q_dev_050": (
+        "The passage praises the historian who tests her assumptions 'against "
+        "evidence that might overturn them,' so actively seeking disconfirming "
+        "evidence best applies its logic. Ignoring conflicting sources or "
+        "following popularity would do the opposite."
+    ),
+    # --- HELD_OUT: chemistry / physics / biology ---------------------------
+    "q_ho_001": (
+        "The reducing agent is the species that is oxidized (loses electrons) and "
+        "thereby reduces the other. Zn(s) → Zn²⁺ loses electrons, reducing Cu²⁺ "
+        "to Cu, so Zn is the reducing agent."
+    ),
+    "q_ho_002": (
+        "By the Nernst equation, Ecell = E°cell − (RT/nF)·lnQ. Raising the "
+        "concentration of product ions increases the reaction quotient Q, which "
+        "lowers Ecell. E° itself is a constant and does not change."
+    ),
+    "q_ho_003": (
+        "In electrolysis an external power source supplies electrical energy to "
+        "drive a nonspontaneous (ΔG > 0, E°cell < 0) redox reaction — the reverse "
+        "of a galvanic cell, which produces electricity from a spontaneous "
+        "reaction."
+    ),
+    "q_ho_004": (
+        "By definition, reduction (gain of electrons) always occurs at the "
+        "cathode in any electrochemical cell, galvanic or electrolytic; oxidation "
+        "occurs at the anode."
+    ),
+    "q_ho_005": (
+        "HCl is a strong acid that ionizes completely, so [H⁺] = 0.010 M = 10⁻² M "
+        "and pH = −log(10⁻²) = 2.0."
+    ),
+    "q_ho_006": (
+        "A conjugate acid–base pair differs by exactly one H⁺. H₂CO₃ and HCO₃⁻ "
+        "differ by a single proton, so they are a conjugate pair; the other "
+        "options are not related by transfer of one proton."
+    ),
+    "q_ho_007": (
+        "In neutral water [H⁺] = [OH⁻], and since Kw = [H⁺][OH⁻] = 1.0×10⁻¹⁴, "
+        "each equals the square root, 1.0×10⁻⁷ M."
+    ),
+    "q_ho_008": (
+        "Each pH unit is a tenfold change in [H⁺]. A difference of two pH units "
+        "(6 − 4) corresponds to 10² = 100 times greater [H⁺], so pH 4 is 100× "
+        "more acidic than pH 6."
+    ),
+    "q_ho_009": (
+        "With ΔG = ΔH − TΔS, a positive ΔH and positive ΔS give a negative ΔG "
+        "only when T is large enough that the TΔS term outweighs ΔH — so the "
+        "reaction becomes spontaneous at high temperature."
+    ),
+    "q_ho_010": (
+        "A negative ΔG indicates a thermodynamically favorable (spontaneous) "
+        "reaction. It says nothing about rate, and the reaction can be "
+        "spontaneous whether it is exothermic or endothermic."
+    ),
+    "q_ho_011": (
+        "At equilibrium the forward and reverse processes are balanced and there "
+        "is no net driving force, so ΔG = 0. (This is distinct from ΔG°, which is "
+        "generally nonzero.)"
+    ),
+    "q_ho_012": (
+        "Entropy (S) measures the dispersal of energy and matter — the number of "
+        "accessible microstates, often described as disorder. It is not the "
+        "system's total energy or its rate."
+    ),
+    "q_ho_013": (
+        "The overall reaction order is the sum of the exponents in the rate law: "
+        "1 (for A) + 2 (for B) = 3."
+    ),
+    "q_ho_014": (
+        "For a reaction first order in A, rate ∝ [A]¹, so doubling [A] doubles the "
+        "rate (a factor of 2)."
+    ),
+    "q_ho_015": (
+        "A zero-order reaction has rate = k[A]⁰ = k, so the rate is constant and "
+        "independent of reactant concentration."
+    ),
+    "q_ho_016": (
+        "The activation energy is the minimum energy colliding reactants must "
+        "have to reach the transition state and form products. It is not the "
+        "reactant–product energy difference (that is ΔH/ΔG) and is not lowered "
+        "simply by heating."
+    ),
+    "q_ho_017": (
+        "Bernoulli's equation for an ideal fluid at constant height requires that "
+        "where the fluid's speed is higher, its pressure is lower, since the "
+        "kinetic and pressure terms trade off to keep the total constant."
+    ),
+    "q_ho_018": (
+        "An object floats in equilibrium when the upward buoyant force equals its "
+        "own weight; by Archimedes' principle that buoyant force equals the "
+        "weight of the displaced fluid, not the entire fluid."
+    ),
+    "q_ho_019": (
+        "Glycolysis converts one glucose to two molecules of pyruvate; under "
+        "aerobic conditions the pyruvate enters the mitochondrion (where it is "
+        "converted to acetyl-CoA). Lactate and ethanol form only under anaerobic "
+        "fermentation."
+    ),
+    "q_ho_020": (
+        "Phosphofructokinase-1 catalyzes the committed, rate-limiting step of "
+        "glycolysis (fructose-6-phosphate → fructose-1,6-bisphosphate) and is the "
+        "pathway's key regulatory control point."
+    ),
+    "q_ho_021": (
+        "The early 'energy investment' phase of glycolysis uses 2 ATP (at the "
+        "hexokinase and PFK-1 steps) to phosphorylate the sugar before the "
+        "energy-payoff phase generates ATP."
+    ),
+    "q_ho_022": (
+        "In human muscle under anaerobic conditions, lactate fermentation reduces "
+        "pyruvate to lactate, regenerating the NAD⁺ needed to keep glycolysis "
+        "running. Ethanol fermentation occurs in yeast, not humans."
+    ),
+    "q_ho_023": (
+        "Each turn of the citric acid cycle releases 2 CO₂ molecules, at the "
+        "isocitrate dehydrogenase and α-ketoglutarate dehydrogenase steps."
+    ),
+    "q_ho_024": (
+        "Most of the energy harvested by the citric acid cycle is stored in the "
+        "reduced electron carriers NADH and FADH₂ (which later drive the electron "
+        "transport chain); only a small amount is captured directly as GTP/ATP."
+    ),
+    "q_ho_025": (
+        "Per acetyl-CoA, one turn of the citric acid cycle produces 3 NADH (plus "
+        "1 FADH₂ and 1 GTP/ATP)."
+    ),
+    "q_ho_026": (
+        "The active site is the region of an enzyme where substrate binds and "
+        "catalysis occurs; the allosteric site is a separate regulatory site "
+        "elsewhere on the enzyme."
+    ),
+    "q_ho_027": (
+        "In the induced-fit model, substrate binding causes the enzyme's active "
+        "site to change shape to fit the substrate more snugly, enhancing "
+        "catalysis. The enzyme is not consumed and the substrate is chemically "
+        "transformed."
+    ),
+    "q_ho_028": (
+        "Heating well above an enzyme's optimum disrupts the noncovalent "
+        "interactions that maintain its three-dimensional shape (denaturation), "
+        "distorting the active site and decreasing activity."
+    ),
+    "q_ho_029": (
+        "Simple diffusion moves a small nonpolar molecule such as O₂ directly "
+        "through the bilayer down its concentration gradient, requiring neither "
+        "ATP nor a transport protein."
+    ),
+    "q_ho_030": (
+        "Active transport moves solutes against their concentration gradient and "
+        "therefore requires an energy input (e.g., ATP). Diffusion and osmosis "
+        "are passive and move substances down their gradients."
+    ),
+    "q_ho_031": (
+        "In animal cell membranes cholesterol acts as a fluidity buffer: it "
+        "restrains movement at high temperatures and prevents tight packing at "
+        "low temperatures, keeping the membrane appropriately fluid."
+    ),
+    "q_ho_032": (
+        "Osmosis is specifically the diffusion of water across a selectively "
+        "permeable membrane, moving from higher water (lower solute) toward lower "
+        "water (higher solute) concentration."
+    ),
+    "q_ho_033": (
+        "By complementary base pairing, adenine pairs with thymine (two hydrogen "
+        "bonds) and guanine pairs with cytosine (three hydrogen bonds)."
+    ),
+    "q_ho_034": (
+        "Helicase unwinds and separates the two strands of the double helix at "
+        "the replication fork; ligase, polymerase, and primase act on the exposed "
+        "strands afterward."
+    ),
+    "q_ho_035": (
+        "Because DNA polymerase synthesizes only 5′→3′, the lagging strand is made "
+        "discontinuously as short Okazaki fragments, whereas the leading strand is "
+        "synthesized continuously."
+    ),
+    "q_ho_036": (
+        "The two strands of a DNA double helix run antiparallel (opposite 5′→3′ "
+        "orientations) and are complementary (A–T, G–C), held together by "
+        "hydrogen bonds between the paired bases."
+    ),
+    "q_ho_037": (
+        "A monohybrid cross Aa × Aa gives the genotypic ratio 1 AA : 2 Aa : 1 aa; "
+        "the 3:1 ratio is the phenotypic (not genotypic) outcome."
+    ),
+    "q_ho_038": (
+        "Mendel's law of segregation states that the two alleles of a gene "
+        "separate during gamete formation so each gamete carries only one. "
+        "Independent assortment is the separate law dealing with different genes."
+    ),
+    "q_ho_039": (
+        "A testcross pairs an individual of unknown genotype with a "
+        "homozygous-recessive individual, because the recessive parent contributes "
+        "only recessive alleles and lets the unknown's alleles show up directly in "
+        "the offspring phenotypes."
+    ),
+    "q_ho_040": (
+        "Genes far apart on the same chromosome are frequently separated by "
+        "crossing over during meiosis, so they recombine often and assort nearly "
+        "independently, behaving almost as if on different chromosomes."
+    ),
+    "q_ho_041": (
+        "Long-term memory is the relatively permanent store with essentially "
+        "unlimited capacity, in contrast to the brief, limited sensory and "
+        "short-term stores."
+    ),
+    "q_ho_042": (
+        "Retrieval improves when the recall context matches the encoding context "
+        "— context-dependent memory, an instance of the encoding-specificity "
+        "principle."
+    ),
+    "q_ho_043": (
+        "The serial position effect is the tendency to remember items at the "
+        "beginning (primacy) and end (recency) of a list better than those in the "
+        "middle."
+    ),
+    "q_ho_044": (
+        "Explicit (declarative) memory covers facts and events that can be "
+        "consciously and intentionally recalled. Skills like riding a bicycle are "
+        "implicit (procedural) memory."
+    ),
+    "q_ho_045": (
+        "A previously neutral stimulus that, after repeated pairing with the "
+        "unconditioned stimulus, comes to elicit a response is the conditioned "
+        "stimulus."
+    ),
+    "q_ho_046": (
+        "Negative reinforcement increases a behavior by removing an aversive "
+        "stimulus (e.g., a seatbelt alarm stops when you buckle up). 'Negative' "
+        "refers to removal, not to decreasing behavior — that would be punishment."
+    ),
+    "q_ho_047": (
+        "A variable-ratio schedule delivers reinforcement after an unpredictable "
+        "(varying) number of responses and produces high, steady response rates "
+        "that resist extinction — as seen in gambling."
+    ),
+    "q_ho_048": (
+        "Milgram's shock experiments demonstrated obedience — willingness to "
+        "follow the commands of an authority figure even against one's conscience. "
+        "Conformity involves matching peers, not following an authority's orders."
+    ),
+    "q_ho_049": (
+        "The bystander effect describes how the presence of other people "
+        "decreases the likelihood that any single individual will help, largely "
+        "through diffusion of responsibility."
+    ),
+    "q_ho_050": (
+        "An attitude is an evaluation — favorable or unfavorable — of a person, "
+        "object, or idea. It is a learned evaluative stance, not a genetic trait, "
+        "a reflex, or a type of memory."
+    ),
+    "q_ho_051": (
+        "Socioeconomic status is conventionally measured by a combination of "
+        "income, education, and occupation — not by biological features such as "
+        "blood type or height."
+    ),
+    "q_ho_052": (
+        "A social gradient in health means health outcomes improve stepwise at "
+        "each higher rung of the socioeconomic ladder — affecting the whole "
+        "population, not only the very poorest, and not explained away as random "
+        "or purely genetic."
+    ),
+    # --- HELD_OUT: CARS (original CC0 passages) ----------------------------
+    "q_ho_053": (
+        "In context the passage uses 'vantage point' figuratively to mean the "
+        "historian's particular perspective or standpoint (her 'own moment'), not "
+        "a literal physical location or a historical period."
+    ),
+    "q_ho_054": (
+        "The author grants that we assume more options make us freer but argues "
+        "they can paralyze and erode real freedom — an attitude of cautious "
+        "skepticism, not enthusiasm, total rejection, or indifference."
+    ),
+    "q_ho_055": (
+        "Having argued that all history reflects perspective, the author "
+        "immediately heads off the obvious misreading — that history is therefore "
+        "just fiction — by denying it, so the sentence anticipates and rebuts a "
+        "likely objection."
+    ),
+    "q_ho_056": (
+        "The passage opens with the common assumption that more options mean more "
+        "freedom, then qualifies it by redefining freedom as the capacity to "
+        "choose well — so its structure is to qualify an assumption through "
+        "redefinition."
+    ),
+    "q_ho_057": (
+        "The author's claim is that excessive options paralyze and reduce "
+        "satisfaction. Evidence that people given many options consistently decide "
+        "easily and report greater satisfaction directly contradicts that causal "
+        "claim, weakening it most."
+    ),
+    "q_ho_058": (
+        "The passage's logic is that disciplined awareness of one's perspective, "
+        "tested against evidence, yields objectivity. A journalist who "
+        "acknowledges her biases and checks them against evidence is the closest "
+        "parallel; an error-free calculator has no perspective to examine."
+    ),
+    "q_ho_059": (
+        "The pascal is defined as one newton per square meter (N/m²), i.e., force "
+        "per unit area. kg·m/s² is the newton (a force) and N·m is the joule "
+        "(energy)."
+    ),
+    "q_ho_060": (
+        "The shopper facing dozens of nearly identical products concretely "
+        "illustrates the passage's thesis that an excess of options can raise "
+        "effort and reduce satisfaction — it is not a claim that all shopping is "
+        "harmful or a description of the author's own habits."
+    ),
+    # --- SYNTHESIS / application (q_syn_*, stable ids) ---------------------
+    "q_syn_001": (
+        "Adding X leaves Vmax unchanged (both curves approach ~100 µmol/min) but "
+        "raises the apparent Km (from ~2 mM to ~6 mM). A higher Km with an "
+        "unchanged Vmax is the signature of competitive inhibition, which can be "
+        "overcome by high substrate."
+    ),
+    "q_syn_002": (
+        "Because X is competitive, high substrate concentrations outcompete the "
+        "inhibitor for the active site, so at saturating [S] the velocity "
+        "approaches the same Vmax as the uninhibited enzyme — consistent with the "
+        "data, where both curves converge near 100 µmol/min."
+    ),
+    "q_syn_003": (
+        "To attribute any velocity difference to inhibitor X, every quantity other "
+        "than the independent variable ([S]) and the treatment (X) must be held "
+        "constant. The total amount of enzyme is the critical control — differing "
+        "enzyme amounts would change velocity independently of X."
+    ),
+    "q_syn_004": (
+        "Enzymes and their inhibitors affect only the rate (kinetics) of a "
+        "reaction, not its thermodynamics. X changes the apparent Km but leaves ΔG "
+        "and Keq unchanged, since those depend only on the free-energy difference "
+        "between reactants and products."
+    ),
+    "q_syn_005": (
+        "The half-cell with the higher (more positive) reduction potential is "
+        "reduced and serves as the cathode, so Cu²⁺/Cu (+0.34 V) is the cathode. "
+        "E°cell = E°cathode − E°anode = 0.34 − (−0.76) = +1.10 V."
+    ),
+    "q_syn_006": (
+        "Using ΔG° = −nFE°cell with n = 2, F ≈ 96,500 C/mol, and E°cell = +1.10 V: "
+        "ΔG° = −(2)(96,500)(1.10) ≈ −2.12×10⁵ J ≈ −212 kJ. The negative value "
+        "means the reaction is spontaneous."
+    ),
+    "q_syn_007": (
+        "By the Nernst equation, raising the product-ion concentration (Zn²⁺) "
+        "increases Q and therefore lowers the actual cell potential Ecell. E°cell "
+        "is a standard constant and does not change."
+    ),
+    "q_syn_008": (
+        "As a galvanic cell discharges toward equilibrium its driving force fades: "
+        "Ecell decreases toward 0 (a 'dead battery') and ΔG rises toward 0. At "
+        "equilibrium there is no further net reaction."
+    ),
+    "q_syn_009": (
+        "By the Henderson–Hasselbalch equation, pH = pKa + log([A⁻]/[HA]). With "
+        "equal concentrations of acetate and acetic acid the log term is 0, so "
+        "pH = pKa = 4.74."
+    ),
+    "q_syn_010": (
+        "A buffer resists but does not eliminate pH change. The added H⁺ is "
+        "consumed by acetate (A⁻ + H⁺ → HA), so the pH drops only slightly rather "
+        "than sharply as it would in unbuffered water."
+    ),
+    "q_syn_011": (
+        "By Henderson–Hasselbalch, pH = pKa + log([A⁻]/[HA]); one unit above the "
+        "pKa requires log([A⁻]/[HA]) = 1, i.e., a [CH₃COO⁻]:[CH₃COOH] ratio of "
+        "10:1."
+    ),
+    "q_syn_012": (
+        "Adding the common ion acetate shifts the equilibrium CH₃COOH ⇌ CH₃COO⁻ + "
+        "H⁺ to the left (Le Châtelier / common-ion effect), decreasing acetic "
+        "acid's percent dissociation and lowering [H⁺], so the pH rises."
+    ),
+    "q_syn_013": (
+        "Because the genes assort independently, use the product rule: P(yy) = 1/4 "
+        "and P(rr) = 1/4, so P(yyrr) = 1/4 × 1/4 = 1/16."
+    ),
+    "q_syn_014": (
+        "Independent assortment gives P(yellow, Y_) = 3/4 and P(wrinkled, rr) = "
+        "1/4, so P(yellow and wrinkled) = 3/4 × 1/4 = 3/16."
+    ),
+    "q_syn_015": (
+        "Offspring were ½ yellow : ½ green, so the yellow parent is Yy (Yy × yy → "
+        "1:1). All offspring were round despite the rr tester, so the parent "
+        "contributes only R and must be homozygous RR. The genotype is therefore "
+        "YyRR."
+    ),
+    "q_syn_016": (
+        "Counting only substrate-level phosphorylation: glycolysis nets 2 ATP, "
+        "pyruvate→acetyl-CoA yields none, and the citric acid cycle makes 1 "
+        "GTP/ATP per acetyl-CoA × 2 = 2, for a total of 4. The 30–36 figures "
+        "include oxidative phosphorylation, which is excluded here."
+    ),
+    "q_syn_017": (
+        "The cell interior (300 mOsm) is hypertonic to the 100 mOsm surroundings, "
+        "so water moves osmotically into the cell, causing it to swell and "
+        "potentially lyse. The membrane is not freely permeable to the solutes, so "
+        "they do not simply diffuse out."
+    ),
+    "q_syn_018": (
+        "Pairing antiparallel and complementary (A–T, G–C), the complement of "
+        "3′-ATGCCT-5′ read in the conventional 5′→3′ direction is 5′-TCCGTA-3′. "
+        "DNA uses thymine, not uracil, ruling out the U-containing option."
+    ),
+    "q_syn_019": (
+        "Spontaneity requires ΔG = ΔH − TΔS < 0, i.e., T > ΔH/ΔS. With ΔH = 50,000 "
+        "J/mol and ΔS = 150 J/(mol·K), T > 50,000/150 ≈ 333 K."
+    ),
+    "q_syn_020": (
+        "Comparing Exp 1→2, doubling [A] doubles the rate → first order in A. "
+        "Comparing Exp 1→3, doubling [B] quadruples the rate → second order in B. "
+        "So rate = k[A][B]²."
+    ),
+    "q_syn_021": (
+        "ΔG governs thermodynamic favorability, not speed. A very negative ΔG with "
+        "a high activation energy means the reaction is spontaneous yet "
+        "kinetically slow; a catalyst would speed it by lowering Ea, not by "
+        "changing ΔG."
+    ),
+    "q_syn_022": (
+        "By continuity, halving the area doubles the speed (A₁v₁ = A₂v₂). By "
+        "Bernoulli's equation at constant height, the faster-moving fluid in the "
+        "narrow section has lower pressure."
+    ),
+    "q_syn_023": (
+        "By continuity A₁v₁ = A₂v₂: v₂ = (6.0 cm² × 2.0 m/s)/2.0 cm² = 6.0 m/s."
+    ),
+    "q_syn_024": (
+        "At equal concentration the strong acid HCl ionizes completely to give the "
+        "full [H⁺], whereas weak acetic acid only partially ionizes. HCl therefore "
+        "has the higher [H⁺] and the lower pH."
+    ),
+    "q_syn_025": (
+        "Reinforcement after an unpredictable number of responses is a "
+        "variable-ratio schedule, which produces high, steady response rates that "
+        "resist extinction — exactly the gambling pattern described."
+    ),
+    "q_syn_026": (
+        "The behavior (taking aspirin) increases because it removes an aversive "
+        "stimulus (the headache). Removing something unpleasant to strengthen a "
+        "behavior is negative reinforcement, not positive reinforcement or "
+        "punishment."
+    ),
+    "q_syn_027": (
+        "Judging the classmate's stumble as 'clumsy' (a dispositional cause) is "
+        "the fundamental attribution error. Blaming the floor for one's own "
+        "stumble while attributing others' to disposition is the actor–observer "
+        "bias."
+    ),
+    "q_syn_028": (
+        "The smoker holds conflicting cognitions (valuing health yet smoking) and "
+        "eases the discomfort by changing a belief ('the risks are exaggerated'). "
+        "Resolving that tension by altering a cognition is reduction of cognitive "
+        "dissonance."
+    ),
+    "q_syn_029": (
+        "Recall is best when the test environment matches the study environment "
+        "and reverses when it does not — the encoding-specificity / "
+        "context-dependent memory effect, not interference or chunking."
+    ),
+    "q_syn_030": (
+        "Mortality falls at each step up the income quintiles, not just for the "
+        "poorest — the hallmark of a social gradient in health. It implies SES is "
+        "systematically related to health across the whole distribution, not "
+        "randomly or only at a threshold."
+    ),
+
+    # --- §7d paraphrase-gap probes (q_ho_061..090) -------------------------
+    "q_ho_061": (
+        "A Brønsted–Lowry acid donates a proton (H⁺). In NH₃ + H₂O ⇌ NH₄⁺ + "
+        "OH⁻, water gives up an H⁺ to ammonia, so H₂O is the acid (and NH₃, "
+        "which accepts the proton, is the base)."
+    ),
+    "q_ho_062": (
+        "In the Brønsted–Lowry framework a base is a proton (H⁺) acceptor, "
+        "while an acid is a proton donor. This is broader than the Arrhenius "
+        "definition, so a base need not release OH⁻ directly."
+    ),
+    "q_ho_063": (
+        "Acid strength and conjugate-base strength are inversely related: the "
+        "more completely an acid donates its proton, the more stable and less "
+        "basic its conjugate base. HCl ionizes essentially completely, so Cl⁻ "
+        "is an extremely weak, effectively non-basic species."
+    ),
+    "q_ho_064": (
+        "A buffer needs a weak acid together with its conjugate base (or a weak "
+        "base with its conjugate acid). Acetic acid (CH₃COOH) and acetate (from "
+        "CH₃COONa) form exactly such a conjugate pair, so the mixture resists "
+        "pH change when small amounts of acid or base are added."
+    ),
+    "q_ho_065": (
+        "At 25 °C, Kw = 1.0×10⁻¹⁴ and neutrality means [H⁺] = [OH⁻] = "
+        "1.0×10⁻⁷ M. Thus pH = −log(1.0×10⁻⁷) = 7, independent of how much "
+        "water is present."
+    ),
+    "q_ho_066": (
+        "A strong monoprotic acid ionizes completely, so [H⁺] equals its "
+        "concentration, 1.0×10⁻³ M. pH = −log(1.0×10⁻³) = 3."
+    ),
+    "q_ho_067": (
+        "A conjugate base is formed by removing one H⁺. Taking a proton from "
+        "HCO₃⁻ gives CO₃²⁻ (adding a proton would instead give the conjugate "
+        "acid H₂CO₃)."
+    ),
+    "q_ho_068": (
+        "pH = −log[H⁺], so each 10-fold rise in [H⁺] lowers pH by 1 unit. A "
+        "1000-fold (10³) increase lowers the pH by 3 units."
+    ),
+    "q_ho_069": (
+        "By the Henderson–Hasselbalch equation, pH = pKa + log([A⁻]/[HA]). When "
+        "[A⁻] = [HA] the ratio is 1 and log 1 = 0, so pH = pKa."
+    ),
+    "q_ho_070": (
+        "Formate (HCOO⁻) is the conjugate base produced when formic acid "
+        "ionizes (HCOOH ⇌ HCOO⁻ + H⁺). Adding formate — a common ion — shifts "
+        "the equilibrium back toward the un-ionized acid (Le Chatelier), so the "
+        "acid's percent ionization decreases."
+    ),
+    "q_ho_071": (
+        "At equal concentration, a strong acid ionizes essentially completely "
+        "(higher [H⁺], lower pH) while a weak acid ionizes only partially "
+        "(lower [H⁺], higher pH). So the weak-acid solution has the higher pH."
+    ),
+    "q_ho_072": (
+        "Enzymes are catalysts: they provide a pathway with a lower activation "
+        "energy, speeding the reaction without changing ΔG, the equilibrium "
+        "position, or the temperature."
+    ),
+    "q_ho_073": (
+        "By convention, ΔG > 0 marks an endergonic reaction that requires "
+        "(absorbs) energy and is nonspontaneous as written; ΔG < 0 marks an "
+        "exergonic, energy-releasing, spontaneous reaction."
+    ),
+    "q_ho_074": (
+        "A competitive inhibitor resembles the substrate and binds reversibly "
+        "in the active site, directly competing with substrate; allosteric "
+        "inhibitors instead bind elsewhere and change the enzyme's "
+        "conformation."
+    ),
+    "q_ho_075": (
+        "At saturating substrate, essentially every enzyme active site is "
+        "occupied and turning over as fast as it can, so adding more substrate "
+        "cannot increase the rate — the reaction reaches its maximum velocity, "
+        "Vmax."
+    ),
+    "q_ho_076": (
+        "The pocket where substrate binds and is chemically transformed is the "
+        "active site; a mutation there directly affects catalysis. Allosteric "
+        "sites and other structural features lie elsewhere."
+    ),
+    "q_ho_077": (
+        "In the induced-fit model, substrate binding induces a conformational "
+        "change in the enzyme's active site so it wraps more snugly around the "
+        "substrate — unlike the static, pre-formed complementarity of "
+        "lock-and-key."
+    ),
+    "q_ho_078": (
+        "Well above the optimum temperature, the noncovalent interactions "
+        "holding an enzyme's tertiary structure break down; the enzyme "
+        "denatures, its active site is disrupted, and activity falls sharply."
+    ),
+    "q_ho_079": (
+        "Competitive inhibitors bind reversibly in the active site, so they "
+        "compete with substrate. Flooding the system with excess substrate "
+        "outcompetes the inhibitor and restores the reaction rate toward Vmax."
+    ),
+    "q_ho_080": (
+        "An enzyme (and any inhibitor of it) affects only kinetics — how fast "
+        "equilibrium is reached — not the position of equilibrium. Keq and ΔG "
+        "are thermodynamic properties set by the reactants and products, "
+        "unchanged by a catalyst or its inhibitor."
+    ),
+    "q_ho_081": (
+        "Km, the Michaelis constant, is defined as the substrate concentration "
+        "at which the reaction velocity equals one-half of Vmax; it is an "
+        "inverse index of the enzyme's affinity for substrate."
+    ),
+    "q_ho_082": (
+        "Km is the substrate concentration giving half-maximal velocity. A "
+        "higher Km means more substrate is needed to half-saturate the enzyme, "
+        "i.e., the enzyme binds substrate less tightly — lower affinity."
+    ),
+    "q_ho_083": (
+        "A catalyst lowers the activation energy for both the forward and "
+        "reverse steps by the same amount, so it speeds attainment of "
+        "equilibrium without changing the equilibrium position, Keq, or the "
+        "final amounts of product."
+    ),
+    "q_ho_084": (
+        "Temperature raises the average kinetic energy, so a greater fraction "
+        "of colliding molecules meet or exceed the activation-energy threshold. "
+        "The activation energy itself is not lowered by heating (that is a "
+        "catalyst's role)."
+    ),
+    "q_ho_085": (
+        "The rate constant k depends on temperature (and on whether a catalyst "
+        "is present), not on reactant concentrations. Changing concentration, "
+        "volume, or pressure changes the rate but leaves k itself unchanged at "
+        "constant temperature."
+    ),
+    "q_ho_086": (
+        "The overall order is the sum of the exponents in the rate law: 2 (for "
+        "X) + 1 (for Y) = 3."
+    ),
+    "q_ho_087": (
+        "For a reaction first order in A, rate ∝ [A]¹. Tripling [A] multiplies "
+        "the rate by 3¹ = 3."
+    ),
+    "q_ho_088": (
+        "A zero-order reaction has rate = k[A]⁰ = k, independent of [A]. "
+        "Changing the concentration of A therefore has no effect on the rate."
+    ),
+    "q_ho_089": (
+        "Activation energy (Ea) is the minimum energy that colliding molecules "
+        "must have for a reaction to occur; it sets the height of the kinetic "
+        "barrier and is distinct from thermodynamic quantities like ΔG or ΔH."
+    ),
+    "q_ho_090": (
+        "In a rate law, the exponent on each reactant is that reactant's "
+        "reaction order (determined experimentally); m is the order with "
+        "respect to A. It is not necessarily the stoichiometric coefficient."
+    ),
+}
+
+
+def _attach_explanation(item: dict) -> None:
+    """Attach the static correct-answer explanation by id.
+
+    Every emitted question must carry a non-empty ``explanation`` (enforced by
+    scripts/validate_data.py). Fails loudly if an id is missing or blank so a
+    new question can never ship without its rationale.
+    """
+    text = EXPLANATIONS.get(item["id"])
+    assert text and text.strip(), f"{item['id']}: missing/blank explanation"
+    item["explanation"] = text.strip()
+
+
 def main() -> None:
     out = []
     for i, item in enumerate(DEV, 1):
@@ -2047,6 +3437,11 @@ def main() -> None:
         out.append(item)
     # Synthesis items carry their own stable ids (q_syn_*) — never renumbered.
     out.extend(SYNTHESIS)
+
+    # Every question (DEV, HELD_OUT, SYNTHESIS) gets its static correct-answer
+    # explanation. Ids are now final, so attach after id assignment.
+    for item in out:
+        _attach_explanation(item)
 
     # reorder keys for readability
     ordered = []
@@ -2074,6 +3469,8 @@ def main() -> None:
         # choice_diagnosis is optional content-axis authoring (science-only).
         if it.get("choice_diagnosis") is not None:
             entry["choice_diagnosis"] = it["choice_diagnosis"]
+        # Static, NO-AI correct-answer explanation (required on every item).
+        entry["explanation"] = it["explanation"]
         entry.update({
             "source_name": it["source_name"],
             "source_url": it["source_url"],

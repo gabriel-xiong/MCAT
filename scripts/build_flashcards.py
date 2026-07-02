@@ -391,6 +391,98 @@ CARDS: list[tuple[str, str, str, str, str]] = [
     ("Basic", "How does a social gradient in health differ from a simple poverty threshold?",
      "A gradient means health improves at every step up the SES ladder — not only the poorest are worse off. A threshold would mean only those below a cutoff suffer.",
      "ps_demographics", "q_syn_030"),
+
+    # ======================================================================
+    # Component-card GRANULARITY pass — eval trio (cp_acids_bases, bb_enzymes,
+    # cp_kinetics). Each card below is an ATOMIC prerequisite fact for a
+    # specific question, so per-card M and the re-check probe can localize the
+    # exact failed sub-concept. NONE encode an item's integrated MCQ answer —
+    # they teach a foundational fact the question depends on (see
+    # docs/COMPONENT-CARD-GRANULARITY.md). Sources: OpenStax Chemistry 2e
+    # (acid–base, kinetics) and OpenStax Biology 2e (enzymes), consistent with
+    # the questions these support.
+    # ======================================================================
+
+    # ---- bb_enzymes (GRAN) ------------------------------------------------
+    # q_dev_003 depends on: ΔG signs, energy absorbed/released, the shared
+    # activation barrier, and rate ≠ thermodynamics. The first two are new
+    # atomic components (choices B and C).
+    ("Cloze", "An {{c1::endergonic}} reaction absorbs (consumes) energy; an {{c1::exergonic}} reaction releases energy.",
+     "", "bb_enzymes", "q_dev_003"),
+    ("Cloze", "Both endergonic and exergonic reactions must first overcome an {{c1::activation-energy}} barrier before they proceed.",
+     "", "bb_enzymes", "q_dev_003"),
+    # q_dev_004: why rate (not ΔG) is the proxy — Ea is kinetic, not thermodynamic.
+    ("Cloze", "Activation energy is a {{c1::kinetic}} property, so it cannot be inferred from ΔG or spontaneity (which are {{c1::thermodynamic}}).",
+     "", "bb_enzymes", "q_dev_004"),
+    # q_dev_005: general activator-vs-inhibitor direction (teaches the concept,
+    # not just this item's "decreases affinity" answer).
+    ("Cloze", "An allosteric {{c1::activator}} raises, while an allosteric {{c1::inhibitor}} lowers, the active site's affinity for substrate.",
+     "", "bb_enzymes", "q_dev_005"),
+    # q_ho_026: the allosteric site as the named contrast to the active site.
+    ("Cloze", "The {{c1::allosteric}} site is a regulatory binding site separate from the active site.",
+     "", "bb_enzymes", "q_ho_026"),
+    # q_ho_027 distractors: enzyme not consumed; substrate is transformed.
+    ("Cloze", "An enzyme is a catalyst, so it is {{c1::not consumed}} by the reaction it speeds up.",
+     "", "bb_enzymes", "q_ho_027"),
+    ("Cloze", "During catalysis the substrate is {{c1::chemically transformed}} into product (it is not left unchanged).",
+     "", "bb_enzymes", "q_ho_027"),
+    # q_ho_028: name the denaturation concept behind loss of activity.
+    ("Cloze", "{{c1::Denaturation}} is the loss of a protein's 3-D shape, which distorts the enzyme's active site and lowers activity.",
+     "", "bb_enzymes", "q_ho_028"),
+    # q_syn_003: experimental-design prerequisites (control / IV / DV).
+    ("Cloze", "A {{c1::controlled}} variable is held constant so any change in the outcome can be attributed to the treatment.",
+     "", "bb_enzymes", "q_syn_003"),
+    ("Cloze", "In an experiment the {{c1::independent}} variable is deliberately changed and the {{c1::dependent}} variable is measured.",
+     "", "bb_enzymes", "q_syn_003"),
+    # q_syn_004: the underlying reason ΔG/Keq are catalyst-invariant (teaches
+    # the prerequisite, not the item's yes/no answer).
+    ("Cloze", "ΔG and Keq depend only on the {{c1::free-energy difference}} between reactants and products, which a catalyst or inhibitor cannot change.",
+     "", "bb_enzymes", "q_syn_004"),
+
+    # ---- cp_acids_bases (GRAN) --------------------------------------------
+    # q_dev_006: the NH3 weak-base equilibrium the item is built on.
+    ("Cloze", "Ammonia is a weak base: NH₃ + H₂O ⇌ {{c1::NH₄⁺}} + {{c1::OH⁻}}.",
+     "", "cp_acids_bases", "q_dev_006"),
+    # q_dev_006 / q_syn_012: the common-ion effect (distractors + shift logic).
+    ("Cloze", "Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to acetic acid) {{c1::suppresses}} the weak acid/base ionization.",
+     "", "cp_acids_bases", "q_dev_006|q_syn_012"),
+    # q_dev_007: the inverse acid/conjugate-base strength relationship, stated atomically.
+    ("Cloze", "The {{c1::weaker}} the acid, the stronger its conjugate base (and the reverse).",
+     "", "cp_acids_bases", "q_dev_007"),
+    # q_dev_011 distractor: a strong-acid/strong-base pair cannot buffer.
+    ("Cloze", "A strong acid and strong base cannot form a buffer — they simply {{c1::react to completion}}.",
+     "", "cp_acids_bases", "q_dev_011"),
+    # q_ho_007: Kw and the neutral-solution condition.
+    ("Cloze", "At 25 °C the water autoionization constant Kw = [H⁺][OH⁻] = {{c1::1.0×10⁻¹⁴}}.",
+     "", "cp_acids_bases", "q_ho_007"),
+    ("Cloze", "A neutral aqueous solution is defined by {{c1::[H⁺] = [OH⁻]}}.",
+     "", "cp_acids_bases", "q_ho_007"),
+    # q_syn_011: the Henderson–Hasselbalch ratio proportionality (per pH unit).
+    ("Cloze", "By Henderson–Hasselbalch, raising pH by 1 unit above the pKa multiplies the [A⁻]/[HA] ratio by {{c1::10}}.",
+     "", "cp_acids_bases", "q_syn_011"),
+    # q_syn_012: percent dissociation responds to suppression.
+    ("Cloze", "Suppressing a weak acid's ionization lowers its {{c1::percent dissociation}}.",
+     "", "cp_acids_bases", "q_syn_012"),
+
+    # ---- cp_kinetics (GRAN) -----------------------------------------------
+    # q_dev_015 distractors: temperature does NOT lower Ea or change ΔG.
+    ("Cloze", "Raising temperature increases reaction rate but does {{c1::not}} lower the activation energy or change ΔG.",
+     "", "cp_kinetics", "q_dev_015"),
+    # (q_dev_016's "alternate pathway/lower Ea" mechanism is intentionally NOT
+    # re-authored here: it is the item's own answer, and the existing
+    # "catalyst lowers Ea, doesn't change ΔG/equilibrium" card already backs it.)
+    # q_dev_017: the Arrhenius relationship names k's temperature dependence.
+    ("Cloze", "The temperature dependence of the rate constant k is described by the {{c1::Arrhenius}} equation.",
+     "", "cp_kinetics", "q_dev_017"),
+    # q_ho_016 distractors: Ea is the transition-state barrier, not ΔH/ΔG.
+    ("Cloze", "Activation energy is the barrier to reach the {{c1::transition state}}; it is not the reactant–product energy difference (ΔH/ΔG).",
+     "", "cp_kinetics", "q_ho_016"),
+    # q_syn_020: the method-of-initial-rates procedure (not the specific answer).
+    ("Cloze", "Method of initial rates: find a reactant's order by comparing experiments in which only {{c1::that reactant's}} concentration changes.",
+     "", "cp_kinetics", "q_syn_020"),
+    # q_syn_021: thermodynamics vs kinetics are independent (prereq, not the answer).
+    ("Cloze", "Thermodynamic favorability (ΔG) and reaction rate are {{c1::independent}} — a spontaneous reaction can still be very slow.",
+     "", "cp_kinetics", "q_syn_021"),
 ]
 
 

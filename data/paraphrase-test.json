@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "description": "§7d paraphrase-gap instrument. One row per anchor flashcard concept, mapping the memorized concept (card_ref/card_front) to TWO exam-style questions that test the SAME idea in genuinely different wording. Comparing flashcard recall against accuracy on these reworded questions measures how much of the performance score is real transfer vs. parroted memory. See docs/PARAPHRASE-TEST.md.",
+  "trio": ["cp_acids_bases", "bb_enzymes", "cp_kinetics"],
+  "session_order_default": "memory_first",
+  "gap_metric": "paraphrase_gap = card_recall_rate - mean_question_accuracy, per concept; aggregated by topic and overall. A gap near 0 with high recall == parroting; a large positive gap == recall without transfer.",
+  "notes": "q_b (the second question in each pair) is always a freshly authored held_out probe so a volunteer has not seen it in a dev performance session. Pairs marked authored_authored have BOTH stems authored fresh in held_out. card_front is the de-clozed front text of the backing flashcard (data/flashcards-dev.csv), within the SAME topic as both questions.",
+  "concepts": [
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "bl_acid_base_definition",
+      "card_ref": "acids_bl_donate_accept",
+      "card_front": "Brønsted–Lowry acids donate H⁺; bases accept H⁺.",
+      "question_ids": ["q_ho_061", "q_ho_062"],
+      "new_question_ids": ["q_ho_061", "q_ho_062"],
+      "pair_type": "authored_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "conjugate_strength_inverse",
+      "card_ref": "acids_conjugate_strength",
+      "card_front": "CH₃COOH is a weaker acid than HCl (conjugate base strength runs opposite to acid strength).",
+      "question_ids": ["q_dev_007", "q_ho_063"],
+      "new_question_ids": ["q_ho_063"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "buffer_composition",
+      "card_ref": "acids_buffer_composition",
+      "card_front": "A buffer contains a weak acid and its conjugate base, so it resists pH change.",
+      "question_ids": ["q_dev_011", "q_ho_064"],
+      "new_question_ids": ["q_ho_064"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "neutral_water_kw",
+      "card_ref": "acids_neutral_water",
+      "card_front": "At 25 °C a neutral solution has [H⁺] = 1×10⁻⁷ M and pH = 7.",
+      "question_ids": ["q_ho_007", "q_ho_065"],
+      "new_question_ids": ["q_ho_065"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "strong_acid_ph",
+      "card_ref": "acids_strong_acid_ph",
+      "card_front": "For a strong acid, pH = −log[H⁺]; a 0.010 M HCl solution has pH 2.",
+      "question_ids": ["q_ho_005", "q_ho_066"],
+      "new_question_ids": ["q_ho_066"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "conjugate_pair_one_proton",
+      "card_ref": "acids_conjugate_pair",
+      "card_front": "A conjugate acid–base pair differs by one H⁺, e.g. H₂CO₃ / HCO₃⁻.",
+      "question_ids": ["q_ho_006", "q_ho_067"],
+      "new_question_ids": ["q_ho_067"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "ph_log_scale",
+      "card_ref": "acids_ph_log_scale",
+      "card_front": "Each pH unit is a 10× change in [H⁺], so pH 4 is 100× more acidic than pH 6.",
+      "question_ids": ["q_ho_008", "q_ho_068"],
+      "new_question_ids": ["q_ho_068"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "henderson_hasselbalch",
+      "card_ref": "acids_henderson_hasselbalch",
+      "card_front": "Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]); when [A⁻] = [HA], pH = pKa.",
+      "question_ids": ["q_syn_009", "q_ho_069"],
+      "new_question_ids": ["q_ho_069"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "common_ion_le_chatelier",
+      "card_ref": "acids_common_ion",
+      "card_front": "When product is added to a reaction at equilibrium, the reaction shifts toward reactants.",
+      "question_ids": ["q_dev_006", "q_ho_070"],
+      "new_question_ids": ["q_ho_070"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "concept": "strong_vs_weak_ionization",
+      "card_ref": "acids_strong_vs_weak",
+      "card_front": "A strong acid ionizes completely (lower pH); a weak acid at equal concentration ionizes only partially (higher pH).",
+      "question_ids": ["q_syn_024", "q_ho_071"],
+      "new_question_ids": ["q_ho_071"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "enzyme_lowers_ea_not_dg",
+      "card_ref": "enzymes_lower_ea",
+      "card_front": "Enzymes speed a reaction by lowering its activation energy, without changing ΔG.",
+      "question_ids": ["q_dev_004", "q_ho_072"],
+      "new_question_ids": ["q_ho_072"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "endergonic_exergonic_sign",
+      "card_ref": "enzymes_dg_sign",
+      "card_front": "ΔG > 0 → endergonic; ΔG < 0 → exergonic.",
+      "question_ids": ["q_dev_003", "q_ho_073"],
+      "new_question_ids": ["q_ho_073"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "competitive_vs_allosteric_site",
+      "card_ref": "enzymes_competitive_allosteric",
+      "card_front": "Competitive inhibitors bind the active site; allosteric inhibitors bind elsewhere and change enzyme shape/activity.",
+      "question_ids": ["q_dev_005", "q_ho_074"],
+      "new_question_ids": ["q_ho_074"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "vmax_saturation",
+      "card_ref": "enzymes_vmax_saturation",
+      "card_front": "An enzyme reaches Vmax when its active sites are saturated with substrate.",
+      "question_ids": ["q_dev_024", "q_ho_075"],
+      "new_question_ids": ["q_ho_075"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "active_site",
+      "card_ref": "enzymes_active_site",
+      "card_front": "The active site is the region of an enzyme where substrate binds and catalysis occurs.",
+      "question_ids": ["q_ho_026", "q_ho_076"],
+      "new_question_ids": ["q_ho_076"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "induced_fit",
+      "card_ref": "enzymes_induced_fit",
+      "card_front": "Induced fit: when substrate binds, the enzyme's active site changes shape to fit it more snugly.",
+      "question_ids": ["q_ho_027", "q_ho_077"],
+      "new_question_ids": ["q_ho_077"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "heat_denaturation",
+      "card_ref": "enzymes_heat_denature",
+      "card_front": "Heating an enzyme far above its optimum denatures it, lowering its activity.",
+      "question_ids": ["q_ho_028", "q_ho_078"],
+      "new_question_ids": ["q_ho_078"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "competitive_surmountable",
+      "card_ref": "enzymes_competitive_surmountable",
+      "card_front": "Competitive inhibition is surmountable: the inhibitor binds reversibly at the active site, so adding excess substrate outcompetes it.",
+      "question_ids": ["q_syn_002", "q_ho_079"],
+      "new_question_ids": ["q_ho_079"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "kinetics_not_thermodynamics",
+      "card_ref": "enzymes_km_vs_keq",
+      "card_front": "How does Km differ in kind from Keq?",
+      "question_ids": ["q_syn_004", "q_ho_080"],
+      "new_question_ids": ["q_ho_080"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "bb_enzymes",
+      "concept": "km_definition_and_affinity",
+      "card_ref": "enzymes_km_half_vmax",
+      "card_front": "Km is the substrate concentration at half of Vmax; a higher Km means lower substrate affinity.",
+      "question_ids": ["q_ho_081", "q_ho_082"],
+      "new_question_ids": ["q_ho_081", "q_ho_082"],
+      "pair_type": "authored_authored",
+      "session_order": "memory_first"
+    },
+
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "catalyst_and_equilibrium",
+      "card_ref": "kinetics_catalyst_equilibrium",
+      "card_front": "A catalyst lowers the activation energy; it does not change ΔG or the equilibrium.",
+      "question_ids": ["q_dev_016", "q_ho_083"],
+      "new_question_ids": ["q_ho_083"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "temperature_and_rate",
+      "card_ref": "kinetics_temp_rate",
+      "card_front": "Raising temperature speeds a reaction because more molecules exceed the activation energy.",
+      "question_ids": ["q_dev_015", "q_ho_084"],
+      "new_question_ids": ["q_ho_084"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "rate_constant_dependence",
+      "card_ref": "kinetics_k_dependence",
+      "card_front": "The rate constant k depends on temperature and a catalyst, not on reactant concentration.",
+      "question_ids": ["q_dev_017", "q_ho_085"],
+      "new_question_ids": ["q_ho_085"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "overall_reaction_order",
+      "card_ref": "kinetics_overall_order",
+      "card_front": "For rate = k[A][B]², the overall reaction order is 3.",
+      "question_ids": ["q_ho_013", "q_ho_086"],
+      "new_question_ids": ["q_ho_086"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "first_order_scaling",
+      "card_ref": "kinetics_first_order_scaling",
+      "card_front": "For a reaction first order in A, doubling [A] multiplies the rate by 2.",
+      "question_ids": ["q_ho_014", "q_ho_087"],
+      "new_question_ids": ["q_ho_087"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "zero_order",
+      "card_ref": "kinetics_zero_order",
+      "card_front": "A zero-order reaction's rate is independent of reactant concentration.",
+      "question_ids": ["q_ho_015", "q_ho_088"],
+      "new_question_ids": ["q_ho_088"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "activation_energy_definition",
+      "card_ref": "kinetics_activation_energy",
+      "card_front": "Activation energy is the minimum energy reactants need in order to react.",
+      "question_ids": ["q_ho_016", "q_ho_089"],
+      "new_question_ids": ["q_ho_089"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "concept": "rate_law_exponent_is_order",
+      "card_ref": "kinetics_order_exponent",
+      "card_front": "In a rate law rate = k[A]^m[B]^n, the exponent on each reactant is its order; the sum m+n is the overall order.",
+      "question_ids": ["q_syn_020", "q_ho_090"],
+      "new_question_ids": ["q_ho_090"],
+      "pair_type": "reused_authored",
+      "session_order": "memory_first"
+    }
+  ]
+}

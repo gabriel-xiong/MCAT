@@ -23,7 +23,7 @@
     },
     "cp_acids_bases": {
       "dev": 3,
-      "held_out": 9,
+      "held_out": 20,
       "target_dev": 2,
       "target_held_out": 1
     },
@@ -35,7 +35,7 @@
     },
     "cp_kinetics": {
       "dev": 4,
-      "held_out": 5,
+      "held_out": 13,
       "target_dev": 2,
       "target_held_out": 1
     },
@@ -59,7 +59,7 @@
     },
     "bb_enzymes": {
       "dev": 4,
-      "held_out": 7,
+      "held_out": 18,
       "target_dev": 2,
       "target_held_out": 1
     },
@@ -125,9 +125,9 @@
     }
   },
   "generated_totals": {
-    "total": 140,
+    "total": 170,
     "dev": 65,
-    "held_out": 75,
+    "held_out": 105,
     "topics_with_questions": 18
   }
 }

@@ -44,7 +44,7 @@ eval-memory:
 
 eval-performance:
 
-	@echo "TODO: held-out accuracy + paraphrase gap report"
+	py -3.12 scripts/eval_paraphrase.py
 
 
 

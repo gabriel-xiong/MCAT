@@ -1,0 +1,69 @@
+{
+  "description": "Hand-labeled DEV-split fixtures pinning the AI explainer's per-choice behavior. Each item asserts the expected error mode for a specific chosen distractor (derived from questions.json choice_diagnosis, the human-authored ground truth) plus a token the feedback MUST mention. Used by ai_eval_explanations.py to catch regressions. DEV-ONLY: none of these ids may appear in the held_out split (enforced by the leakage check) so the held_out eval stays clean.",
+  "split": "dev",
+  "items": [
+    {
+      "qid": "q_dev_001",
+      "chosen_letter": "A",
+      "expected_error_mode": "content_gap",
+      "must_mention": "substrate",
+      "note": "isocitrate->a-ketoglutarate distractor encodes a substrate-level-phosphorylation misconception"
+    },
+    {
+      "qid": "q_dev_002",
+      "chosen_letter": "D",
+      "expected_error_mode": "near_miss",
+      "must_mention": "near miss",
+      "note": "null-tagged non-diagnostic distractor -> honest near-miss, do not over-diagnose"
+    },
+    {
+      "qid": "q_dev_007",
+      "chosen_letter": "A",
+      "expected_error_mode": "content_gap",
+      "must_mention": "reverses",
+      "note": "reverses the acid/conjugate-base inverse relation"
+    },
+    {
+      "qid": "q_syn_005",
+      "chosen_letter": "B",
+      "expected_error_mode": "content_gap",
+      "must_mention": "cathode",
+      "note": "same question, choice B -> content_gap (reverses anode/cathode)"
+    },
+    {
+      "qid": "q_syn_005",
+      "chosen_letter": "C",
+      "expected_error_mode": "trap:inverse",
+      "must_mention": "inverse",
+      "note": "same question, choice C -> execution trap (inverse): MUST differ from choice B feedback"
+    },
+    {
+      "qid": "q_syn_005",
+      "chosen_letter": "D",
+      "expected_error_mode": "trap:negation",
+      "must_mention": "negation",
+      "note": "same question, choice D -> execution trap (negation): MUST differ from B and C"
+    },
+    {
+      "qid": "q_syn_006",
+      "chosen_letter": "B",
+      "expected_error_mode": "trap:negation",
+      "must_mention": "negation",
+      "note": "sign-flip execution trap"
+    },
+    {
+      "qid": "q_syn_006",
+      "chosen_letter": "C",
+      "expected_error_mode": "content_gap",
+      "must_mention": "electrons",
+      "note": "used n=1 instead of n=2 electrons"
+    },
+    {
+      "qid": "q_dev_045",
+      "chosen_letter": "A",
+      "expected_error_mode": "passage_mapping",
+      "must_mention": "passage",
+      "note": "CARS passage question -> passage-mapping feedback (no science choice_diagnosis)"
+    }
+  ]
+}

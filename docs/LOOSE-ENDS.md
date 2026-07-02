@@ -26,33 +26,48 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
 
 ## UI / polish
 
-- [ ] **Move the "Show Answer" button to center.** In the review UI the
+- [x] **Move the "Show Answer" button to center.** In the review UI the
   Show Answer button should be horizontally centered (currently not). Small
   UI/CSS fix in the reviewer bottom bar.
+  Fixed in `anki-MCAT/qt/aqt/data/web/css/reviewer-bottom.scss`: added `width: 25%`
+  to `.stat` so the Edit/More side columns are equal, centering the `#middle` column
+  (rebuild required to regenerate `qt/_aqt/data/web/css/reviewer-bottom.css`).
 
 ## Design — not yet settled
 
-- [ ] **Application-practice bank does not exist yet (required for the
-  `application` remediation channel).** The two-channel routing
-  (`ERROR-DIAGNOSIS-SPEC.md` → "Two-channel remediation routing") sends an
-  `application` / shallow-mastery miss to **targeted practice on similar
-  integration items**, explicitly **not** a flashcard. But no such curated
-  application-practice bank (topic-filtered integration items sized for a short
-  remediation set) exists today — the `application` "next action" currently has
-  nothing concrete to launch. Needed: a small per-topic pool of
-  application/synthesis items reserved for remediation (distinct from the
-  held_out eval set to avoid leakage). Until it exists, the `application` focus
-  action must degrade gracefully (generic "practice more applied items in
-  [topic]") rather than promise a bank that isn't there.
-- [ ] **Component-card granularity expansion is ongoing.** Per the
-  "Component cards, not answer cards" principle, **every question's prerequisites
-  should each be individually carded** (granular component facts, never an
-  answer-encoding card). This is not done — coverage today guarantees only
-  **≥1 backing card per question**, not one card per *prerequisite component*.
-  Expanding granularity both improves prerequisite coverage and sharpens per-card
-  `M` (cleaner content-held signal / better localization of which prerequisite
-  failed). Ongoing authoring task in `build_flashcards.py`; track which questions
-  still have under-decomposed prerequisites.
+- [x] **Application-practice bank exists AND is wired into the `application`
+  remediation channel (done 2026-07-02).** The curated pool
+  (`data/application-practice.json` — 45 science integration items, 3 per topic,
+  each `pool: application_practice`, `split: remediation`, with a `concept` slug)
+  is now the concrete destination for the two-channel routing
+  (`ERROR-DIAGNOSIS-SPEC.md` → "Two-channel remediation routing"). On a resolved
+  `application` miss the performance dialog launches a **real short practice set**
+  selected by `select_application_practice` (topic filter → exclude just-missed
+  concept, same-concept fallback → exclude seen ids → variety rank → **N = 2**),
+  shown in a separate, clearly-unscored `RemediationDialog`. **Isolated from
+  scoring:** items live in their own `remediation_items` table (DB
+  `CHECK (split = 'remediation')`) and practice attempts log to a separate
+  `remediation_attempts` channel — never `perf_questions` / `perf_attempts` — so
+  they can never enter the Performance/Readiness scores or the held_out eval.
+  Degradation preserved: no eligible pool items → the generic "practice more
+  applied items in [topic]" message. Load via Tools → "MCAT: Load
+  application-practice pool…". Files: `pylib/anki/mcat_perf.py`,
+  `qt/aqt/mcat/performance_dialog.py`, `qt/aqt/mcat/remediation_dialog.py`,
+  `qt/aqt/mcat/__init__.py`, `pylib/tests/test_mcat_perf.py`.
+- [~] **Component-card granularity expansion — trio decomposed, rest tracked
+  (2026-07-02).** Per the "Component cards, not answer cards" principle, **every
+  question's prerequisites should each be individually carded** (granular
+  component facts, never an answer-encoding card). **Eval trio done:** **+24
+  atomic Cloze cards** decompose `bb_enzymes` / `cp_acids_bases` / `cp_kinetics`
+  to per-prerequisite granularity (trio 42→66 cards), with a no-answer-encoding
+  guardrail (three too-close drafts reframed/dropped). This sharpens per-card `M`
+  and lets the re-check probe localize the *specific* failed prerequisite. **Still
+  open:** topics beyond the trio still guarantee only **≥1 backing card per
+  question**, not one-per-prerequisite — the prioritized next-pass list
+  (`bb_citric_acid`, `bb_glycolysis`, `cp_electrochem`, `cp_thermo`,
+  `bb_genetics`, then single-fact PS/`bb_*` topics) is tracked in
+  `docs/COMPONENT-CARD-GRANULARITY.md`. Authoring lives in `build_flashcards.py`;
+  DECISIONS §28.
 - [ ] **`w_mis` override strength under the finalized tagging still needs
   empirical data.** How much a *distinctive-misconception* `content_gap`
   distractor pick should override high `M` (the `w_mis` weight) is set by judgment
@@ -62,7 +77,10 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   outcomes (probe FAIL should correlate with the distinctive-misconception picks
   we let contest `application`). *(Complements the `w_mis` threads in the
   choice-axis and tunable-params items below — same weight, framed here for the
-  finalized tag set.)*
+  finalized tag set.)* **Update (2026-07-02):** the re-check probe now ships
+  (IMMEDIATE variant) and logs `recheck_correct`, so the objective label needed
+  to calibrate `w_mis` is now being collected — a probe FAIL on a
+  distinctive-misconception pick is the confirmation signal `w_mis` should track.
 - [~] **Choice-axis discrimination + shallow-mastery capture.** *Addressed in the
   draft (2026-07-01):* the `choice_diagnosis` tags in
   `SYNTHESIS-QUESTIONS-DRAFT.md` were re-tagged so the content axis actually
@@ -108,10 +126,15 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   the default fires at moderate confidence (probe candidate, not settled fact);
   asymmetric probe (FAIL strong, PASS weak); and **persistent
   `application`→`content_gap` student overrides are the measurable audit signal**
-  that the default is over-firing. *To firm up:* validate `M` calibration and
+  that the default is over-firing.   *To firm up:* validate `M` calibration and
   probe contamination on the gold set, and watch the override rate, before
   trusting the `application` label on the dashboard. See `ERROR-DIAGNOSIS-SPEC.md`
   → "Residual risk — the boundary moved" and DECISIONS §21.
+  **Update (2026-07-02):** the content re-check probe now ships (IMMEDIATE
+  variant), so `recheck_correct` gives an **objective label stream** to validate
+  this exact boundary — a probe FAIL objectively confirms `content_gap` (probe
+  overrides `M`/tag), and PASS objectively rules it out. Collect probe outcomes
+  vs `M`/tag to measure how often `application` was silently absorbing real gaps.
 - [x] **`M` uses topic-level retrievability, not per-card FSRS-R (v2 slice
   limitation).** *Named (2026-07-01):* `content_held_score` (`M`) in
   `mcat_perf.py` currently uses the **topic-level** `avg_retrievability` from the
@@ -175,12 +198,29 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
     column (schema `mcat_perf_features_v1`; see DECISIONS §19 for the key list) plus
     the objective label columns. This is the labeled-data pipeline substrate; an
     actual ML *model* is still deferred (small-n — see "Small-n honesty" below).
-  - **Still NULL (needs dialog/probe wiring, NOT faked): `first_choice_index`,
-    `answer_changes`, `recheck_card_id`, `recheck_correct`, `recheck_timing`.**
-    The shipped performance dialog is single-submit with no re-check probe, so
-    these are not observable yet — capturing them requires select-then-confirm
-    churn logging + the re-check micro-probe. Left NULL by design; the code path
-    is commented accordingly (`mcat_perf.py`).
+  - **Done (2026-07-02): content re-check probe (IMMEDIATE variant) →
+    `recheck_card_id` / `recheck_correct` now POPULATED.** The performance dialog
+    fires an immediate recall probe on a science miss (before the explanation/
+    diagnosis) and feeds the objective outcome into `infer_error_type`
+    (`recheck_correct` branch 0): probe **FAIL** → `content_gap` @0.9 (strongest
+    gap signal); probe **PASS** → suppress `content_gap`, route to
+    `application`/`misread` at raised confidence; `error_source = inference+recheck`
+    when the probe-informed call is confirmed. Target resolution prefers a real
+    backing `card_id` (weakest-link, lowest FSRS-R first), falls back to a
+    concept prompt (`card_id` NULL), or skips (CARS/unmapped). Shipped in
+    `pylib/anki/mcat_perf.py` (`resolve_probe_target`,
+    `PerformanceSession.probe_target` / `record_probe_outcome`) +
+    `qt/aqt/mcat/performance_dialog.py`; tests in `pylib/tests/test_mcat_perf.py`.
+    **This gives us an OBJECTIVE label stream** (not self-report) that can later
+    calibrate `w_mis` and validate the `content_gap`↔`application` boundary (see
+    the two items below). Accepted tradeoff: the immediate probe's PASS carries a
+    mild MCQ-priming bias, accepted for the demo (PASS treated as solid; FAIL
+    remains strongest).
+  - **Still NULL (needs dialog wiring, NOT faked): `first_choice_index`,
+    `answer_changes`, `recheck_timing`.** The dialog is still single-submit (no
+    churn logging) and only the *immediate* probe placement is built, so
+    `recheck_timing` (`immediate` \| `delayed`) has no `delayed` branch yet. Left
+    NULL by design; the code path is commented accordingly (`mcat_perf.py`).
 - [ ] **Attempt-data collection relies on export, not sync (sidecar ⟂ AGENTS
   lock).** *Named (2026-07-01):* `AGENTS.md` still lists "perf tables in the
   collection DB + stock Anki sync" as locked, but the implementation uses a
@@ -218,9 +258,15 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   moderate cold-start confidences (0.55/0.60) are well-calibrated once gold-set
   data exists. See `ERROR-DIAGNOSIS-SPEC.md` → "Cold-start honesty (superseded)"
   and "Inference rule".
-- [ ] **Re-check probe placement + fatigue.** Pre-reveal micro-probe vs delayed
-  natural review; how often to trigger without annoying the user; contamination
-  from the post-answer explanation.
+- [~] **Re-check probe placement + fatigue.** *Partly resolved (2026-07-02):* the
+  **IMMEDIATE pre-reveal micro-probe** is built (fires before the post-answer
+  explanation, so no explanation contamination) and treats PASS as solid per the
+  accepted immediate-variant tradeoff. *Still open:* the **delayed natural-review**
+  variant (read the backing card's next memory-session outcome to remove the
+  immediate-priming bias on PASS), and **fatigue/trigger budgeting** — it
+  currently fires on every science miss with a resolvable sub-concept rather than
+  sampling / gating on ambiguous `M`. Add confidence-gated + rate-limited
+  triggering once the demo need is met.
 - [ ] **Tunable params** (`ERROR-DIAGNOSIS-SPEC.md`): demand factor `d`,
   uncovered-prerequisite prior `R0`, the misconception weight `w_mis` (how much a
   distinctive-misconception distractor pick keeps `content_gap` in play against
@@ -229,6 +275,20 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
 
 ## Validation / data
 
+- [x] **Paraphrase-gap instrument built (§7d, 2026-07-02).** The memory ⟂
+  performance validation tool now exists: for the eval trio (`cp_acids_bases`,
+  `bb_enzymes`, `cp_kinetics`, 28 anchor concepts) it pins two reworded questions
+  per concept and reports `paraphrase_gap = card_recall_rate − question_accuracy`
+  (per-topic + overall), so we can show the performance score measures **transfer,
+  not parroted recall**. **30 new held_out MCQs** authored (`q_ho_061`–`q_ho_090`;
+  bank now 170 Q, 65 dev / 105 held_out); second stem of every pair is always
+  freshly `held_out` (leakage-guarded by `validate_data.py`). No AI/network —
+  `scripts/eval_paraphrase.py` (`make eval-performance`) runs a real-data path or
+  a deterministic labelled synthetic demo. Deliberately deferred: the
+  `supports_question` deck edges for the new probes (manifest `card_ref` is the
+  authoritative link for now). See `docs/PARAPHRASE-TEST.md`, DECISIONS §27.
+  *Remaining:* feed real recall/attempts once collected (still small-n — see
+  below).
 - [ ] **Gold set doesn't exist yet.** Need ~20–30 held_out items with think-aloud
   labels (friend) to get a real accuracy/calibration number for the inference.
 - [ ] **Small-n honesty.** Solo builder + one friend → training a real ML

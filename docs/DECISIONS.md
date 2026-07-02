@@ -1,6 +1,6 @@
 # Design Decision Log — MCAT Speedrun
 
-**Last updated:** 2026-07-01  
+**Last updated:** 2026-07-02  
 **Status:** Locked for v1 implementation
 
 ---
@@ -30,6 +30,8 @@
 | 19 | `M` signal source | **Per-card FSRS-R** (pure Python) replaces topic-level fallback; question schema extended with `cognitive_demand` + `choice_diagnosis` (additive) |
 | 20 | Attempt data collection | **Local sidecar is source of truth**; full `feature_json` captured per attempt; **export script** (`tools/mcat_export_perf.py`) is the eval collection path; external telemetry backend **deferred** |
 | 21 | Inference abstention balance | **Commit, don't over-abstain:** `infer_error_type` commits a diagnosis in the common miss — **`application` is the DEFAULT** for a content-presumed-held miss; honesty carried by **moderate confidence (0.55–0.60)**, not abstention. `unresolved` reserved for the truly-dark miss; CARS misses hard-guarded to `unresolved`. **Supersedes** the spec's "cold-start / fast-alone → unresolved" stance |
+| 22 | Cross-device perf sync | **Export/import file bundle** (portable, versioned JSON), **append-only UNION merge** deduped by a stable per-attempt **`uuid`**; idempotent + order-independent → both devices converge. **Supersedes** the older "perf tables in the collection DB + stock Anki sync" assumption (§5/§19; AGENTS.md lock) |
+| 23 | Correct-answer explanations | **Every performance question carries a required, non-empty static (NO-AI) `explanation`** — a source-grounded rationale for why the correct answer is correct, shown after answering. Doubles as the **AI-off fallback** and the **baseline** for the AI explainer. Authored in `build_question_bank.py`, enforced by `validate_data.py`, stored via an additive `explanation` column in `perf_questions` (2026-07-02) |
 
 ---
 
@@ -82,7 +84,7 @@
 
 **Why no external DB:** Anki is **local-first** — each user runs the app on their own device with their own local data; there is no central multi-tenant DB we operate. "Deploy" = ship the app. A cloud backend (Postgres/Firebase/etc.) is only needed for cloud-only features (web dashboard, cohort/leaderboard analytics, us ingesting user data) and is **deliberately deferred** — not part of the prototype and against the offline/no-runtime-network ethos.
 
-**Open detail (cross-device perf sync, build step 7):** stock Anki sync is schema-aware and won't propagate custom tables, so multi-device perf sync needs its own design — export/import, a self-hosted sync path, or (only if cloud features are later adopted) a backend. Memory revlog conflict rule still TBD before Sunday (union + recompute FSRS).
+**Open detail (cross-device perf sync, build step 7):** ~~stock Anki sync is schema-aware and won't propagate custom tables, so multi-device perf sync needs its own design — export/import, a self-hosted sync path, or (only if cloud features are later adopted) a backend.~~ **RESOLVED 2026-07-02 → see §22:** cross-device perf sync uses a portable **export/import bundle** with an append-only UNION merge (chosen over a self-hosted sync path or backend). Memory revlog conflict rule still TBD before Sunday (union + recompute FSRS).
 
 ---
 
@@ -384,6 +386,285 @@ mis-estimated or tag coverage is thin. Mitigations: branches 1–2 pre-empt with
 **References:** `pylib/anki/mcat_perf.py` (`infer_error_type`,
 `PerformanceSession.answer` CARS guard),
 [`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md), [`LOOSE-ENDS.md`](LOOSE-ENDS.md).
+
+---
+
+## 22. Cross-device performance sync — export/import bundle (2026-07-02)
+
+**Decision:** cross-device sync of performance data uses a **portable
+export/import file bundle**, union-merged on import — **NOT** moving the perf
+tables into `collection.anki2` to ride stock Anki sync.
+
+**Supersedes** the earlier "perf tables in the same collection DB + stock Anki
+sync" assumption (the original AGENTS.md lock, and the still-open item flagged in
+§5/§19). That approach does not actually work for our data:
+- Stock Anki sync is **schema-aware** — it syncs the collection's known tables,
+  not arbitrary custom tables, so `perf_questions` / `perf_attempts` embedded in
+  `collection.anki2` would **not propagate** (and a full sync would silently
+  **wipe** them — the §5 durability reason we moved to a sidecar in the first
+  place).
+
+**Why the bundle wins (and is conflict-light):** `perf_attempts` is
+**append-only truth** — each device only ever adds attempts, never edits or
+deletes another device's rows. So a portable bundle that gets **UNION-MERGED**
+on import needs no conflict resolution beyond de-duplication.
+
+**Bundle format** (`anki.mcat_perf`, `tools/mcat_export_bundle.py`): a versioned
+JSON envelope — `format: "mcat_perf_bundle"`, `format_version: 1`, `exported_at`,
+plus `questions` (the full bank, verbatim) and `attempts` (every
+`perf_attempts` column, including the raw `feature_json` string preserved
+byte-for-byte). Import intersects columns, so devices with slightly different
+additive-migration state still interoperate.
+
+**Stable attempt key (`uuid`):** the `perf_attempts` autoincrement `id` is
+**device-local and NOT portable**, so an additive migration (same
+ALTER-if-missing pattern as `choice_diagnosis`) adds a **`uuid`** column,
+backfilled once for legacy rows and **UNIQUE-indexed**. `log_attempt` stamps a
+fresh `uuid4` per attempt. The merge dedups on `uuid` (with a deterministic
+content-hash fallback only for pre-`uuid` legacy bundles).
+
+**Merge semantics:** questions inserted by `id` when missing (the bank is
+deterministic from the curated OpenStax source, so existing local rows are never
+overwritten by a device-local copy); attempts inserted when their `uuid` is
+absent, dropping the source `id` (a new local one is assigned). The merge is
+**idempotent** (re-importing the same bundle adds nothing) and
+**order-independent** (import order cannot change the result) → after each device
+imports the other's bundle, **both converge to the exact union of attempts**
+(verified in `pylib/tests/test_mcat_perf.py`).
+
+**Local / no-AI / no-network:** the bundle is a plain file the user copies
+between devices (or via any file transport). No cloud DB, no telemetry, no
+runtime AI — consistent with §5's local-first ethos and the product's
+no-AI-at-runtime lock.
+
+**UI + CLI:** Tools → **"MCAT: Export sync bundle…"** / **"MCAT: Import sync
+bundle…"** (`qt/aqt/mcat/__init__.py`); headless
+`tools/mcat_export_bundle.py` + `tools/mcat_import_perf.py` for scripted /
+recorded sync.
+
+**References:** `pylib/anki/mcat_perf.py` (`export_bundle`, `import_bundle`,
+`merge_bundle`, `_backfill_attempt_uuids`), `qt/aqt/mcat/__init__.py`,
+`tools/mcat_export_bundle.py`, `tools/mcat_import_perf.py`,
+`pylib/tests/test_mcat_perf.py`.
+
+---
+
+## 23. Correct-answer explanations (static, NO-AI)
+
+**2026-07-02 —** Every performance question now carries a required, non-empty
+**`explanation`**: a concise (1–4 sentence) written rationale for **why the
+correct answer is correct**, grounded in that item's named source (OpenStax for
+science; the original CC0 passage for CARS). It is shown to the student **after**
+they answer, alongside the existing error-diagnosis UI.
+
+**No AI at runtime:** the explanation is fully static content authored ahead of
+time in `scripts/build_question_bank.py` (keyed by question id in the
+`EXPLANATIONS` dict) and emitted into `data/questions.json`. It therefore also
+serves as the app's **AI-off fallback** rationale and the **baseline** the AI
+"explain why you were wrong" feature will read from and fall back to (that
+feature only READs the field; the field name `explanation` is kept stable for
+it). No per-distractor breakdown is required here — that remains the optional
+`choice_diagnosis` content axis.
+
+**Enforcement + storage:** `scripts/validate_data.py` fails validation if any
+question's `explanation` is missing or blank. Storage adds an additive
+`explanation TEXT` column to `perf_questions` (same ALTER-if-missing migration
+pattern as `choice_diagnosis`), round-tripped through
+`upsert_questions`/`_row_to_question` and the sync bundle import.
+
+**References:** `scripts/build_question_bank.py` (`EXPLANATIONS`,
+`_attach_explanation`), `scripts/validate_data.py`,
+`data/questions.json`, `pylib/anki/mcat_perf.py`,
+`qt/aqt/mcat/performance_dialog.py`, `pylib/tests/test_mcat_perf.py`.
+
+---
+
+## 24. AI post-answer explainer (per-choice, offline-reproducible)
+
+**2026-07-02 —** Friday graded "AI" deliverable. When a student **misses** a
+performance question, an AI explainer says **why the SPECIFIC distractor they
+chose is wrong** and what the correct solution is, grounded in that item's named
+source. The justification is **differentiation**: choice B produces materially
+different feedback than choice C on the same question — something the static
+`explanation` (entry 23) and a keyword/vector baseline structurally cannot do.
+
+**Design (maps to the rubric):**
+- **Attribution:** every output cites `source_name` (+ `source_url`/
+  `source_location`). Ungrounded outputs are blocked (would score zero).
+- **Per-choice differentiation:** driven by `choice_diagnosis` ground truth —
+  `content_gap` names+corrects the misconception (remediation = the specific
+  backing memory concept); `trap:<enum>` names the execution error
+  (negation/unit/inverse/scaling/transpose/partial) + how to avoid it
+  (remediation = interleaved practice); `null` = honest near-miss (no
+  over-diagnosis); CARS = passage-mapping.
+- **Provider seam:** `LLMProvider` is the documented plug-in point for a real
+  model; because live calls aren't assumed here, the default is a
+  **deterministic offline generator** so eval/baseline/AI-off are fully runnable
+  with **AI OFF and no network**. All reported numbers use the offline provider
+  and are labelled as such.
+
+**Pre-registered cutoff** (declared in code before results): accuracy ≥ 0.90,
+wrong-answer-rate ≤ 0.05, grounding = 1.00, choice-specificity ≥ 0.80. A per-item
+safety gate blocks any explanation that is ungrounded or names the wrong choice
+and **replaces it with the static explanation**; if the aggregate fails the
+cutoff the whole AI path is disabled (fall back to static). Gate self-test PASS.
+
+**Results (held_out, 75 Q / 225 distractor paths, offline):** AI acc=1.000,
+wrong=0.000, grounded=1.000, **choice-specificity=1.000**; static baseline
+choice-specificity=0.000; TF-IDF baseline choice-specificity=0.009 (and
+wrong=0.160). **Differentiation gap = +0.991** — the headline "AI beats
+baseline". Goldset 9/9 (dev). Leakage check: OK (eval = project `held_out`;
+goldset is dev-only, no id/stem leak).
+
+**AI-off:** the app serves the static `explanation` (entry 23) and still scores.
+
+**Files:** `scripts/ai_explain.py`, `scripts/ai_eval_explanations.py`,
+`data/ai-explainer-goldset.json`, `docs/AI-FEATURE.md`. READs (does not modify)
+`data/questions.json` `explanation`/`choice_diagnosis`. Reuses
+`scripts/eval_leakage.py`. No frozen-build rebuild.
+
+---
+
+## 25. Calibration export (probe-aware)
+
+**2026-07-02 —** The error-diagnosis engine now records an OBJECTIVE label: an
+immediate content re-check probe fires after a miss and stores `recheck_correct`
+(probe PASS/FAIL) next to the heuristic `inferred_error_type` /
+`inferred_confidence` / `error_source` and the full `feature_json` vector
+(entry 5 sidecar, `perf_attempts`). This decision makes it **turnkey** to answer
+"how often does the heuristic diagnosis agree with the objective probe?" for
+honest accuracy reporting (Sunday proof) and to calibrate the hand-set weights
+(`w_mis`, confidence bands, `HIGH_M` / `LOW_M`) against that label. **Not ML** —
+a flat labeled view + a single agreement metric over hand-tuned thresholds.
+
+**Design:**
+- A `--calibration` flag on `tools/mcat_export_perf.py` (reusing the existing
+  read-only export path) filters to **probe-labeled rows only**
+  (`recheck_correct IS NOT NULL`) and emits one **flat, analysis-ready row per
+  attempt** (CSV + JSON, `anki.mcat_perf.CALIBRATION_COLUMNS`): attempt `uuid`,
+  `question_id`, `topic_id`, `cognitive_demand`, `chosen_index`, `correct`,
+  `time_seconds`, `mastery_snapshot`, derived `high_m` / `low_m` threshold
+  flags, `is_trap` / `trap_type` / `has_content_tag` / `maps_to` (flattened from
+  `feature_json`, tolerant of legacy/missing keys), `recheck_card_id`,
+  **`recheck_correct` (the objective label)**, the recomputed **pre-probe**
+  `heuristic_error_type` / `heuristic_confidence`, the stored (probe-informed)
+  `inferred_error_type` / `inferred_confidence`, and `error_source`.
+- **Agreement metric (the headline honest number):** a decision-relevant 2×2
+  tally — probe **FAIL** should map to engine `content_gap`; probe **PASS** to
+  engine NOT-`content_gap` (application/misread). Agreement % =
+  (FAIL&content_gap + PASS&not-content_gap) / probe-labeled rows. It is scored
+  against the **pre-probe heuristic** diagnosis (recomputed with
+  `recheck_correct=None`), NOT the stored `inferred_error_type` — the latter is
+  probe-informed (the probe is evaluated first in `infer_error_type`), so
+  comparing it to the probe would be tautological. Empty input → rate `None`
+  (honest abstain, no fake 0/1).
+
+**Files:** `tools/mcat_export_perf.py` (`--calibration`), `pylib/anki/mcat_perf.py`
+(`CALIBRATION_COLUMNS`, `build_calibration_rows`, `calibration_agreement`,
+`write_calibration`), `pylib/tests/test_mcat_perf.py` (synthetic probe-labeled
+rows → flat export + agreement tally + legacy-tolerant flatten). Read-only on
+the sidecar; no AI, no network; no frozen-build rebuild.
+
+---
+
+## 26. Application next-action → wired remediation pool (isolated)
+
+**2026-07-02 —** The `application` ("Applied reasoning") diagnosis now routes to
+a **real, launchable practice set** instead of a generic message. The
+application-practice pool authored earlier (`data/application-practice.json` — 45
+science integration items, 3 per topic) is loaded into an **isolated** sidecar
+store and served after a resolved `application` miss.
+
+**Selection** (`select_application_practice`, `pylib/anki/mcat_perf.py`):
+deterministic, AI-off — filter to `topic_id == T` + `pool == application_practice`
+→ exclude the just-missed `concept` (same-concept fallback if that empties) →
+exclude already-seen pool ids → rank for concept variety → take **N = 2**
+(`N_APPLICATION_PRACTICE`). No eligible items → the generic *"practice more
+applied items in \[topic]"* fallback (degradation contract kept).
+
+**Isolation from scored state (the load-bearing guarantee).** Remediation items
+live in their own table `remediation_items` with a DB `CHECK (split =
+'remediation')`; practice attempts log to a separate `remediation_attempts`
+channel via `PerfStore.log_remediation_attempt`. Neither table is read by
+`accuracy()`, `eligible_questions()`, or the sync bundle
+(`_read_bundle_from_conn`), so a remediation item can **never** enter the
+Performance/Readiness scores or a held_out/dev scored session. Scope is the
+`application` channel only — `content_gap` and `misread` routing are unchanged.
+
+**UI.** `performance_dialog.py` surfaces the next-action (label + "Practice N
+similar items →" button) on an `application` resolution; the button opens a
+visibly-distinct, unscored `RemediationDialog`. Load the pool via Tools →
+"MCAT: Load application-practice pool…".
+
+**Files:** `pylib/anki/mcat_perf.py` (store + selection),
+`qt/aqt/mcat/performance_dialog.py`, `qt/aqt/mcat/remediation_dialog.py`,
+`qt/aqt/mcat/__init__.py`, `pylib/tests/test_mcat_perf.py` (13 new tests). Pure
+Python + pytest; no frozen-build rebuild.
+
+---
+
+## 27. §7d paraphrase-gap instrument (memory ⟂ performance proof)
+
+**2026-07-02 —** Added a dedicated instrument that measures — and reports
+honestly — the **gap between flashcard recall and accuracy on reworded
+questions of the same idea**, so the performance score is demonstrably
+**transfer**, not parroted memory. For each anchor concept it pins **two
+exam-style questions in genuinely different wording** (never a numeric clone)
+and compares card recall vs mean accuracy across the pair.
+
+**Scope (locked eval trio):** `cp_acids_bases`, `bb_enzymes`, `cp_kinetics` —
+28 anchor concepts. Within-topic anchors only (a concept, its card, and both
+questions share one topic).
+
+**Split discipline:** the **second** stem of every pair is always a freshly
+authored `held_out` probe (a volunteer cannot have seen it in a dev session);
+`validate_data.py` fails if any second stem is not `held_out`. **30 new curated
+MCQs authored** (ids `q_ho_061`–`q_ho_090`), all `held_out`, all OpenStax-grounded
+with full schema parity (stem, 4 choices, correct index, `cognitive_demand`,
+3-axis `choice_diagnosis`, non-empty static `explanation`, source metadata). Bank
+is now **170 questions (65 dev / 105 held_out)**.
+
+**Gap metric:** `paraphrase_gap = card_recall_rate − question_accuracy`, meaned
+per topic and overall. gap ≈ 0 at high recall → warn performance may be echoing
+memory; large positive gap → performance is measuring transfer. Concepts missing
+data are listed and excluded (no fake zero-fill).
+
+**No AI / no network:** `scripts/eval_paraphrase.py` scores a real-data path
+(`--recall`/`--attempts`) or a deterministic md5-seeded synthetic demo (labelled
+as such). The card→question `supports_question` edge in `build_flashcards.py` was
+**deliberately not touched** (parallel-write avoidance); the manifest's
+`card_ref`/`card_front` is the authoritative backing-card link for the instrument
+and reconciles into the deck CSV later — so the 30 new probes intentionally show
+no backing card in `QUESTION-CARD-MAP.md` yet.
+
+**Files:** `data/paraphrase-test.json` (28-row manifest), `scripts/eval_paraphrase.py`,
+`Makefile` (`eval-performance`), `scripts/build_question_bank.py`,
+`scripts/validate_data.py`, `scripts/eval_leakage.py`, `docs/PARAPHRASE-TEST.md`.
+
+---
+
+## 28. Component-card granularity (component cards, not answer cards)
+
+**2026-07-02 —** Advanced the "one atomic backing card per prerequisite
+sub-concept" principle (not merely ≥1 backing card per question). Finer,
+correctly-linked component cards sharpen per-card `M` (FSRS-R) so the re-check
+probe (which inverts `supports_question`) can localize the **specific** failed
+prerequisite.
+
+**What was done:** **+24 atomic Cloze cards** across the eval trio
+(`bb_enzymes` 18→29, `cp_acids_bases` 15→23, `cp_kinetics` 9→14; trio 42→66),
+each a within-topic link. **Guardrail — no answer-encoding:** every card teaches
+a foundational prerequisite fact, never the item's own integrated answer; three
+drafts that sat too close to an answer were reframed (`q_dev_005`, `q_syn_004`)
+or dropped (`q_dev_016`).
+
+**Coverage:** all 127 science questions still have ≥1 backing card. Topics
+**beyond the trio** remain guaranteed only ≥1-per-question (not
+one-per-prerequisite) and are tracked as a prioritized next-pass list.
+
+**Files:** `scripts/build_flashcards.py`, `data/flashcards-dev.csv`,
+`data/flashcards-dev-cloze.csv`, regenerated `docs/QUESTION-CARD-MAP.md`; full
+per-card log in `docs/COMPONENT-CARD-GRANULARITY.md`.
 
 ---
 

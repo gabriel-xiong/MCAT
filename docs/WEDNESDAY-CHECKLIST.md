@@ -72,9 +72,117 @@ committing, and capturing the two desktop recordings. See
    clean-machine install of the existing `.msi` (phone review already captured).
    Follow `docs/RECORDING-RUNBOOK.md` for both shot-lists.
 
+## Friday deliverables
+
+Three Friday workstreams, ordered by dependency: **(1)** the GRADED-CORE
+collection review sync + §7b test (unblocks the 70% cap), **(2)** the phone
+three-score dashboard, and **(3)** the performance-data bundle side-channel.
+Sub-parts (1) and (3) are **different sync channels** — (1) syncs memory reviews
+(revlog + card scheduling) over the shared engine; (3) syncs MCAT
+performance-attempt data as a portable bundle. Shot-lists in
+`docs/RECORDING-RUNBOOK.md`: (1) = §D, (2) = §F, (3) = §E.
+
+### (1) GRADED CORE — collection review sync + §7b test (desktop ↔ AnkiDroid)
+
+_Set up + documented 2026-07-02. Server verified; client wiring + recording are
+manual GUI/emulator steps (can't be scripted from the shell)._
+
+Spec: "review on the phone, see it on the desktop, and the reverse, with no lost
+or double-counted reviews" + "offline review works, then syncs when the connection
+returns" + the §7b sync test. Load-bearing ("No phone companion that shares the
+engine and syncs: 70% maximum").
+
+- [x] **Approach decided + documented: self-hosted local `--syncserver`** (not
+      AnkiWeb) — no credentials, offline-friendly on the LAN, same build serves
+      both forks. Rationale in `docs/SYNC-CONFLICT-RULE.md §5`.
+- [x] **Server verified from the FROZEN build** (no `./run` rebuild):
+      `out/installer/build/anki/windows/app/src/Anki.exe --syncserver` with
+      `SYNC_USER1=mcat:mcat` → `GET /health` = **200**, `/sync/*` route live
+      (2026-07-02). Command in `docs/RECORDING-RUNBOOK.md §D.1`.
+- [x] **Conflict/winner rule written down** (required §7b artifact) —
+      `docs/SYNC-CONFLICT-RULE.md`: revlog append-only keyed by review ms-id
+      (`INSERT OR IGNORE`; none lost/doubled) + card scheduling
+      **last-review-wins by `mtime`** (shared Rust engine, both forks).
+- [x] **§7b click-by-click runbook** — `docs/RECORDING-RUNBOOK.md §D` (start
+      server, point clients, baseline, 10+10 offline reviews, same-card conflict,
+      phone→desktop proof).
+- [ ] **Point desktop client at server** — Preferences → Syncing → *Self-hosted
+      sync server* = `http://127.0.0.1:8080/` (runbook §D.2). **Needs you (GUI).**
+- [ ] **Point AnkiDroid at server** — Settings → Sync → *Custom sync server* →
+      *Sync URL* = `http://10.0.2.2:8080/`; log in `mcat`/`mcat` (§D.3). **Needs
+      you (emulator).**
+- [ ] **Recording:** phone review appears on desktop after sync + 20-review
+      no-loss/no-dup + same-card conflict winner (§D.4–D.5). **You record.**
+
+### (2) Phone three-score dashboard (AnkiDroid)
+
+_Implemented 2026-07-02. Satisfies the Friday spec item: "The phone shows the
+three scores with ranges and follows the give-up rule."_
+
+Mirrors the desktop scoring on-device: the AnkiDroid dashboard replicates the
+Rust mastery query + `mcat_scores.py` thresholds in Kotlin against the SAME
+`data/scoring-config.json` values, so **phone and desktop agree**.
+
+- [x] **Dashboard screen** in the AnkiDroid fork
+      (`AnkiDroid/src/main/java/com/ichi2/anki/mcat/`): `McatDashboardFragment`
+      (UI) + `McatScores` (pure scoring port) + `McatDashboardRepository` (real
+      data feeds). Hosted by `SingleFragmentActivity`.
+- [x] **Entry point:** DeckPicker overflow menu → **"MCAT: Dashboard"**
+      (`res/menu/deck_picker.xml` + `DeckPicker.onOptionsItemSelected`).
+- [x] **Three scores with ranges, never blended:** Memory (reviews · topics ·
+      unlocked), Performance (accuracy · correct/attempts), Readiness (472–528
+      range), plus coverage bar + single next action + focus area.
+- [x] **Readiness honesty / give-up rule** matches `scoring-config.json`
+      (coverage < 50%, attempts < 30, reviews < 200, per-section + CARS minimums):
+      below threshold the phone shows **NO readiness number** (abstain), with the
+      coverage %, missing-data reason, and next action. When eligible it shows the
+      range + confidence + last-updated + next action.
+- [x] **Data feeds — honest about scope:**
+      - **Memory = REAL** (live collection: revlog count + topic-tagged mastery).
+      - **Performance / Readiness = REAL when the perf sidecar
+        `collection.mcat_perf.db` is present on-device** (read read-only, same file
+        the desktop writes / the sync bundle carries). If absent, Performance shows
+        "no data yet" and Readiness abstains — never fabricated. UI lights up
+        automatically once the sidecar lands.
+- [x] **AI-off-safe:** dashboard renders from local SQLite only — no network/AI.
+- [x] **Builds:** `./gradlew :AnkiDroid:compilePlayDebugKotlin` compiles clean
+      (JDK 17 via `JAVA_HOME`). Full APK: `./gradlew :AnkiDroid:assemblePlayDebug`.
+- [ ] **Recording:** open the phone dashboard + show abstain/give-up state —
+      **you record** (shot-list **F** in `docs/RECORDING-RUNBOOK.md`).
+- [ ] **Commit** the AnkiDroid changes (uncommitted, per the no-commit-without-
+      approval rule).
+
+### (3) Performance-data bundle sync (side-channel)
+
+_Implemented 2026-07-02. Engineering done; what's left is recording the two demos._
+
+- [x] **Export/import bundle sync** for performance data — portable, versioned
+      JSON bundle (`format: mcat_perf_bundle`, `format_version: 1`) with an
+      **append-only UNION merge** deduped by a stable per-attempt **`uuid`**
+      (additive migration, same pattern as `choice_diagnosis`). Idempotent +
+      order-independent → two devices converge. See `docs/DECISIONS.md §22`.
+- [x] **Tools-menu actions:** "MCAT: Export sync bundle…" and "MCAT: Import sync
+      bundle…" (`anki-MCAT/qt/aqt/mcat/__init__.py`).
+- [x] **Headless CLIs:** `tools/mcat_export_bundle.py` + `tools/mcat_import_perf.py`
+      (mirror the existing `tools/mcat_export_perf.py`).
+- [x] **Tests green:** round-trip, disjoint union + convergence, idempotent
+      re-import, order-independence, uuid migration/backfill — in
+      `pylib/tests/test_mcat_perf.py` (52 passed).
+- [ ] **Recordings:** "Two-way sync verified" + "Offline review → sync" —
+      **you record** (shot-list **E** in `docs/RECORDING-RUNBOOK.md`).
+- [ ] **Commit** the sync changes (still uncommitted, per the no-commit-without-
+      approval rule).
+
+> Scope note: the bundle in sub-part (3) syncs **MCAT performance-attempt data**
+> as a portable side-channel. It is **separate from** the GRADED-CORE deliverable
+> in sub-part (1) above, which is the actual **memory-review sync** (revlog + card
+> scheduling) between the desktop and AnkiDroid forks over the shared engine —
+> that is what the spec's "phone companion that shares the engine and syncs" and
+> §7b measure.
+
 ## Explicitly not Wednesday
 
-- Two-way sync (Friday)
+- ~~Two-way sync (Friday)~~ — **done**, see the Friday sections above
 - AI features (Friday)
 - Readiness calibration / Sunday eval scripts
 - AnkiDroid full parity

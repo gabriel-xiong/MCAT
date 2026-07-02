@@ -77,6 +77,8 @@ Import (**one step — no manual setup**): in Anki, *File → Import* the split 
 
 **Format rule (v1):** deterministic 4-option MCQ only — exactly one correct answer (`A`–`D`). No open-ended, multi-select, or AI-graded items.
 
+**`explanation` field (required):** every question carries a non-empty `explanation` — a concise (1–4 sentence) static, **NO-AI** rationale for **why the correct answer is correct**, grounded in that item's named source (OpenStax for science; the original CC0 passage for CARS). It is authored in `scripts/build_question_bank.py` (keyed by question id in the `EXPLANATIONS` dict), shown to the student **after** they answer, and reused as the app's AI-off fallback and the baseline for the AI "explain your miss" feature. It complements — never replaces — `source_name`/`source_url`. `scripts/validate_data.py` fails if any question's `explanation` is missing or blank. Per-choice/distractor breakdown is **not** part of this field (that lives in the optional `choice_diagnosis`).
+
 **Difficulty rule (v1):** prefer **pathway / regulation / equilibrium** items (e.g. Ch. 7 Review Q9, Q16) over definition recall (e.g. “energy currency is ATP”). Skip items that duplicate flashcard stems. Tag `skill: "2"` for application-style items.
 
 **MCAT calibration:** OpenStax review/exercise items are **not equated to AAMC difficulty**. They are intro-college content; the real MCAT adds passage context, multi-step reasoning, and experimental framing. v1 performance score = accuracy on this curated bank only — **not** a calibrated 118–132 section score. Readiness abstains below 50% topic coverage (`scoring-config.json`). Sunday milestone: friend held-out set + optional AAMC-style items for sanity check.
