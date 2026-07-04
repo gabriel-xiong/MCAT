@@ -26,6 +26,15 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
 
 ## UI / polish
 
+- [ ] **Pixel-level UI cleanup — dedicated perfectionist-critic pass.** Do a
+  full-app visual QA pass acting as a ruthless design critic: align to the pixel,
+  and hunt spacing/padding inconsistencies, typography hierarchy, color/contrast,
+  hover/focus states, empty/loading states, and any residual clipping or
+  compression across the dashboard (three score cards + focus area + coverage
+  bar), performance mode (passage/stem/choices + docked AI panel), the
+  remediation/mastery/error-report dialogs, and the reviewer. This is a
+  polish/consistency sweep, not a functional gap — treat every off-by-a-pixel or
+  inconsistent margin as a defect. (Lean on the design-critique / polish skills.)
 - [x] **Move the "Show Answer" button to center.** In the review UI the
   Show Answer button should be horizontally centered (currently not). Small
   UI/CSS fix in the reviewer bottom bar.

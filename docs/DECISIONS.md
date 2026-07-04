@@ -813,6 +813,66 @@ the three effects so they don't drift:
 
 ---
 
+## 31. Friend-tester ENGAGEMENT thresholds — NOT the graded methodology (2026-07-04)
+
+**Label:** *friend-tester engagement thresholds — NOT used for graded readiness
+claims.* These are a **separate, pre-registered on-device profile** that lowers
+the score abstain gates so a casual friend who studies for a **single ~15–20 min
+sitting** (≈10–20 cards reviewed, ≈8–12 questions across 1–2 topics) still sees
+all three **PROVISIONAL** scores populate — so the build "feels alive" for
+testers. The **graded** readiness claims continue to use the strict full-course
+gates in §14 (200 reviews, 30 attempts, 21-day maturity). Both profiles ship in
+`anki-MCAT/pylib/anki/mcat_scores.py` (`SCORE_PROFILE`); this build ships
+`"tester"`. See [`EVAL-THRESHOLDS.md`](EVAL-THRESHOLDS.md) for the full table +
+rationale.
+
+**Pre-registered cutoffs (tester profile):**
+
+| Gate | Strict (§14, graded) | Tester (this build) |
+|------|----------------------|---------------------|
+| Memory — graded reviews | ≥ 200 | **≥ 10** |
+| Memory — card maturity | ≥ 1 card at interval ≥ 21d | **not required** |
+| Memory — started-card floor | (governed by maturity) | **≥ 10 cards** |
+| Performance — attempts | ≥ 30 | **≥ 8** |
+| Readiness — coverage | ≥ 50% | ≥ 50% (unchanged) |
+| Readiness — science section attempts | ≥ 5 / section | **≥ 3 / section** |
+| Readiness — CARS attempts | ≥ 5 | **≥ 3** |
+
+**Memory basis change (tester only):** 21-day maturity is unreachable in a
+weekend, so the tester Memory headline is **EARLY RECALL STRENGTH = FSRS
+retrievability only** (score = R × 100, maturity factor forced to 1.0) — "how
+well you'd recall right now what you've reviewed", explicitly **not** long-term
+durability. Gated on the ≥10 reviewed-card floor so the average is not from 1–2
+cards. Strict Memory (R × maturity, needs a mature card) is unchanged.
+
+**Honesty safeguards (what makes the low gates defensible):**
+- **A truly empty profile (0 data) STILL abstains** on all three — the gates
+  never fabricate a number (regression: `test_empty_profile_still_abstains_*`).
+- **Confidence intervals stay VERY WIDE at small n.** Memory uses a boundary-safe
+  **Wilson** interval (the plain normal SE collapses to ±0 at R≈1.0 right after a
+  review — false precision — so it was replaced). Performance keeps its Wilson/
+  Bayesian credible band. Readiness **widens its range at small n** (base ±6, up
+  to ~±24 at the tester attempt count) via `_readiness_half_width`.
+  Measured short-session example: Memory 100 → CI **82–100**; Accuracy 57 → CI
+  **32–82**; Readiness range width **34** points.
+- Every computed score carries a **`provisional`** flag (UI shows a `provisional`
+  badge, not `measured`), coverage %, a missing-data/next-action note, and the
+  three scores are **never blended**.
+- The earlier accuracy-card honesty fix is preserved: a number **XOR** "not
+  enough data", never both.
+
+**Not graded:** nothing here changes the graded evaluation in §13/§14 — graded
+claims must use the strict profile. This profile exists solely for tester
+engagement and is labeled as such in-app (provisional) and in code/docs.
+
+**Files:** `anki-MCAT/pylib/anki/mcat_scores.py` (profile block + Memory/Readiness
+logic + Wilson Memory band), `anki-MCAT/qt/aqt/deckbrowser.py` (provisional badge
++ profile-aware copy), `anki-MCAT/tools/mcat_seed_tester.py` (enable FSRS + v3 so
+retrievability exists), tests in `pylib/tests/test_mcat_scores.py` +
+`qt/tests/test_mcat_dashboard_render.py`, and [`EVAL-THRESHOLDS.md`](EVAL-THRESHOLDS.md).
+
+---
+
 ## 18. References
 
 - [`PRD.md`](PRD.md)  

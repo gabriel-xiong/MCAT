@@ -288,4 +288,9 @@ No readiness score without: evidence behind the number, what data is missing, a 
 
 ## License
 
-Forks **Anki** (AGPL-3.0-or-later) and **AnkiDroid** (AGPL-3.0-or-later; some components GPL/LGPL-3.0). All upstream copyright remains with the original Anki and AnkiDroid authors; MCAT Speedrun additions are contributed under the same license, and source is published on distribution. This is an independent project, **not affiliated with or endorsed by** Ankitects or the AnkiDroid team.
+**MCAT Speedrun is licensed under the GNU AGPL-3.0-or-later.** It is built as a fork of two upstream projects:
+
+- **Anki** (desktop) — [`ankitects/anki`](https://github.com/ankitects/anki), AGPL-3.0-or-later
+- **AnkiDroid** (Android) — [`ankidroid/Anki-Android`](https://github.com/ankidroid/Anki-Android), AGPL-3.0-or-later (some components GPL/LGPL-3.0)
+
+All upstream copyright remains with the original Anki and AnkiDroid authors; the MCAT Speedrun additions are contributed under the same AGPL-3.0-or-later license, and the complete corresponding source is published with any distribution (AGPL §13). This is an independent project, **not affiliated with or endorsed by** Ankitects Pty Ltd or the AnkiDroid team.
