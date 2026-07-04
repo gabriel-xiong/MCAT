@@ -1,0 +1,365 @@
+{
+  "n_cases": 40,
+  "items": [
+    {
+      "case_id": "C01",
+      "qid": "q_ho_014",
+      "chosen_letter": "B",
+      "gold_map": "trap",
+      "gold_trap": "scaling",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C02",
+      "qid": "q_syn_020",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "reads B as first order (misses the ×4 → square)",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C03",
+      "qid": "q_dev_015",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks raising temperature lowers the activation energy (only a catalyst lowers Ea)",
+      "heuristic_distinctiveness": "generic"
+    },
+    {
+      "case_id": "C04",
+      "qid": "q_ho_028",
+      "chosen_letter": "C",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C05",
+      "qid": "q_dev_011",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks a weak acid fully neutralized by strong base (equal moles) is a buffer, missing that excess weak acid is needed",
+      "heuristic_distinctiveness": "generic"
+    },
+    {
+      "case_id": "C06",
+      "qid": "q_ho_088",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "treats the reaction as second order (rate quadruples)",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C07",
+      "qid": "q_ho_008",
+      "chosen_letter": "B",
+      "gold_map": "trap",
+      "gold_trap": "scaling",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C08",
+      "qid": "q_ho_071",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks weak acids ionize completely, reversing the strong/weak distinction",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C09",
+      "qid": "q_ho_007",
+      "chosen_letter": "C",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C10",
+      "qid": "q_ho_086",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "counts only one reactant instead of summing the exponents",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C11",
+      "qid": "q_ho_083",
+      "chosen_letter": "D",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "believes a catalyst increases equilibrium yield rather than only the rate",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C12",
+      "qid": "q_ho_026",
+      "chosen_letter": "D",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C13",
+      "qid": "q_ho_065",
+      "chosen_letter": "D",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks pH depends on the quantity of water rather than on [H⁺]",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C14",
+      "qid": "q_ho_013",
+      "chosen_letter": "A",
+      "gold_map": "trap",
+      "gold_trap": "partial",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C15",
+      "qid": "q_ho_016",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks activation energy equals ΔG",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C16",
+      "qid": "q_ho_014",
+      "chosen_letter": "D",
+      "gold_map": "trap",
+      "gold_trap": "inverse",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C17",
+      "qid": "q_ho_080",
+      "chosen_letter": "D",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "makes the thermodynamic outcome depend on substrate concentration",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C18",
+      "qid": "q_ho_088",
+      "chosen_letter": "D",
+      "gold_map": "trap",
+      "gold_trap": "inverse",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C19",
+      "qid": "q_ho_016",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "confuses activation energy with the products−reactants energy difference (ΔH/ΔG)",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C20",
+      "qid": "q_ho_005",
+      "chosen_letter": "B",
+      "gold_map": "trap",
+      "gold_trap": "scaling",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C21",
+      "qid": "q_ho_062",
+      "chosen_letter": "D",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "restricts bases to the narrower Arrhenius (OH⁻-producing) definition rather than the broader proton-acceptor definition",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C22",
+      "qid": "q_ho_026",
+      "chosen_letter": "C",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C23",
+      "qid": "q_syn_020",
+      "chosen_letter": "B",
+      "gold_map": "trap",
+      "gold_trap": "transpose",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C24",
+      "qid": "q_dev_017",
+      "chosen_letter": "C",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C25",
+      "qid": "q_syn_009",
+      "chosen_letter": "D",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C26",
+      "qid": "q_syn_011",
+      "chosen_letter": "D",
+      "gold_map": "trap",
+      "gold_trap": "scaling",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C27",
+      "qid": "q_syn_011",
+      "chosen_letter": "A",
+      "gold_map": "trap",
+      "gold_trap": "inverse",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C28",
+      "qid": "q_ho_061",
+      "chosen_letter": "B",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "identifies NH₃ as the acid; NH₃ accepts the proton, so it is the Brønsted–Lowry base here",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C29",
+      "qid": "q_ho_073",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "calls a positive-ΔG reaction spontaneous, reversing the sign convention for spontaneity",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C30",
+      "qid": "q_dev_011",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks a buffer is a strong acid plus a strong base",
+      "heuristic_distinctiveness": "generic"
+    },
+    {
+      "case_id": "C31",
+      "qid": "q_ho_089",
+      "chosen_letter": "C",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "names bond dissociation enthalpy, a specific bond quantity, not the reaction's energy barrier",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C32",
+      "qid": "q_ho_066",
+      "chosen_letter": "D",
+      "gold_map": "trap",
+      "gold_trap": "negation",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C33",
+      "qid": "q_ho_068",
+      "chosen_letter": "B",
+      "gold_map": "trap",
+      "gold_trap": "inverse",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C34",
+      "qid": "q_ho_013",
+      "chosen_letter": "D",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C35",
+      "qid": "q_ho_027",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks the enzyme is consumed in the reaction (enzymes are catalysts, not consumed)",
+      "heuristic_distinctiveness": "generic"
+    },
+    {
+      "case_id": "C36",
+      "qid": "q_ho_073",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "swaps the definitions — assigns the exergonic (ΔG < 0) label to a positive ΔG",
+      "heuristic_distinctiveness": "distinctive"
+    },
+    {
+      "case_id": "C37",
+      "qid": "q_ho_027",
+      "chosen_letter": "D",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks enzymes increase activation energy (they lower it)",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C38",
+      "qid": "q_syn_012",
+      "chosen_letter": "D",
+      "gold_map": "trap",
+      "gold_trap": "partial",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    },
+    {
+      "case_id": "C39",
+      "qid": "q_ho_015",
+      "chosen_letter": "A",
+      "gold_map": "content_gap",
+      "gold_trap": "",
+      "gold_misconception": "thinks a zero-order rate is proportional to [A] (that is first order)",
+      "heuristic_distinctiveness": "borderline"
+    },
+    {
+      "case_id": "C40",
+      "qid": "q_ho_028",
+      "chosen_letter": "D",
+      "gold_map": "null",
+      "gold_trap": "",
+      "gold_misconception": "",
+      "heuristic_distinctiveness": ""
+    }
+  ]
+}

@@ -52,8 +52,12 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "", "bb_citric_acid", "q_dev_023"),
     ("Cloze", "Per turn, the citric acid cycle releases {{c1::2}} CO₂ and makes {{c1::3}} NADH.",
      "", "bb_citric_acid", "q_ho_023|q_ho_025"),
-    ("Basic", "When ADP is high, why do metabolic pathways generally speed up?",
-     "Allosteric activation of rate-limiting enzymes — the cell needs to regenerate ATP.",
+    # Reframed (probe answer-leak): the old front asserted "metabolic pathways
+    # generally speed up" — that is q_dev_002's own answer ("increase the
+    # activity of specific enzymes"), so the recall probe handed it over. Now the
+    # front asks for the direction + mechanism; the answer lives on the back.
+    ("Basic", "When ADP levels rise, what happens to the activity of the cell's rate-limiting respiratory enzymes, and why?",
+     "Their activity increases: ADP is an allosteric activator of key respiratory enzymes, so respiration speeds up to regenerate ATP.",
      "bb_citric_acid", "q_dev_002"),
     ("Basic", "Why does the citric acid cycle itself produce little ATP directly?",
      "Most of its energy is captured as NADH and FADH₂, which feed the electron transport chain — where the bulk of ATP is actually made.",
@@ -70,8 +74,12 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "", "bb_enzymes", "q_dev_005|q_syn_001"),
     ("Cloze", "An enzyme reaches {{c1::Vmax}} when its active sites are {{c1::saturated}} with substrate.",
      "", "bb_enzymes", "q_dev_024|q_syn_002"),
-    ("Basic", "Why compare reaction rates (not ΔG) to judge activation energy?",
-     "ΔG reflects spontaneity/energy change; Ea sets the barrier that controls rate at a given temperature.",
+    # Reframed (probe answer-leak): the old front "Why compare reaction rates
+    # (not ΔG) …" stated q_dev_004's own answer ("Compare their reaction
+    # rates."), so the recall probe was not a recall check at all. Now the front
+    # asks the question; the answer lives on the back (and in the explanation).
+    ("Basic", "What is the best way to judge the relative activation energies of two reactions?",
+     "Compare their reaction rates: a lower activation energy lets more collisions succeed per unit time, so the reaction is faster. ΔG and spontaneity are thermodynamic and don't reveal Ea.",
      "bb_enzymes", "q_dev_004"),
     ("Basic", "How does an allosteric inhibitor differ from a competitive inhibitor?",
      "Competitive: active site, blocks substrate. Allosteric: non-active site, conformation change (often lowers affinity).",
@@ -178,7 +186,11 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "cp_electrochem", "q_ho_003"),
     ("Cloze", "The species that is oxidized is the {{c1::reducing agent}} (e.g., Zn in Zn + Cu²⁺).",
      "", "cp_electrochem", "q_ho_001"),
-    ("Cloze", "By the Nernst equation, raising the concentration of product ions {{c1::lowers}} the cell potential.",
+    # Reframed (answer-leak): the old front stated the item's own outcome
+    # ("raising product ions lowers the cell potential"). Now teaches the
+    # governing Nernst relationship + reaction quotient so the student must
+    # derive the direction (−lnQ) rather than recognize the answer.
+    ("Cloze", "In the Nernst equation Ecell = E°cell − (RT/nF)ln Q, the reaction quotient is Q = {{c1::[products]/[reactants]}}, so adding product ions {{c1::raises}} Q.",
      "", "cp_electrochem", "q_ho_002|q_syn_007"),
 
     # ---- cp_thermo ---------------------------------------------------------
@@ -203,8 +215,12 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "", "cp_kinetics", "q_dev_016|q_syn_021"),
     ("Cloze", "Raising temperature speeds a reaction because more molecules exceed the {{c1::activation energy}}.",
      "", "cp_kinetics", "q_dev_015"),
+    # Unlinked from q_syn_020 (answer-leak): this front shows the exact rate law
+    # "rate = k[A][B]²" that q_syn_020 asks the student to DERIVE from data. It
+    # remains q_ho_013's recall card; q_syn_020 keeps the order-definition,
+    # first-order-scaling, and method-of-initial-rates cards.
     ("Cloze", "For rate = k[A][B]², the overall reaction order is {{c1::3}}.",
-     "", "cp_kinetics", "q_ho_013|q_syn_020"),
+     "", "cp_kinetics", "q_ho_013"),
     ("Basic", "Why doesn't a catalyst change the equilibrium position?",
      "It lowers activation energy for the forward and reverse steps equally, speeding both — so it changes rate, not the equilibrium constant.",
      "cp_kinetics", "q_dev_016"),
@@ -332,7 +348,10 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "", "cp_electrochem", "q_syn_008"),
 
     # ---- cp_acids_bases (NEW-AB1..AB4) ------------------------------------
-    ("Cloze", "Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]); when [A⁻] = [HA], pH = {{c1::pKa}}.",
+    # Reframed (answer-leak): the old front cloze-hid "pH = pKa", which is
+    # q_syn_009's own answer (equal concentrations ⇒ pH = pKa). Now teaches the
+    # governing equation; the student must apply log(1)=0 to reach pH = pKa.
+    ("Cloze", "Henderson–Hasselbalch relates buffer pH to pKa: pH = pKa + log({{c1::[A⁻]/[HA]}}).",
      "", "cp_acids_bases", "q_syn_009|q_syn_011"),
     ("Basic", "In a buffer, which species neutralizes a small amount of added strong acid (H⁺), and what does it become?",
      "The conjugate base (A⁻) reacts with the added H⁺ and is converted into the weak acid (HA), consuming the added acid.",
@@ -340,7 +359,10 @@ CARDS: list[tuple[str, str, str, str, str]] = [
     ("Basic", "If something suppresses a weak acid's dissociation, what happens to [H⁺] and pH?",
      "Less dissociation releases fewer H⁺, so [H⁺] falls and the pH rises.",
      "cp_acids_bases", "q_syn_012"),
-    ("Cloze", "A strong acid ionizes {{c1::completely}} (lower pH); a weak acid at equal concentration ionizes only {{c1::partially}} (higher pH).",
+    # Reframed (answer-leak): the old front's "(lower pH)/(higher pH)" tags
+    # stated the item's own comparison. Now teaches only the ionization-extent
+    # prerequisite; the student must connect more ionization → more H⁺ → lower pH.
+    ("Cloze", "A strong acid ionizes {{c1::completely}} in water, whereas a weak acid at the same concentration ionizes only {{c1::partially}}.",
      "", "cp_acids_bases", "q_syn_024"),
 
     # ---- bb_genetics (NEW-G1..G3) -----------------------------------------
@@ -360,7 +382,13 @@ CARDS: list[tuple[str, str, str, str, str]] = [
      "bb_glycolysis", "q_syn_016"),
 
     # ---- bb_membranes (NEW-M1) --------------------------------------------
-    ("Cloze", "In osmosis, water moves toward the {{c1::hypertonic}} (higher-solute) side; a cell in a hypotonic solution {{c1::swells}} and may lyse.",
+    # Reframed (answer-leak): the old front stated the item's own outcome
+    # ("a cell in a hypotonic solution swells and may lyse"). Now teaches only
+    # the directional rule; the added card teaches the tonicity vocabulary. The
+    # student must combine them to predict swelling/lysis (the tested step).
+    ("Cloze", "In osmosis, water moves across a selectively permeable membrane toward the {{c1::hypertonic}} (higher-solute-concentration) side.",
+     "", "bb_membranes", "q_syn_017"),
+    ("Cloze", "Relative to a cell, a solution with lower solute concentration is {{c1::hypotonic}} and one with higher solute concentration is {{c1::hypertonic}}.",
      "", "bb_membranes", "q_syn_017"),
 
     # ---- bb_dna (NEW-D1) --------------------------------------------------
@@ -458,7 +486,10 @@ CARDS: list[tuple[str, str, str, str, str]] = [
     ("Cloze", "A neutral aqueous solution is defined by {{c1::[H⁺] = [OH⁻]}}.",
      "", "cp_acids_bases", "q_ho_007"),
     # q_syn_011: the Henderson–Hasselbalch ratio proportionality (per pH unit).
-    ("Cloze", "By Henderson–Hasselbalch, raising pH by 1 unit above the pKa multiplies the [A⁻]/[HA] ratio by {{c1::10}}.",
+    # Reframed (answer-leak): the old front ("1 unit above pKa multiplies the
+    # ratio by 10") is q_syn_011's own 10:1 answer. Now teaches the general
+    # inversion; the student plugs pH − pKa = 1 to get 10^1 = 10:1.
+    ("Cloze", "Rearranging Henderson–Hasselbalch, the buffer ratio is [A⁻]/[HA] = {{c1::10^(pH − pKa)}}.",
      "", "cp_acids_bases", "q_syn_011"),
     # q_syn_012: percent dissociation responds to suppression.
     ("Cloze", "Suppressing a weak acid's ionization lowers its {{c1::percent dissociation}}.",
@@ -493,12 +524,23 @@ def csv_field(value: str) -> str:
     return '"' + value.replace('"', '""') + '"'
 
 
+def _tags_for(topic_id: str, supports: str) -> str:
+    """Space-separated Anki tags: topic + one tag per linked performance question."""
+    parts = [f"topic:{topic_id}"]
+    if supports:
+        for qid in supports.split("|"):
+            qid = qid.strip()
+            if qid:
+                parts.append(f"supports_question:{qid}")
+    return " ".join(parts)
+
+
 def row(note_type: str, text: str, back: str, topic_id: str, supports: str) -> str:
     return ",".join([
         note_type,
         csv_field(text),
         csv_field(back),
-        f"topic:{topic_id}",
+        _tags_for(topic_id, supports),
         supports,
     ])
 

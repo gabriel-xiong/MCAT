@@ -14,6 +14,12 @@
     "skill": "1",
     "cognitive_demand": "recall",
     "explanation": "Pyruvate kinase catalyzes the final glycolytic step, transferring a phosphate from phosphoenolpyruvate (PEP) to ADP to yield pyruvate and ATP. Hexokinase and phosphofructokinase-1 act earlier in the pathway, and lactate dehydrogenase acts on pyruvate only during fermentation.",
+    "choice_feedback": [
+      "Incorrect — hexokinase catalyzes the first step (glucose → glucose-6-phosphate), not the PEP → pyruvate step.",
+      "Incorrect — phosphofructokinase-1 acts earlier, on fructose-6-phosphate; it doesn't act on PEP.",
+      "Correct — pyruvate kinase transfers a phosphate from PEP to ADP, yielding pyruvate and ATP in the final glycolytic step.",
+      "Incorrect — lactate dehydrogenase acts on pyruvate during fermentation, not on PEP."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Chapter 7 Review — replace with actual question ID when curated",
@@ -29,6 +35,12 @@
     "skill": "2",
     "cognitive_demand": "application",
     "explanation": "Example held-out explanation — replace with a curated, source-grounded rationale for the correct answer before the eval freeze.",
+    "choice_feedback": [
+      "Example distractor feedback — replace with the specific reason choice A is wrong before the eval freeze.",
+      "Example correct-answer feedback — replace with a terse 'why this is correct' before the eval freeze.",
+      "Example distractor feedback — replace with the specific reason choice C is wrong before the eval freeze.",
+      "Example distractor feedback — replace with the specific reason choice D is wrong before the eval freeze."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "TBD",

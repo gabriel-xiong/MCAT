@@ -123,6 +123,20 @@ def main() -> int:
     (DOCS / "QUESTION-CARD-MAP.md").write_text("\n".join(lines) + "\n",
                                                encoding="utf-8")
 
+    # Runtime lookup for collections imported before supports_question tags shipped.
+    qmap: dict[str, dict] = {}
+    for q in questions:
+        qid = q["id"]
+        cs = backing.get(qid, [])
+        if cs:
+            qmap[qid] = {
+                "topic_id": q["topic_id"],
+                "fronts": [c["front"] for c in cs],
+            }
+    (DATA / "question-card-map.json").write_text(
+        json.dumps(qmap, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
     science = sum(1 for q in questions if q["section"] != "CARS")
     covered = science - len(uncovered)
     print("wrote docs/QUESTION-CARD-MAP.md")

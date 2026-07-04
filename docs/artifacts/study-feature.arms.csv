@@ -1,0 +1,4 @@
+arm,n_test,correct,accuracy,wilson_lo,wilson_hi,study_seconds,study_attempts,study_time_missing,below_give_up
+interleaved,120,86,0.716667,0.630296,0.789595,1820.3,71,False,False
+blocked,120,72,0.600000,0.510559,0.683237,1819.8,88,False,False
+plain_anki,120,60,0.500000,0.411937,0.588063,1801.2,222,False,False

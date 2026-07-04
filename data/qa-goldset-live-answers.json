@@ -1,0 +1,1309 @@
+[
+  {
+    "id": "g001",
+    "topic_id": "cp_acids_bases",
+    "bucket": "parity",
+    "question_id": "q_ho_005",
+    "chosen_index_used": 2,
+    "followup_question": "Why isn't the answer 12.0?",
+    "ai_answer": "The answer isn't 12.0 because that value represents the pOH of the solution, not the pH. Since HCl is a strong acid, it completely ionizes, resulting in a hydrogen ion concentration of 0.010 M, which gives a pH of 2.0. Remember, pH and pOH are related, but in this case, we need the pH for an acidic solution.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "12.0 is the pOH of this solution, not the pH",
+      "HCl is a strong acid that ionizes completely, so [H+] = 0.010 M = 10^-2 M",
+      "pH = -log[H+] = -log(10^-2) = 2.0",
+      "pH + pOH = 14 at 25 C, so a pOH of 12.0 corresponds to pH 2.0"
+    ],
+    "must_not_say": [
+      "the pH of this solution is 12.0",
+      "HCl is a weak acid that ionizes only partially"
+    ]
+  },
+  {
+    "id": "g002",
+    "topic_id": "cp_acids_bases",
+    "bucket": "parity",
+    "question_id": "q_ho_006",
+    "chosen_index_used": 0,
+    "followup_question": "Why aren't HCl and NaOH a conjugate acid-base pair?",
+    "ai_answer": "HCl and NaOH are not a conjugate acid-base pair because they do not differ by a single proton (H⁺). HCl is a strong acid that donates a proton, while NaOH is a strong base that accepts a proton, but they are not related by the transfer of just one proton. A conjugate acid-base pair must differ by exactly one H⁺, which is not the case here.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a conjugate acid-base pair differs by exactly one H+",
+      "HCl and NaOH are not related by transfer of a single proton",
+      "HCl and NaOH are a strong acid and a strong base, not a conjugate pair",
+      "the correct conjugate pair here is H2CO3 and HCO3-, which differ by one H+"
+    ],
+    "must_not_say": [
+      "HCl and NaOH differ by one proton",
+      "a strong acid and a strong base always form a conjugate pair"
+    ]
+  },
+  {
+    "id": "g003",
+    "topic_id": "cp_acids_bases",
+    "bucket": "parity",
+    "question_id": "q_ho_062",
+    "chosen_index_used": 0,
+    "followup_question": "Why is 'donates a proton' the wrong definition for a Bronsted-Lowry base?",
+    "ai_answer": "'Donates a proton' is the wrong definition for a Brønsted–Lowry base because it describes an acid, which is defined as a proton donor. In the Brønsted–Lowry framework, a base is specifically a substance that accepts a proton (H⁺) from another species. This distinction is crucial for understanding acid-base reactions.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "donating a proton (H+) is the definition of a Bronsted-Lowry acid",
+      "a Bronsted-Lowry base is a proton (H+) acceptor",
+      "acid and base definitions are opposites: donor versus acceptor"
+    ],
+    "must_not_say": [
+      "a Bronsted-Lowry base donates a proton",
+      "acid and base are the same definition"
+    ]
+  },
+  {
+    "id": "g004",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_008",
+    "chosen_index_used": 0,
+    "followup_question": "Where does the factor of 100 come from? Why isn't it just 6 minus 4 = 2?",
+    "ai_answer": "The factor of 100 comes from the logarithmic nature of the pH scale. Each unit change in pH represents a tenfold change in hydrogen ion concentration. Therefore, a difference of two pH units (from 6 to 4) means 10 raised to the power of 2, which equals 100 times more acidic, not just a simple subtraction of the numbers.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the pH scale is logarithmic, so each pH unit is a tenfold change in [H+]",
+      "the difference between pH 4 and pH 6 is 2 pH units",
+      "the ratio in [H+] is 10^(difference) = 10^2 = 100, not the linear difference 6-4=2",
+      "lower pH means higher [H+], so pH 4 is 100x more acidic than pH 6"
+    ],
+    "must_not_say": [
+      "you subtract the pH values so the answer is 2",
+      "the pH scale is linear"
+    ]
+  },
+  {
+    "id": "g005",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_066",
+    "chosen_index_used": 0,
+    "followup_question": "Where does the pH of 3 come from for a 1.0x10^-3 M strong acid?",
+    "ai_answer": "The pH of 3 comes from the formula pH = -log[H⁺]. Since the strong monoprotic acid ionizes completely, the concentration of hydrogen ions [H⁺] is equal to the concentration of the acid, which is 1.0×10⁻³ M. Therefore, pH = -log(1.0×10⁻³) = 3.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a strong monoprotic acid ionizes completely, so [H+] equals its concentration",
+      "[H+] = 1.0x10^-3 M",
+      "pH = -log[H+] = -log(1.0x10^-3) = 3"
+    ],
+    "must_not_say": [
+      "the pH is 11",
+      "you must use Ka to find [H+] for this acid"
+    ]
+  },
+  {
+    "id": "g006",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_069",
+    "chosen_index_used": 1,
+    "followup_question": "Why does the pH equal the pKa when [A-] equals [HA]?",
+    "ai_answer": "The pH equals the pKa when the concentrations of the conjugate base ([A⁻]) and the weak acid ([HA]) are equal because, according to the Henderson–Hasselbalch equation, pH = pKa + log([A⁻]/[HA]). When [A⁻] equals [HA], the ratio is 1, and the logarithm of 1 is 0, leading to pH = pKa. This relationship shows that the pH is dependent on the acid's pKa, not simply a neutral pH of 7.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Henderson-Hasselbalch: pH = pKa + log([A-]/[HA])",
+      "when [A-] = [HA], the ratio [A-]/[HA] is 1",
+      "log(1) = 0, so the log term is zero",
+      "therefore pH = pKa"
+    ],
+    "must_not_say": [
+      "equal concentrations always give pH 7",
+      "pH = pKa + 1 when the concentrations are equal"
+    ]
+  },
+  {
+    "id": "g007",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_009",
+    "chosen_index_used": 1,
+    "followup_question": "Where does the pH of 4.74 come from?",
+    "ai_answer": "The pH of 4.74 comes from the Henderson–Hasselbalch equation, which states that pH = pKa + log([A⁻]/[HA]). In this case, since the concentrations of acetate ([CH3COO-]) and acetic acid ([CH3COOH]) are equal, the log term becomes 0, leading to pH = pKa = 4.74.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Henderson-Hasselbalch: pH = pKa + log([A-]/[HA])",
+      "here [CH3COO-] = [CH3COOH] = 0.10 M, so the ratio is 1",
+      "log(1) = 0",
+      "pH = pKa = 4.74"
+    ],
+    "must_not_say": [
+      "the pH is 7.00 because the concentrations are equal",
+      "you use 14 - pKa"
+    ]
+  },
+  {
+    "id": "g008",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_011",
+    "chosen_index_used": 0,
+    "followup_question": "Why is the ratio 10:1 and not 1:10?",
+    "ai_answer": "The ratio is 10:1 because when the pH is one unit above the pKa, the Henderson–Hasselbalch equation indicates that the log of the ratio of the conjugate base to the acid must equal 1. This means that [CH₃COO⁻] must be ten times greater than [CH₃COOH], resulting in a ratio of 10:1. Choosing 1:10 would imply that there is more acid than base, which is incorrect for a pH above the pKa.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Henderson-Hasselbalch: pH = pKa + log([A-]/[HA])",
+      "to be one unit above the pKa, log([A-]/[HA]) must equal +1",
+      "log ratio of +1 means [A-]/[HA] = 10, i.e. 10:1 (conjugate base to acid)",
+      "raising pH above the pKa requires MORE conjugate base than acid, so 1:10 is inverted"
+    ],
+    "must_not_say": [
+      "the ratio is 1:10",
+      "the ratio is always 1:1 regardless of target pH"
+    ]
+  },
+  {
+    "id": "g009",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_010",
+    "chosen_index_used": 0,
+    "followup_question": "Why does the pH drop only slightly instead of sharply when a little HCl is added?",
+    "ai_answer": "The pH drops only slightly because the acetate in the buffer reacts with the added H⁺ from HCl to form acetic acid. This reaction consumes the excess H⁺, preventing a sharp decrease in pH. In contrast, pure water would not have this buffering capacity, leading to a more significant pH drop.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the solution is a buffer (weak acid acetic acid plus its conjugate base acetate)",
+      "the added H+ is consumed by acetate: CH3COO- + H+ -> CH3COOH (A- + H+ -> HA)",
+      "consuming the added H+ resists the pH change, so pH decreases only slightly",
+      "a buffer resists but does not eliminate pH change (it is not held perfectly constant)"
+    ],
+    "must_not_say": [
+      "the pH does not change at all",
+      "the pH drops as sharply as it would in pure water"
+    ]
+  },
+  {
+    "id": "g010",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_012",
+    "chosen_index_used": 1,
+    "followup_question": "If I dissolve extra sodium acetate into acetic acid, what happens to the percent dissociation and the pH?",
+    "ai_answer": "Dissolving extra sodium acetate into acetic acid increases the concentration of the acetate ion, which shifts the equilibrium to the left. This results in a decrease in the percent dissociation of acetic acid and an increase in pH, as less H⁺ is produced. Therefore, the pH rises due to the common-ion effect.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "acetate is the common ion in the equilibrium CH3COOH <-> CH3COO- + H+",
+      "by Le Chatelier, adding the common ion shifts the equilibrium to the left",
+      "acetic acid's percent dissociation decreases",
+      "[H+] decreases, so the pH rises"
+    ],
+    "must_not_say": [
+      "the equilibrium shifts to the right",
+      "the pH drops",
+      "acetate is only a spectator ion with no effect"
+    ]
+  },
+  {
+    "id": "g011",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_024",
+    "chosen_index_used": 0,
+    "followup_question": "Both solutions are 0.10 M, so why does HCl have a lower pH than acetic acid?",
+    "ai_answer": "Although both solutions are 0.10 M, HCl is a strong acid that ionizes completely, resulting in a higher concentration of hydrogen ions ([H⁺]) in solution. In contrast, acetic acid is a weak acid that only partially ionizes, leading to a lower concentration of [H⁺]. This difference in ionization is why HCl has a lower pH than acetic acid, despite their equal concentrations.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "HCl is a strong acid and ionizes completely; acetic acid is a weak acid and ionizes only partially",
+      "at the same concentration, complete ionization gives HCl a higher [H+]",
+      "higher [H+] means lower pH, so HCl has the lower pH",
+      "equal concentration does not mean equal pH when the extent of ionization differs"
+    ],
+    "must_not_say": [
+      "acetic acid is the stronger acid",
+      "both have the same pH because the concentrations are equal"
+    ]
+  },
+  {
+    "id": "g012",
+    "topic_id": "bb_enzymes",
+    "bucket": "parity",
+    "question_id": "q_ho_026",
+    "chosen_index_used": 0,
+    "followup_question": "Why isn't it the allosteric site?",
+    "ai_answer": "The allosteric site is not the correct answer because it serves a regulatory function rather than being the location where substrate binding and catalysis occur. The active site is specifically designed for substrate interaction and the catalytic process. This distinction is crucial in understanding enzyme functionality.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the active site is the region where substrate binds and catalysis occurs",
+      "the allosteric site is a separate regulatory site, not where catalysis occurs"
+    ],
+    "must_not_say": [
+      "the allosteric site is where catalysis occurs",
+      "the active site and allosteric site are the same region"
+    ]
+  },
+  {
+    "id": "g013",
+    "topic_id": "bb_enzymes",
+    "bucket": "parity",
+    "question_id": "q_ho_027",
+    "chosen_index_used": 0,
+    "followup_question": "Why isn't the enzyme permanently consumed when it binds substrate?",
+    "ai_answer": "The enzyme is not permanently consumed when it binds to the substrate because enzymes act as catalysts. They facilitate chemical reactions without being altered or used up in the process. After the reaction, the enzyme is regenerated and can participate in further reactions, which is a key characteristic of enzymes.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "enzymes are catalysts",
+      "catalysts are regenerated, not consumed, by the reaction",
+      "in the induced-fit model the active site changes shape to fit the substrate more snugly"
+    ],
+    "must_not_say": [
+      "the enzyme is used up by the reaction",
+      "enzymes are consumed like reactants"
+    ]
+  },
+  {
+    "id": "g014",
+    "topic_id": "bb_enzymes",
+    "bucket": "parity",
+    "question_id": "q_ho_028",
+    "chosen_index_used": 0,
+    "followup_question": "Why doesn't activity just keep increasing without limit as temperature rises?",
+    "ai_answer": "As temperature rises above an enzyme's optimum, the heat disrupts the noncovalent interactions that maintain the enzyme's three-dimensional structure, leading to denaturation. This distortion of the active site decreases the enzyme's activity rather than allowing it to increase without limit. Therefore, while moderate increases in temperature can enhance activity, excessive heat ultimately harms the enzyme's function.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "well above the optimum temperature, heat denatures the enzyme",
+      "denaturation disrupts the noncovalent interactions maintaining the enzyme's 3D shape and distorts the active site",
+      "so activity decreases rather than rising without limit"
+    ],
+    "must_not_say": [
+      "higher temperature always increases enzyme activity without limit",
+      "temperature has no effect on enzyme activity"
+    ]
+  },
+  {
+    "id": "g015",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_074",
+    "chosen_index_used": 1,
+    "followup_question": "What's the difference between competitive and allosteric (noncompetitive) inhibition here?",
+    "ai_answer": "Competitive inhibition occurs when an inhibitor resembles the substrate and binds directly to the active site of the enzyme, blocking substrate access. In contrast, allosteric (noncompetitive) inhibition involves an inhibitor binding to a site away from the active site, which alters the enzyme's shape and function without directly blocking substrate binding. This distinction is crucial for understanding how different inhibitors affect enzyme activity.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a competitive inhibitor binds in the active site, directly blocking substrate access",
+      "an allosteric / noncompetitive inhibitor binds at a site away from the active site and changes the enzyme's shape (conformation)",
+      "a competitive inhibitor typically resembles the substrate and binds reversibly"
+    ],
+    "must_not_say": [
+      "a competitive inhibitor binds away from the active site",
+      "competitive inhibition works by permanently/covalently destroying the enzyme"
+    ]
+  },
+  {
+    "id": "g016",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_082",
+    "chosen_index_used": 1,
+    "followup_question": "Why does a higher Km mean the enzyme binds substrate less tightly?",
+    "ai_answer": "A higher Km indicates that a greater concentration of substrate is required to reach half of the enzyme's maximum velocity. This means that the enzyme does not bind the substrate as tightly, reflecting a lower affinity for the substrate. Essentially, if more substrate is needed to achieve half-saturation, the binding interaction is weaker.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Km is the substrate concentration that gives half-maximal velocity (one-half of Vmax)",
+      "a higher Km means more substrate is needed to reach half-saturation",
+      "needing more substrate to half-saturate indicates weaker binding, i.e. lower affinity",
+      "Km is inversely related to substrate affinity"
+    ],
+    "must_not_say": [
+      "a higher Km means tighter binding / higher affinity",
+      "a higher Km necessarily means a higher Vmax"
+    ]
+  },
+  {
+    "id": "g017",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_080",
+    "chosen_index_used": 1,
+    "followup_question": "Why doesn't slowing the reaction with an inhibitor lower the equilibrium constant Keq?",
+    "ai_answer": "Slowing the reaction with an inhibitor affects the rate at which equilibrium is reached but does not change the equilibrium constant (Keq) itself. The equilibrium constant is determined by the ratio of the concentrations of products to reactants at equilibrium, which remains unchanged regardless of the reaction rate. Therefore, the inhibitor does not alter the thermodynamic properties of the reaction.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "an enzyme and any inhibitor of it affect only kinetics (how fast equilibrium is reached), not the equilibrium position",
+      "Keq and delta-G are thermodynamic properties set by the reactants and products",
+      "a catalyst or its inhibitor does not change Keq or delta-G"
+    ],
+    "must_not_say": [
+      "slowing the reaction lowers its Keq",
+      "the inhibitor makes the products less thermodynamically stable"
+    ]
+  },
+  {
+    "id": "g018",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_syn_001",
+    "chosen_index_used": 1,
+    "followup_question": "Why is inhibitor X competitive rather than noncompetitive?",
+    "ai_answer": "Inhibitor X is classified as competitive because it raises the apparent Km while leaving Vmax unchanged. In competitive inhibition, the inhibitor competes with the substrate for the active site, which can be overcome by increasing substrate concentration. In contrast, noncompetitive inhibition would lower Vmax without affecting Km, which is not observed in this case.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "adding X leaves Vmax unchanged (both curves approach about 100 umol/min)",
+      "adding X raises the apparent Km (from about 2 mM to about 6 mM)",
+      "an unchanged Vmax with an increased Km is the signature of competitive inhibition",
+      "noncompetitive inhibition would instead lower Vmax and leave Km unchanged"
+    ],
+    "must_not_say": [
+      "Vmax decreases when X is added",
+      "competitive inhibition lowers Vmax"
+    ]
+  },
+  {
+    "id": "g019",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_072",
+    "chosen_index_used": 1,
+    "followup_question": "Why does the enzyme speed the reaction by lowering activation energy rather than by making it more exergonic?",
+    "ai_answer": "Enzymes speed up reactions by lowering the activation energy, which is the energy barrier that must be overcome for a reaction to proceed. They do not change the overall energy change (ΔG) of the reaction, meaning they do not make the reaction more exergonic. Instead, they facilitate the reaction by providing an alternative pathway that requires less energy, thus affecting kinetics rather than thermodynamics.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "enzymes are catalysts that provide a pathway with a lower activation energy",
+      "lowering the activation energy speeds the reaction (a kinetic effect)",
+      "enzymes do not change delta-G, the equilibrium position, or the temperature",
+      "delta-G is a thermodynamic property independent of the catalyst"
+    ],
+    "must_not_say": [
+      "the enzyme makes the reaction more exergonic / more negative delta-G",
+      "the enzyme shifts the equilibrium toward products"
+    ]
+  },
+  {
+    "id": "g020",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_syn_004",
+    "chosen_index_used": 0,
+    "followup_question": "X changes the apparent Km, so does it also change delta-G or Keq?",
+    "ai_answer": "No, inhibitor X does not change ΔG or the equilibrium constant (Keq). While it affects the apparent Km, which relates to the enzyme's kinetics, it does not alter the thermodynamic favorability of the reaction. ΔG and Keq are determined by the free-energy difference between the substrate and product, which remains unchanged.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "an inhibitor affects only kinetics (rate), not thermodynamics",
+      "X changes the apparent Km but leaves delta-G and Keq unchanged",
+      "delta-G and Keq depend only on the free-energy difference between reactants and products",
+      "Km is a kinetic quantity while Keq is thermodynamic; they should not be conflated"
+    ],
+    "must_not_say": [
+      "raising Km lowers Keq",
+      "X makes S->P less thermodynamically favorable"
+    ]
+  },
+  {
+    "id": "g021",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_075",
+    "chosen_index_used": 1,
+    "followup_question": "Why does the rate level off at Vmax when substrate concentration gets very high?",
+    "ai_answer": "The rate levels off at Vmax because, at high substrate concentrations, all of the enzyme's active sites are saturated with substrate. This means that the enzymes are working at their maximum capacity, and adding more substrate cannot increase the reaction rate any further. This phenomenon is due to simple saturation rather than substrate inhibition.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "at saturating substrate, essentially all enzyme active sites are occupied",
+      "the enzyme is already turning over as fast as it can, so adding more substrate cannot increase the rate",
+      "this maximum rate is Vmax",
+      "the plateau is due to active-site saturation, not the enzyme being consumed or substrate inhibition"
+    ],
+    "must_not_say": [
+      "the enzyme is used up / consumed at high substrate",
+      "the plateau is caused by substrate inhibiting the enzyme"
+    ]
+  },
+  {
+    "id": "g022",
+    "topic_id": "cp_kinetics",
+    "bucket": "parity",
+    "question_id": "q_ho_014",
+    "chosen_index_used": 1,
+    "followup_question": "Why isn't the rate multiplied by 4 when [A] doubles?",
+    "ai_answer": "The rate of a first-order reaction is directly proportional to the concentration of the reactant, so if you double [A], the rate also doubles, resulting in a factor of 2. A factor of 4 would indicate a second-order reaction, where the rate depends on the square of the concentration. Therefore, in a first-order reaction, the rate does not increase by a factor of 4 when [A] is doubled.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "first order means rate is proportional to [A]^1",
+      "doubling [A] multiplies the rate by 2^1 = 2",
+      "a factor of 4 (2^2) would correspond to second order, not first"
+    ],
+    "must_not_say": [
+      "doubling [A] quadruples a first-order rate",
+      "first order means rate proportional to [A]^2"
+    ]
+  },
+  {
+    "id": "g023",
+    "topic_id": "cp_kinetics",
+    "bucket": "parity",
+    "question_id": "q_ho_015",
+    "chosen_index_used": 0,
+    "followup_question": "Why isn't a zero-order rate proportional to [A]?",
+    "ai_answer": "In a zero-order reaction, the rate does not depend on the concentration of the reactant, which means it is constant regardless of the amount of reactant present. The rate equation for a zero-order reaction is expressed as rate = k[A]⁰ = k, indicating that the rate is independent of [A]. This is why it is incorrect to say that a zero-order rate is proportional to [A]; that characteristic applies to first-order reactions instead.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "zero order means rate = k[A]^0 = k",
+      "the rate is constant and independent of reactant concentration",
+      "a rate proportional to [A] describes a first-order reaction, not zero order"
+    ],
+    "must_not_say": [
+      "a zero-order rate is proportional to [A]",
+      "zero order means the rate is literally zero"
+    ]
+  },
+  {
+    "id": "g024",
+    "topic_id": "cp_kinetics",
+    "bucket": "parity",
+    "question_id": "q_ho_089",
+    "chosen_index_used": 1,
+    "followup_question": "Why isn't the minimum energy needed to react the free energy (delta-G)?",
+    "ai_answer": "The minimum energy needed for reactant molecules to react is called activation energy, not free energy (ΔG). Activation energy refers to the kinetic energy barrier that must be overcome for a reaction to occur, while ΔG is a thermodynamic quantity that indicates the overall energy change of a reaction. These concepts are distinct, as ΔG does not account for the energy required to initiate the reaction.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "activation energy (Ea) is the minimum energy colliding molecules must have to react",
+      "Ea is a kinetic barrier that sets the height of the barrier to reacting",
+      "delta-G is a thermodynamic quantity, distinct from the activation-energy barrier"
+    ],
+    "must_not_say": [
+      "the activation energy equals delta-G",
+      "the minimum energy to react is a thermodynamic quantity"
+    ]
+  },
+  {
+    "id": "g025",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_013",
+    "chosen_index_used": 1,
+    "followup_question": "Why is the overall order 3 and not 2?",
+    "ai_answer": "The overall reaction order is determined by summing all the exponents in the rate law. In this case, the rate law is rate = k[A][B]², which has an exponent of 1 for A and an exponent of 2 for B. Therefore, the overall order is 1 + 2 = 3, not just the exponent for B alone.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the overall reaction order is the sum of the exponents in the rate law",
+      "for rate = k[A][B]^2 the exponents are 1 (for A) and 2 (for B)",
+      "1 + 2 = 3",
+      "2 is only the order in B alone, not the overall order"
+    ],
+    "must_not_say": [
+      "the overall order is the largest single exponent",
+      "the overall order is 2"
+    ]
+  },
+  {
+    "id": "g026",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_syn_020",
+    "chosen_index_used": 1,
+    "followup_question": "Where does the [B]^2 come from in the rate law?",
+    "ai_answer": "The [B]² in the rate law comes from the comparison of experiments 1 and 3. When the concentration of B is doubled from 0.10 M to 0.20 M while keeping A constant, the rate increases from 2.0 M/s to 8.0 M/s, which is a quadrupling of the rate. This indicates that B is second order, as the rate is proportional to the square of its concentration.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "reaction order is found by comparing experiments where one concentration changes while the other is held constant",
+      "comparing Exp 1 and Exp 3, [B] doubles (0.10 -> 0.20 M) while [A] is held constant",
+      "the rate quadruples (2.0 -> 8.0), and 2^n = 4 gives n = 2",
+      "so the reaction is second order in B, giving [B]^2 (orders come from initial-rates data, not stoichiometry)"
+    ],
+    "must_not_say": [
+      "B is first order",
+      "the exponent comes from the stoichiometric coefficient of B"
+    ]
+  },
+  {
+    "id": "g027",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_084",
+    "chosen_index_used": 1,
+    "followup_question": "If raising temperature speeds the reaction, why isn't it because the activation energy drops?",
+    "ai_answer": "Raising the temperature increases the average kinetic energy of molecules, allowing more of them to collide with enough energy to overcome the existing activation energy barrier. The activation energy itself does not decrease with temperature; only a catalyst can lower it. Therefore, the increase in reaction rate is due to a larger fraction of collisions having energy greater than the activation energy, not a decrease in that energy.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "higher temperature raises the average kinetic energy of the molecules",
+      "so a larger fraction of molecular collisions have energy greater than or equal to the activation energy",
+      "the activation energy itself is not lowered by heating",
+      "lowering the activation energy is the role of a catalyst, not of temperature"
+    ],
+    "must_not_say": [
+      "higher temperature lowers the activation energy",
+      "temperature speeds the reaction by making delta-G more negative"
+    ]
+  },
+  {
+    "id": "g028",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_085",
+    "chosen_index_used": 1,
+    "followup_question": "Why does temperature change the rate constant k but increasing a reactant's concentration doesn't?",
+    "ai_answer": "Temperature affects the energy of the molecules involved in a reaction, which in turn influences the rate constant k. As temperature increases, the kinetic energy of the molecules increases, leading to more frequent and effective collisions, thus altering k. In contrast, increasing the concentration of a reactant affects the rate of the reaction but does not change the inherent properties of the reaction that define k, which remains constant at a given temperature.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the rate constant k depends on temperature (and on whether a catalyst is present)",
+      "changing concentration changes the reaction rate but not the value of k",
+      "k is constant at a given temperature regardless of concentration, volume, or pressure"
+    ],
+    "must_not_say": [
+      "increasing reactant concentration increases k",
+      "k depends on reactant concentration"
+    ]
+  },
+  {
+    "id": "g029",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_083",
+    "chosen_index_used": 1,
+    "followup_question": "Why doesn't adding a catalyst shift the equilibrium toward products?",
+    "ai_answer": "Adding a catalyst does not shift the equilibrium toward products because it accelerates both the forward and reverse reactions equally. This means that while the rate at which equilibrium is reached is increased, the position of the equilibrium itself remains unchanged. The catalyst lowers the activation energy for both directions, but it does not favor one direction over the other.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a catalyst lowers the activation energy for the forward and reverse reactions equally",
+      "it speeds the attainment of equilibrium without changing the equilibrium position",
+      "Keq and the final amounts of product are unchanged"
+    ],
+    "must_not_say": [
+      "a catalyst shifts the equilibrium toward products",
+      "a catalyst increases the equilibrium amount/yield of product"
+    ]
+  },
+  {
+    "id": "g030",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_090",
+    "chosen_index_used": 1,
+    "followup_question": "Why isn't the exponent m just the stoichiometric coefficient of A from the balanced equation?",
+    "ai_answer": "The exponent m in the rate law represents the order of the reaction with respect to A, which is determined experimentally and may not correspond to the stoichiometric coefficient from the balanced equation. In some cases, the reaction order can differ from the coefficients due to complex reaction mechanisms. Therefore, it's important to rely on experimental data rather than assumptions based on stoichiometry.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "in a rate law, each reactant's exponent is that reactant's reaction order",
+      "reaction orders are determined experimentally",
+      "the exponent is not necessarily the stoichiometric coefficient (that equivalence holds only for elementary steps)"
+    ],
+    "must_not_say": [
+      "the exponent always equals the stoichiometric coefficient",
+      "m is the rate constant for A"
+    ]
+  },
+  {
+    "id": "g031",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_009",
+    "chosen_index_used": 1,
+    "followup_question": "If I doubled BOTH the acetic acid and the acetate concentrations (0.10 M -> 0.20 M each) while keeping the 1:1 ratio, what happens to the pH and to the buffer capacity?",
+    "ai_answer": "If you double both the acetic acid and acetate concentrations while maintaining the 1:1 ratio, the pH will remain the same at 4.74. This is because the pH is determined by the ratio of the concentrations, which stays constant. However, the buffer capacity will increase, allowing the buffer to better resist changes in pH upon the addition of acids or bases.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "by Henderson-Hasselbalch (pH = pKa + log([A-]/[HA])) the pH depends only on the ratio [A-]/[HA], which is unchanged when both are doubled, so the pH stays at the pKa (4.74)",
+      "buffer capacity depends on the absolute amounts/concentrations of the conjugate acid-base pair, not on the ratio alone",
+      "doubling both concentrations at the same ratio increases the buffer capacity (the buffer can neutralize more added strong acid or base before the pH shifts significantly)",
+      "so the pH is unchanged while the buffer capacity increases"
+    ],
+    "must_not_say": [
+      "the pH changes when both concentrations are doubled at constant ratio",
+      "the buffer capacity is unchanged when both concentrations are doubled"
+    ]
+  },
+  {
+    "id": "g032",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_064",
+    "chosen_index_used": 0,
+    "followup_question": "Ammonia (NH3) is a weak base -- could it make a buffer, and if so which species handles added strong acid and which handles added strong base?",
+    "ai_answer": "Yes, ammonia (NH₃) can form a buffer when paired with its conjugate acid, ammonium (NH₄⁺). In this buffer system, NH₄⁺ would handle added strong acid by reacting with it to form NH₃, while NH₃ would handle added strong base by reacting with it to form NH₄⁺. This equilibrium allows the buffer to resist changes in pH.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a buffer can also be a weak base together with its conjugate acid (here NH3 with NH4+, e.g. from NH4Cl), not only a weak acid with its conjugate base",
+      "when strong acid (H+) is added, the weak base NH3 neutralizes it: NH3 + H+ -> NH4+",
+      "when strong base (OH-) is added, the conjugate acid NH4+ neutralizes it: NH4+ + OH- -> NH3 + H2O",
+      "because both a proton acceptor (NH3) and a proton donor (NH4+) are present, the mixture resists pH change in either direction"
+    ],
+    "must_not_say": [
+      "NH3 alone (with no NH4+) is a buffer",
+      "only a weak acid can form a buffer; a weak base cannot"
+    ]
+  },
+  {
+    "id": "g033",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_012",
+    "chosen_index_used": 1,
+    "followup_question": "Starting from pure 0.10 M acetic acid, if I dissolve enough sodium acetate to make [acetate] = 0.10 M, where does the final pH end up -- qualitatively and quantitatively?",
+    "ai_answer": "When you dissolve sodium acetate to make [acetate] = 0.10 M, the equilibrium will shift to the left due to the common-ion effect, which decreases the percent dissociation of acetic acid. This results in a lower concentration of H⁺ ions, leading to an increase in pH. Quantitatively, you can use the Henderson-Hasselbalch equation to find the exact pH, but qualitatively, the pH will rise compared to the initial state of pure acetic acid.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "adding acetate is the common-ion effect: it suppresses acetic acid's ionization (equilibrium CH3COOH <-> CH3COO- + H+ shifts left), which qualitatively raises the pH of the pure acid",
+      "once appreciable acetic acid and acetate coexist, the solution is a buffer described by Henderson-Hasselbalch: pH = pKa + log([A-]/[HA])",
+      "with [A-] = [HA] = 0.10 M the ratio is 1 and log 1 = 0, so quantitatively the final pH = pKa = 4.74",
+      "the qualitative (common-ion pH rise) and quantitative (HH) analyses agree: the final pH (4.74) is higher than that of the pure 0.10 M acetic acid before acetate was added"
+    ],
+    "must_not_say": [
+      "adding the common ion (acetate) lowers the pH",
+      "the final pH is 7 because the concentrations are equal"
+    ]
+  },
+  {
+    "id": "g034",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_010",
+    "chosen_index_used": 0,
+    "followup_question": "After adding the HCl, why can't I just plug the original 0.10/0.10 concentrations into Henderson-Hasselbalch -- why doesn't the pH stay exactly at 4.74?",
+    "ai_answer": "You can't plug the original concentrations directly into the Henderson-Hasselbalch equation after adding HCl because the addition of strong acid changes the concentrations of the buffer components. The acetate reacts with the added H⁺ to form acetic acid, which alters the ratio of [A⁻] to [HA]. This reaction means the pH will not remain at the original value of 4.74, but will decrease only slightly due to the buffer's capacity to resist pH changes.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the added H+ reacts with acetate and converts it to acetic acid (A- + H+ -> HA), so [HA] rises and [A-] falls",
+      "because the ratio [A-]/[HA] is no longer 1, the Henderson-Hasselbalch log term is no longer 0, so the pH is no longer exactly the pKa",
+      "the correct procedure is to first update the concentrations for the reaction with added H+ (stoichiometry), then apply Henderson-Hasselbalch to the new ratio",
+      "the new ratio is slightly less than 1, so the pH drops slightly below the pKa rather than staying at 4.74"
+    ],
+    "must_not_say": [
+      "the [A-]/[HA] ratio stays 1:1 after adding HCl",
+      "the pH stays exactly at the pKa (4.74) after adding acid"
+    ]
+  },
+  {
+    "id": "g035",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_syn_009",
+    "chosen_index_used": 1,
+    "followup_question": "What happens to this buffer's pH if I dilute the whole thing 10-fold with water, and how does that contrast with diluting a strong acid 10-fold?",
+    "ai_answer": "If you dilute the acetate buffer 10-fold with water, the concentrations of both acetic acid and acetate will decrease to 0.01 M, but their ratio remains the same. Therefore, the pH will still equal the pKa of 4.74. In contrast, diluting a strong acid 10-fold would increase the pH significantly, as the concentration of H+ ions decreases, moving it away from the acidic range.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "diluting the buffer scales [A-] and [HA] by the same factor, so the ratio [A-]/[HA] is essentially unchanged",
+      "by Henderson-Hasselbalch the pH depends on that ratio, so the buffer's pH stays approximately constant (near the pKa) on dilution",
+      "diluting a strong acid 10-fold lowers [H+] about 10-fold, raising its pH by about 1 unit",
+      "so the buffer resists pH change on dilution whereas the strong acid's pH shifts markedly -- a key contrast"
+    ],
+    "must_not_say": [
+      "diluting the buffer 10-fold raises its pH by about one unit",
+      "dilution changes the [A-]/[HA] ratio of the buffer"
+    ]
+  },
+  {
+    "id": "g036",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_079",
+    "chosen_index_used": 1,
+    "followup_question": "Would adding excess substrate restore full activity if the inhibitor were noncompetitive instead? Why or why not?",
+    "ai_answer": "No, adding excess substrate would not restore full activity if the inhibitor were noncompetitive. Noncompetitive inhibitors bind to an enzyme regardless of whether the substrate is present, reducing the overall number of active enzyme molecules available for the reaction. Therefore, increasing substrate concentration does not overcome the inhibition caused by noncompetitive inhibitors.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a competitive inhibitor binds in the active site and competes with substrate, so flooding with excess substrate outcompetes it and restores the rate toward the original Vmax",
+      "a noncompetitive (allosteric) inhibitor binds at a separate site, not the active site, so more substrate does not displace it",
+      "because it is not displaced by substrate, a noncompetitive inhibitor lowers the maximum rate (Vmax) and excess substrate cannot fully restore activity",
+      "so excess substrate reverses competitive inhibition but not noncompetitive inhibition"
+    ],
+    "must_not_say": [
+      "adding excess substrate reverses noncompetitive inhibition",
+      "a noncompetitive inhibitor binds in the active site and competes with substrate"
+    ]
+  },
+  {
+    "id": "g037",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_syn_001",
+    "chosen_index_used": 1,
+    "followup_question": "Suppose a different inhibitor Y instead lowered Vmax from ~100 to ~60 umol/min but left the half-maximal [S] at ~2 mM. What type of inhibition would Y be, and how would its curve differ from X's?",
+    "ai_answer": "Inhibitor Y would likely exhibit noncompetitive inhibition, as it lowers Vmax while leaving the half-maximal substrate concentration (Km) unchanged. This means that the reaction velocity would not reach the same maximum as with the enzyme alone, resulting in a curve that approaches a lower Vmax compared to the curve with inhibitor X, which maintains the same Vmax. Thus, the presence of Y would shift the curve downward without affecting the position of the Km.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "lowering Vmax while leaving Km (the substrate concentration for half-maximal velocity) unchanged is the signature of noncompetitive inhibition",
+      "so inhibitor Y would be noncompetitive, in contrast to the competitive inhibitor X in the passage",
+      "on the graph, Y's curve plateaus at a lower Vmax (~60) yet still reaches half of that lower maximum at ~2 mM, whereas X kept Vmax ~100 but needed more substrate (~6 mM) to reach half-maximal velocity",
+      "unlike competitive X, Y's reduced Vmax cannot be overcome by adding excess substrate"
+    ],
+    "must_not_say": [
+      "Y is a competitive inhibitor",
+      "lowering Vmax with an unchanged Km indicates competitive inhibition"
+    ]
+  },
+  {
+    "id": "g038",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_082",
+    "chosen_index_used": 1,
+    "followup_question": "If enzyme X has BOTH a higher Km and a higher Vmax than enzyme Y, is X simply the 'better' enzyme? Separate what Km tells you from what Vmax tells you.",
+    "ai_answer": "Enzyme X having a higher Km indicates that it binds the substrate less tightly than enzyme Y, meaning it has a lower affinity for the substrate. However, a higher Vmax suggests that enzyme X can catalyze reactions at a faster maximum rate when fully saturated with substrate. Therefore, while enzyme X may be faster at high substrate concentrations, it is not necessarily 'better' overall, as its lower affinity could limit its effectiveness at lower substrate levels.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Km and Vmax are independent parameters that describe different properties, so one being higher does not force the other",
+      "Km reflects substrate affinity: a higher Km means weaker binding (lower affinity), so X binds substrate less tightly than Y",
+      "Vmax reflects the maximum catalytic rate at saturating substrate: a higher Vmax means X can turn substrate over faster once saturated",
+      "so 'better' is not well defined -- X has lower affinity but a higher maximum rate; which matters depends on the substrate concentration and context"
+    ],
+    "must_not_say": [
+      "a higher Km automatically means a higher Vmax",
+      "a higher Vmax means the enzyme has higher substrate affinity"
+    ]
+  },
+  {
+    "id": "g039",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_syn_020",
+    "chosen_index_used": 1,
+    "followup_question": "For rate = k[A][B]^2, what happens to the rate if I double [A] and triple [B] at the same time?",
+    "ai_answer": "If you double [A] and triple [B] in the rate law rate = k[A][B]², the new rate would be calculated as follows: the rate would increase by a factor of 2 from [A] and by a factor of 3² (which is 9) from [B]. Therefore, the overall change in rate would be 2 * 9 = 18 times the original rate.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "for rate = k[A][B]^2 the overall factor change is (factor in [A])^1 times (factor in [B])^2",
+      "doubling [A] multiplies the rate by 2^1 = 2",
+      "tripling [B] multiplies the rate by 3^2 = 9",
+      "the combined effect multiplies the rate by 2 x 9 = 18"
+    ],
+    "must_not_say": [
+      "the rate increases by a factor of 2 + 3 = 5",
+      "the rate multiplies by 2 x 3 = 6 (treating B as first order)"
+    ]
+  },
+  {
+    "id": "g040",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_083",
+    "chosen_index_used": 1,
+    "followup_question": "How do a catalyst and a temperature increase speed a reaction differently -- which one lowers the activation energy and which one changes the fraction of collisions that clear the barrier?",
+    "ai_answer": "A catalyst lowers the activation energy for both the forward and reverse reactions, allowing them to occur more easily without changing the equilibrium position. In contrast, increasing the temperature increases the kinetic energy of the molecules, which changes the fraction of collisions that have enough energy to overcome the activation barrier. Thus, while a catalyst speeds up the reaction by lowering activation energy, temperature affects the rate by increasing the number of effective collisions.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a catalyst speeds the reaction by providing an alternate pathway with a lower activation energy, and it lowers Ea for the forward and reverse directions equally",
+      "raising the temperature does NOT lower the activation energy; instead it raises molecules' average kinetic energy so a larger fraction of collisions have energy greater than or equal to Ea",
+      "a catalyst does not change delta-G, Keq, or the equilibrium position -- only how fast equilibrium is reached",
+      "so although both increase the rate, they act by different mechanisms: lowering the Ea barrier versus shifting the collision-energy distribution"
+    ],
+    "must_not_say": [
+      "raising the temperature speeds the reaction by lowering the activation energy",
+      "a catalyst shifts the equilibrium toward products"
+    ]
+  },
+  {
+    "id": "g041",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_007",
+    "chosen_index_used": 1,
+    "followup_question": "This says neutral water has [H+] = 1.0x10^-7 M at 25 C. If instead the water were at body temperature (37 C) or near boiling, would neutral water still have pH 7?",
+    "ai_answer": "At temperatures above 25 °C, the value of Kw increases, which means that the concentrations of [H⁺] and [OH⁻] in neutral water will also increase. Therefore, while the pH of neutral water at 25 °C is 7, at higher temperatures, the pH will be lower than 7 due to the increased [H⁺]. Thus, neutral water at body temperature or near boiling does not maintain a pH of 7.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "neutrality is defined by [H+] = [OH-], which holds at any temperature, not by a fixed pH of 7",
+      "water's autoionization is endothermic, so Kw increases as temperature rises above 25 C",
+      "with a larger Kw, neutral water has [H+] = sqrt(Kw) greater than 1.0x10^-7 M, so its pH is below 7",
+      "the water is still neutral at that higher temperature because [H+] still equals [OH-], even though pH is under 7"
+    ],
+    "must_not_say": [
+      "neutral water has a pH of exactly 7 at every temperature",
+      "warming neutral water makes it acidic because its pH drops below 7"
+    ]
+  },
+  {
+    "id": "g042",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_061",
+    "chosen_index_used": 1,
+    "followup_question": "Here water acts as the acid (proton donor) toward ammonia. Is water always the acid? What would water be in a reaction with HCl, and what does that make water overall?",
+    "ai_answer": "Water is not always the acid; it depends on the context of the reaction. In a reaction with HCl, water acts as a base by accepting a proton from HCl, making HCl the acid. Overall, water can function as either an acid or a base depending on the other species involved in the reaction.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "water is amphiprotic (amphoteric): it can either donate or accept a proton depending on its reaction partner",
+      "toward the base ammonia, water donates H+ and acts as the Bronsted-Lowry acid, forming OH- (its conjugate base)",
+      "toward the acid HCl, water accepts H+ and acts as the Bronsted-Lowry base, forming H3O+ (its conjugate acid)",
+      "so water's acid/base role is not fixed; its conjugate base is OH- when it acts as an acid, and its conjugate acid is H3O+ when it acts as a base"
+    ],
+    "must_not_say": [
+      "water can only act as a Bronsted-Lowry acid",
+      "water plays the same acid role regardless of the other reactant"
+    ]
+  },
+  {
+    "id": "g043",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_063",
+    "chosen_index_used": 1,
+    "followup_question": "The blurb says a strong acid has a very weak conjugate base as an inverse relationship. Is there an actual equation tying the acid's Ka to its conjugate base's Kb, so I can see WHY Cl- is so weak?",
+    "ai_answer": "Yes, there is a relationship between the acid dissociation constant (Ka) of an acid and the base dissociation constant (Kb) of its conjugate base, which is given by the equation: Ka × Kb = Kw, where Kw is the ion product of water (1.0 × 10^-14 at 25°C). Since HCl is a strong acid with a very large Ka, its conjugate base Cl⁻ must have a very small Kb, indicating that it is an extremely weak base. This explains why Cl⁻ barely accepts protons.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "for any conjugate acid-base pair, Ka(acid) x Kb(conjugate base) = Kw = 1.0x10^-14 at 25 C",
+      "this means Kb of the conjugate base = Kw / Ka of the acid, an explicit inverse relationship",
+      "because HCl's Ka is enormous (it ionizes essentially completely), Cl-'s Kb is vanishingly small, so Cl- is a negligibly weak base",
+      "the qualitative 'strong acid gives weak conjugate base' rule is just this quantitative Ka x Kb = Kw relationship"
+    ],
+    "must_not_say": [
+      "the Ka of an acid and the Kb of its conjugate base are unrelated quantities",
+      "a strong acid has a correspondingly strong conjugate base"
+    ]
+  },
+  {
+    "id": "g044",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_065",
+    "chosen_index_used": 0,
+    "followup_question": "If pure water is pH 7, and I add a truly tiny amount of strong acid so the added [H+] is only about 1x10^-8 M, is the pH then 8?",
+    "ai_answer": "No, adding a tiny amount of strong acid that increases [H⁺] to about 1x10⁻⁸ M will not result in a pH of 8. Instead, the total [H⁺] would be the sum of the original neutral concentration (1x10⁻⁷ M) and the added concentration (1x10⁻⁸ M), leading to a new [H⁺] of approximately 2x10⁻⁷ M. This results in a pH closer to 7, not 8.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "adding a strong acid can only raise [H+] (lower the pH); it can never push the pH above 7 the way pH = -log(1x10^-8) = 8 would suggest",
+      "at such extreme dilution the H+ contributed by water's own autoionization (about 1x10^-7 M) is not negligible and actually dominates the added acid",
+      "the total [H+] is therefore a little above 1x10^-7 M, so the pH is slightly below 7 (not 8)",
+      "using pH = -log(added acid concentration) is invalid here because it ignores water's autoionization"
+    ],
+    "must_not_say": [
+      "adding a strong acid can raise the pH above 7",
+      "a 1x10^-8 M strong acid solution has a pH of 8"
+    ]
+  },
+  {
+    "id": "g045",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_067",
+    "chosen_index_used": 0,
+    "followup_question": "HCO3- has both a conjugate acid (H2CO3) and a conjugate base (CO3^2-). Does that mean carbonic acid ionizes in more than one step, and are those steps equally easy?",
+    "ai_answer": "Yes, HCO₃⁻ can act as both a conjugate acid and a conjugate base, which means carbonic acid (H₂CO₃) can ionize in more than one step. The first step involves the loss of a proton to form HCO₃⁻, and the second step involves the loss of another proton to form CO₃²⁻. These steps are not necessarily equally easy, as the strength of the acids and bases involved can vary.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "carbonic acid H2CO3 is a diprotic (polyprotic) acid that ionizes in two stepwise steps rather than all at once",
+      "step 1 is H2CO3 <-> H+ + HCO3- (governed by Ka1); step 2 is HCO3- <-> H+ + CO3^2- (governed by Ka2)",
+      "the steps are not equally easy: each successive ionization is weaker, so Ka1 is much larger than Ka2 (pulling a second H+ off an already-negative ion is harder)",
+      "HCO3- is the intermediate, amphiprotic species sitting between H2CO3 and CO3^2-"
+    ],
+    "must_not_say": [
+      "carbonic acid loses both protons in a single step",
+      "Ka2 is larger than Ka1, or the two ionization steps are equally easy"
+    ]
+  },
+  {
+    "id": "g046",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_068",
+    "chosen_index_used": 1,
+    "followup_question": "If [H+] rises 1000-fold and pH drops 3 units, what simultaneously happens to [OH-] and to the pOH?",
+    "ai_answer": "When [H⁺] increases by a factor of 1000, the pH decreases by 3 units, which means the solution becomes more acidic. As a result, the concentration of hydroxide ions [OH⁻] decreases because of the relationship between [H⁺] and [OH⁻] in water. Consequently, the pOH, which is calculated as pOH = 14 - pH, will increase by 3 units as well.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "at constant temperature Kw = [H+][OH-] is fixed, so raising [H+] by 1000x forces [OH-] to fall by the same factor of 1000x",
+      "a 1000-fold (10^3) decrease in [OH-] raises the pOH by 3 units",
+      "pH falls by 3 while pOH rises by 3, so their sum pH + pOH stays 14 at 25 C",
+      "[H+] and [OH-] are inversely coupled through Kw, so they cannot both increase"
+    ],
+    "must_not_say": [
+      "[OH-] stays unchanged when [H+] increases",
+      "both pH and pOH decrease by 3 units"
+    ]
+  },
+  {
+    "id": "g047",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_070",
+    "chosen_index_used": 1,
+    "followup_question": "Adding formate lowers formic acid's percent ionization. Does adding the common ion also lower the acid's Ka?",
+    "ai_answer": "Adding formate does not lower the acid's Ka; the acid's dissociation constant remains constant at a given temperature. However, the presence of the common ion shifts the equilibrium, resulting in a lower percent ionization of the acid. This is a consequence of Le Chatelier's principle, not a change in the intrinsic strength of the acid itself.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "adding the common ion (formate) shifts the position of the ionization equilibrium but does NOT change Ka",
+      "Ka is a constant at a fixed temperature, set by the identity of the acid, not by the concentrations present",
+      "percent ionization falls because the system re-establishes the same Ka (Q returns to Ka) at a new set of concentrations, not because Ka itself dropped",
+      "percent ionization and Ka are different quantities: percent ionization depends on concentration while Ka does not"
+    ],
+    "must_not_say": [
+      "adding formate lowers the Ka of formic acid",
+      "percent ionization and Ka always rise and fall together"
+    ]
+  },
+  {
+    "id": "g048",
+    "topic_id": "cp_acids_bases",
+    "bucket": "differentiation",
+    "question_id": "q_ho_071",
+    "chosen_index_used": 0,
+    "followup_question": "I get that the weak acid has the higher pH. But how would I actually CALCULATE each pH -- why can't I just use pH = -log(concentration) for both?",
+    "ai_answer": "You can't use pH = -log(concentration) for both because this formula applies only to strong acids, which ionize completely. For weak acids, you need to consider their degree of ionization, which is less than 100%. This means you must use the acid dissociation constant (Ka) to find the concentration of hydrogen ions ([H⁺]) produced, and then calculate the pH from that value.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "for a strong acid, complete ionization makes [H+] equal to the acid's concentration C, so pH = -log(C) works directly",
+      "for a weak acid, [H+] is much smaller than C and must be found from the equilibrium Ka = [H+][A-]/[HA]",
+      "the common weak-acid approximation gives [H+] = sqrt(Ka x C), i.e. pH = -(1/2)(log Ka + log C), not -log(C)",
+      "using -log(C) for the weak acid is wrong because it falsely assumes complete ionization and overstates [H+] (understating the pH)"
+    ],
+    "must_not_say": [
+      "you can get a weak acid's pH directly from -log(concentration)",
+      "a weak acid ionizes completely like a strong acid"
+    ]
+  },
+  {
+    "id": "g049",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_073",
+    "chosen_index_used": 0,
+    "followup_question": "If a reaction has delta-G > 0 (endergonic, nonspontaneous), can a cell just use an enzyme to make it go? If not, how does the cell drive it?",
+    "ai_answer": "An enzyme cannot change the Gibbs free energy of a reaction; it only lowers the activation energy, making the reaction proceed faster. For a reaction with ΔG > 0, the cell cannot simply use an enzyme to make it occur spontaneously. Instead, cells often couple endergonic reactions with exergonic reactions (like ATP hydrolysis) to drive the overall process forward.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "an enzyme is a catalyst and does not change the sign or magnitude of delta-G, so it cannot by itself make an endergonic reaction spontaneous",
+      "the cell drives an endergonic (delta-G > 0) reaction by energetically coupling it to an exergonic (delta-G < 0) reaction, commonly ATP hydrolysis",
+      "the delta-G values of coupled reactions add, so if the exergonic reaction releases more free energy than the endergonic one requires, the overall delta-G is negative",
+      "the coupled/overall process is then spontaneous even though the endergonic step by itself is not"
+    ],
+    "must_not_say": [
+      "an enzyme lowers a reaction's delta-G to make it spontaneous",
+      "an endergonic reaction can never proceed inside a cell"
+    ]
+  },
+  {
+    "id": "g050",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_076",
+    "chosen_index_used": 1,
+    "followup_question": "A mutation in the active-site pocket changed catalysis. How would the consequences differ if the mutation instead hit an allosteric (regulatory) site?",
+    "ai_answer": "If a mutation occurred in an allosteric (regulatory) site instead of the active site, the enzyme's overall activity could be altered without directly affecting the substrate binding or catalysis. Allosteric sites modulate enzyme function by changing the enzyme's shape or activity in response to regulatory molecules, which can enhance or inhibit activity. In contrast, a mutation in the active site directly impacts the enzyme's ability to bind substrate and catalyze the reaction.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a mutation in the active site directly impairs substrate binding and/or the catalytic chemistry itself",
+      "an allosteric site is a separate regulatory site, distinct from the active site where catalysis happens",
+      "a mutation at an allosteric site would alter how regulators (allosteric activators or inhibitors) modulate the enzyme, rather than the catalytic chemistry",
+      "so an allosteric-site mutation could leave baseline catalytic activity largely intact while disrupting the enzyme's regulation"
+    ],
+    "must_not_say": [
+      "an allosteric-site mutation abolishes catalysis exactly the same way an active-site mutation does",
+      "the active site and the allosteric site are the same region"
+    ]
+  },
+  {
+    "id": "g051",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_077",
+    "chosen_index_used": 1,
+    "followup_question": "Induced fit says the active site changes shape when substrate binds. Beyond just gripping the substrate, how does that conformational change actually help speed the reaction?",
+    "ai_answer": "The conformational change in the induced-fit model helps speed up the reaction by bringing the enzyme and substrate into a more optimal orientation for the reaction to occur. This change can also stabilize the transition state, lowering the activation energy required for the reaction. By adapting to the substrate, the enzyme enhances its catalytic efficiency compared to a rigid, pre-formed active site.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "in induced fit, the conformational change brings the enzyme's catalytic groups into optimal position and orientation around the substrate",
+      "this tighter fit can strain or destabilize the substrate's bonds and create a favorable microenvironment for the reaction",
+      "by stabilizing the transition state, the enzyme lowers the activation energy and thus speeds the reaction",
+      "the rigid, pre-formed match of lock-and-key cannot provide this substrate strain / transition-state stabilization"
+    ],
+    "must_not_say": [
+      "induced fit only affects binding and plays no role in catalysis",
+      "the enzyme speeds the reaction by raising the activation energy"
+    ]
+  },
+  {
+    "id": "g052",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_078",
+    "chosen_index_used": 1,
+    "followup_question": "When heat denatures the enzyme and it loses its 3D shape, does that break its amino-acid sequence too? And is denaturation always permanent?",
+    "ai_answer": "Denaturation disrupts the enzyme's three-dimensional shape but does not break the amino acid sequence itself; the primary structure remains intact. Denaturation can be permanent, especially at high temperatures, but in some cases, if the conditions are returned to normal, the enzyme may refold and regain activity. However, in this scenario, the extreme heat likely causes irreversible denaturation.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "denaturation disrupts the tertiary (and secondary) structure by breaking the noncovalent interactions (hydrogen bonds, hydrophobic interactions, ionic bonds) that hold the fold",
+      "denaturation does NOT break the peptide (covalent) backbone bonds, so the primary structure (amino-acid sequence) is preserved",
+      "loss of the 3D fold distorts the active site, which is why catalytic activity falls",
+      "because the sequence is intact, some denatured proteins can refold (renature) and regain function if conditions are restored, though severe or aggregated denaturation is effectively irreversible"
+    ],
+    "must_not_say": [
+      "denaturation breaks the peptide bonds and destroys the primary structure",
+      "denaturation is always permanent and can never be reversed"
+    ]
+  },
+  {
+    "id": "g053",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_ho_081",
+    "chosen_index_used": 1,
+    "followup_question": "If I add more enzyme to the reaction, does Km change? What about Vmax?",
+    "ai_answer": "Adding more enzyme to the reaction does not change the Km value; Km is a constant that reflects the affinity of the enzyme for the substrate. However, Vmax will increase because more enzyme allows for a higher maximum reaction rate when substrate is saturated. Thus, while Km remains the same, Vmax is directly affected by the amount of enzyme present.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "Km is an intrinsic property of a given enzyme-substrate pair and does not change when you add more enzyme",
+      "Vmax, by contrast, increases in proportion to the total amount of enzyme (more enzyme means a higher maximum rate at saturation)",
+      "so doubling the enzyme concentration doubles Vmax but leaves Km unchanged",
+      "at a fixed sub-saturating [S], the enzyme with the lower Km (higher affinity) still reaches a larger fraction of its Vmax"
+    ],
+    "must_not_say": [
+      "adding more enzyme increases Km",
+      "Km depends on the enzyme concentration"
+    ]
+  },
+  {
+    "id": "g054",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_syn_002",
+    "chosen_index_used": 1,
+    "followup_question": "This question is about saturating substrate. At LOW [S] (well below Km), how does inhibitor X affect velocity, and why is the inhibition strongest there rather than at high [S]?",
+    "ai_answer": "At low substrate concentrations, inhibitor X has a significant effect on the reaction velocity because it competes with the substrate for the active site of the enzyme. Since there is less substrate available to outcompete the inhibitor, the inhibition is strongest at low [S]. As substrate concentration increases, the effect of the inhibitor diminishes because the substrate can effectively outcompete the inhibitor for binding to the enzyme's active site.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a competitive inhibitor competes with substrate for the active site, so its effect is largest when substrate is scarce (low [S])",
+      "at low [S] the inhibited velocity is much lower than the uninhibited velocity (e.g., the data show 14 vs 33 umol/min at [S] = 1 mM)",
+      "as [S] rises toward saturating levels, abundant substrate outcompetes the inhibitor, so the gap between the curves shrinks and both approach the same Vmax",
+      "therefore competitive inhibition depresses velocity most at low [S] and becomes negligible at saturating [S]"
+    ],
+    "must_not_say": [
+      "a competitive inhibitor's effect is strongest at saturating substrate",
+      "the competitive inhibitor lowers velocity by the same fraction at every substrate concentration"
+    ]
+  },
+  {
+    "id": "g055",
+    "topic_id": "bb_enzymes",
+    "bucket": "differentiation",
+    "question_id": "q_syn_003",
+    "chosen_index_used": 0,
+    "followup_question": "The researcher records the INITIAL velocity (v0) at each [S]. Why measure the initial rate instead of the velocity partway through the reaction?",
+    "ai_answer": "Measuring the initial velocity (v0) is crucial because it reflects the enzyme's activity before substrate depletion or product inhibition can affect the reaction rate. If the velocity were measured partway through the reaction, it could be influenced by changes in substrate concentration or the accumulation of product, leading to inaccurate conclusions about the enzyme's performance and the effect of inhibitor X.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "initial velocity (v0) is measured at the very start, when [S] is still essentially the stated concentration and almost no product has formed",
+      "as the reaction proceeds, substrate is depleted, which lowers the rate, so a later measurement would not reflect the intended [S]",
+      "accumulating product can also slow the reaction (via the reverse reaction or product inhibition), further distorting a later-time rate",
+      "using v0 isolates the rate at a known, controlled [S], which is exactly what Michaelis-Menten analysis (v0 vs [S]) requires"
+    ],
+    "must_not_say": [
+      "a velocity measured late in the reaction gives the same value as the initial velocity",
+      "substrate depletion during the run has no effect on the measured rate"
+    ]
+  },
+  {
+    "id": "g056",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_016",
+    "chosen_index_used": 0,
+    "followup_question": "The activation energy is the barrier going forward. Is there a separate activation energy for the reverse reaction, and how does the difference between them relate to the reaction's delta-H?",
+    "ai_answer": "Yes, there is a separate activation energy for the reverse reaction, known as Ea(reverse). The difference between the activation energies of the forward and reverse reactions is related to the reaction's ΔH. Specifically, ΔH is equal to the difference between the activation energies of the forward and reverse reactions: ΔH = Ea(forward) - Ea(reverse).",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a reaction has both a forward and a reverse activation energy, measured from the reactants and from the products, respectively, up to the same transition state",
+      "the difference of the two equals the reaction enthalpy: delta-H = Ea(forward) - Ea(reverse)",
+      "for an exothermic reaction (delta-H < 0) the forward Ea is smaller than the reverse Ea; for an endothermic reaction it is larger",
+      "a catalyst lowers the forward and reverse activation energies by the same amount, so it leaves delta-H (and Keq) unchanged"
+    ],
+    "must_not_say": [
+      "the forward and reverse activation energies are always equal",
+      "the activation energy is the same thing as the reaction's delta-H"
+    ]
+  },
+  {
+    "id": "g057",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_086",
+    "chosen_index_used": 0,
+    "followup_question": "For this third-order rate law (rate = k[X]^2[Y]), what are the UNITS of the rate constant k, and could I have figured out the overall order just from k's units?",
+    "ai_answer": "The units of the rate constant k depend on the overall reaction order. For a third-order reaction, the units of k are typically M⁻²s⁻¹ (where M is molarity). You could infer the overall order from k's units by recognizing that the units change with the order; however, it's more straightforward to sum the exponents in the rate law directly to determine the overall order as 3.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the units of the rate constant k depend on the overall reaction order",
+      "with rate expressed in M/s (mol/L per s), k must carry units of M^(1-n)/s, where n is the overall order",
+      "for this third-order reaction (n = 3), k has units of M^-2/s (equivalently L^2 mol^-2 s^-1)",
+      "so the units of k reveal the overall order: you can read the order off k's units without the rate law"
+    ],
+    "must_not_say": [
+      "the rate constant k is dimensionless or always carries the same units",
+      "k always has units of s^-1 regardless of the reaction order"
+    ]
+  },
+  {
+    "id": "g058",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_087",
+    "chosen_index_used": 1,
+    "followup_question": "This is about how rate scales with [A]. For a first-order reaction, if it takes 10 s for [A] to fall to half, how long to fall to a quarter, and does a different starting concentration change that?",
+    "ai_answer": "For a first-order reaction, the time it takes for the concentration to fall to half is constant and does not depend on the starting concentration. If it takes 10 seconds for [A] to fall to half, it will take an additional 10 seconds to fall to a quarter, totaling 20 seconds. The rate of the reaction is proportional to the concentration, but the time for half-life remains the same regardless of the initial concentration.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a first-order reaction has a constant half-life that is independent of the starting concentration",
+      "reaching one-quarter means two successive halvings (full -> half -> quarter), so it takes two half-lives",
+      "if one half-life is 10 s, reaching one-quarter takes about 20 s",
+      "this concentration-independent half-life is a hallmark of first-order kinetics, unlike zero- or second-order reactions whose half-lives depend on concentration"
+    ],
+    "must_not_say": [
+      "a first-order reaction's half-life depends on the starting concentration",
+      "reaching one-quarter takes the same amount of time as reaching one-half"
+    ]
+  },
+  {
+    "id": "g059",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_088",
+    "chosen_index_used": 1,
+    "followup_question": "It's strange that adding more reactant does nothing for a zero-order reaction. Physically, WHEN does a reaction become zero order, and how does [A] change over time?",
+    "ai_answer": "A reaction becomes zero order when the rate is independent of the concentration of the reactant, often due to saturation of the catalyst or surface area in heterogeneous reactions. In this case, increasing the concentration of A does not affect the rate because the reaction proceeds at a constant rate determined by the rate constant, k. Over time, the concentration of [A] decreases as the reaction progresses, but the rate remains constant until the reactant is depleted.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "a reaction is zero order in A when the rate is limited by something other than [A] -- for example a saturated catalyst or enzyme surface, or a fixed light intensity in a photochemical reaction",
+      "once every active site or surface is occupied (or the limiting resource is maxed out), adding more A cannot speed things up, so rate = k",
+      "the zero-order integrated rate law is [A] = [A]0 - kt, so [A] decreases linearly with time at a constant rate",
+      "this contrasts with first order, where the rate falls off as [A] is consumed"
+    ],
+    "must_not_say": [
+      "a zero-order reaction speeds up when more reactant is added",
+      "zero order means the reaction does not proceed at all (rate is literally zero)"
+    ]
+  },
+  {
+    "id": "g060",
+    "topic_id": "cp_kinetics",
+    "bucket": "differentiation",
+    "question_id": "q_ho_085",
+    "chosen_index_used": 1,
+    "followup_question": "Temperature changes k. Is there an equation for that, and for two reactions at the SAME temperature but different activation energies, which has the larger k and which is more temperature-sensitive?",
+    "ai_answer": "Yes, the Arrhenius equation describes how the rate constant k changes with temperature: k = A * e^(-Ea/(RT)), where A is the pre-exponential factor, Ea is the activation energy, R is the gas constant, and T is the temperature in Kelvin. For two reactions at the same temperature, the one with the lower activation energy (Ea) will have a larger k and will also be more sensitive to temperature changes, as a smaller Ea results in a steeper increase in k with rising temperature.",
+    "grounded": true,
+    "served_by_serve_followup": true,
+    "provider": "openai:gpt-4o-mini",
+    "fact_atoms": [
+      "the temperature dependence of k follows the Arrhenius equation, k = A*exp(-Ea/RT)",
+      "at a given temperature, a reaction with a higher activation energy has a smaller rate constant k (all else equal)",
+      "a reaction with a higher Ea is also MORE sensitive to temperature -- its k rises by a larger factor for the same temperature increase",
+      "this is consistent with k depending on temperature and Ea (and catalyst), but not on reactant concentration"
+    ],
+    "must_not_say": [
+      "at the same temperature, the activation energy has no effect on the size of k",
+      "a lower activation energy makes a reaction more sensitive to temperature"
+    ]
+  }
+]

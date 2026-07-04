@@ -1,0 +1,118 @@
+{
+  "experiment": "study_feature_3_build_ablation",
+  "prd_refs": [
+    "\u00a73.1 goal 7",
+    "\u00a76.9 SF-1..SF-4",
+    "\u00a78 study feature"
+  ],
+  "mode": "synthetic",
+  "comparison_rule": "study method vs PERFORMANCE outcome at EQUAL STUDY TIME; scores never blended",
+  "outcome_measure": "accuracy on shared held_out performance test",
+  "equal_time_control": {
+    "unit": "total study seconds",
+    "why": "interleaving is defined at equal time; blocked practice is faster per rep, so equal-attempts would confound",
+    "budget_seconds": 1800.0,
+    "balanced": true,
+    "note": "realized study seconds range 1801\u20131820 (max/min ratio 1.01; tol 1.15). BALANCED."
+  },
+  "wilson_z": 1.96,
+  "perf_give_up_min_attempts": 30,
+  "arms": [
+    {
+      "arm": "interleaved",
+      "label": "Interleaved perf",
+      "n_test": 120,
+      "correct": 86,
+      "accuracy": 0.7166666666666667,
+      "wilson_lo": 0.6302963078582111,
+      "wilson_hi": 0.7895949080175528,
+      "study_seconds": 1820.3,
+      "study_attempts": 71,
+      "study_time_missing": false,
+      "interleaved_flag_seen": true,
+      "source": "synthetic",
+      "below_give_up": false
+    },
+    {
+      "arm": "blocked",
+      "label": "Blocked perf",
+      "n_test": 120,
+      "correct": 72,
+      "accuracy": 0.6,
+      "wilson_lo": 0.5105585981828253,
+      "wilson_hi": 0.6832373476059888,
+      "study_seconds": 1819.8,
+      "study_attempts": 88,
+      "study_time_missing": false,
+      "interleaved_flag_seen": false,
+      "source": "synthetic",
+      "below_give_up": false
+    },
+    {
+      "arm": "plain_anki",
+      "label": "Plain Anki",
+      "n_test": 120,
+      "correct": 60,
+      "accuracy": 0.5,
+      "wilson_lo": 0.411937137430229,
+      "wilson_hi": 0.588062862569771,
+      "study_seconds": 1801.2,
+      "study_attempts": 222,
+      "study_time_missing": false,
+      "interleaved_flag_seen": null,
+      "source": "synthetic",
+      "below_give_up": false
+    }
+  ],
+  "comparisons": [
+    {
+      "arm_a": "interleaved",
+      "arm_b": "blocked",
+      "accuracy_diff": 0.1166666666666667,
+      "diff_ci_lo": -0.003284552239943686,
+      "diff_ci_hi": 0.23207157447198662,
+      "cohens_h": 0.24683021518910042,
+      "z": 1.9054527628763065,
+      "p_value": 0.05672124219234309,
+      "significant_0_05": false
+    },
+    {
+      "arm_a": "interleaved",
+      "arm_b": "plain_anki",
+      "accuracy_diff": 0.21666666666666667,
+      "diff_ci_lo": 0.09331794699482031,
+      "diff_ci_hi": 0.3310064941569838,
+      "cohens_h": 0.4481881359794311,
+      "z": 3.4382592031438666,
+      "p_value": 0.0005854669859395312,
+      "significant_0_05": true
+    },
+    {
+      "arm_a": "blocked",
+      "arm_b": "plain_anki",
+      "accuracy_diff": 0.09999999999999998,
+      "diff_ci_lo": -0.025518254142589458,
+      "diff_ci_hi": 0.2211755907782693,
+      "cohens_h": 0.20135792079033066,
+      "z": 1.5569978883230453,
+      "p_value": 0.11947098677170076,
+      "significant_0_05": false
+    }
+  ],
+  "synthetic_model": {
+    "WARNING": "SYNTHETIC \u2014 arm effect sizes are ASSUMPTIONS, not evidence. Real numbers require the manifest path.",
+    "seed": 20260703,
+    "n_topics": 12,
+    "test_n_per_arm": 120,
+    "time_budget_seconds": 1800.0,
+    "base_accuracy_plain_anki": 0.55,
+    "blocked_uplift_vs_plain": 0.06,
+    "interleave_uplift_vs_blocked": 0.1,
+    "topic_sd": 0.06,
+    "per_rep_seconds": {
+      "interleaved": 26.0,
+      "blocked": 20.0,
+      "review": 8.0
+    }
+  }
+}

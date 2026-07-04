@@ -302,7 +302,7 @@ Format: **As a [persona], I want [action], so that [outcome].**
 | ID | Requirement |
 |----|-------------|
 | S-1 | Stock **Anki sync** for collection |
-| S-2 | Performance tables in **same SQLite collection** |
+| S-2 | Performance data in a **separate sidecar `mcat_perf.db`**, synced via a custom uuid-deduped JSON bundle (see DECISIONS §22) |
 | S-3 | Two-way sync: phone review → desktop and reverse |
 | S-4 | Offline review + local scoring; sync on reconnect |
 | S-5 | Performance attempts append-only |
@@ -421,6 +421,19 @@ Publish final integers in README before Sunday eval.
 | `passage_mapping` | 5 passage-style Qs in topic T |
 | `reasoning` | 5 hard Skill 2–4 Qs, interleaved |
 | `misread` | Timed set; no new content |
+
+**Miss flow — probe + confirm the hypothesis (v2):** the Wednesday build ships
+the 4 self-report buttons above. v2 replaces blind self-report (and rejects a
+silent auto-label) with a two-part flow: on a miss the app runs an objective
+**re-check probe** (does the student still recall the backing content?), then
+presents a **specific, evidence-backed hypothesis** about the error type to
+**confirm or override** in one tap. The probe settles the objective content
+axis; the confirm targets only the un-inferable axis — given the content was
+held, a careless *misread* vs. a genuine *reasoning/application* error — as a
+correctable hypothesis, not a verdict. This keeps next-action routing correct,
+is more honest than declaring "you were careless," and is itself metacognitive
+training. Full rationale: [`DECISIONS.md` §9](DECISIONS.md); mechanism:
+[`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md).
 
 ---
 

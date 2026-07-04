@@ -3413,6 +3413,1047 @@ EXPLANATIONS: dict[str, str] = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Per-choice feedback (static, NO-AI). In ADDITION to the single correct-answer
+# ``explanation`` above, every question carries a ``choice_feedback`` array
+# aligned 1:1 with ``choices`` (same length and order). Each entry is a short,
+# source-grounded rationale: for the CORRECT choice, a terse "why this is
+# correct"; for each distractor, the SPECIFIC reason that choice fails (name the
+# misconception, the execution error for a trap, or briefly why a near-miss is
+# tempting but wrong). The stored ``choice_diagnosis`` tags are only HINTS —
+# these strings are authored to state the actual reason, never to restate the
+# choice. Shown to the student after answering (the chosen distractor's line is
+# the AI-off fallback and the baseline the AI explainer must beat). Keyed by
+# stable question id; every id in the emitted bank MUST have a full-length,
+# all-non-empty entry (enforced by scripts/validate_data.py).
+# ---------------------------------------------------------------------------
+CHOICE_FEEDBACK: dict[str, list[str]] = {
+    # --- DEV -----------------------------------------------------------------
+    "q_dev_001": [
+        "Incorrect — the isocitrate→α-ketoglutarate step is an oxidative decarboxylation that makes NADH and CO₂, not a nucleoside triphosphate.",
+        "Correct — succinyl-CoA→succinate is the cycle's only substrate-level phosphorylation; cleaving the high-energy thioester bond directly makes one GTP/ATP.",
+        "Incorrect — fumarate→malate is a hydration step; it adds water and produces no GTP/ATP.",
+        "Incorrect — malate→oxaloacetate is a redox step that reduces NAD⁺ to NADH; it makes no GTP/ATP.",
+    ],
+    "q_dev_002": [
+        "Correct — high ADP signals low energy charge, so ADP allosterically activates key respiratory enzymes to speed ATP production.",
+        "Incorrect — this reverses the energy-charge signal; ATP (not ADP) is the inhibitor, while high ADP activates.",
+        "Incorrect — ADP is an allosteric regulator of respiration, so it does affect enzyme activity.",
+        "Incorrect — high ADP accelerates, not slows, the pathway to replenish ATP.",
+    ],
+    "q_dev_003": [
+        "Incorrect — this statement is true (endergonic +ΔG, exergonic −ΔG), so it is not the false comparison asked for.",
+        "Incorrect — this is a true statement (endergonic consume, exergonic release energy), so it isn't the false one.",
+        "Incorrect — this is true: both reaction types must overcome an activation barrier.",
+        "Correct — this is the false statement; ΔG describes thermodynamics, not speed, so an exergonic reaction can be slow and an endergonic one fast.",
+    ],
+    "q_dev_004": [
+        "Incorrect — ΔG is a thermodynamic quantity and doesn't reveal the activation-energy barrier.",
+        "Correct — a lower activation energy lets more collisions succeed per unit time, so relative reaction rates are the best proxy for relative Ea.",
+        "Incorrect — ideal environmental conditions don't indicate the activation energy.",
+        "Incorrect — spontaneity is thermodynamic; a spontaneous reaction can still be slow, so it doesn't reveal Ea.",
+    ],
+    "q_dev_005": [
+        "Incorrect — increasing affinity describes an allosteric activator, not an inhibitor.",
+        "Incorrect — binding the active site directly describes competitive inhibition, not allosteric.",
+        "Correct — an allosteric inhibitor binds away from the active site and reshapes it, lowering substrate affinity.",
+        "Incorrect — a substrate mimic that binds the active site is a competitive inhibitor, not an allosteric one.",
+    ],
+    "q_dev_006": [
+        "Incorrect — NaOH consumes H⁺ and shifts NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ backward, lowering conversion.",
+        "Correct — added HCl neutralizes OH⁻ and protonates NH₃, pulling the equilibrium toward NH₄⁺ and raising percent conversion.",
+        "Incorrect — NH₄Cl adds the common ion NH₄⁺, shifting back toward NH₃ and lowering conversion.",
+        "Incorrect — adding more NH₃ raises the amount but not the fraction converted to NH₄⁺.",
+    ],
+    "q_dev_007": [
+        "Incorrect — this reverses the inverse relation; HF is the stronger acid, so F⁻ is the weaker conjugate base.",
+        "Correct — HCN is far weaker than HF, so its conjugate base CN⁻ is the stronger base.",
+        "Incorrect — the parent acids differ greatly in strength, so their conjugate bases are not equally strong.",
+        "Incorrect — conjugate bases of weak acids do act as bases in water.",
+    ],
+    "q_dev_008": [
+        "Correct — oxidation occurs at the anode and electrons travel through the wire to the cathode ('an ox, red cat').",
+        "Incorrect — this reverses both roles; oxidation is at the anode, not the cathode.",
+        "Incorrect — electrons flow to the cathode, not back to the anode.",
+        "Incorrect — oxidation occurs at the anode, not the cathode.",
+    ],
+    "q_dev_009": [
+        "Incorrect — this reverses the relation; ΔG° = −nFE°cell, so a positive E° gives a negative ΔG°.",
+        "Correct — a positive E°cell makes ΔG° negative, so the reaction is spontaneous as written.",
+        "Incorrect — a nonzero E° means the cell is not at equilibrium (equilibrium is E = 0).",
+        "Incorrect — a spontaneous galvanic cell delivers work without an external power source; that describes electrolysis.",
+    ],
+    "q_dev_010": [
+        "Incorrect — electrons travel through the external wire, not the salt bridge.",
+        "Correct — the salt bridge lets ions migrate to keep each half-cell electrically neutral so current continues.",
+        "Incorrect — the salt bridge maintains neutrality; it doesn't raise voltage without limit.",
+        "Incorrect — the salt bridge doesn't catalyze the electrode reactions.",
+    ],
+    "q_dev_011": [
+        "Incorrect — a strong acid/base pair reacts to completion and provides no buffering.",
+        "Correct — a weak acid with its conjugate base neutralizes added base and acid respectively, resisting pH change.",
+        "Incorrect — fully neutralizing a weak acid with equal moles of strong base leaves no reserve of weak acid to buffer.",
+        "Incorrect — a neutral salt in pure water has no conjugate acid/base pair and cannot buffer.",
+    ],
+    "q_dev_012": [
+        "Correct — with ΔH negative and ΔS positive, ΔG = ΔH − TΔS is negative at every temperature.",
+        "Incorrect — this combination gives a positive ΔG at all T (never spontaneous).",
+        "Incorrect — ΔH<0, ΔS<0 is spontaneous only at low temperature, not all T.",
+        "Incorrect — ΔH>0, ΔS>0 is spontaneous only at high temperature, not all T.",
+    ],
+    "q_dev_013": [
+        "Incorrect — the entropy term is subtracted, not added.",
+        "Correct — at constant temperature, ΔG = ΔH − TΔS.",
+        "Incorrect — the terms are rearranged and the sign inverted; the correct form is ΔH − TΔS.",
+        "Incorrect — the entropy term is subtracted, not multiplied.",
+    ],
+    "q_dev_014": [
+        "Correct — a spontaneous process proceeds on its own once started, without continuous external energy input.",
+        "Incorrect — spontaneity says nothing about speed; spontaneous reactions can be slow.",
+        "Incorrect — spontaneity doesn't require heat release; endothermic processes can be spontaneous.",
+        "Incorrect — a catalyst is not required for spontaneity.",
+    ],
+    "q_dev_015": [
+        "Incorrect — temperature doesn't raise ΔG, and ΔG isn't what sets the rate.",
+        "Correct — higher temperature broadens the energy distribution so more collisions meet or exceed Ea.",
+        "Incorrect — temperature doesn't lower Ea; only a catalyst does that.",
+        "Incorrect — temperature doesn't make the reaction more exothermic (ΔH is fixed).",
+    ],
+    "q_dev_016": [
+        "Incorrect — a catalyst doesn't work by heating the system.",
+        "Correct — a catalyst provides an alternate pathway with lower activation energy, so more collisions succeed.",
+        "Incorrect — a catalyst doesn't change ΔH or make the reaction more exothermic.",
+        "Incorrect — a catalyst speeds both directions equally and doesn't shift the equilibrium position.",
+    ],
+    "q_dev_017": [
+        "Incorrect — concentrations change the rate through the rate law, not the value of k.",
+        "Correct — k depends on temperature (Arrhenius) and on whether a catalyst is present.",
+        "Incorrect — container volume alone doesn't set k.",
+        "Incorrect — k doesn't change as the reaction proceeds over time.",
+    ],
+    "q_dev_018": [
+        "Correct — by the equation of continuity (A·v constant), narrowing the pipe increases the fluid speed.",
+        "Incorrect — this reverses continuity; a smaller area means faster, not slower, flow.",
+        "Incorrect — speed must change to keep the volume flow rate constant when area changes.",
+        "Incorrect — the fluid keeps flowing; its speed increases rather than dropping to zero.",
+    ],
+    "q_dev_019": [
+        "Incorrect — Bernoulli relates speed to pressure, not the constancy of volume flow rate.",
+        "Correct — constant Q = A·v follows from conservation of mass, the equation of continuity.",
+        "Incorrect — Pascal's principle concerns transmitted pressure, not flow rate.",
+        "Incorrect — Archimedes' principle concerns buoyancy, not flow continuity.",
+    ],
+    "q_dev_020": [
+        "Correct — glycolysis makes 4 ATP but invests 2, for a net gain of 2 ATP per glucose.",
+        "Incorrect — 4 is the gross ATP produced; the net (after the 2-ATP investment) is 2.",
+        "Incorrect — ~36 is the total aerobic yield including oxidative phosphorylation, not glycolysis alone.",
+        "Incorrect — glycolysis does net a positive 2 ATP, not zero.",
+    ],
+    "q_dev_021": [
+        "Incorrect — the mitochondrial matrix hosts the citric acid cycle, not glycolysis.",
+        "Correct — glycolysis occurs in the cytosol and needs no membranes or organelles.",
+        "Incorrect — glycolysis is cytosolic, not nuclear.",
+        "Incorrect — glycolysis does not occur in the endoplasmic reticulum.",
+    ],
+    "q_dev_022": [
+        "Incorrect — FADH₂ is produced by the citric acid cycle, not glycolysis.",
+        "Incorrect — NADPH is an anabolic / pentose-phosphate carrier, not a glycolytic product.",
+        "Correct — glycolysis reduces NAD⁺ to NADH at the glyceraldehyde-3-phosphate dehydrogenase step.",
+        "Incorrect — GTP is a nucleotide, not a reduced electron carrier.",
+    ],
+    "q_dev_023": [
+        "Incorrect — citrate is the first product formed, not the regenerated acceptor.",
+        "Correct — oxaloacetate is regenerated each turn to accept another acetyl group.",
+        "Incorrect — pyruvate is upstream of the cycle, not the acetyl acceptor.",
+        "Incorrect — acetyl-CoA is the group donated, not the acceptor that is regenerated.",
+    ],
+    "q_dev_024": [
+        "Incorrect — at low substrate the rate is far below Vmax; saturation requires high [S].",
+        "Correct — Vmax is reached when all enzyme active sites are saturated with substrate.",
+        "Incorrect — a denatured enzyme loses activity and never reaches Vmax.",
+        "Incorrect — a competitive inhibitor lowers the apparent rate, not producing Vmax.",
+    ],
+    "q_dev_025": [
+        "Incorrect — peptidoglycan is a bacterial cell wall, not the membrane framework.",
+        "Correct — the phospholipid bilayer is the membrane's structural framework (fluid-mosaic model).",
+        "Incorrect — cellulose is a plant cell-wall material, not the membrane.",
+        "Incorrect — glycogen is a storage polysaccharide, not a membrane framework.",
+    ],
+    "q_dev_026": [
+        "Incorrect — this reverses it; the phosphate head is hydrophilic and the tails hydrophobic.",
+        "Correct — the phosphate head is hydrophilic (polar) and the fatty-acid tails are hydrophobic (nonpolar).",
+        "Incorrect — the nonpolar fatty-acid tails are hydrophobic, not hydrophilic.",
+        "Incorrect — the polar phosphate head is hydrophilic, not hydrophobic.",
+    ],
+    "q_dev_027": [
+        "Incorrect — two new strands describes the conservative model, which was disproven.",
+        "Correct — each daughter helix keeps one parental template strand paired with one new strand.",
+        "Incorrect — both strands parental would mean no synthesis occurred.",
+        "Incorrect — DNA replication produces DNA, not RNA.",
+    ],
+    "q_dev_028": [
+        "Incorrect — helicase unwinds the helix; it doesn't synthesize DNA.",
+        "Correct — DNA polymerase adds nucleotides to the 3′ end, synthesizing 5′→3′.",
+        "Incorrect — primase lays down RNA primers, not the DNA strand.",
+        "Incorrect — ligase joins fragments; it doesn't synthesize new strands.",
+    ],
+    "q_dev_029": [
+        "Incorrect — helicase unwinds DNA; it doesn't join fragments.",
+        "Incorrect — primase makes RNA primers, not phosphodiester joins.",
+        "Correct — DNA ligase forms the phosphodiester bonds joining Okazaki fragments.",
+        "Incorrect — polymerase extends strands, but ligase seals the final nick.",
+    ],
+    "q_dev_030": [
+        "Incorrect — 1:1 is a testcross ratio, not a heterozygote × heterozygote cross.",
+        "Correct — Aa × Aa gives a 3:1 phenotypic ratio (only the aa quarter shows the recessive trait).",
+        "Incorrect — 9:3:3:1 is a dihybrid (two-gene) ratio.",
+        "Incorrect — 1:2:1 is the genotypic, not phenotypic, ratio.",
+    ],
+    "q_dev_031": [
+        "Incorrect — this swaps the terms; genotype is the genetic makeup, phenotype the observable traits.",
+        "Correct — genotype is the genetic makeup and phenotype is the observable characteristics.",
+        "Incorrect — allele/gene don't mean 'genetic makeup' versus 'observable traits.'",
+        "Incorrect — gamete/zygote are cell types, not the makeup-versus-traits distinction.",
+    ],
+    "q_dev_032": [
+        "Incorrect — sensation/perception/cognition are broad cognitive processes, not the memory stages.",
+        "Correct — memory's three basic processes are encoding, storage, and retrieval.",
+        "Incorrect — input/output/feedback is a systems metaphor, not the memory model.",
+        "Incorrect — acquisition/extinction/recovery are conditioning (learning) terms, not memory stages.",
+    ],
+    "q_dev_033": [
+        "Correct — Miller's classic estimate is about seven, plus or minus two, items.",
+        "Incorrect — unlimited capacity describes long-term, not short-term, memory.",
+        "Incorrect — one item drastically underestimates short-term capacity.",
+        "Incorrect — about 100 items far exceeds short-term memory's limited span.",
+    ],
+    "q_dev_034": [
+        "Incorrect — chunking groups items into larger units; it isn't simple repetition.",
+        "Correct — maintaining information by repetition is (maintenance) rehearsal.",
+        "Incorrect — retrieval is getting information out, not maintaining it.",
+        "Incorrect — encoding failure is a failure to store, not a maintenance strategy.",
+    ],
+    "q_dev_035": [
+        "Incorrect — the food is unlearned, so it's the unconditioned (not conditioned) stimulus.",
+        "Correct — food naturally elicits salivation without learning, making it the unconditioned stimulus.",
+        "Incorrect — the food is a stimulus, not a response.",
+        "Incorrect — food innately triggers salivation, so it isn't neutral.",
+    ],
+    "q_dev_036": [
+        "Incorrect — decreasing behavior describes punishment, not reinforcement.",
+        "Correct — a reinforcer increases the likelihood of the behavior it follows.",
+        "Incorrect — by definition a reinforcer changes behavior frequency.",
+        "Incorrect — reinforcement is not the same as physical punishment.",
+    ],
+    "q_dev_037": [
+        "Correct — presenting the CS repeatedly without the US weakens and eliminates the CR (extinction).",
+        "Incorrect — introducing a new unconditioned stimulus doesn't define extinction.",
+        "Incorrect — reinforcers belong to operant conditioning, not classical extinction.",
+        "Incorrect — a permanent response is the opposite of extinction.",
+    ],
+    "q_dev_038": [
+        "Incorrect — the self-serving bias concerns explaining one's own outcomes, not others' behavior.",
+        "Correct — over-attributing others' behavior to internal traits is the fundamental attribution error.",
+        "Incorrect — the just-world hypothesis is the belief that people get what they deserve.",
+        "Incorrect — the bystander effect concerns helping in groups, not attribution.",
+    ],
+    "q_dev_039": [
+        "Incorrect — obedience is following an authority's orders, not matching group norms.",
+        "Correct — adjusting to match a group standard is conformity.",
+        "Incorrect — aggression is behavior intended to harm, unrelated to matching a group.",
+        "Incorrect — persuasion is attitude change via argument, not aligning to a group standard.",
+    ],
+    "q_dev_040": [
+        "Incorrect — health disparities follow social patterns; they aren't random.",
+        "Correct — health disparities are preventable differences in outcomes across social groups.",
+        "Incorrect — disparities reflect social determinants, not genetics alone.",
+        "Incorrect — disparities are measurable, e.g., by comparing group outcomes.",
+    ],
+    "q_dev_041": [
+        "Incorrect — blood type is an inherited biological trait, not a social determinant.",
+        "Correct — education, income, and safe housing are social determinants of health.",
+        "Incorrect — a genetic mutation is a biological, not social, factor.",
+        "Incorrect — eye color is a biological trait, not a social determinant.",
+    ],
+    "q_dev_042": [
+        "Correct — Pascal's principle: pressure applied to an enclosed fluid is transmitted undiminished throughout.",
+        "Incorrect — the applied pressure is transmitted, not lost as heat.",
+        "Incorrect — this confuses Pascal's principle with thermal/gas behavior.",
+        "Incorrect — pressure is not zero at the bottom; it's transmitted everywhere.",
+    ],
+    "q_dev_043": [
+        "Correct — cognitive dissonance is the discomfort from holding conflicting cognitions or acting against an attitude.",
+        "Incorrect — being rewarded relates to reinforcement, not dissonance.",
+        "Incorrect — a repeated neutral stimulus relates to habituation/conditioning, not dissonance.",
+        "Incorrect — group consensus relates to conformity/groupthink, not dissonance.",
+    ],
+    "q_dev_044": [
+        "Incorrect — an intermediate blend describes incomplete dominance, not codominance.",
+        "Correct — in codominance the heterozygote expresses both alleles fully and simultaneously (e.g., AB blood).",
+        "Incorrect — expressing only the dominant allele is complete dominance.",
+        "Incorrect — codominant heterozygotes are viable and express both alleles.",
+    ],
+    "q_dev_045": [
+        "Incorrect — the author expressly denies that history is 'mere fiction.'",
+        "Correct — the passage redefines objectivity as disciplined awareness of perspective, tested against evidence.",
+        "Incorrect — the passage doesn't advise avoiding documents; it discusses which to trust.",
+        "Incorrect — the passage never claims only eyewitnesses can write accurate history.",
+    ],
+    "q_dev_046": [
+        "Incorrect — the passage explicitly says freedom is 'not simply the quantity of available options.'",
+        "Correct — the passage defines freedom as the capacity to choose well among options.",
+        "Incorrect — absence of constraints is not the passage's definition of freedom.",
+        "Incorrect — avoiding decisions is not what the passage means by freedom.",
+    ],
+    "q_dev_047": [
+        "Incorrect — the author treats pretending to have no assumptions as an obstacle, not a virtue.",
+        "Correct — the closing line says such a historian is less likely to reach truth than one who examines her assumptions.",
+        "Incorrect — the passage says the opposite: pretending to have none yields less reliable history.",
+        "Incorrect — the passage doesn't endorse trusting such a historian without question.",
+    ],
+    "q_dev_048": [
+        "Correct — the phrase contrasts nominal freedom with real freedom, so the two can diverge.",
+        "Incorrect — the passage denies that liberty equals the number of choices.",
+        "Incorrect — the author clearly cares about practical outcomes ('in practice').",
+        "Incorrect — the passage doesn't call for prohibiting choices.",
+    ],
+    "q_dev_049": [
+        "Incorrect — two easy options and satisfaction is the opposite of the paralysis the passage describes.",
+        "Correct — the overwhelmed diner who takes long and later regrets mirrors the paradox of choice.",
+        "Incorrect — a closed store gives no options, not an excess of them.",
+        "Incorrect — having no options isn't the passage's point about having too many.",
+    ],
+    "q_dev_050": [
+        "Incorrect — ignoring conflicting sources is the opposite of testing one's assumptions.",
+        "Correct — actively seeking disconfirming evidence applies the passage's logic for objectivity.",
+        "Incorrect — writing without primary documents wouldn't test one's assumptions against evidence.",
+        "Incorrect — adopting the popular interpretation isn't the disciplined self-testing the passage praises.",
+    ],
+    # --- HELD_OUT ------------------------------------------------------------
+    "q_ho_001": [
+        "Correct — Zn is oxidized (loses electrons), reducing Cu²⁺, so it is the reducing agent.",
+        "Incorrect — Cu²⁺ is reduced, making it the oxidizing agent, not the reducing agent.",
+        "Incorrect — Zn²⁺ is the already-oxidized product, not the reducing agent.",
+        "Incorrect — Cu(s) is the product of reduction, not the reducing agent.",
+    ],
+    "q_ho_002": [
+        "Incorrect — raising product-ion concentration raises Q, which lowers (not raises) Ecell.",
+        "Correct — higher product-ion concentration increases Q, so by the Nernst equation Ecell decreases.",
+        "Incorrect — the Nernst equation makes Ecell depend on ion concentrations.",
+        "Incorrect — E° is a fixed constant; concentration changes affect Ecell, not E°'s sign.",
+    ],
+    "q_ho_003": [
+        "Incorrect — producing energy from a spontaneous reaction describes a galvanic cell.",
+        "Correct — electrolysis uses external electrical energy to drive a nonspontaneous redox reaction.",
+        "Incorrect — electrolysis still involves oxidation–reduction.",
+        "Incorrect — electrolysis drives reactions with negative E°cell, not positive.",
+    ],
+    "q_ho_004": [
+        "Incorrect — oxidation, not reduction, occurs at the anode.",
+        "Correct — reduction always occurs at the cathode in any electrochemical cell.",
+        "Incorrect — the salt bridge maintains neutrality; it isn't an electrode.",
+        "Incorrect — the electrolyte is the ion medium, not the site of reduction.",
+    ],
+    "q_ho_005": [
+        "Correct — HCl ionizes fully, so [H⁺] = 10⁻² M and pH = −log(10⁻²) = 2.0.",
+        "Incorrect — pH 1.0 would require [H⁺] = 0.10 M; here it is 0.010 M.",
+        "Incorrect — 12.0 is the pOH, not the pH of this acidic solution.",
+        "Incorrect — 0.010 is the concentration; you must take −log[H⁺].",
+    ],
+    "q_ho_006": [
+        "Incorrect — HCl and NaOH aren't related by one proton, so they aren't a conjugate pair.",
+        "Correct — H₂CO₃ and HCO₃⁻ differ by exactly one H⁺, a conjugate acid–base pair.",
+        "Incorrect — H₃O⁺ and O²⁻ differ by more than one proton.",
+        "Incorrect — CH₃COOH and Cl⁻ are unrelated, not a conjugate pair.",
+    ],
+    "q_ho_007": [
+        "Correct — with [H⁺]=[OH⁻] and Kw=10⁻¹⁴, each is the square root, 1.0×10⁻⁷ M.",
+        "Incorrect — 10⁻¹⁴ is Kw itself, not [H⁺]; take its square root.",
+        "Incorrect — 1.0 M would be extremely acidic, not neutral.",
+        "Incorrect — water autoionizes, so [H⁺] isn't zero.",
+    ],
+    "q_ho_008": [
+        "Incorrect — the pH scale is logarithmic; you can't just subtract (6−4=2).",
+        "Incorrect — 10 would be a one-unit difference; here the difference is two units.",
+        "Correct — two pH units means 10² = 100 times greater [H⁺].",
+        "Incorrect — 1000 corresponds to a three-unit difference, not two.",
+    ],
+    "q_ho_009": [
+        "Correct — with ΔH>0 and ΔS>0, ΔG turns negative only when TΔS outweighs ΔH, i.e., at high T.",
+        "Incorrect — at low T the positive ΔH dominates, so it is nonspontaneous.",
+        "Incorrect — it isn't spontaneous at all temperatures, only above a threshold.",
+        "Incorrect — it does become spontaneous once T is high enough.",
+    ],
+    "q_ho_010": [
+        "Correct — a negative ΔG marks a thermodynamically favorable (spontaneous) reaction.",
+        "Incorrect — ΔG says nothing about rate; spontaneous reactions can be slow.",
+        "Incorrect — the ΔG sign is about free energy, not enthalpy; the reaction can be exo- or endothermic.",
+        "Incorrect — equilibrium corresponds to ΔG = 0, not negative.",
+    ],
+    "q_ho_011": [
+        "Correct — at equilibrium there is no net driving force, so ΔG = 0.",
+        "Incorrect — a large negative ΔG indicates a spontaneous drive, not equilibrium.",
+        "Incorrect — a large positive ΔG indicates a nonspontaneous direction, not equilibrium.",
+        "Incorrect — ΔG equals ΔG° only at standard conditions, not generally at equilibrium.",
+    ],
+    "q_ho_012": [
+        "Incorrect — entropy measures dispersal of energy/matter, not total energy.",
+        "Correct — entropy measures the dispersal (disorder) of energy and matter.",
+        "Incorrect — reaction rate is a kinetic quantity, unrelated to entropy's definition.",
+        "Incorrect — activation energy is a kinetic barrier, not entropy.",
+    ],
+    "q_ho_013": [
+        "Incorrect — 1 counts only A's order; overall order sums all exponents.",
+        "Incorrect — 2 is the order in B alone, not the overall order.",
+        "Correct — overall order is 1 (A) + 2 (B) = 3.",
+        "Incorrect — the reaction isn't zero order; the exponents are nonzero.",
+    ],
+    "q_ho_014": [
+        "Correct — first order means rate ∝ [A], so doubling [A] doubles the rate.",
+        "Incorrect — a factor of 4 would be second order, not first.",
+        "Incorrect — a first-order rate does change with [A]; it isn't unchanged.",
+        "Incorrect — doubling [A] increases the rate; it doesn't halve it.",
+    ],
+    "q_ho_015": [
+        "Incorrect — proportional to [A] is first order, not zero order.",
+        "Correct — zero order means rate = k[A]⁰ = k, independent of concentration.",
+        "Incorrect — proportional to [A]² is second order.",
+        "Incorrect — 'zero order' refers to the exponent, not a literally zero rate.",
+    ],
+    "q_ho_016": [
+        "Incorrect — the products−reactants energy difference is ΔH/ΔG, not Ea.",
+        "Correct — Ea is the minimum energy colliding reactants need to reach the transition state.",
+        "Incorrect — Ea is a kinetic barrier, distinct from ΔG.",
+        "Incorrect — heating raises the fraction of molecules with ≥Ea but doesn't lower Ea itself.",
+    ],
+    "q_ho_017": [
+        "Incorrect — this reverses Bernoulli; faster flow means lower, not higher, pressure.",
+        "Correct — by Bernoulli, where speed is higher the pressure is lower (at constant height).",
+        "Incorrect — pressure does change with speed per Bernoulli.",
+        "Incorrect — pressure decreases but doesn't drop to zero.",
+    ],
+    "q_ho_018": [
+        "Correct — an object floats when the buoyant force equals its own weight.",
+        "Incorrect — a zero buoyant force would let the object sink, not float.",
+        "Incorrect — buoyant force equals the weight of displaced fluid, not the entire fluid.",
+        "Incorrect — atmospheric pressure isn't what balances weight for floating.",
+    ],
+    "q_ho_019": [
+        "Correct — glycolysis yields two pyruvate per glucose, which enter the mitochondrion aerobically.",
+        "Incorrect — lactate forms in anaerobic fermentation, not under aerobic conditions.",
+        "Incorrect — pyruvate becomes acetyl-CoA only after entering the mitochondrion, and it is 2 per glucose.",
+        "Incorrect — ethanol is a yeast fermentation product, not human aerobic glycolysis.",
+    ],
+    "q_ho_020": [
+        "Incorrect — hexokinase catalyzes the first step, not the committed rate-limiting one.",
+        "Correct — PFK-1 catalyzes the committed, rate-limiting step of glycolysis.",
+        "Incorrect — pyruvate kinase acts at the last step, not the rate-limiting control point.",
+        "Incorrect — aldolase cleaves the six-carbon sugar; it isn't the regulatory step.",
+    ],
+    "q_ho_021": [
+        "Correct — the energy-investment phase uses 2 ATP (hexokinase and PFK-1 steps).",
+        "Incorrect — 4 ATP is the payoff-phase output, not the investment.",
+        "Incorrect — the investment phase does consume ATP, not zero.",
+        "Incorrect — 6 overstates the investment; only 2 ATP are used.",
+    ],
+    "q_ho_022": [
+        "Incorrect — ethanol is produced by yeast, not human muscle.",
+        "Correct — human muscle reduces pyruvate to lactate anaerobically, regenerating NAD⁺.",
+        "Incorrect — pyruvate→acetyl-CoA is the aerobic route and doesn't regenerate NAD⁺ anaerobically.",
+        "Incorrect — citrate is a citric-acid-cycle intermediate, not the fermentation product.",
+    ],
+    "q_ho_023": [
+        "Incorrect — one turn releases two CO₂, not one.",
+        "Correct — each turn releases 2 CO₂ (isocitrate DH and α-ketoglutarate DH steps).",
+        "Incorrect — three CO₂ overcounts; only two are released per turn.",
+        "Incorrect — the cycle does release CO₂, not zero.",
+    ],
+    "q_ho_024": [
+        "Incorrect — the cycle captures little energy as ATP directly.",
+        "Correct — most energy is stored in the reduced electron carriers NADH and FADH₂.",
+        "Incorrect — heat is a byproduct, not the captured energy form.",
+        "Incorrect — only 1 GTP per turn is made; most energy is in NADH/FADH₂.",
+    ],
+    "q_ho_025": [
+        "Incorrect — one turn makes 3 NADH, not 1.",
+        "Incorrect — 2 undercounts; the cycle makes 3 NADH per acetyl-CoA.",
+        "Correct — one turn produces 3 NADH (plus 1 FADH₂ and 1 GTP/ATP).",
+        "Incorrect — 4 overcounts NADH; it is 3 (the FADH₂ is a separate carrier).",
+    ],
+    "q_ho_026": [
+        "Incorrect — the allosteric site is regulatory, not where catalysis occurs.",
+        "Correct — the active site is where substrate binds and catalysis occurs.",
+        "Incorrect — an R group is an amino-acid side chain, not the catalytic region.",
+        "Incorrect — the peptide backbone is structural, not the substrate-binding site.",
+    ],
+    "q_ho_027": [
+        "Incorrect — enzymes are catalysts and are regenerated, not consumed.",
+        "Correct — in induced fit the active site changes shape to fit the substrate more snugly.",
+        "Incorrect — the substrate is chemically converted to product, not left unchanged.",
+        "Incorrect — enzymes lower activation energy, not raise it.",
+    ],
+    "q_ho_028": [
+        "Incorrect — above the optimum, heat denatures the enzyme rather than boosting activity endlessly.",
+        "Correct — excessive heat denatures the enzyme, distorting the active site and lowering activity.",
+        "Incorrect — temperature strongly affects enzyme activity.",
+        "Incorrect — extreme heat denatures the enzyme, not merely lowering Km.",
+    ],
+    "q_ho_029": [
+        "Incorrect — simple diffusion needs no ATP; that's active transport.",
+        "Correct — a small nonpolar molecule diffuses through the bilayer down its gradient without energy.",
+        "Incorrect — needing a transport protein describes facilitated diffusion.",
+        "Incorrect — diffusion moves down, not against, the gradient.",
+    ],
+    "q_ho_030": [
+        "Incorrect — simple diffusion is passive and moves down the gradient.",
+        "Incorrect — facilitated diffusion is also passive, down-gradient, and needs no energy.",
+        "Correct — active transport moves solutes against their gradient and requires energy.",
+        "Incorrect — osmosis is passive water movement, not energy-requiring solute transport.",
+    ],
+    "q_ho_031": [
+        "Incorrect — cholesterol doesn't store genetic information.",
+        "Correct — cholesterol buffers membrane fluidity across a range of temperatures.",
+        "Incorrect — glycolysis is catalyzed by cytosolic enzymes, not cholesterol.",
+        "Incorrect — cholesterol sits among the tails; it doesn't form the hydrophilic heads.",
+    ],
+    "q_ho_032": [
+        "Incorrect — osmosis is water movement, not solute diffusion.",
+        "Correct — osmosis is the diffusion of water across a selectively permeable membrane.",
+        "Incorrect — proteins don't diffuse osmotically across the membrane.",
+        "Incorrect — osmosis specifically refers to water, not ions.",
+    ],
+    "q_ho_033": [
+        "Correct — adenine pairs with thymine and guanine with cytosine.",
+        "Incorrect — this swaps the partners; A–T and G–C are correct.",
+        "Incorrect — uracil is an RNA base, and G pairs with C, not with uracil.",
+        "Incorrect — G pairs with C, not with adenine (two purines can't pair).",
+    ],
+    "q_ho_034": [
+        "Incorrect — ligase seals nicks; it doesn't unwind the helix.",
+        "Correct — helicase unwinds and separates the two strands at the replication fork.",
+        "Incorrect — polymerase synthesizes DNA; it doesn't unwind it.",
+        "Incorrect — primase lays RNA primers; it doesn't unwind the helix.",
+    ],
+    "q_ho_035": [
+        "Incorrect — the leading strand is synthesized continuously, not as fragments.",
+        "Correct — Okazaki fragments form on the lagging strand, made discontinuously.",
+        "Incorrect — 'template-only' isn't a strand where fragments are made.",
+        "Incorrect — Okazaki fragments are DNA, not RNA.",
+    ],
+    "q_ho_036": [
+        "Incorrect — the strands are complementary and antiparallel, not identical and parallel.",
+        "Correct — DNA strands run antiparallel and are complementary (A–T, G–C).",
+        "Incorrect — DNA strands are DNA, not RNA.",
+        "Incorrect — paired bases are held by hydrogen bonds, not covalent bonds.",
+    ],
+    "q_ho_037": [
+        "Correct — Aa × Aa gives the genotypic ratio 1 AA : 2 Aa : 1 aa.",
+        "Incorrect — 3:1 is the phenotypic, not genotypic, ratio.",
+        "Incorrect — 1:1 is a testcross ratio.",
+        "Incorrect — segregation produces AA and aa too, not all Aa.",
+    ],
+    "q_ho_038": [
+        "Incorrect — that describes independent assortment, a separate law.",
+        "Correct — segregation: the two alleles of a gene separate during gamete formation.",
+        "Incorrect — dominance doesn't imply an allele is more common.",
+        "Incorrect — blending inheritance was refuted by Mendel's work.",
+    ],
+    "q_ho_039": [
+        "Incorrect — a homozygous dominant partner would mask recessive alleles.",
+        "Correct — a testcross uses a homozygous-recessive partner so the unknown's alleles show up.",
+        "Incorrect — a heterozygous partner wouldn't cleanly reveal the unknown genotype.",
+        "Incorrect — a haploid partner isn't the standard testcross setup.",
+    ],
+    "q_ho_040": [
+        "Incorrect — genes far apart are frequently separated by crossing over.",
+        "Correct — distant genes recombine often, assorting nearly independently.",
+        "Incorrect — far-apart genes recombine frequently, not never.",
+        "Incorrect — the premise states they are on the same chromosome.",
+    ],
+    "q_ho_041": [
+        "Incorrect — sensory memory is brief and fleeting, not permanent.",
+        "Incorrect — short-term memory is limited and lasts seconds.",
+        "Correct — long-term memory is the relatively permanent, essentially unlimited store.",
+        "Incorrect — iconic memory is a brief visual sensory store.",
+    ],
+    "q_ho_042": [
+        "Incorrect — the misinformation effect is a memory distortion, not context matching.",
+        "Correct — matching recall and encoding contexts is context-dependent memory (encoding specificity).",
+        "Incorrect — proactive interference is old memories disrupting new ones.",
+        "Incorrect — the self-reference effect is better memory for self-relevant information.",
+    ],
+    "q_ho_043": [
+        "Incorrect — the spacing effect concerns distributed practice, not list position.",
+        "Correct — better recall of the first and last items is the serial position effect.",
+        "Incorrect — the misinformation effect is memory distortion.",
+        "Incorrect — priming is implicit activation, not list-position recall.",
+    ],
+    "q_ho_044": [
+        "Incorrect — riding a bike is implicit (procedural) memory.",
+        "Correct — explicit memory covers consciously recalled facts and events.",
+        "Incorrect — conditioned reflexes are implicit memory.",
+        "Incorrect — motor skills are procedural (implicit), not explicit.",
+    ],
+    "q_ho_045": [
+        "Incorrect — the newly learned trigger is the conditioned, not unconditioned, stimulus.",
+        "Correct — a previously neutral stimulus that elicits a response after pairing is the conditioned stimulus.",
+        "Incorrect — this is a stimulus, not a response.",
+        "Incorrect — 'reinforcer' is an operant-conditioning term, not classical.",
+    ],
+    "q_ho_046": [
+        "Incorrect — that describes positive punishment (adding a stimulus to decrease behavior).",
+        "Correct — negative reinforcement increases behavior by removing an aversive stimulus.",
+        "Incorrect — reinforcement increases behavior; decreasing it would be punishment.",
+        "Incorrect — adding a stimulus describes positive reinforcement, not negative.",
+    ],
+    "q_ho_047": [
+        "Incorrect — fixed-ratio reinforces after a predictable count, not an unpredictable one.",
+        "Correct — reinforcement after an unpredictable number of responses is a variable-ratio schedule.",
+        "Incorrect — fixed-interval is time-based, not response-count based.",
+        "Incorrect — continuous reinforces every response, not after a varying number.",
+    ],
+    "q_ho_048": [
+        "Incorrect — conformity is matching peers, not following an authority.",
+        "Correct — Milgram's shock studies demonstrated obedience to authority.",
+        "Incorrect — the bystander effect concerns helping, not following orders.",
+        "Incorrect — groupthink is consensus-seeking, not obedience to an authority.",
+    ],
+    "q_ho_049": [
+        "Incorrect — this reverses the effect; more onlookers decrease individual helping.",
+        "Correct — the bystander effect: more people present decreases any one person's likelihood of helping.",
+        "Incorrect — the number of bystanders does affect helping.",
+        "Incorrect — the presence of others reduces, and certainly doesn't guarantee, helping.",
+    ],
+    "q_ho_050": [
+        "Incorrect — attitudes are learned evaluations, not fixed genetic traits.",
+        "Correct — an attitude is a favorable or unfavorable evaluation of a person, object, or idea.",
+        "Incorrect — an attitude is an evaluative stance, not an involuntary reflex.",
+        "Incorrect — an attitude is not a type of memory.",
+    ],
+    "q_ho_051": [
+        "Incorrect — blood type is biological, not a component of SES.",
+        "Correct — SES is measured by income, education, and occupation.",
+        "Incorrect — height is a biological trait, not an SES measure.",
+        "Incorrect — personality type isn't a standard SES component.",
+    ],
+    "q_ho_052": [
+        "Correct — a social gradient means health improves stepwise up the socioeconomic ladder.",
+        "Incorrect — the gradient shows health is clearly related to social position.",
+        "Incorrect — the gradient affects the whole population, not only the poorest.",
+        "Incorrect — the gradient is an association across SES, not wealth directly causing disease.",
+    ],
+    "q_ho_053": [
+        "Incorrect — the passage uses 'vantage point' figuratively, not as a physical location.",
+        "Correct — in context it means the historian's particular perspective or standpoint.",
+        "Incorrect — 'vantage point' isn't used to mean a factual error.",
+        "Incorrect — it refers to perspective, not a historical period.",
+    ],
+    "q_ho_054": [
+        "Incorrect — the author is wary of more options, not unqualifiedly enthusiastic.",
+        "Correct — the author shows cautious skepticism about simply adding options.",
+        "Incorrect — the author doesn't reject all choice, only excess without judgment.",
+        "Incorrect — the author is engaged and argumentative, not indifferent.",
+    ],
+    "q_ho_055": [
+        "Incorrect — the sentence denies, rather than concedes, that history is fiction.",
+        "Correct — it anticipates and rebuts the likely misreading that history is just fiction.",
+        "Incorrect — it stays on topic, addressing a natural objection.",
+        "Incorrect — it supports, not contradicts, the passage's thesis.",
+    ],
+    "q_ho_056": [
+        "Incorrect — the passage doesn't reject meaningful choice; it redefines freedom.",
+        "Correct — it qualifies the common assumption by redefining freedom as choosing well.",
+        "Incorrect — it doesn't lay out steps of decision-making.",
+        "Incorrect — it isn't comparing two product brands.",
+    ],
+    "q_ho_057": [
+        "Correct — evidence that many options bring easy decisions and greater satisfaction directly contradicts the thesis.",
+        "Incorrect — longer decision time actually supports, not weakens, the argument.",
+        "Incorrect — some people disliking shopping is irrelevant to the options-paralysis claim.",
+        "Incorrect — that judgment can be taught is consistent with, not damaging to, the argument.",
+    ],
+    "q_ho_058": [
+        "Correct — a journalist checking her biases against evidence parallels the passage's disciplined self-awareness.",
+        "Incorrect — an error-free calculator has no perspective to examine.",
+        "Incorrect — a witness refusing to testify doesn't illustrate testing one's assumptions.",
+        "Incorrect — a novelist inventing fiction is the opposite of evidence-tested objectivity.",
+    ],
+    "q_ho_059": [
+        "Correct — the pascal is one newton per square meter (force per area).",
+        "Incorrect — kg·m/s² is the newton, a unit of force, not pressure.",
+        "Incorrect — J·s is not a pressure unit.",
+        "Incorrect — N·m is the joule (energy/torque), not pressure.",
+    ],
+    "q_ho_060": [
+        "Incorrect — the example illustrates a point, not that all shopping is harmful.",
+        "Correct — the shopper concretely illustrates how an excess of options can reduce satisfaction.",
+        "Incorrect — the passage doesn't argue for banning products.",
+        "Incorrect — it's an illustrative example, not the author's personal habits.",
+    ],
+    "q_ho_061": [
+        "Correct — water donates a proton to ammonia, so H₂O is the Brønsted–Lowry acid.",
+        "Incorrect — NH₃ accepts the proton, making it the base, not the acid.",
+        "Incorrect — NH₄⁺ is a product (the conjugate acid), not the reactant donor.",
+        "Incorrect — OH⁻ is water's conjugate base, not the proton donor.",
+    ],
+    "q_ho_062": [
+        "Incorrect — donating a proton defines an acid, the opposite of a base.",
+        "Correct — a Brønsted–Lowry base accepts a proton.",
+        "Incorrect — increasing [H⁺] is the effect of adding an acid.",
+        "Incorrect — that is the narrower Arrhenius definition; Brønsted–Lowry bases needn't release OH⁻.",
+    ],
+    "q_ho_063": [
+        "Correct — HCl ionizes completely, so its conjugate base Cl⁻ is extremely weak.",
+        "Incorrect — this reverses the inverse relationship; a strong acid gives a weak conjugate base.",
+        "Incorrect — Cl⁻ has no proton to donate, so it isn't an acid.",
+        "Incorrect — Cl⁻ is essentially inert, not amphoteric.",
+    ],
+    "q_ho_064": [
+        "Incorrect — a strong acid and its salt have no weak-acid/conjugate-base equilibrium to buffer.",
+        "Correct — acetic acid and acetate form a conjugate pair, so the mixture buffers pH.",
+        "Incorrect — a strong base plus a neutral salt lacks a conjugate weak pair.",
+        "Incorrect — a neutral salt alone can't buffer pH.",
+    ],
+    "q_ho_065": [
+        "Incorrect — pH 0 is strongly acidic, not neutral.",
+        "Correct — neutral water has [H⁺]=10⁻⁷ M, so pH = 7.",
+        "Incorrect — pH 14 is strongly basic, not neutral.",
+        "Incorrect — pH depends on [H⁺], not on the quantity of water.",
+    ],
+    "q_ho_066": [
+        "Incorrect — pH 1 would need 0.1 M; the concentration is 10⁻³ M.",
+        "Incorrect — pH 2 would need 10⁻² M, not 10⁻³ M.",
+        "Correct — a strong acid gives [H⁺]=10⁻³ M, so pH = 3.",
+        "Incorrect — 11 has the wrong sign; a strong acid is acidic (pH 3), not basic.",
+    ],
+    "q_ho_067": [
+        "Incorrect — H₂CO₃ is the conjugate acid (adds a proton), not the conjugate base.",
+        "Correct — removing one H⁺ from HCO₃⁻ gives the conjugate base CO₃²⁻.",
+        "Incorrect — CO₂ is a decomposition product, not the species one proton removed.",
+        "Incorrect — OH⁻ is a generic base, not the conjugate of HCO₃⁻.",
+    ],
+    "q_ho_068": [
+        "Correct — pH = −log[H⁺], so a 10³-fold rise in [H⁺] lowers pH by 3 units.",
+        "Incorrect — more [H⁺] lowers pH, not raises it.",
+        "Incorrect — pH is logarithmic, so it changes by 3 units, not 1000.",
+        "Incorrect — changing [H⁺] does change pH.",
+    ],
+    "q_ho_069": [
+        "Correct — when [A⁻]=[HA], the log term is 0, so pH = pKa.",
+        "Incorrect — pH 7 ignores the acid's pKa; equal concentrations give pH = pKa.",
+        "Incorrect — a 1:1 ratio gives log 1 = 0, so pH = pKa, not pKa + 1.",
+        "Incorrect — 14 − pKa is a pOH/pKb-style relation that doesn't apply here.",
+    ],
+    "q_ho_070": [
+        "Correct — added formate (a common ion) shifts ionization back toward the un-ionized acid, lowering percent ionization.",
+        "Incorrect — added ions shift the equilibrium backward; percent ionization decreases.",
+        "Incorrect — formate is the common ion and does affect the equilibrium.",
+        "Incorrect — the solution becomes less ionized, so percent ionization drops rather than rises.",
+    ],
+    "q_ho_071": [
+        "Incorrect — weak acids ionize partially, so this reverses the strong/weak distinction.",
+        "Correct — the weak acid ionizes only partially, giving lower [H⁺] and higher pH.",
+        "Incorrect — equal concentration doesn't mean equal pH when ionization differs.",
+        "Incorrect — a weak acid ionizes partially, not 'not at all.'",
+    ],
+    "q_ho_072": [
+        "Correct — an enzyme lowers the activation energy, speeding the reaction.",
+        "Incorrect — enzymes don't change ΔG or make a reaction more exergonic.",
+        "Incorrect — enzymes don't work by heating the cell.",
+        "Incorrect — enzymes speed both directions and don't shift the equilibrium position.",
+    ],
+    "q_ho_073": [
+        "Incorrect — exergonic means ΔG<0; this reaction has ΔG>0.",
+        "Correct — ΔG>0 marks an endergonic, energy-requiring reaction.",
+        "Incorrect — ΔG>0 is nonspontaneous as written.",
+        "Incorrect — a positive-ΔG reaction isn't impossible; energy input or coupling can drive it.",
+    ],
+    "q_ho_074": [
+        "Correct — a competitive inhibitor binds the active site, blocking substrate access.",
+        "Incorrect — binding away from the active site describes noncompetitive/allosteric inhibition.",
+        "Incorrect — covalent, permanent binding is irreversible inhibition, not competitive.",
+        "Incorrect — competitive inhibition works by occupying the active site, not by lowering temperature.",
+    ],
+    "q_ho_075": [
+        "Correct — the Vmax plateau occurs because all active sites are saturated with substrate.",
+        "Incorrect — the plateau is simple saturation, not substrate inhibition.",
+        "Incorrect — the enzyme is a catalyst and isn't consumed.",
+        "Incorrect — activation energy doesn't rise with substrate to cause the plateau.",
+    ],
+    "q_ho_076": [
+        "Correct — the substrate-binding, catalytic pocket is the active site.",
+        "Incorrect — the allosteric site is regulatory, not the substrate-binding pocket.",
+        "Incorrect — a distant disulfide bridge isn't the catalytic binding pocket.",
+        "Incorrect — a signal peptide is a targeting sequence, not the active site.",
+    ],
+    "q_ho_077": [
+        "Correct — induced fit proposes the active site changes shape as substrate binds.",
+        "Incorrect — a rigid, pre-formed match is the older lock-and-key view.",
+        "Incorrect — both models require physical binding contact.",
+        "Incorrect — induced fit is a conformational change, not a change to the amino-acid sequence.",
+    ],
+    "q_ho_078": [
+        "Correct — far above the optimum the enzyme denatures and activity drops sharply.",
+        "Incorrect — activity doesn't rise indefinitely; denaturation halts it.",
+        "Incorrect — temperature strongly affects activity.",
+        "Incorrect — denaturation destroys the active site rather than exposing more.",
+    ],
+    "q_ho_079": [
+        "Correct — excess substrate outcompetes a competitive inhibitor, restoring the rate toward Vmax.",
+        "Incorrect — removing substrate would only slow the reaction further.",
+        "Incorrect — lowering enzyme just reduces total activity, not relieving inhibition.",
+        "Incorrect — adding more inhibitor deepens, not reverses, the inhibition.",
+    ],
+    "q_ho_080": [
+        "Correct — an inhibitor changes rate (kinetics) but not Keq or ΔG.",
+        "Incorrect — slowing a reaction doesn't lower its equilibrium constant.",
+        "Incorrect — the inhibitor doesn't alter product thermodynamic stability.",
+        "Incorrect — Keq is independent of substrate concentration.",
+    ],
+    "q_ho_081": [
+        "Correct — Km is the substrate concentration giving half of Vmax.",
+        "Incorrect — Km corresponds to half-maximal, not full, velocity.",
+        "Incorrect — Km isn't where the rate is zero.",
+        "Incorrect — Km isn't the point of maximum velocity.",
+    ],
+    "q_ho_082": [
+        "Correct — a higher Km means more substrate is needed to half-saturate, i.e., lower affinity.",
+        "Incorrect — this reverses it; a higher Km means weaker, not tighter, binding.",
+        "Incorrect — Km and Vmax are independent; a higher Km doesn't imply higher Vmax.",
+        "Incorrect — a higher Km requires more substrate to saturate, not less.",
+    ],
+    "q_ho_083": [
+        "Correct — a catalyst speeds forward and reverse equally, leaving the equilibrium position unchanged.",
+        "Incorrect — a catalyst doesn't shift equilibrium toward products.",
+        "Incorrect — a catalyst doesn't shift equilibrium toward reactants.",
+        "Incorrect — a catalyst doesn't change the equilibrium amount of product.",
+    ],
+    "q_ho_084": [
+        "Correct — higher temperature gives more collisions with energy ≥ Ea, speeding the reaction.",
+        "Incorrect — temperature doesn't lower Ea; only a catalyst does.",
+        "Incorrect — the rate increase is kinetic, not from a ΔG change.",
+        "Incorrect — molecular size doesn't change with temperature to affect rate.",
+    ],
+    "q_ho_085": [
+        "Correct — temperature (and a catalyst) changes the value of k.",
+        "Incorrect — concentration changes the rate but not k.",
+        "Incorrect — volume changes concentrations, not k.",
+        "Incorrect — pressure at constant T changes concentrations, not k.",
+    ],
+    "q_ho_086": [
+        "Incorrect — 1 counts one reactant; overall order sums the exponents.",
+        "Incorrect — 2 is the order in X alone, not the overall order.",
+        "Correct — overall order is 2 (X) + 1 (Y) = 3.",
+        "Incorrect — the exponents are nonzero, so it isn't zero order.",
+    ],
+    "q_ho_087": [
+        "Correct — first order means rate ∝ [A], so tripling [A] triples the rate.",
+        "Incorrect — doubling would apply only if [A] doubled; here it triples.",
+        "Incorrect — a factor of 9 would be second order (3²), not first.",
+        "Incorrect — a first-order rate does change with [A].",
+    ],
+    "q_ho_088": [
+        "Correct — zero order means rate = k, independent of [A].",
+        "Incorrect — doubling the rate would be first-order behavior.",
+        "Incorrect — quadrupling would be second order.",
+        "Incorrect — zero-order rate doesn't change, let alone halve.",
+    ],
+    "q_ho_089": [
+        "Correct — the minimum energy colliding molecules need to react is the activation energy.",
+        "Incorrect — ΔG is a thermodynamic quantity, not the kinetic barrier.",
+        "Incorrect — bond dissociation enthalpy is a specific bond quantity, not the reaction's barrier.",
+        "Incorrect — ΔH is the enthalpy change, not the barrier to reacting.",
+    ],
+    "q_ho_090": [
+        "Correct — the exponent m is the reaction order with respect to A (determined experimentally).",
+        "Incorrect — the exponent isn't necessarily the stoichiometric coefficient.",
+        "Incorrect — m is an order, not the rate constant.",
+        "Incorrect — m isn't an equilibrium concentration.",
+    ],
+    # --- SYNTHESIS -----------------------------------------------------------
+    "q_syn_001": [
+        "Correct — an unchanged Vmax with a raised apparent Km (2→6 mM) is the signature of competitive inhibition.",
+        "Incorrect — noncompetitive inhibition would lower Vmax and leave Km unchanged, but Vmax here is unchanged.",
+        "Incorrect — uncompetitive inhibition lowers both Vmax and Km, contrary to the data.",
+        "Incorrect — a raised apparent Km with recoverable Vmax indicates reversible competitive, not irreversible covalent, inhibition.",
+    ],
+    "q_syn_002": [
+        "Correct — competitive inhibition is overcome by saturating substrate, so velocity approaches the same Vmax (~100).",
+        "Incorrect — at saturating [S] the inhibited curve converges to Vmax, not staying below everywhere.",
+        "Incorrect — substrate can't push velocity past Vmax.",
+        "Incorrect — velocity becomes [S]-independent only near saturation, not at all concentrations.",
+    ],
+    "q_syn_003": [
+        "Incorrect — [S] is the independent variable, deliberately varied, not a control.",
+        "Correct — the total amount of enzyme must be held constant so any velocity difference is attributable to X.",
+        "Incorrect — velocity is the measured outcome (dependent variable), not a control.",
+        "Incorrect — X's presence is the treatment being compared, so it can't be held constant.",
+    ],
+    "q_syn_004": [
+        "Incorrect — a kinetic inhibitor doesn't change thermodynamic favorability.",
+        "Correct — X changes rate/kinetics (apparent Km) but not ΔG or Keq.",
+        "Incorrect — Km is kinetic and Keq thermodynamic; changing Km doesn't change Keq.",
+        "Incorrect — ΔG doesn't depend on substrate concentration.",
+    ],
+    "q_syn_005": [
+        "Correct — the more positive half-cell (Cu²⁺/Cu, +0.34 V) is reduced (cathode); E°cell = 0.34 − (−0.76) = +1.10 V.",
+        "Incorrect — Zn has the more negative potential, so it's the anode, not the cathode.",
+        "Incorrect — +0.42 V comes from adding rather than subtracting the potentials.",
+        "Incorrect — the sign is wrong; E°cell is +1.10 V, giving a spontaneous cell.",
+    ],
+    "q_syn_006": [
+        "Correct — ΔG° = −(2)(96,500)(1.10) ≈ −212 kJ, so the reaction is spontaneous.",
+        "Incorrect — the sign is wrong; with +E°cell, ΔG° is negative (spontaneous).",
+        "Incorrect — this uses n = 1; the balanced reaction transfers n = 2 electrons.",
+        "Incorrect — a standard cell with nonzero E° is not at equilibrium.",
+    ],
+    "q_syn_007": [
+        "Correct — raising the product ion Zn²⁺ increases Q, lowering Ecell per the Nernst equation.",
+        "Incorrect — this is the wrong direction; more product lowers Ecell.",
+        "Incorrect — E°cell is a fixed standard constant, not the quantity that changes.",
+        "Incorrect — ion concentrations do affect the actual potential Ecell.",
+    ],
+    "q_syn_008": [
+        "Correct — as the cell discharges toward equilibrium, Ecell → 0 and ΔG → 0.",
+        "Incorrect — an operating cell loses driving force; Ecell doesn't increase.",
+        "Incorrect — approaching equilibrium isn't returning to standard conditions.",
+        "Incorrect — Ecell → 0 is right, but ΔG rises toward 0, not toward a large negative value.",
+    ],
+    "q_syn_009": [
+        "Correct — with equal [A⁻] and [HA], Henderson–Hasselbalch gives pH = pKa = 4.74.",
+        "Incorrect — equal concentrations don't force pH 7; pH equals the pKa.",
+        "Incorrect — 9.26 comes from a 14 − pKa or inverted-ratio error.",
+        "Incorrect — 2.37 isn't produced by the correct Henderson–Hasselbalch calculation.",
+    ],
+    "q_syn_010": [
+        "Incorrect — a buffer resists change; pH doesn't drop as sharply as in pure water.",
+        "Correct — acetate consumes the added H⁺ (A⁻ + H⁺ → HA), so pH decreases only slightly.",
+        "Incorrect — adding acid can't raise the pH.",
+        "Incorrect — buffers resist but don't perfectly hold pH constant.",
+    ],
+    "q_syn_011": [
+        "Incorrect — 1:10 is inverted; one unit above the pKa needs more base than acid.",
+        "Correct — one pH unit above pKa requires log([A⁻]/[HA]) = 1, a 10:1 ratio.",
+        "Incorrect — a 1:1 ratio gives pH = pKa, not one unit above.",
+        "Incorrect — 100:1 gives two units above the pKa, not one.",
+    ],
+    "q_syn_012": [
+        "Correct — added acetate (common ion) shifts the equilibrium left, lowering percent dissociation and raising pH.",
+        "Incorrect — a common ion shifts left, not right; it doesn't release more H⁺.",
+        "Incorrect — acetate is the common ion here, not a mere spectator.",
+        "Incorrect — the leftward shift lowers [H⁺], so pH rises rather than drops.",
+    ],
+    "q_syn_013": [
+        "Correct — P(yyrr) = P(yy)×P(rr) = 1/4 × 1/4 = 1/16.",
+        "Incorrect — 9/16 is the both-dominant phenotype fraction, not both-recessive.",
+        "Incorrect — 1/4 is the probability for one gene; both genes together give 1/16.",
+        "Incorrect — 3/16 is a one-dominant/one-recessive class, not yyrr.",
+    ],
+    "q_syn_014": [
+        "Correct — P(Y_)×P(rr) = 3/4 × 1/4 = 3/16.",
+        "Incorrect — 9/16 is both-dominant, ignoring that shape is recessive here.",
+        "Incorrect — 1/16 is both-recessive, not one dominant and one recessive.",
+        "Incorrect — 3/4 is only the color probability, not the combined fraction.",
+    ],
+    "q_syn_015": [
+        "Correct — ½ yellow : ½ green shows Yy; all round despite the rr tester shows RR — so YyRR.",
+        "Incorrect — this maps the ratios to the wrong genes.",
+        "Incorrect — YyRr would give some wrinkled offspring, but all were round.",
+        "Incorrect — YYRR would give all yellow, but offspring were ½ green.",
+    ],
+    "q_syn_016": [
+        "Incorrect — 2 counts only glycolysis; the two TCA turns add 2 more GTP.",
+        "Correct — substrate-level only: 2 (glycolysis) + 0 (pyruvate→acetyl-CoA) + 2 (TCA) = 4.",
+        "Incorrect — ~36 includes oxidative phosphorylation, which is excluded here.",
+        "Incorrect — 30 also includes oxidative phosphorylation, not counted here.",
+    ],
+    "q_syn_017": [
+        "Incorrect — this reverses osmosis; the cell interior is hypertonic, so water enters.",
+        "Correct — the 300 mOsm interior is hypertonic to the 100 mOsm bath, so water enters and the cell may lyse.",
+        "Incorrect — 300 vs 100 mOsm are not equal, so the solutions aren't isotonic.",
+        "Incorrect — water (not solute) crosses; the membrane isn't freely permeable to the solutes.",
+    ],
+    "q_syn_018": [
+        "Correct — the antiparallel complement of 5′-TACGGA-3′, written 5′→3′, is 5′-TCCGTA-3′.",
+        "Incorrect — this is the base complement but written in the wrong (3′→5′) orientation.",
+        "Incorrect — this just copies the template rather than pairing complementary bases.",
+        "Incorrect — DNA uses thymine, not uracil.",
+    ],
+    "q_syn_019": [
+        "Correct — T > ΔH/ΔS = 50,000/150 ≈ 333 K.",
+        "Incorrect — this fails to convert ΔH to joules (a unit error).",
+        "Incorrect — 3.0 K comes from mishandling the exponents/units.",
+        "Incorrect — with ΔS>0 the TΔS term wins at high T, so it does become spontaneous.",
+    ],
+    "q_syn_020": [
+        "Correct — doubling [A] doubles rate (1st order in A); doubling [B] quadruples it (2nd order in B), so rate = k[A][B]².",
+        "Incorrect — this transposes the orders; A is first order and B is second.",
+        "Incorrect — B is second order (rate ×4 when [B] doubles), not first.",
+        "Incorrect — A is first order (rate ×2 when [A] doubles), not second.",
+    ],
+    "q_syn_021": [
+        "Incorrect — slow doesn't mean nonspontaneous; ΔG is truly −100 kJ/mol.",
+        "Correct — a very negative ΔG with a high activation energy is spontaneous yet kinetically slow.",
+        "Incorrect — slow isn't the same as being at equilibrium.",
+        "Incorrect — a catalyst lowers Ea, not ΔG.",
+    ],
+    "q_syn_022": [
+        "Correct — halving the area doubles the speed (continuity); faster flow means lower pressure (Bernoulli).",
+        "Incorrect — narrowing speeds the flow, not slows it.",
+        "Incorrect — speed doubling is right, but faster flow lowers pressure, not raises it.",
+        "Incorrect — speed does change; halving the area doubles it.",
+    ],
+    "q_syn_023": [
+        "Correct — v₂ = A₁v₁/A₂ = (6.0 × 2.0)/2.0 = 6.0 m/s.",
+        "Incorrect — this inverts the area ratio.",
+        "Incorrect — speed changes when the area changes; it isn't unchanged.",
+        "Incorrect — 18 m/s misapplies the area ratio.",
+    ],
+    "q_syn_024": [
+        "Incorrect — equal concentration doesn't give equal pH when ionization differs.",
+        "Correct — HCl ionizes completely, giving higher [H⁺] and the lower pH.",
+        "Incorrect — acetic acid is the weaker acid, so it has the higher pH.",
+        "Incorrect — acids aren't pH-neutral.",
+    ],
+    "q_syn_025": [
+        "Incorrect — a slot machine is response-based (ratio), not time-based (interval).",
+        "Correct — payout after an unpredictable number of plays is a variable-ratio schedule.",
+        "Incorrect — this is a reinforcement schedule, not negative reinforcement.",
+        "Incorrect — the payout count is unpredictable (variable), not fixed.",
+    ],
+    "q_syn_026": [
+        "Incorrect — no pleasant stimulus is added; an aversive one (the headache) is removed.",
+        "Correct — removing the aversive headache strengthens the behavior — negative reinforcement.",
+        "Incorrect — the behavior increases, so it's reinforcement, not punishment.",
+        "Incorrect — nothing pleasant is taken away; this is negative reinforcement.",
+    ],
+    "q_syn_027": [
+        "Correct — judging another as clumsy is the fundamental attribution error; blaming the floor for one's own trip is the actor–observer bias.",
+        "Incorrect — this reverses the two biases.",
+        "Incorrect — neither the just-world hypothesis nor conformity fits these attribution judgments.",
+        "Incorrect — the bystander effect and obedience don't describe these attributions.",
+    ],
+    "q_syn_028": [
+        "Correct — resolving conflicting cognitions by changing a belief is reduction of cognitive dissonance.",
+        "Incorrect — this is attitude change, not associative (classical) learning.",
+        "Incorrect — the bystander effect is unrelated to belief change.",
+        "Incorrect — this is a cognitive process, not operant reinforcement.",
+    ],
+    "q_syn_029": [
+        "Incorrect — this is about matching context, not list position.",
+        "Correct — recall best when the test context matches the study context is context-dependent (encoding-specificity) memory.",
+        "Incorrect — proactive interference is competing memories, not context matching.",
+        "Incorrect — chunking is an encoding strategy, not a retrieval-context effect.",
+    ],
+    "q_syn_030": [
+        "Correct — mortality falls at each income step, the hallmark of a social gradient in health.",
+        "Incorrect — the data show a clear monotonic pattern, not randomness.",
+        "Incorrect — risk falls at every step, not only at the very bottom.",
+        "Incorrect — a social-gradient pattern reflects social determinants, not genetics alone.",
+    ],
+}
+
+
 def _attach_explanation(item: dict) -> None:
     """Attach the static correct-answer explanation by id.
 
@@ -3423,6 +4464,25 @@ def _attach_explanation(item: dict) -> None:
     text = EXPLANATIONS.get(item["id"])
     assert text and text.strip(), f"{item['id']}: missing/blank explanation"
     item["explanation"] = text.strip()
+
+
+def _attach_choice_feedback(item: dict) -> None:
+    """Attach the static per-choice feedback array by id.
+
+    ``choice_feedback`` must align 1:1 with ``choices`` (same length/order) and
+    every entry must be non-empty (enforced by scripts/validate_data.py). Fails
+    loudly on a missing id or a length/blank mismatch so a positional miscount
+    or a new question can never ship without complete per-choice rationale.
+    """
+    fb = CHOICE_FEEDBACK.get(item["id"])
+    assert fb is not None, f"{item['id']}: missing choice_feedback"
+    assert len(fb) == len(item["choices"]), (
+        f"{item['id']}: choice_feedback length {len(fb)} "
+        f"!= choices {len(item['choices'])}"
+    )
+    for j, entry in enumerate(fb):
+        assert entry and entry.strip(), f"{item['id']}: choice_feedback[{j}] blank"
+    item["choice_feedback"] = [s.strip() for s in fb]
 
 
 def main() -> None:
@@ -3439,9 +4499,11 @@ def main() -> None:
     out.extend(SYNTHESIS)
 
     # Every question (DEV, HELD_OUT, SYNTHESIS) gets its static correct-answer
-    # explanation. Ids are now final, so attach after id assignment.
+    # explanation plus its per-choice feedback array. Ids are now final, so
+    # attach after id assignment.
     for item in out:
         _attach_explanation(item)
+        _attach_choice_feedback(item)
 
     # reorder keys for readability
     ordered = []
@@ -3471,6 +4533,8 @@ def main() -> None:
             entry["choice_diagnosis"] = it["choice_diagnosis"]
         # Static, NO-AI correct-answer explanation (required on every item).
         entry["explanation"] = it["explanation"]
+        # Static, NO-AI per-choice feedback aligned 1:1 with choices.
+        entry["choice_feedback"] = it["choice_feedback"]
         entry.update({
             "source_name": it["source_name"],
             "source_url": it["source_url"],

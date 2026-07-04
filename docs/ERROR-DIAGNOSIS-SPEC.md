@@ -165,6 +165,15 @@ skill-specific (e.g. weak beyond-the-text reasoning → drill beyond-text items;
 frequent trap picks under time → trap-recognition + pacing drill), **not** a
 generic "just practice CARS."
 
+**Demo note (2026-07-03).** For the Friday demo a CARS miss **omits the
+error-type confirm / self-diagnosis step**: it routes only to the two objective
+signals above and does **not** surface the error-type self-report prompt.
+Rationale (a self-report step for CARS would undercut the "users can't reliably
+self-diagnose" premise) and the "revisit later" options are tracked as an
+accepted temporary gap in `LOOSE-ENDS.md` ("CARS misses skip the error-type
+confirm / self-diagnosis step"). The normative CARS flow above is unchanged; this
+records only a demo-scope omission.
+
 ## The types are on two different axes (do NOT tag one-per-choice)
 
 Within a track, a distractor still cannot be mapped to exactly one error type —
@@ -510,11 +519,28 @@ after the miss (not delayed), a PASS carries a mild "the MCQ just cued recall"
 priming bias. The team has **chosen to accept this for the demo** and treats a
 PASS as **solid evidence** that content was available (it is *not* heavily
 discounted for priming). The asymmetry that is kept is only that **FAIL is the
-single strongest content signal** (committed at high confidence 0.9); a PASS
+single strongest content signal** (committed at high confidence ~0.9); a PASS
 suppresses `content_gap` and routes to `application`/`misread` at *raised*
 confidence. The delayed natural-review variant (read the backing card's next
 memory-session outcome) remains a future refinement to remove the priming bias
 entirely, but is out of scope for this slice.
+
+> **Probe-branch confidence varies (2026-07-03 fix).** The probe branch is what
+> the live UI shows (`record_probe_outcome` re-runs the inference with the
+> outcome set), so it must obey the same **"confidence varies with signal
+> strength — continuous values, not tiers"** rule as the rest of the engine.
+> An earlier implementation returned per-outcome *constants* (FAIL → 0.9, PASS
+> non-applied → 0.65, trap → 0.8); because the app fires a probe on essentially
+> every miss, the probe branch was the *only* branch users ever saw and the
+> on-screen confidence collapsed to those two/three numbers regardless of `M`,
+> timing, tag, or demand (the `M`-varying ladder only runs in the offline eval
+> replay where `recheck_correct is None`). The probe branch now folds those same
+> signals into a **bounded** confidence — FAIL ∈ [0.85, 0.97] (modulated by `M`
+> magnitude / authored misconception / speed, so low `M` corroborates and high
+> `M` mildly contradicts) and PASS ∈ [0.6, 0.9] (modulated by demand match / `M`
+> / speed) — preserving the FAIL-is-strongest and PASS-≥-moderate semantics
+> while no longer emitting a single flat constant. Still honestly bounded (a
+> thin, cold-start-imputed signal never fabricates near-certainty).
 
 The strongest way to separate `content_gap` from `application`/`misread` without
 self-diagnosis: after a miss, objectively test whether the required content was

@@ -44,9 +44,11 @@ committing, and capturing the two desktop recordings. See
 ## Content (parallel — you)
 
 - [x] ≥30 questions in `data/questions.json` (`split: dev`) — **65 dev** now
-      (**140 total: 65 dev / 75 held_out** across all **18 topics**; 127 science
-      + 13 CARS). Science-question coverage **127/127** and choice-tag coverage
-      **127/127** (287 content_gap / 18 trap / 76 null distractors).
+      (**170 total: 65 dev / 105 held_out** across all **18 topics**; 157 science
+      + 13 CARS). Science-question coverage **127/157** (the 30 new §7d paraphrase
+      probes `q_ho_061`–`q_ho_090` have no dedicated backing card yet — see
+      DECISIONS §27) and choice-tag coverage (287 content_gap / 18 trap / 76 null
+      distractors, as of the pre-§27 bank — recompute for the current 170).
 - [x] Update `data/curation-status.json` counts (auto-refreshed by builder)
 - [x] `python scripts/validate_data.py` passes
 - [x] Flashcards regenerated: **133 cards (106 cloze / 27 basic)** in

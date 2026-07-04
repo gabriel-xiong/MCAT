@@ -1,0 +1,452 @@
+{
+  "_draft_meta": {
+    "purpose": "Draft 'hard differentiation' gold-set items (g041-g060) that EXTEND the existing hard benchmark (g031-g040) for the MCAT Speedrun AI follow-up Q&A evaluation. Each item's answer is provably NOT derivable from any single anchor question's own explanation/choice_feedback (via synthesis across questions, counterfactual 'what if X changed', multi-step derivation, or transfer to a substance/case absent from the anchor), yet every fact_atom remains traceable to a named OpenStax page so a human can validate it.",
+    "authoring_model_family": "Anthropic Claude (NON-OpenAI, by design). Ground truth for an OpenAI-backed feature must not be authored by the same model family it evaluates; see qa-goldset.json _meta.circularity_note and docs/QA-GOLDSET.md.",
+    "date": "2026-07-03",
+    "staging_only": true,
+    "do_not_write_canonical_note": "This is a STAGING file. qa-goldset.json was being edited concurrently by another worker; it was read only for schema reference and NOT modified. Merge these items and the counts delta below into qa-goldset.json separately, after human validation.",
+    "validated": false,
+    "validated_note": "All 20 items are validated=false and MUST be human-validated (per docs/QA-GOLDSET.md workflow) before use in any reported metric. Pay extra attention to the flagged_for_attention items below.",
+    "flagged_for_attention": [
+      "g044 (illustrative 1x10^-8 M very-dilute-acid example and the 'slightly below 7' conclusion are constructed/derived)",
+      "g054 (references passage-table velocities, e.g. 33 vs 14 umol/min at [S]=1 mM -- passage-derived)",
+      "g057 (the M^-2 s^-1 unit result is derived from overall order n=3)",
+      "g058 (the 10 s / 20 s half-life figures are an illustrative constructed scenario, derived)"
+    ],
+    "proposed_counts_delta": {
+      "note": "Delta to be MERGED into qa-goldset.json _meta.counts after validation. All 20 new items are bucket=differentiation. Do NOT apply here; qa-goldset.json's real _meta is left untouched.",
+      "add_total": 20,
+      "add_by_topic": {"cp_acids_bases": 8, "bb_enzymes": 7, "cp_kinetics": 5},
+      "add_by_bucket": {"parity": 0, "differentiation": 20},
+      "resulting_counts_if_merged": {
+        "total": 60,
+        "by_topic": {"cp_acids_bases": 24, "bb_enzymes": 20, "cp_kinetics": 16},
+        "by_bucket": {"parity": 9, "differentiation": 51}
+      }
+    },
+    "anchor_reuse_note": "All 20 anchors are distinct held_out trio questions. Nineteen are fresh (never used in g001-g040); only q_ho_085 was previously used (g028, a non-hard item) and here (g060) probes a distinct concept. No anchor is reused within g041-g060. q_syn_009 (already used 3x total, 2x in the hard set) was deliberately NOT reused.",
+    "topic_shortfall_note": "cp_kinetics has only 4 truly-fresh (never-before-used) held_out anchors (q_ho_016, q_ho_086, q_ho_087, q_ho_088); to reach 5 items the 5th (g060) reuses q_ho_085 (previously only in the non-hard g028) with a distinct Arrhenius/Ea-magnitude concept. All other topics had enough fresh distinct hard anchors."
+  },
+  "items": [
+    {
+      "id": "g041",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_007",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "This says neutral water has [H+] = 1.0x10^-7 M at 25 C. If instead the water were at body temperature (37 C) or near boiling, would neutral water still have pH 7?",
+      "fact_atoms": [
+        "neutrality is defined by [H+] = [OH-], which holds at any temperature, not by a fixed pH of 7",
+        "water's autoionization is endothermic, so Kw increases as temperature rises above 25 C",
+        "with a larger Kw, neutral water has [H+] = sqrt(Kw) greater than 1.0x10^-7 M, so its pH is below 7",
+        "the water is still neutral at that higher temperature because [H+] still equals [OH-], even though pH is under 7"
+      ],
+      "must_not_say": [
+        "neutral water has a pH of exactly 7 at every temperature",
+        "warming neutral water makes it acidic because its pH drops below 7"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.2 pH and pOH (autoionization of water; Kw is temperature dependent and increases with temperature; neutrality means [H+]=[OH-]), https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh . COUNTERFACTUAL/transfer: q_ho_007's explanation fixes T at 25 C and never treats how Kw (and thus the neutral pH) changes with temperature, nor that neutral-vs-acidic is set by [H+] vs [OH-] rather than by pH = 7.",
+      "draft_reference_answer": "No. pH 7 is neutral only at 25 C. Water's autoionization is endothermic, so Kw grows with temperature; at 37 C or higher, neutral water has [H+] = sqrt(Kw) above 1.0x10^-7 M and thus pH below 7. It is still neutral, though, because [H+] = [OH-] -- neutrality is about that equality, not a fixed pH.",
+      "validated": false
+    },
+    {
+      "id": "g042",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_061",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "Here water acts as the acid (proton donor) toward ammonia. Is water always the acid? What would water be in a reaction with HCl, and what does that make water overall?",
+      "fact_atoms": [
+        "water is amphiprotic (amphoteric): it can either donate or accept a proton depending on its reaction partner",
+        "toward the base ammonia, water donates H+ and acts as the Bronsted-Lowry acid, forming OH- (its conjugate base)",
+        "toward the acid HCl, water accepts H+ and acts as the Bronsted-Lowry base, forming H3O+ (its conjugate acid)",
+        "so water's acid/base role is not fixed; its conjugate base is OH- when it acts as an acid, and its conjugate acid is H3O+ when it acts as a base"
+      ],
+      "must_not_say": [
+        "water can only act as a Bronsted-Lowry acid",
+        "water plays the same acid role regardless of the other reactant"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.1 Bronsted-Lowry Acids and Bases (amphiprotic/amphoteric species; water can donate or accept a proton; H3O+ and OH- as water's conjugates), https://openstax.org/books/chemistry-2e/pages/14-1-bronsted-lowry-acids-and-bases . TRANSFER beyond the static dump: q_ho_061's explanation only shows water donating a proton to ammonia (water = acid) and never treats the opposite case (water accepting a proton from an acid) or names water as amphiprotic.",
+      "draft_reference_answer": "No -- water is amphiprotic. With a base like ammonia it donates H+ and is the acid (leaving OH-); with an acid like HCl it accepts H+ and is the base (forming H3O+). Its role flips with the partner, so water's conjugate base is OH- and its conjugate acid is H3O+.",
+      "validated": false
+    },
+    {
+      "id": "g043",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_063",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "The blurb says a strong acid has a very weak conjugate base as an inverse relationship. Is there an actual equation tying the acid's Ka to its conjugate base's Kb, so I can see WHY Cl- is so weak?",
+      "fact_atoms": [
+        "for any conjugate acid-base pair, Ka(acid) x Kb(conjugate base) = Kw = 1.0x10^-14 at 25 C",
+        "this means Kb of the conjugate base = Kw / Ka of the acid, an explicit inverse relationship",
+        "because HCl's Ka is enormous (it ionizes essentially completely), Cl-'s Kb is vanishingly small, so Cl- is a negligibly weak base",
+        "the qualitative 'strong acid gives weak conjugate base' rule is just this quantitative Ka x Kb = Kw relationship"
+      ],
+      "must_not_say": [
+        "the Ka of an acid and the Kb of its conjugate base are unrelated quantities",
+        "a strong acid has a correspondingly strong conjugate base"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.3 Relative Strengths of Acids and Bases (for a conjugate pair, Ka x Kb = Kw), https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases . BEYOND the static dump: q_ho_063's explanation states only the qualitative inverse relationship and never gives the Ka x Kb = Kw equation that quantitatively explains why Cl- is so weak.",
+      "draft_reference_answer": "Yes: for a conjugate pair, Ka x Kb = Kw = 1.0x10^-14 at 25 C, so Kb = Kw/Ka. HCl's Ka is huge, which forces Cl-'s Kb to be tiny -- that equation is exactly why a strong acid must have a negligibly weak conjugate base.",
+      "validated": false
+    },
+    {
+      "id": "g044",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_065",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "If pure water is pH 7, and I add a truly tiny amount of strong acid so the added [H+] is only about 1x10^-8 M, is the pH then 8?",
+      "fact_atoms": [
+        "adding a strong acid can only raise [H+] (lower the pH); it can never push the pH above 7 the way pH = -log(1x10^-8) = 8 would suggest",
+        "at such extreme dilution the H+ contributed by water's own autoionization (about 1x10^-7 M) is not negligible and actually dominates the added acid",
+        "the total [H+] is therefore a little above 1x10^-7 M, so the pH is slightly below 7 (not 8)",
+        "using pH = -log(added acid concentration) is invalid here because it ignores water's autoionization"
+      ],
+      "must_not_say": [
+        "adding a strong acid can raise the pH above 7",
+        "a 1x10^-8 M strong acid solution has a pH of 8"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.2 pH and pOH (water autoionization contributes [H+] ~1x10^-7 M; for very dilute strong acids this contribution cannot be ignored), https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh . COUNTERFACTUAL beyond the static dump: q_ho_065's explanation only establishes neutral water is pH 7 and never treats the very-dilute-acid limit or why -log(added concentration) fails there. NOTE: the 1x10^-8 M example and the 'slightly below 7' conclusion are illustrative/derived -- see flagged_for_attention.",
+      "draft_reference_answer": "No -- the pH would be just under 7, not 8. Adding acid can only lower pH, never raise it. At ~1x10^-8 M the H+ from water's own autoionization (~1x10^-7 M) dominates, so total [H+] is a bit above 1x10^-7 M and pH sits just below 7. The naive -log(1x10^-8) = 8 is wrong because it ignores water's autoionization.",
+      "validated": false
+    },
+    {
+      "id": "g045",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_067",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "HCO3- has both a conjugate acid (H2CO3) and a conjugate base (CO3^2-). Does that mean carbonic acid ionizes in more than one step, and are those steps equally easy?",
+      "fact_atoms": [
+        "carbonic acid H2CO3 is a diprotic (polyprotic) acid that ionizes in two stepwise steps rather than all at once",
+        "step 1 is H2CO3 <-> H+ + HCO3- (governed by Ka1); step 2 is HCO3- <-> H+ + CO3^2- (governed by Ka2)",
+        "the steps are not equally easy: each successive ionization is weaker, so Ka1 is much larger than Ka2 (pulling a second H+ off an already-negative ion is harder)",
+        "HCO3- is the intermediate, amphiprotic species sitting between H2CO3 and CO3^2-"
+      ],
+      "must_not_say": [
+        "carbonic acid loses both protons in a single step",
+        "Ka2 is larger than Ka1, or the two ionization steps are equally easy"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.5 Polyprotic Acids (stepwise ionization; successive Ka values decrease, Ka1 > Ka2; HCO3- as intermediate), https://openstax.org/books/chemistry-2e/pages/14-5-polyprotic-acids . BEYOND the static dump: q_ho_067's explanation only identifies CO3^2- as the conjugate base and H2CO3 as the conjugate acid; it never states that H2CO3 is polyprotic, that ionization is stepwise, or that Ka1 > Ka2.",
+      "draft_reference_answer": "Yes -- H2CO3 is diprotic and ionizes in two steps: H2CO3 <-> H+ + HCO3- (Ka1), then HCO3- <-> H+ + CO3^2- (Ka2). The steps aren't equal; each successive one is harder, so Ka1 >> Ka2, and HCO3- is the amphiprotic middle species between H2CO3 and CO3^2-.",
+      "validated": false
+    },
+    {
+      "id": "g046",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_068",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "If [H+] rises 1000-fold and pH drops 3 units, what simultaneously happens to [OH-] and to the pOH?",
+      "fact_atoms": [
+        "at constant temperature Kw = [H+][OH-] is fixed, so raising [H+] by 1000x forces [OH-] to fall by the same factor of 1000x",
+        "a 1000-fold (10^3) decrease in [OH-] raises the pOH by 3 units",
+        "pH falls by 3 while pOH rises by 3, so their sum pH + pOH stays 14 at 25 C",
+        "[H+] and [OH-] are inversely coupled through Kw, so they cannot both increase"
+      ],
+      "must_not_say": [
+        "[OH-] stays unchanged when [H+] increases",
+        "both pH and pOH decrease by 3 units"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.2 pH and pOH (Kw = [H+][OH-]; pH + pOH = 14 at 25 C; [H+] and [OH-] inversely related), https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh . BEYOND the static dump: q_ho_068's explanation treats only pH and [H+] and never mentions [OH-], pOH, or the Kw coupling that pins pH + pOH at 14.",
+      "draft_reference_answer": "Because Kw = [H+][OH-] is constant, a 1000x rise in [H+] drives [OH-] down 1000x, which raises pOH by 3. So pH drops 3 and pOH rises 3, keeping pH + pOH = 14. The two ion concentrations move oppositely -- they can't both go up.",
+      "validated": false
+    },
+    {
+      "id": "g047",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_070",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "Adding formate lowers formic acid's percent ionization. Does adding the common ion also lower the acid's Ka?",
+      "fact_atoms": [
+        "adding the common ion (formate) shifts the position of the ionization equilibrium but does NOT change Ka",
+        "Ka is a constant at a fixed temperature, set by the identity of the acid, not by the concentrations present",
+        "percent ionization falls because the system re-establishes the same Ka (Q returns to Ka) at a new set of concentrations, not because Ka itself dropped",
+        "percent ionization and Ka are different quantities: percent ionization depends on concentration while Ka does not"
+      ],
+      "must_not_say": [
+        "adding formate lowers the Ka of formic acid",
+        "percent ionization and Ka always rise and fall together"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.3 Relative Strengths of Acids and Bases (Ka is a temperature-fixed constant; percent ionization depends on concentration; common-ion effect shifts equilibrium position), https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases . BEYOND the static dump: q_ho_070's explanation only says the common ion lowers percent ionization via Le Chatelier and never distinguishes that from Ka, nor asserts Ka is unchanged.",
+      "draft_reference_answer": "No. The common ion shifts the equilibrium position, but Ka is a constant fixed by the acid and temperature. Percent ionization drops because the system settles at new concentrations that still satisfy the same Ka -- percent ionization depends on concentration, Ka does not, so they are not the same thing.",
+      "validated": false
+    },
+    {
+      "id": "g048",
+      "topic_id": "cp_acids_bases",
+      "question_id": "q_ho_071",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "I get that the weak acid has the higher pH. But how would I actually CALCULATE each pH -- why can't I just use pH = -log(concentration) for both?",
+      "fact_atoms": [
+        "for a strong acid, complete ionization makes [H+] equal to the acid's concentration C, so pH = -log(C) works directly",
+        "for a weak acid, [H+] is much smaller than C and must be found from the equilibrium Ka = [H+][A-]/[HA]",
+        "the common weak-acid approximation gives [H+] = sqrt(Ka x C), i.e. pH = -(1/2)(log Ka + log C), not -log(C)",
+        "using -log(C) for the weak acid is wrong because it falsely assumes complete ionization and overstates [H+] (understating the pH)"
+      ],
+      "must_not_say": [
+        "you can get a weak acid's pH directly from -log(concentration)",
+        "a weak acid ionizes completely like a strong acid"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 14.3 Relative Strengths of Acids and Bases (strong acids ionize completely so [H+]=C; weak-acid [H+] from the Ka equilibrium, [H+] ~ sqrt(Ka*C)), https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases . BEYOND the static dump: q_ho_071's explanation only states qualitatively that the weak acid has higher pH from partial ionization; it never gives the calculation method or why -log(C) fails for a weak acid.",
+      "draft_reference_answer": "Only the strong acid lets you use pH = -log(C), because it ionizes completely so [H+] = C. The weak acid ionizes partially, so you need its equilibrium: [H+] = sqrt(Ka x C), giving pH = -(1/2)(log Ka + log C). Plugging C straight into -log(C) for the weak acid assumes full ionization and wrongly gives too low a pH.",
+      "validated": false
+    },
+    {
+      "id": "g049",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_ho_073",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "If a reaction has delta-G > 0 (endergonic, nonspontaneous), can a cell just use an enzyme to make it go? If not, how does the cell drive it?",
+      "fact_atoms": [
+        "an enzyme is a catalyst and does not change the sign or magnitude of delta-G, so it cannot by itself make an endergonic reaction spontaneous",
+        "the cell drives an endergonic (delta-G > 0) reaction by energetically coupling it to an exergonic (delta-G < 0) reaction, commonly ATP hydrolysis",
+        "the delta-G values of coupled reactions add, so if the exergonic reaction releases more free energy than the endergonic one requires, the overall delta-G is negative",
+        "the coupled/overall process is then spontaneous even though the endergonic step by itself is not"
+      ],
+      "must_not_say": [
+        "an enzyme lowers a reaction's delta-G to make it spontaneous",
+        "an endergonic reaction can never proceed inside a cell"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.2 Potential, Kinetic, Free, and Activation Energy (endergonic/exergonic, delta-G) and Ch. 6.4 ATP (energy coupling of an exergonic reaction to drive an endergonic one; delta-G values add), https://openstax.org/books/biology-2e/pages/6-4-atp-adenosine-triphosphate . SYNTHESIS across topics: q_ho_073's explanation only defines delta-G > 0 as endergonic/nonspontaneous and hints coupling 'can drive it', but never explains that an enzyme leaves delta-G unchanged or how coupling to ATP hydrolysis (additive delta-G) actually drives the reaction.",
+      "draft_reference_answer": "An enzyme alone can't -- it speeds reactions by lowering activation energy but doesn't change delta-G, so it can't make an endergonic reaction spontaneous. Instead the cell couples the endergonic reaction to an exergonic one (typically ATP hydrolysis); because the delta-G values add, a large enough exergonic release makes the combined delta-G negative, so the coupled process proceeds.",
+      "validated": false
+    },
+    {
+      "id": "g050",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_ho_076",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "A mutation in the active-site pocket changed catalysis. How would the consequences differ if the mutation instead hit an allosteric (regulatory) site?",
+      "fact_atoms": [
+        "a mutation in the active site directly impairs substrate binding and/or the catalytic chemistry itself",
+        "an allosteric site is a separate regulatory site, distinct from the active site where catalysis happens",
+        "a mutation at an allosteric site would alter how regulators (allosteric activators or inhibitors) modulate the enzyme, rather than the catalytic chemistry",
+        "so an allosteric-site mutation could leave baseline catalytic activity largely intact while disrupting the enzyme's regulation"
+      ],
+      "must_not_say": [
+        "an allosteric-site mutation abolishes catalysis exactly the same way an active-site mutation does",
+        "the active site and the allosteric site are the same region"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.5 Enzymes (active site vs separate allosteric/regulatory sites; allosteric regulation modulates activity without being the catalytic pocket), https://openstax.org/books/biology-2e/pages/6-5-enzymes . TRANSFER/COUNTERFACTUAL beyond the static dump: q_ho_076's explanation only identifies the mutated pocket AS the active site; it never contrasts the functional consequence of mutating a regulatory allosteric site (loss of regulation vs loss of catalysis).",
+      "draft_reference_answer": "An active-site mutation hits catalysis directly -- it disrupts substrate binding or the chemistry. An allosteric-site mutation is at a separate regulatory site, so it would mainly disrupt how activators/inhibitors tune the enzyme, potentially leaving the enzyme's baseline catalytic activity largely intact while breaking its regulation.",
+      "validated": false
+    },
+    {
+      "id": "g051",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_ho_077",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "Induced fit says the active site changes shape when substrate binds. Beyond just gripping the substrate, how does that conformational change actually help speed the reaction?",
+      "fact_atoms": [
+        "in induced fit, the conformational change brings the enzyme's catalytic groups into optimal position and orientation around the substrate",
+        "this tighter fit can strain or destabilize the substrate's bonds and create a favorable microenvironment for the reaction",
+        "by stabilizing the transition state, the enzyme lowers the activation energy and thus speeds the reaction",
+        "the rigid, pre-formed match of lock-and-key cannot provide this substrate strain / transition-state stabilization"
+      ],
+      "must_not_say": [
+        "induced fit only affects binding and plays no role in catalysis",
+        "the enzyme speeds the reaction by raising the activation energy"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.5 Enzymes (induced fit; enzymes lower activation energy by orienting substrates, straining bonds, and stabilizing the transition state / optimal microenvironment), https://openstax.org/books/biology-2e/pages/6-5-enzymes . TRANSFER beyond the static dump: q_ho_077's explanation contrasts induced fit with lock-and-key only as a shape change on binding; it never connects that conformational change to the catalytic mechanism (orientation, bond strain, transition-state stabilization, lower activation energy).",
+      "draft_reference_answer": "The shape change isn't just for a snug grip: it positions the enzyme's catalytic groups and orients/strains the substrate, creating a microenvironment that stabilizes the transition state. That lowers the activation energy and speeds the reaction -- something the rigid lock-and-key model, with its fixed pre-formed fit, can't do.",
+      "validated": false
+    },
+    {
+      "id": "g052",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_ho_078",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "When heat denatures the enzyme and it loses its 3D shape, does that break its amino-acid sequence too? And is denaturation always permanent?",
+      "fact_atoms": [
+        "denaturation disrupts the tertiary (and secondary) structure by breaking the noncovalent interactions (hydrogen bonds, hydrophobic interactions, ionic bonds) that hold the fold",
+        "denaturation does NOT break the peptide (covalent) backbone bonds, so the primary structure (amino-acid sequence) is preserved",
+        "loss of the 3D fold distorts the active site, which is why catalytic activity falls",
+        "because the sequence is intact, some denatured proteins can refold (renature) and regain function if conditions are restored, though severe or aggregated denaturation is effectively irreversible"
+      ],
+      "must_not_say": [
+        "denaturation breaks the peptide bonds and destroys the primary structure",
+        "denaturation is always permanent and can never be reversed"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 3.4 Proteins (denaturation disrupts higher-order structure via noncovalent interactions while leaving primary structure/peptide bonds intact; denaturation is sometimes reversible) and Ch. 6.5 Enzymes, https://openstax.org/books/biology-2e/pages/3-4-proteins . BEYOND the static dump: q_ho_078's explanation only says the enzyme denatures and loses its 3D shape and activity; it never specifies WHICH structural levels are lost vs preserved (primary intact) or that denaturation can sometimes be reversed.",
+      "draft_reference_answer": "No -- denaturation breaks the weak noncovalent interactions holding the tertiary/secondary structure, distorting the active site, but it does not break the peptide bonds, so the primary sequence stays intact. Because the sequence survives, some proteins can refold and recover function if conditions return to normal, although harsh or aggregated denaturation is effectively irreversible.",
+      "validated": false
+    },
+    {
+      "id": "g053",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_ho_081",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "If I add more enzyme to the reaction, does Km change? What about Vmax?",
+      "fact_atoms": [
+        "Km is an intrinsic property of a given enzyme-substrate pair and does not change when you add more enzyme",
+        "Vmax, by contrast, increases in proportion to the total amount of enzyme (more enzyme means a higher maximum rate at saturation)",
+        "so doubling the enzyme concentration doubles Vmax but leaves Km unchanged",
+        "at a fixed sub-saturating [S], the enzyme with the lower Km (higher affinity) still reaches a larger fraction of its Vmax"
+      ],
+      "must_not_say": [
+        "adding more enzyme increases Km",
+        "Km depends on the enzyme concentration"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.5 Enzymes (Km as the substrate concentration for half-maximal velocity and an intrinsic affinity index; Vmax reflects saturation of all enzyme molecules), https://openstax.org/books/biology-2e/pages/6-5-enzymes . BEYOND the static dump: q_ho_081's definition only states Km = [S] at half Vmax and its link to affinity; it never addresses how Km vs Vmax respond to changing the enzyme amount (Km unchanged, Vmax scales up).",
+      "draft_reference_answer": "Adding more enzyme does not change Km -- Km is an intrinsic property of the enzyme-substrate pair. It does raise Vmax, which scales with the total enzyme (more enzyme, higher saturating rate). So Vmax goes up while Km stays put; at a given sub-saturating [S], the lower-Km enzyme still reaches more of its Vmax.",
+      "validated": false
+    },
+    {
+      "id": "g054",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_syn_002",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "This question is about saturating substrate. At LOW [S] (well below Km), how does inhibitor X affect velocity, and why is the inhibition strongest there rather than at high [S]?",
+      "fact_atoms": [
+        "a competitive inhibitor competes with substrate for the active site, so its effect is largest when substrate is scarce (low [S])",
+        "at low [S] the inhibited velocity is much lower than the uninhibited velocity (e.g., the data show 14 vs 33 umol/min at [S] = 1 mM)",
+        "as [S] rises toward saturating levels, abundant substrate outcompetes the inhibitor, so the gap between the curves shrinks and both approach the same Vmax",
+        "therefore competitive inhibition depresses velocity most at low [S] and becomes negligible at saturating [S]"
+      ],
+      "must_not_say": [
+        "a competitive inhibitor's effect is strongest at saturating substrate",
+        "the competitive inhibitor lowers velocity by the same fraction at every substrate concentration"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.5 Enzymes (competitive inhibition is overcome by high substrate; effect is greatest at low [S] where substrate cannot outcompete the inhibitor), https://openstax.org/books/biology-2e/pages/6-5-enzymes . BEYOND the static dump: q_syn_002's question/explanation only address the saturating-[S] limit (curves converge to Vmax); they never analyze the low-[S] regime where competitive inhibition is most pronounced. NOTE: the low-[S] velocities (e.g., 33 vs 14 umol/min at [S] = 1 mM) are passage-derived -- see flagged_for_attention.",
+      "draft_reference_answer": "At low [S] the competitive inhibitor bites hardest -- with little substrate around, X wins the competition for the active site, so velocity is much lower than uninhibited (the data show 14 vs 33 umol/min at 1 mM). As [S] climbs, substrate outcompetes X and the curves converge to the same Vmax. So the inhibition is greatest at low [S] and negligible at saturation.",
+      "validated": false
+    },
+    {
+      "id": "g055",
+      "topic_id": "bb_enzymes",
+      "question_id": "q_syn_003",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "The researcher records the INITIAL velocity (v0) at each [S]. Why measure the initial rate instead of the velocity partway through the reaction?",
+      "fact_atoms": [
+        "initial velocity (v0) is measured at the very start, when [S] is still essentially the stated concentration and almost no product has formed",
+        "as the reaction proceeds, substrate is depleted, which lowers the rate, so a later measurement would not reflect the intended [S]",
+        "accumulating product can also slow the reaction (via the reverse reaction or product inhibition), further distorting a later-time rate",
+        "using v0 isolates the rate at a known, controlled [S], which is exactly what Michaelis-Menten analysis (v0 vs [S]) requires"
+      ],
+      "must_not_say": [
+        "a velocity measured late in the reaction gives the same value as the initial velocity",
+        "substrate depletion during the run has no effect on the measured rate"
+      ],
+      "grounding_source": "OpenStax Biology 2e Ch. 6.5 Enzymes (Michaelis-Menten uses initial reaction velocity vs substrate concentration; substrate depletion and product accumulation change the rate over time), https://openstax.org/books/biology-2e/pages/6-5-enzymes . BEYOND the static dump: q_syn_003's question is about holding enzyme amount constant as a control; neither it nor its explanation addresses WHY the initial (rather than later) velocity must be used.",
+      "draft_reference_answer": "Because only the initial rate corresponds to the [S] you set. At t=0, substrate is still at the stated concentration and essentially no product has built up. Later on, [S] is depleted (lowering the rate) and product accumulates (which can reverse or inhibit the reaction), so a mid-reaction velocity wouldn't reflect the intended [S] -- which is what the v0-vs-[S] Michaelis-Menten analysis needs.",
+      "validated": false
+    },
+    {
+      "id": "g056",
+      "topic_id": "cp_kinetics",
+      "question_id": "q_ho_016",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "The activation energy is the barrier going forward. Is there a separate activation energy for the reverse reaction, and how does the difference between them relate to the reaction's delta-H?",
+      "fact_atoms": [
+        "a reaction has both a forward and a reverse activation energy, measured from the reactants and from the products, respectively, up to the same transition state",
+        "the difference of the two equals the reaction enthalpy: delta-H = Ea(forward) - Ea(reverse)",
+        "for an exothermic reaction (delta-H < 0) the forward Ea is smaller than the reverse Ea; for an endothermic reaction it is larger",
+        "a catalyst lowers the forward and reverse activation energies by the same amount, so it leaves delta-H (and Keq) unchanged"
+      ],
+      "must_not_say": [
+        "the forward and reverse activation energies are always equal",
+        "the activation energy is the same thing as the reaction's delta-H"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 12.5 Collision Theory (reaction energy diagrams; forward and reverse activation energies; delta-H is the difference between them) and Ch. 12.7 Catalysis (a catalyst lowers Ea for both directions equally), https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory . SYNTHESIS beyond the static dump: q_ho_016's explanation only defines Ea as the minimum energy to react and distinguishes it from delta-G; it never introduces a reverse Ea or the relation delta-H = Ea(forward) - Ea(reverse).",
+      "draft_reference_answer": "Yes -- there's a reverse activation energy too, measured from the products up to the same transition state. Their difference is the reaction enthalpy: delta-H = Ea(forward) - Ea(reverse). So an exothermic reaction has a smaller forward Ea than reverse, and endothermic the opposite. A catalyst lowers both barriers equally, leaving delta-H and Keq unchanged.",
+      "validated": false
+    },
+    {
+      "id": "g057",
+      "topic_id": "cp_kinetics",
+      "question_id": "q_ho_086",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "For this third-order rate law (rate = k[X]^2[Y]), what are the UNITS of the rate constant k, and could I have figured out the overall order just from k's units?",
+      "fact_atoms": [
+        "the units of the rate constant k depend on the overall reaction order",
+        "with rate expressed in M/s (mol/L per s), k must carry units of M^(1-n)/s, where n is the overall order",
+        "for this third-order reaction (n = 3), k has units of M^-2/s (equivalently L^2 mol^-2 s^-1)",
+        "so the units of k reveal the overall order: you can read the order off k's units without the rate law"
+      ],
+      "must_not_say": [
+        "the rate constant k is dimensionless or always carries the same units",
+        "k always has units of s^-1 regardless of the reaction order"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 12.3 Rate Laws (units of the rate constant depend on the overall reaction order; general form and worked examples for zero-, first-, second-order), https://openstax.org/books/chemistry-2e/pages/12-3-rate-laws . TRANSFER beyond the static dump: q_ho_086's explanation only sums the exponents to get overall order 3; it never discusses the units of k or that those units encode the order. NOTE: the M^-2/s unit result is derived from the overall order n = 3 -- see flagged_for_attention.",
+      "draft_reference_answer": "With rate in M/s, k's units are M^(1-n)/s for overall order n. Here n = 3, so k has units of M^-2/s (i.e. L^2 mol^-2 s^-1). And yes -- since the units depend only on the overall order, you could read the order straight off k's units without ever seeing the rate law.",
+      "validated": false
+    },
+    {
+      "id": "g058",
+      "topic_id": "cp_kinetics",
+      "question_id": "q_ho_087",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "This is about how rate scales with [A]. For a first-order reaction, if it takes 10 s for [A] to fall to half, how long to fall to a quarter, and does a different starting concentration change that?",
+      "fact_atoms": [
+        "a first-order reaction has a constant half-life that is independent of the starting concentration",
+        "reaching one-quarter means two successive halvings (full -> half -> quarter), so it takes two half-lives",
+        "if one half-life is 10 s, reaching one-quarter takes about 20 s",
+        "this concentration-independent half-life is a hallmark of first-order kinetics, unlike zero- or second-order reactions whose half-lives depend on concentration"
+      ],
+      "must_not_say": [
+        "a first-order reaction's half-life depends on the starting concentration",
+        "reaching one-quarter takes the same amount of time as reaching one-half"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 12.4 Integrated Rate Laws (first-order half-life t1/2 = ln2/k is independent of concentration; contrast with concentration-dependent zero- and second-order half-lives), https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws . COUNTERFACTUAL beyond the static dump: q_ho_087's explanation only gives the differential proportionality (rate ~ [A], tripling triples the rate); it never mentions the integrated behavior or the constant first-order half-life. NOTE: the 10 s / 20 s figures are an illustrative constructed scenario (derived) -- see flagged_for_attention.",
+      "draft_reference_answer": "For a first-order reaction the half-life is constant and doesn't depend on starting concentration. Getting to a quarter is two halvings, so it takes two half-lives -- about 20 s if one half-life is 10 s. Changing the initial concentration wouldn't change that 10 s half-life; concentration-independent half-life is the signature of first-order kinetics.",
+      "validated": false
+    },
+    {
+      "id": "g059",
+      "topic_id": "cp_kinetics",
+      "question_id": "q_ho_088",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "It's strange that adding more reactant does nothing for a zero-order reaction. Physically, WHEN does a reaction become zero order, and how does [A] change over time?",
+      "fact_atoms": [
+        "a reaction is zero order in A when the rate is limited by something other than [A] -- for example a saturated catalyst or enzyme surface, or a fixed light intensity in a photochemical reaction",
+        "once every active site or surface is occupied (or the limiting resource is maxed out), adding more A cannot speed things up, so rate = k",
+        "the zero-order integrated rate law is [A] = [A]0 - kt, so [A] decreases linearly with time at a constant rate",
+        "this contrasts with first order, where the rate falls off as [A] is consumed"
+      ],
+      "must_not_say": [
+        "a zero-order reaction speeds up when more reactant is added",
+        "zero order means the reaction does not proceed at all (rate is literally zero)"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 12.4 Integrated Rate Laws (zero-order kinetics: [A] = [A]0 - kt, linear decay, rate independent of concentration) and Ch. 12.7 Catalysis (surface/catalyst saturation as a cause of zero-order behavior), https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws . TRANSFER beyond the static dump: q_ho_088's explanation only states the algebra rate = k[A]^0 = k; it never explains the physical cause (saturation) of zero-order kinetics or the linear [A]-vs-time behavior.",
+      "draft_reference_answer": "A reaction goes zero order when something other than [A] caps the rate -- a saturated catalyst/enzyme surface or a fixed light intensity, for instance. Once that resource is maxed out, extra A can't help, so rate = k. Over time [A] then falls linearly: [A] = [A]0 - kt, unlike first order where the rate tapers as [A] drops.",
+      "validated": false
+    },
+    {
+      "id": "g060",
+      "topic_id": "cp_kinetics",
+      "question_id": "q_ho_085",
+      "chosen_distractor_index": null,
+      "bucket": "differentiation",
+      "followup_question": "Temperature changes k. Is there an equation for that, and for two reactions at the SAME temperature but different activation energies, which has the larger k and which is more temperature-sensitive?",
+      "fact_atoms": [
+        "the temperature dependence of k follows the Arrhenius equation, k = A*exp(-Ea/RT)",
+        "at a given temperature, a reaction with a higher activation energy has a smaller rate constant k (all else equal)",
+        "a reaction with a higher Ea is also MORE sensitive to temperature -- its k rises by a larger factor for the same temperature increase",
+        "this is consistent with k depending on temperature and Ea (and catalyst), but not on reactant concentration"
+      ],
+      "must_not_say": [
+        "at the same temperature, the activation energy has no effect on the size of k",
+        "a lower activation energy makes a reaction more sensitive to temperature"
+      ],
+      "grounding_source": "OpenStax Chemistry 2e Ch. 12.5 Collision Theory (Arrhenius equation k = A*exp(-Ea/RT); higher Ea gives smaller k at a given T and a stronger temperature dependence), https://openstax.org/books/chemistry-2e/pages/12-5-collision-theory . COUNTERFACTUAL beyond the static dump: q_ho_085's explanation only says k depends on temperature (and catalyst) and not on concentration; it never gives the Arrhenius relationship or how the SIZE of the temperature effect depends on Ea.",
+      "draft_reference_answer": "Yes -- the Arrhenius equation, k = A*exp(-Ea/RT). At the same temperature, the reaction with the higher Ea has the smaller k, and it's also the more temperature-sensitive one: its k jumps by a larger factor for the same temperature rise. That all fits k depending on T and Ea (and catalyst), but not on concentration.",
+      "validated": false
+    }
+  ]
+}

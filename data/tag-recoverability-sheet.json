@@ -1,0 +1,659 @@
+{
+  "instructions": "For each case you see a question, its choices, the CORRECT answer, and the ONE distractor a student chose. Without any answer key, decide WHY that specific wrong choice is attractive and label its error mode. label = 'content_gap' (a specific misconception), 'trap' (an execution slip: inverse/unit/scaling/negation/transpose/partial), or 'null' (a generic near-miss with no single identifiable error). If 'content_gap', write the SPECIFIC wrong belief in one clause. Fill tag-recoverability-human.json (copy the TEMPLATE).",
+  "allowed_labels": [
+    "content_gap",
+    "trap",
+    "null"
+  ],
+  "allowed_trap_enums": [
+    "inverse",
+    "unit",
+    "scaling",
+    "negation",
+    "transpose",
+    "partial"
+  ],
+  "n_cases": 40,
+  "items": [
+    {
+      "case_id": "C01",
+      "qid": "q_ho_014",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "If a reaction is first order in A, doubling [A] changes the rate by a factor of:",
+      "choices": {
+        "A": "2",
+        "B": "4",
+        "C": "1 (no change)",
+        "D": "0.5"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "B",
+      "chosen_text": "4"
+    },
+    {
+      "case_id": "C02",
+      "qid": "q_syn_020",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "Initial-rate data for A + B → products:\n\n```\nExp | [A] (M) | [B] (M) | rate (M/s)\n 1  |  0.10   |  0.10   |   2.0\n 2  |  0.20   |  0.10   |   4.0\n 3  |  0.10   |  0.20   |   8.0\n```\nWhat is the rate law?",
+      "choices": {
+        "A": "rate = k[A][B]²",
+        "B": "rate = k[A]²[B]",
+        "C": "rate = k[A][B]",
+        "D": "rate = k[A]²[B]²"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "C",
+      "chosen_text": "rate = k[A][B]"
+    },
+    {
+      "case_id": "C03",
+      "qid": "q_dev_015",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "Increasing temperature generally increases reaction rate primarily because:",
+      "choices": {
+        "A": "it increases ΔG for the reaction",
+        "B": "a larger fraction of collisions have energy ≥ the activation energy",
+        "C": "it lowers the activation energy of the reaction",
+        "D": "it makes the reaction more exothermic"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "it lowers the activation energy of the reaction"
+    },
+    {
+      "case_id": "C04",
+      "qid": "q_ho_028",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "Raising temperature well above an enzyme's optimum typically:",
+      "choices": {
+        "A": "increases activity without limit",
+        "B": "denatures the enzyme and decreases activity",
+        "C": "has no effect on activity",
+        "D": "lowers only the Km"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "has no effect on activity"
+    },
+    {
+      "case_id": "C05",
+      "qid": "q_dev_011",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "A buffer resists changes in pH because it contains appreciable amounts of both a ______.",
+      "choices": {
+        "A": "strong acid and strong base",
+        "B": "weak acid and its conjugate base",
+        "C": "weak acid and a strong base in equal moles",
+        "D": "neutral salt and pure water"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "weak acid and a strong base in equal moles"
+    },
+    {
+      "case_id": "C06",
+      "qid": "q_ho_088",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "For a reaction that is zero order in reactant A, doubling the concentration of A will:",
+      "choices": {
+        "A": "have no effect on the reaction rate",
+        "B": "double the reaction rate",
+        "C": "quadruple the reaction rate",
+        "D": "halve the reaction rate"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "C",
+      "chosen_text": "quadruple the reaction rate"
+    },
+    {
+      "case_id": "C07",
+      "qid": "q_ho_008",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "A solution of pH 4 is how many times more acidic (in [H⁺]) than a solution of pH 6?",
+      "choices": {
+        "A": "2",
+        "B": "10",
+        "C": "100",
+        "D": "1000"
+      },
+      "correct_letter": "C",
+      "chosen_letter": "B",
+      "chosen_text": "10"
+    },
+    {
+      "case_id": "C08",
+      "qid": "q_ho_071",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "Two solutions are prepared at the same concentration: one of a strong acid and one of a weak acid. Compared with the strong-acid solution, the weak-acid solution will have:",
+      "choices": {
+        "A": "a lower pH, because weak acids ionize completely",
+        "B": "a higher pH, because the weak acid ionizes only partially",
+        "C": "exactly the same pH, because the concentrations are equal",
+        "D": "a higher pH, because weak acids do not ionize at all"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "a lower pH, because weak acids ionize completely"
+    },
+    {
+      "case_id": "C09",
+      "qid": "q_ho_007",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "At 25 °C, Kw = 1.0×10⁻¹⁴. In a neutral aqueous solution, [H⁺] equals:",
+      "choices": {
+        "A": "1.0×10⁻⁷ M",
+        "B": "1.0×10⁻¹⁴ M",
+        "C": "1.0 M",
+        "D": "0 M"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "C",
+      "chosen_text": "1.0 M"
+    },
+    {
+      "case_id": "C10",
+      "qid": "q_ho_086",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "A reaction follows the rate law rate = k[X]²[Y]. What is its overall reaction order?",
+      "choices": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "0"
+      },
+      "correct_letter": "C",
+      "chosen_letter": "A",
+      "chosen_text": "1"
+    },
+    {
+      "case_id": "C11",
+      "qid": "q_ho_083",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "A catalyst is added to a reaction mixture that has already reached equilibrium. What effect does it have?",
+      "choices": {
+        "A": "it speeds the forward and reverse reactions equally, leaving the equilibrium position unchanged",
+        "B": "it shifts the equilibrium toward the products",
+        "C": "it shifts the equilibrium toward the reactants",
+        "D": "it increases the amount of product present at equilibrium"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "it increases the amount of product present at equilibrium"
+    },
+    {
+      "case_id": "C12",
+      "qid": "q_ho_026",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "The region of an enzyme where substrate binds and catalysis occurs is the:",
+      "choices": {
+        "A": "allosteric site",
+        "B": "active site",
+        "C": "R group",
+        "D": "peptide backbone"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "peptide backbone"
+    },
+    {
+      "case_id": "C13",
+      "qid": "q_ho_065",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "At 25 °C, pure water self-ionizes so that [H⁺] and [OH⁻] are equal. What is the pH of this neutral water?",
+      "choices": {
+        "A": "0",
+        "B": "7",
+        "C": "14",
+        "D": "It depends on how much water is present"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "It depends on how much water is present"
+    },
+    {
+      "case_id": "C14",
+      "qid": "q_ho_013",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "For the rate law rate = k[A][B]², the overall reaction order is:",
+      "choices": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "0"
+      },
+      "correct_letter": "C",
+      "chosen_letter": "A",
+      "chosen_text": "1"
+    },
+    {
+      "case_id": "C15",
+      "qid": "q_ho_016",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "The activation energy of a reaction is:",
+      "choices": {
+        "A": "the energy difference between products and reactants",
+        "B": "the minimum energy reactants need to form products",
+        "C": "always equal to ΔG",
+        "D": "lowered simply by raising the temperature"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "always equal to ΔG"
+    },
+    {
+      "case_id": "C16",
+      "qid": "q_ho_014",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "If a reaction is first order in A, doubling [A] changes the rate by a factor of:",
+      "choices": {
+        "A": "2",
+        "B": "4",
+        "C": "1 (no change)",
+        "D": "0.5"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "0.5"
+    },
+    {
+      "case_id": "C17",
+      "qid": "q_ho_080",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "Adding a reversible inhibitor slows an enzyme-catalyzed reaction. Does the inhibitor change the reaction's equilibrium constant (Keq)?",
+      "choices": {
+        "A": "No — it changes the reaction's rate (kinetics) but not its equilibrium or ΔG",
+        "B": "Yes — slowing the reaction lowers its Keq",
+        "C": "Yes — it makes the products less thermodynamically stable",
+        "D": "Only at very high substrate concentrations"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "Only at very high substrate concentrations"
+    },
+    {
+      "case_id": "C18",
+      "qid": "q_ho_088",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "For a reaction that is zero order in reactant A, doubling the concentration of A will:",
+      "choices": {
+        "A": "have no effect on the reaction rate",
+        "B": "double the reaction rate",
+        "C": "quadruple the reaction rate",
+        "D": "halve the reaction rate"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "halve the reaction rate"
+    },
+    {
+      "case_id": "C19",
+      "qid": "q_ho_016",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "The activation energy of a reaction is:",
+      "choices": {
+        "A": "the energy difference between products and reactants",
+        "B": "the minimum energy reactants need to form products",
+        "C": "always equal to ΔG",
+        "D": "lowered simply by raising the temperature"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "the energy difference between products and reactants"
+    },
+    {
+      "case_id": "C20",
+      "qid": "q_ho_005",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "What is the pH of a 0.010 M aqueous solution of HCl (a strong acid) at 25 °C?",
+      "choices": {
+        "A": "2.0",
+        "B": "1.0",
+        "C": "12.0",
+        "D": "0.010"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "B",
+      "chosen_text": "1.0"
+    },
+    {
+      "case_id": "C21",
+      "qid": "q_ho_062",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "A Brønsted–Lowry base is best defined as a substance that:",
+      "choices": {
+        "A": "donates a proton (H⁺) to another species",
+        "B": "accepts a proton (H⁺) from another species",
+        "C": "increases the H⁺ concentration of a solution",
+        "D": "produces OH⁻ only by dissociating in water"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "produces OH⁻ only by dissociating in water"
+    },
+    {
+      "case_id": "C22",
+      "qid": "q_ho_026",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "The region of an enzyme where substrate binds and catalysis occurs is the:",
+      "choices": {
+        "A": "allosteric site",
+        "B": "active site",
+        "C": "R group",
+        "D": "peptide backbone"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "R group"
+    },
+    {
+      "case_id": "C23",
+      "qid": "q_syn_020",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "Initial-rate data for A + B → products:\n\n```\nExp | [A] (M) | [B] (M) | rate (M/s)\n 1  |  0.10   |  0.10   |   2.0\n 2  |  0.20   |  0.10   |   4.0\n 3  |  0.10   |  0.20   |   8.0\n```\nWhat is the rate law?",
+      "choices": {
+        "A": "rate = k[A][B]²",
+        "B": "rate = k[A]²[B]",
+        "C": "rate = k[A][B]",
+        "D": "rate = k[A]²[B]²"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "B",
+      "chosen_text": "rate = k[A]²[B]"
+    },
+    {
+      "case_id": "C24",
+      "qid": "q_dev_017",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "The rate constant k of a reaction depends on:",
+      "choices": {
+        "A": "the concentrations of the reactants",
+        "B": "temperature and the presence of a catalyst",
+        "C": "the volume of the container only",
+        "D": "how much time has elapsed"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "the volume of the container only"
+    },
+    {
+      "case_id": "C25",
+      "qid": "q_syn_009",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nWhat is the pH of the initial buffer?",
+      "choices": {
+        "A": "4.74",
+        "B": "7.00",
+        "C": "9.26",
+        "D": "2.37"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "2.37"
+    },
+    {
+      "case_id": "C26",
+      "qid": "q_syn_011",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nTo instead prepare a buffer at pH 5.74 (one unit above the pKa), what ratio of [CH₃COO⁻] to [CH₃COOH] is needed?",
+      "choices": {
+        "A": "1 : 10",
+        "B": "10 : 1",
+        "C": "1 : 1",
+        "D": "100 : 1"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "100 : 1"
+    },
+    {
+      "case_id": "C27",
+      "qid": "q_syn_011",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nTo instead prepare a buffer at pH 5.74 (one unit above the pKa), what ratio of [CH₃COO⁻] to [CH₃COOH] is needed?",
+      "choices": {
+        "A": "1 : 10",
+        "B": "10 : 1",
+        "C": "1 : 1",
+        "D": "100 : 1"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "1 : 10"
+    },
+    {
+      "case_id": "C28",
+      "qid": "q_ho_061",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "In the reaction NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, which species acts as the Brønsted–Lowry acid (the proton donor)?",
+      "choices": {
+        "A": "H₂O",
+        "B": "NH₃",
+        "C": "NH₄⁺",
+        "D": "OH⁻"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "B",
+      "chosen_text": "NH₃"
+    },
+    {
+      "case_id": "C29",
+      "qid": "q_ho_073",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "A reaction that has a positive Gibbs free energy change (ΔG > 0) is best described as:",
+      "choices": {
+        "A": "exergonic and energy-releasing",
+        "B": "endergonic and energy-requiring",
+        "C": "spontaneous under standard conditions",
+        "D": "impossible under any conditions"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "C",
+      "chosen_text": "spontaneous under standard conditions"
+    },
+    {
+      "case_id": "C30",
+      "qid": "q_dev_011",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "A buffer resists changes in pH because it contains appreciable amounts of both a ______.",
+      "choices": {
+        "A": "strong acid and strong base",
+        "B": "weak acid and its conjugate base",
+        "C": "weak acid and a strong base in equal moles",
+        "D": "neutral salt and pure water"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "strong acid and strong base"
+    },
+    {
+      "case_id": "C31",
+      "qid": "q_ho_089",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "In a chemical reaction, the minimum energy that colliding reactant molecules must possess in order to react is called the:",
+      "choices": {
+        "A": "activation energy",
+        "B": "free energy (ΔG)",
+        "C": "bond dissociation enthalpy",
+        "D": "heat of reaction (ΔH)"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "C",
+      "chosen_text": "bond dissociation enthalpy"
+    },
+    {
+      "case_id": "C32",
+      "qid": "q_ho_066",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "A strong monoprotic acid is dissolved in water to a concentration of 1.0×10⁻³ M and ionizes completely. What is the pH of the solution at 25 °C?",
+      "choices": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "11"
+      },
+      "correct_letter": "C",
+      "chosen_letter": "D",
+      "chosen_text": "11"
+    },
+    {
+      "case_id": "C33",
+      "qid": "q_ho_068",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "If the hydrogen-ion concentration [H⁺] of a solution increases by a factor of 1000, how does its pH change?",
+      "choices": {
+        "A": "it decreases by 3 units",
+        "B": "it increases by 3 units",
+        "C": "it decreases by 1000 units",
+        "D": "it does not change"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "B",
+      "chosen_text": "it increases by 3 units"
+    },
+    {
+      "case_id": "C34",
+      "qid": "q_ho_013",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "For the rate law rate = k[A][B]², the overall reaction order is:",
+      "choices": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "0"
+      },
+      "correct_letter": "C",
+      "chosen_letter": "D",
+      "chosen_text": "0"
+    },
+    {
+      "case_id": "C35",
+      "qid": "q_ho_027",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "According to the induced-fit model, when substrate binds an enzyme:",
+      "choices": {
+        "A": "the enzyme is permanently consumed",
+        "B": "the active site changes shape to fit the substrate more snugly",
+        "C": "the substrate is left chemically unchanged",
+        "D": "the activation energy increases"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "the enzyme is permanently consumed"
+    },
+    {
+      "case_id": "C36",
+      "qid": "q_ho_073",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "A reaction that has a positive Gibbs free energy change (ΔG > 0) is best described as:",
+      "choices": {
+        "A": "exergonic and energy-releasing",
+        "B": "endergonic and energy-requiring",
+        "C": "spontaneous under standard conditions",
+        "D": "impossible under any conditions"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "exergonic and energy-releasing"
+    },
+    {
+      "case_id": "C37",
+      "qid": "q_ho_027",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "According to the induced-fit model, when substrate binds an enzyme:",
+      "choices": {
+        "A": "the enzyme is permanently consumed",
+        "B": "the active site changes shape to fit the substrate more snugly",
+        "C": "the substrate is left chemically unchanged",
+        "D": "the activation energy increases"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "the activation energy increases"
+    },
+    {
+      "case_id": "C38",
+      "qid": "q_syn_012",
+      "topic_id": "cp_acids_bases",
+      "section": "CP",
+      "stem": "PASSAGE\nA chemist prepares an acetate buffer from acetic acid (CH3COOH) and its conjugate base acetate (CH3COO-). For acetic acid, pKa = 4.74. The initial buffer contains [CH3COOH] = 0.10 M and [CH3COO-] = 0.10 M. The relevant equilibrium is:  CH3COOH <=> CH3COO- + H+.\n\nQUESTION\nSolid sodium acetate is dissolved into a solution of pure acetic acid (adding CH₃COO⁻). What happens to the acetic-acid dissociation equilibrium, to its percent dissociation, and to the pH?",
+      "choices": {
+        "A": "shifts left; percent dissociation of acetic acid decreases; pH rises",
+        "B": "shifts right; more H⁺ is released; pH drops",
+        "C": "no shift; acetate is only a spectator ion",
+        "D": "shifts left; but pH drops"
+      },
+      "correct_letter": "A",
+      "chosen_letter": "D",
+      "chosen_text": "shifts left; but pH drops"
+    },
+    {
+      "case_id": "C39",
+      "qid": "q_ho_015",
+      "topic_id": "cp_kinetics",
+      "section": "CP",
+      "stem": "For a zero-order reaction, the rate is:",
+      "choices": {
+        "A": "proportional to [A]",
+        "B": "independent of reactant concentration",
+        "C": "proportional to [A]²",
+        "D": "always zero"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "A",
+      "chosen_text": "proportional to [A]"
+    },
+    {
+      "case_id": "C40",
+      "qid": "q_ho_028",
+      "topic_id": "bb_enzymes",
+      "section": "BB",
+      "stem": "Raising temperature well above an enzyme's optimum typically:",
+      "choices": {
+        "A": "increases activity without limit",
+        "B": "denatures the enzyme and decreases activity",
+        "C": "has no effect on activity",
+        "D": "lowers only the Km"
+      },
+      "correct_letter": "B",
+      "chosen_letter": "D",
+      "chosen_text": "lowers only the Km"
+    }
+  ]
+}

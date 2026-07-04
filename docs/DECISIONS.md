@@ -20,7 +20,7 @@
 | 9 | CARS | Performance-only; no memory gate |
 | 10 | Scores | **Three separate** with ranges + abstain |
 | 11 | Readiness | Section map + **coverage penalty**; abstain if coverage &lt; ~50% |
-| 12 | Error typing | Wed: **4 self-report types** (frozen). v2: **3-bucket science taxonomy** (`content_gap`, `application`, `misread`; `reasoning`→`application`, `passage_mapping` folds in) **inferred from distractor role + cross-system `M` + timing, student *confirms*** (self-report demoted to confirmation + validation signal) — see `ERROR-DIAGNOSIS-SPEC.md` |
+| 12 | Error typing | Wed: **4 self-report types** (frozen). v2: **3-bucket science taxonomy** (`content_gap`, `application`, `misread`; `reasoning`→`application`, `passage_mapping` folds in) **inferred from distractor role + cross-system `M` + timing**, then **re-check probe + student *confirms a hypothesis*** (probe settles the objective content axis; confirm captures the un-inferable misread↔application axis, correctable not a verdict; self-report demoted to confirmation + validation signal) — see §9, `ERROR-DIAGNOSIS-SPEC.md` |
 | 13 | Question bank | **Curated OpenStax** (named sources); AI off at runtime |
 | 14 | Study feature | **Interleaved vs blocked performance sessions** |
 | 15 | Memory model | FSRS + calibration (not custom ML) |
@@ -175,6 +175,41 @@ default for a content-presumed-held miss) rather than over-abstaining, carrying
 honesty in **moderate confidence (0.55–0.60)** instead of `unresolved`. This
 supersedes the spec's earlier cold-start/fast-alone "stay unresolved" guidance
 and *elevates* the residual `content_gap`↔`application` boundary risk above.
+
+**Rationale — why "probe + confirm the hypothesis" replaced pure 4-button
+self-report (2026-07-02):** the Wednesday design was *4 self-report buttons after
+a miss* (frozen enum above). v2 evolves this into a two-part flow — an objective
+**re-check probe** (the recall oracle for whether the content was actually held)
+followed by a one-tap **confirm** of a *specific, evidence-backed hypothesis*
+about the error type, which the student can override. This sits deliberately
+between two rejected extremes — **blind self-report** (unreliable; students
+can't cleanly self-categorize *why* they missed) and a **silently-applied
+auto-label** (presumptuous and un-correctable). Five reasons:
+
+- **Targets only the unobservable axis.** The probe objectively settles whether
+  the student held the content; the confirm step does **not** re-ask that. It
+  asks only about the one axis no signal can observe — given the content was
+  held, was the miss a careless *misread* vs. a genuine *reasoning/application*
+  error — by presenting a specific, evidence-backed hypothesis (*"Looks like you
+  knew the concept but misread — right?"*).
+- **Confirming a scaffolded guess ≫ open self-diagnosis.** Reacting to a
+  concrete, correct-most-of-the-time hypothesis is far more reliable than
+  generating a label from scratch. It sidesteps the well-known "students can't
+  reliably self-identify their errors" problem while still capturing the private
+  information only the student has.
+- **It corrects our inference so the next action routes correctly.** The
+  dashboard's recommendation forks on error type (re-study content vs.
+  slow-down-and-read vs. drill application). A silently-wrong auto-label sends
+  the student to the wrong fix; the one-tap confirm prevents mis-routing.
+- **Honesty + trust.** Showing our guess and letting the student override it is
+  more honest than declaring *"you were careless,"* which is presumptuous and
+  erodes trust when we're wrong (ties to the Speedrun honesty rule).
+- **It is itself metacognitive training.** Naming/confirming your own error type
+  is a learning act — the self-monitoring skill the BrainLift argues current
+  tools never build.
+
+**Framing:** *The probe measures what's objective; the confirm captures what's
+private and un-inferable — presented as a correctable hypothesis, not a verdict.*
 
 Full mechanism, schema, and validation metric: [`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md).
 
@@ -665,6 +700,116 @@ one-per-prerequisite) and are tracked as a prioritized next-pass list.
 **Files:** `scripts/build_flashcards.py`, `data/flashcards-dev.csv`,
 `data/flashcards-dev-cloze.csv`, regenerated `docs/QUESTION-CARD-MAP.md`; full
 per-card log in `docs/COMPONENT-CARD-GRANULARITY.md`.
+
+---
+
+## 29. Live LLM provider wired at the AI-explainer seam (env-driven, gated)
+
+**2026-07-02 —** Plugged a **real, provider-agnostic LLM** into the documented
+`LLMProvider` seam (entry 24) so the held_out eval can produce **honest,
+non-by-construction** numbers, without lowering the offline floor.
+
+**What changed:**
+- `scripts/ai_explain.py`: `LLMProvider` now sends the prompt contract (name the
+  correct letter, explain why the *chosen* distractor is wrong using the passed
+  `choice_diagnosis`, give the correct solution, stay tied to `source_name`) and
+  `parse`s **structured JSON** back into an `Explanation`. A provider client is
+  built from env by `build_live_call_model_from_env`: `MCAT_LLM_PROVIDER`
+  (`openai`|`anthropic`), `MCAT_LLM_MODEL`, key from `MCAT_LLM_API_KEY` or the
+  provider-standard var. **SDKs are lazy-imported**; **AI-off (unset provider)
+  serves the static explanation** and the whole app still works.
+- The canonical `safety_block` gate moved into `ai_explain.py` and now guards a
+  new `serve_explanation` path: live → gate → static fallback on block/error, so
+  a live model can never misinform (ungrounded / wrong-choice → static).
+- `scripts/ai_eval_explanations.py`: `--provider offline|live`. Offline stays the
+  default (reproducible, no network). Live scores the **real** provider through
+  the same gate/cutoff; provider errors count as blocked→static.
+- `scripts/test_ai_explain_live.py`: 16 mocked-LLM tests (no network) covering
+  dispatch, parse, gate blocks, AI-off fallback, and eval-against-live — green.
+- `requirements.txt`: optional `openai`/`anthropic` (lazy at import).
+
+**Secrets:** key read **only** from `os.environ`, never hardcoded/printed/logged;
+`.env`/`.env.*` gitignored (`!.env.example`). **Nothing committed.**
+
+**Status:** implementation complete + offline eval unchanged (105 held_out Q /
+315 paths, AI choice-spec 1.000 vs static 0.000 / TF-IDF 0.010). **No live run
+yet** — no key in the build env; live numbers deliberately left blank in
+`AI-FEATURE.md` §10 rather than fabricated. Run `make eval-ai-live` (or
+`py -3.12 scripts/ai_eval_explanations.py --provider live`) with a key to fill.
+
+**Files:** `scripts/ai_explain.py`, `scripts/ai_eval_explanations.py`,
+`scripts/test_ai_explain_live.py`, `requirements.txt`, `docs/AI-FEATURE.md`,
+`Makefile` (`eval-ai`, `eval-ai-live`, `test`).
+
+---
+
+## 30. "Not sure" (IDK) anti-guessing option — demo
+
+**2026-07-03 —** Added a minimal **"Not sure"** opt-out to the performance
+answering UI (a secondary button beneath the choices, distinct from the answer
+choices). It is **not** a choice submission and **not scored right or wrong**: it
+reveals the correct answer + explanation (still a learning moment; the AI "Ask
+more" panel stays available), then proceeds to Next like a normal post-answer
+state.
+
+**Behavior:**
+- **Non-CARS →** the IDK maps **directly** to error type `content_gap` (no recall
+  probe, no error-type confirm step) and routes to the same content_gap
+  next-action / remediation a diagnosed content-gap miss would.
+- **CARS →** logs as `unresolved` (CARS already skips error typing).
+
+**Scoring / honesty (the whole point):**
+- **Excluded from accuracy** — the row is flagged `idk = 1` and is neither a
+  correct nor an attempt in the Performance accuracy numerator/denominator (raw
+  **and** the Bayesian shrinkage headline, which reads `accuracy()`).
+- **Not a mastery/unlock "correct"**, and **not** counted as a scored
+  performance attempt.
+- Because Readiness's attempt gate reads `accuracy()`, IDK stays out of that path
+  naturally.
+- **Tracked** via a separate `idk_count` (per item/topic) so we can honestly show
+  how often the student opted out — no confidence weighting, no lucky-guess
+  detection (deferred; see LOOSE-ENDS).
+
+**Rationale:** a guessed-correct answer gives no mastery signal and **inflates**
+Performance; abstaining removes that noise honestly — the item-level mirror of
+the system-level readiness abstention rule. Kept deliberately minimal for the
+demo ("IDK = content_gap immediately").
+
+**Coordination (scores worker):** full Readiness isolation additionally needs an
+`idk = 0` filter on the **direct** `perf_attempts` reads in `mcat_scores.py`
+(`_section_attempt_counts`, `_provisional_range`, and the coverage attempt
+branch), which still count every row; the `accuracy()`-derived paths already
+exclude IDK. `mcat_scores.py` was left untouched here (owned by that worker).
+
+**Files:** `anki-MCAT/pylib/anki/mcat_perf.py` (idk column + migration,
+`log_attempt(idk=…)`, `accuracy()` exclusion, `idk_count()`,
+`PerformanceSession.not_sure()`), `anki-MCAT/qt/aqt/mcat/performance_dialog.py`
+("Not sure" button + `_on_not_sure` + neutral reveal), and
+`anki-MCAT/pylib/tests/test_mcat_perf.py` (3 tests).
+
+**Refinement (2026-07-03, final agreed framing):** locking the intended shape of
+the three effects so they don't drift:
+- **Error typing:** IDK is still tagged `content_gap` (non-CARS route unchanged).
+- **Accuracy:** untouched — IDK stays out of the accuracy numerator **and**
+  denominator (no change to the exclusion).
+- **Readiness harm is PASSIVE, not active.** IDK earns **no coverage credit**: a
+  topic answered *only* with IDK does not count as "covered", which keeps
+  Readiness low / abstaining. This is enforced by the `AND a.idk = 0` filters on
+  the coverage / section-count / provisional-range queries in
+  `pylib/anki/mcat_scores.py` (regression test
+  `test_idk_rows_are_invisible_to_readiness`). There is **no** active readiness
+  penalty, and "no coverage credit" is the same intended behavior as "invisible
+  to readiness scoring" — leave those filters sealed and the test green.
+- **User-facing copy:** softened to say we're **flagging this topic as a
+  knowledge gap to review** and that it doesn't count for or against accuracy. It
+  deliberately does **not** claim "this is not a reasoning error" or assert any
+  definitive diagnosis, because "I don't know" is genuinely ambiguous — it can be
+  a content gap OR an application/reasoning gap (they know the facts but can't
+  apply them). Overclaiming a content-gap diagnosis would be dishonest.
+- **Deferred (Sunday refinement):** optionally run the content re-check probe on
+  an IDK to *objectively* confirm content-gap vs application instead of assuming
+  — fail the probe → genuine `content_gap`; pass the probe → they had the
+  content, so it's an application/reasoning gap. Tracked in LOOSE-ENDS.
 
 ---
 

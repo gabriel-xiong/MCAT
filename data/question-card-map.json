@@ -1,0 +1,838 @@
+{
+  "q_dev_001": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "In the citric acid cycle, GTP/ATP is made by substrate-level phosphorylation during the conversion of {{c1::succinyl-CoA to succinate}}."
+    ]
+  },
+  "q_dev_002": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "High {{c1::ADP}} signals low ATP and increases catabolic flux through key enzymes.",
+      "When ADP levels rise, what happens to the activity of the cell's rate-limiting respiratory enzymes, and why?"
+    ]
+  },
+  "q_dev_003": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "Enzymes speed a reaction by lowering its {{c1::activation energy}}, without changing {{c1::ΔG}}.",
+      "ΔG > 0 → {{c1::endergonic}}; ΔG < 0 → {{c1::exergonic}}.",
+      "Reaction rate depends on {{c1::activation energy}}, not ΔG.",
+      "An {{c1::endergonic}} reaction absorbs (consumes) energy; an {{c1::exergonic}} reaction releases energy.",
+      "Both endergonic and exergonic reactions must first overcome an {{c1::activation-energy}} barrier before they proceed."
+    ]
+  },
+  "q_dev_004": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "Enzymes speed a reaction by lowering its {{c1::activation energy}}, without changing {{c1::ΔG}}.",
+      "What is the best way to judge the relative activation energies of two reactions?",
+      "Activation energy is a {{c1::kinetic}} property, so it cannot be inferred from ΔG or spontaneity (which are {{c1::thermodynamic}})."
+    ]
+  },
+  "q_dev_005": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "{{c1::Competitive}} inhibitors bind the active site; allosteric inhibitors bind {{c1::elsewhere}} and change enzyme shape/activity.",
+      "How does an allosteric inhibitor differ from a competitive inhibitor?",
+      "An allosteric {{c1::activator}} raises, while an allosteric {{c1::inhibitor}} lowers, the active site's affinity for substrate."
+    ]
+  },
+  "q_dev_006": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "Brønsted–Lowry acids {{c1::donate}} H⁺; bases {{c1::accept}} H⁺.",
+      "When product is added to a reaction at equilibrium, the reaction shifts toward {{c1::reactants}}.",
+      "Increasing {{c1::[H⁺]}} shifts a base toward its {{c1::protonated}} (conjugate acid) form.",
+      "Ammonia is a weak base: NH₃ + H₂O ⇌ {{c1::NH₄⁺}} + {{c1::OH⁻}}.",
+      "Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to acetic acid) {{c1::suppresses}} the weak acid/base ionization."
+    ]
+  },
+  "q_dev_007": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "Brønsted–Lowry acids {{c1::donate}} H⁺; bases {{c1::accept}} H⁺.",
+      "CH₃COOH is a {{c1::weaker}} acid than HCl (conjugate base strength runs opposite to acid strength).",
+      "HF and HCN in water: the ionization equilibrium lies to the {{c1::left}}, so both are {{c1::weak}} acids (only partial ionization).",
+      "Why is the conjugate base of a strong acid a very weak base?",
+      "The {{c1::weaker}} the acid, the stronger its conjugate base (and the reverse)."
+    ]
+  },
+  "q_dev_008": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "In a galvanic cell, oxidation occurs at the {{c1::anode}} and reduction at the {{c1::cathode}}."
+    ]
+  },
+  "q_dev_009": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "A galvanic cell has a {{c1::positive}} E°cell, so its redox reaction is {{c1::spontaneous}} (ΔG° < 0)."
+    ]
+  },
+  "q_dev_010": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "The {{c1::salt bridge}} keeps the half-cells electrically neutral by allowing ion flow."
+    ]
+  },
+  "q_dev_011": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "A buffer contains a {{c1::weak acid}} and its {{c1::conjugate base}}, so it resists pH change.",
+      "A strong acid and strong base cannot form a buffer — they simply {{c1::react to completion}}."
+    ]
+  },
+  "q_dev_012": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "A reaction is spontaneous at all temperatures when ΔH is {{c1::negative}} and ΔS is {{c1::positive}}."
+    ]
+  },
+  "q_dev_013": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "Gibbs free energy: ΔG = ΔH − {{c1::T}}ΔS."
+    ]
+  },
+  "q_dev_014": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "A spontaneous process proceeds without a continuous {{c1::external energy}} input."
+    ]
+  },
+  "q_dev_015": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "Raising temperature speeds a reaction because more molecules exceed the {{c1::activation energy}}.",
+      "Raising temperature increases reaction rate but does {{c1::not}} lower the activation energy or change ΔG."
+    ]
+  },
+  "q_dev_016": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "A catalyst lowers the {{c1::activation energy}}; it does not change {{c1::ΔG}} or the equilibrium.",
+      "Why doesn't a catalyst change the equilibrium position?"
+    ]
+  },
+  "q_dev_017": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "The rate constant k depends on {{c1::temperature}} and a {{c1::catalyst}}, not on reactant concentration.",
+      "The temperature dependence of the rate constant k is described by the {{c1::Arrhenius}} equation."
+    ]
+  },
+  "q_dev_018": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "Continuity for an incompressible fluid: A₁v₁ = {{c1::A₂v₂}} (volume flow rate is conserved).",
+      "In a pipe that narrows, what happens to the fluid's speed and why?"
+    ]
+  },
+  "q_dev_019": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "Continuity for an incompressible fluid: A₁v₁ = {{c1::A₂v₂}} (volume flow rate is conserved)."
+    ]
+  },
+  "q_dev_020": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Net ATP yield of glycolysis per glucose is {{c1::2}} (4 produced − 2 invested)."
+    ]
+  },
+  "q_dev_021": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Glycolysis takes place in the {{c1::cytoplasm}} (cytosol), not the mitochondrion."
+    ]
+  },
+  "q_dev_022": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Glycolysis reduces NAD⁺ to {{c1::NADH}} and ends in two molecules of {{c1::pyruvate}}."
+    ]
+  },
+  "q_dev_023": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "Acetyl-CoA joins {{c1::oxaloacetate}} to form {{c1::citrate}} at the start of each cycle turn."
+    ]
+  },
+  "q_dev_024": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "An enzyme reaches {{c1::Vmax}} when its active sites are {{c1::saturated}} with substrate."
+    ]
+  },
+  "q_dev_025": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "The plasma membrane's core structure is the {{c1::phospholipid bilayer}}."
+    ]
+  },
+  "q_dev_026": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "In a phospholipid, the phosphate head is {{c1::hydrophilic}} and the fatty-acid tails are {{c1::hydrophobic}}."
+    ]
+  },
+  "q_dev_027": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "DNA replication is {{c1::semiconservative}}: each daughter has one old and one new strand."
+    ]
+  },
+  "q_dev_028": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "DNA polymerase builds new strands only in the {{c1::5'→3'}} direction."
+    ]
+  },
+  "q_dev_029": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "{{c1::Helicase}} unwinds the double helix; {{c1::ligase}} joins Okazaki fragments."
+    ]
+  },
+  "q_dev_030": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "A monohybrid cross Aa × Aa gives a phenotypic ratio of {{c1::3:1}} and a genotypic ratio of {{c1::1:2:1}}."
+    ]
+  },
+  "q_dev_031": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "{{c1::Genotype}} is the genetic makeup; {{c1::phenotype}} is the observable trait."
+    ]
+  },
+  "q_dev_032": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "Encoding gets information in; {{c1::storage}} holds it; {{c1::retrieval}} gets it back out."
+    ]
+  },
+  "q_dev_033": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "Short-term (working) memory holds about {{c1::7 ± 2}} items."
+    ]
+  },
+  "q_dev_034": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "Maintaining information in short-term memory by repetition is {{c1::rehearsal}}."
+    ]
+  },
+  "q_dev_035": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "In Pavlov's dogs, food is the {{c1::unconditioned stimulus}} and salivation to food is the {{c1::unconditioned response}}."
+    ]
+  },
+  "q_dev_036": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "A reinforcer {{c1::increases}} a behavior; a punisher {{c1::decreases}} it."
+    ]
+  },
+  "q_dev_037": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "How does extinction occur in classical conditioning?"
+    ]
+  },
+  "q_dev_038": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "The {{c1::fundamental attribution error}}: we over-credit others' behavior to personality and under-weight the situation."
+    ]
+  },
+  "q_dev_039": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "{{c1::Conformity}} is matching a group standard; {{c1::obedience}} is following an authority's command."
+    ]
+  },
+  "q_dev_040": {
+    "topic_id": "ps_demographics",
+    "fronts": [
+      "Health {{c1::disparities}} are preventable differences in health outcomes across social groups."
+    ]
+  },
+  "q_dev_041": {
+    "topic_id": "ps_demographics",
+    "fronts": [
+      "What is a social determinant of health? Give an example."
+    ]
+  },
+  "q_dev_042": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "{{c1::Pascal's}} principle: pressure applied to an enclosed fluid is transmitted undiminished throughout it."
+    ]
+  },
+  "q_dev_043": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "{{c1::Cognitive dissonance}} is the discomfort from holding conflicting attitudes or acting against one's attitude."
+    ]
+  },
+  "q_dev_044": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "In codominance, how is the heterozygote expressed?"
+    ]
+  },
+  "q_ho_001": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "The species that is oxidized is the {{c1::reducing agent}} (e.g., Zn in Zn + Cu²⁺)."
+    ]
+  },
+  "q_ho_002": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "In the Nernst equation Ecell = E°cell − (RT/nF)ln Q, the reaction quotient is Q = {{c1::[products]/[reactants]}}, so adding product ions {{c1::raises}} Q."
+    ]
+  },
+  "q_ho_003": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "How does electrolysis differ from a galvanic cell in energy terms?"
+    ]
+  },
+  "q_ho_004": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "In a galvanic cell, oxidation occurs at the {{c1::anode}} and reduction at the {{c1::cathode}}."
+    ]
+  },
+  "q_ho_005": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "For a strong acid, pH = −log[H⁺]; a 0.010 M HCl solution has pH {{c1::2}}."
+    ]
+  },
+  "q_ho_006": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "A conjugate acid–base pair differs by one H⁺, e.g. {{c1::H₂CO₃}} / {{c1::HCO₃⁻}}."
+    ]
+  },
+  "q_ho_007": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "At 25 °C a neutral solution has [H⁺] = {{c1::1×10⁻⁷ M}} and pH = {{c1::7}}.",
+      "At 25 °C the water autoionization constant Kw = [H⁺][OH⁻] = {{c1::1.0×10⁻¹⁴}}.",
+      "A neutral aqueous solution is defined by {{c1::[H⁺] = [OH⁻]}}."
+    ]
+  },
+  "q_ho_008": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "Each pH unit is a 10× change in [H⁺], so pH 4 is {{c1::100}}× more acidic than pH 6."
+    ]
+  },
+  "q_ho_009": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "When ΔH > 0 and ΔS > 0, a reaction is spontaneous only at {{c1::high}} temperature."
+    ]
+  },
+  "q_ho_010": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "Does a negative ΔG mean the reaction is fast?"
+    ]
+  },
+  "q_ho_011": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "At equilibrium, ΔG = {{c1::0}}."
+    ]
+  },
+  "q_ho_012": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "Entropy (S) measures the {{c1::disorder}} (dispersal of energy and matter) of a system."
+    ]
+  },
+  "q_ho_013": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "For rate = k[A][B]², the overall reaction order is {{c1::3}}."
+    ]
+  },
+  "q_ho_014": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "For a reaction first order in A, doubling [A] multiplies the rate by {{c1::2}}."
+    ]
+  },
+  "q_ho_015": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "A {{c1::zero-order}} reaction's rate is independent of reactant concentration."
+    ]
+  },
+  "q_ho_016": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "Activation energy is the {{c1::minimum}} energy reactants need in order to react.",
+      "Activation energy is the barrier to reach the {{c1::transition state}}; it is not the reactant–product energy difference (ΔH/ΔG)."
+    ]
+  },
+  "q_ho_017": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "By Bernoulli's principle, where fluid speed is higher, pressure is {{c1::lower}} (at constant height)."
+    ]
+  },
+  "q_ho_018": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "An object floats when the buoyant force equals its {{c1::weight}}."
+    ]
+  },
+  "q_ho_019": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Glycolysis reduces NAD⁺ to {{c1::NADH}} and ends in two molecules of {{c1::pyruvate}}."
+    ]
+  },
+  "q_ho_020": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "The committed, rate-limiting enzyme of glycolysis is {{c1::phosphofructokinase-1}} (PFK-1)."
+    ]
+  },
+  "q_ho_021": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Net ATP yield of glycolysis per glucose is {{c1::2}} (4 produced − 2 invested)."
+    ]
+  },
+  "q_ho_022": {
+    "topic_id": "bb_glycolysis",
+    "fronts": [
+      "Under anaerobic conditions in muscle, what happens to pyruvate and why?"
+    ]
+  },
+  "q_ho_023": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "Per turn, the citric acid cycle releases {{c1::2}} CO₂ and makes {{c1::3}} NADH."
+    ]
+  },
+  "q_ho_024": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "Why does the citric acid cycle itself produce little ATP directly?"
+    ]
+  },
+  "q_ho_025": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "Per turn, the citric acid cycle releases {{c1::2}} CO₂ and makes {{c1::3}} NADH."
+    ]
+  },
+  "q_ho_026": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "The {{c1::active site}} is the region of an enzyme where substrate binds and catalysis occurs.",
+      "The {{c1::allosteric}} site is a regulatory binding site separate from the active site."
+    ]
+  },
+  "q_ho_027": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "Induced fit: when substrate binds, the enzyme's {{c1::active site}} changes shape to fit it more snugly.",
+      "An enzyme is a catalyst, so it is {{c1::not consumed}} by the reaction it speeds up.",
+      "During catalysis the substrate is {{c1::chemically transformed}} into product (it is not left unchanged)."
+    ]
+  },
+  "q_ho_028": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "Heating an enzyme far above its optimum {{c1::denatures}} it, lowering its activity.",
+      "{{c1::Denaturation}} is the loss of a protein's 3-D shape, which distorts the enzyme's active site and lowers activity."
+    ]
+  },
+  "q_ho_029": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "{{c1::Active}} transport moves solutes against their gradient (needs energy); {{c1::passive}} transport moves them down the gradient.",
+      "Why can O₂ cross the membrane by simple diffusion but glucose usually cannot?"
+    ]
+  },
+  "q_ho_030": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "{{c1::Active}} transport moves solutes against their gradient (needs energy); {{c1::passive}} transport moves them down the gradient."
+    ]
+  },
+  "q_ho_031": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "Cholesterol in animal cell membranes modulates membrane {{c1::fluidity}}."
+    ]
+  },
+  "q_ho_032": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "Osmosis is the diffusion of {{c1::water}} across a selectively permeable membrane."
+    ]
+  },
+  "q_ho_033": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "In DNA, A pairs with {{c1::T}} and G pairs with {{c1::C}}."
+    ]
+  },
+  "q_ho_034": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "{{c1::Helicase}} unwinds the double helix; {{c1::ligase}} joins Okazaki fragments."
+    ]
+  },
+  "q_ho_035": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "Why is the lagging strand synthesized in fragments?"
+    ]
+  },
+  "q_ho_036": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "The two strands of DNA run {{c1::antiparallel}} and are complementary."
+    ]
+  },
+  "q_ho_037": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "A monohybrid cross Aa × Aa gives a phenotypic ratio of {{c1::3:1}} and a genotypic ratio of {{c1::1:2:1}}."
+    ]
+  },
+  "q_ho_038": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "Mendel's law of {{c1::segregation}}: the two alleles of a gene separate during gamete formation."
+    ]
+  },
+  "q_ho_039": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "A testcross uses a {{c1::homozygous recessive}} partner to reveal an unknown genotype."
+    ]
+  },
+  "q_ho_040": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "Genes far apart on the same chromosome assort nearly {{c1::independently}} because of crossing over."
+    ]
+  },
+  "q_ho_041": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "{{c1::Long-term}} memory is the relatively permanent, large-capacity store."
+    ]
+  },
+  "q_ho_042": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "{{c1::Context-dependent}} memory: recall improves when the retrieval context matches encoding."
+    ]
+  },
+  "q_ho_043": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "The {{c1::serial position}} effect: the first and last list items are recalled best."
+    ]
+  },
+  "q_ho_044": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "What is the difference between explicit and implicit memory?"
+    ]
+  },
+  "q_ho_045": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "After conditioning, the bell becomes the {{c1::conditioned stimulus}}."
+    ]
+  },
+  "q_ho_046": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "Negative reinforcement {{c1::increases}} behavior by {{c1::removing}} an aversive stimulus."
+    ]
+  },
+  "q_ho_047": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "A {{c1::variable-ratio}} schedule reinforces behavior after an unpredictable number of responses."
+    ]
+  },
+  "q_ho_048": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "{{c1::Conformity}} is matching a group standard; {{c1::obedience}} is following an authority's command.",
+      "What did Milgram's obedience studies demonstrate?"
+    ]
+  },
+  "q_ho_049": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "The {{c1::bystander}} effect: the more people present, the less likely any one person helps."
+    ]
+  },
+  "q_ho_050": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "An {{c1::attitude}} is an evaluation (favorable or unfavorable) of a person, object, or idea."
+    ]
+  },
+  "q_ho_051": {
+    "topic_id": "ps_demographics",
+    "fronts": [
+      "SES is commonly measured by income, education, and {{c1::occupation}}."
+    ]
+  },
+  "q_ho_052": {
+    "topic_id": "ps_demographics",
+    "fronts": [
+      "The social {{c1::gradient}} in health: outcomes tend to improve with higher socioeconomic status."
+    ]
+  },
+  "q_ho_059": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "The SI unit of pressure, the pascal, equals {{c1::N/m²}}."
+    ]
+  },
+  "q_syn_001": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "{{c1::Competitive}} inhibitors bind the active site; allosteric inhibitors bind {{c1::elsewhere}} and change enzyme shape/activity.",
+      "A competitive inhibitor binds the enzyme's {{c1::active site}}, directly competing with substrate for binding.",
+      "Noncompetitive inhibition: Vmax {{c1::decreases}} while Km stays {{c1::unchanged}}.",
+      "Km is the substrate concentration at {{c1::half of Vmax}}; a higher Km means lower substrate affinity.",
+      "A competitive inhibitor raises the enzyme's {{c1::apparent Km}} (more substrate is needed to reach a given velocity) because it competes for the active site.",
+      "Uncompetitive inhibition lowers {{c1::both}} Vmax and Km, because the inhibitor binds only the enzyme–substrate complex."
+    ]
+  },
+  "q_syn_002": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "An enzyme reaches {{c1::Vmax}} when its active sites are {{c1::saturated}} with substrate.",
+      "A competitive inhibitor binds the enzyme's {{c1::active site}}, directly competing with substrate for binding.",
+      "Competitive inhibition is {{c1::surmountable}}: the inhibitor binds reversibly at the active site, so adding excess substrate outcompetes it."
+    ]
+  },
+  "q_syn_003": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "In an enzyme assay comparing 'with inhibitor' vs 'without', which variable is held constant and which is deliberately varied?",
+      "A {{c1::controlled}} variable is held constant so any change in the outcome can be attributed to the treatment.",
+      "In an experiment the {{c1::independent}} variable is deliberately changed and the {{c1::dependent}} variable is measured."
+    ]
+  },
+  "q_syn_004": {
+    "topic_id": "bb_enzymes",
+    "fronts": [
+      "Enzymes speed a reaction by lowering its {{c1::activation energy}}, without changing {{c1::ΔG}}.",
+      "How does Km differ in kind from Keq?",
+      "ΔG and Keq depend only on the {{c1::free-energy difference}} between reactants and products, which a catalyst or inhibitor cannot change."
+    ]
+  },
+  "q_syn_005": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "In a galvanic cell, oxidation occurs at the {{c1::anode}} and reduction at the {{c1::cathode}}.",
+      "E°cell = E°(cathode) − E°(anode); the half-cell with the {{c1::higher (more positive)}} reduction potential is the cathode."
+    ]
+  },
+  "q_syn_006": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "A galvanic cell has a {{c1::positive}} E°cell, so its redox reaction is {{c1::spontaneous}} (ΔG° < 0).",
+      "ΔG° = {{c1::−nFE°cell}}, so a positive E°cell gives a {{c1::negative}} ΔG° (spontaneous).",
+      "For ΔG° = −nFE°cell, what is n?"
+    ]
+  },
+  "q_syn_007": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "In the Nernst equation Ecell = E°cell − (RT/nF)ln Q, the reaction quotient is Q = {{c1::[products]/[reactants]}}, so adding product ions {{c1::raises}} Q.",
+      "Ecell (the actual potential) changes with ion concentrations via the Nernst equation, but E°cell (standard) is {{c1::fixed}}."
+    ]
+  },
+  "q_syn_008": {
+    "topic_id": "cp_electrochem",
+    "fronts": [
+      "At equilibrium, ΔG = {{c1::0}}.",
+      "A galvanic cell keeps doing electrical work until it reaches {{c1::equilibrium}}, at which point Ecell = {{c1::0}} (a dead battery)."
+    ]
+  },
+  "q_syn_009": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "Henderson–Hasselbalch relates buffer pH to pKa: pH = pKa + log({{c1::[A⁻]/[HA]}})."
+    ]
+  },
+  "q_syn_010": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "A buffer contains a {{c1::weak acid}} and its {{c1::conjugate base}}, so it resists pH change.",
+      "In a buffer, which species neutralizes a small amount of added strong acid (H⁺), and what does it become?"
+    ]
+  },
+  "q_syn_011": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "Henderson–Hasselbalch relates buffer pH to pKa: pH = pKa + log({{c1::[A⁻]/[HA]}}).",
+      "Rearranging Henderson–Hasselbalch, the buffer ratio is [A⁻]/[HA] = {{c1::10^(pH − pKa)}}."
+    ]
+  },
+  "q_syn_012": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "When product is added to a reaction at equilibrium, the reaction shifts toward {{c1::reactants}}.",
+      "If something suppresses a weak acid's dissociation, what happens to [H⁺] and pH?",
+      "Common-ion effect: adding an ion already in the equilibrium (e.g., NH₄⁺ to NH₃, or acetate to acetic acid) {{c1::suppresses}} the weak acid/base ionization.",
+      "Suppressing a weak acid's ionization lowers its {{c1::percent dissociation}}."
+    ]
+  },
+  "q_syn_013": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "A monohybrid cross Aa × Aa gives a phenotypic ratio of {{c1::3:1}} and a genotypic ratio of {{c1::1:2:1}}.",
+      "For independent genes, the probability of a combined genotype/phenotype is the {{c1::product}} of the separate gene probabilities (e.g., 1/2 × 1/3 = 1/6)."
+    ]
+  },
+  "q_syn_014": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "For independent genes, the probability of a combined genotype/phenotype is the {{c1::product}} of the separate gene probabilities (e.g., 1/2 × 1/3 = 1/6).",
+      "A dihybrid cross of two double heterozygotes (YyRr × YyRr) gives a phenotypic ratio of {{c1::9:3:3:1}} under independent assortment."
+    ]
+  },
+  "q_syn_015": {
+    "topic_id": "bb_genetics",
+    "fronts": [
+      "A testcross uses a {{c1::homozygous recessive}} partner to reveal an unknown genotype.",
+      "In a testcross (× homozygous recessive), how do you read one gene's result?"
+    ]
+  },
+  "q_syn_016": {
+    "topic_id": "bb_citric_acid",
+    "fronts": [
+      "Each turn of the TCA cycle makes one {{c1::ATP or GTP}} via substrate-level phosphorylation (not via the ETC).",
+      "Net ATP yield of glycolysis per glucose is {{c1::2}} (4 produced − 2 invested).",
+      "One glucose → 2 pyruvate → 2 acetyl-CoA → {{c1::2}} turns of the citric acid cycle.",
+      "Which stages of glucose oxidation make ATP/GTP by substrate-level phosphorylation, and which supplies the much larger remainder?"
+    ]
+  },
+  "q_syn_017": {
+    "topic_id": "bb_membranes",
+    "fronts": [
+      "Osmosis is the diffusion of {{c1::water}} across a selectively permeable membrane.",
+      "In osmosis, water moves across a selectively permeable membrane toward the {{c1::hypertonic}} (higher-solute-concentration) side.",
+      "Relative to a cell, a solution with lower solute concentration is {{c1::hypotonic}} and one with higher solute concentration is {{c1::hypertonic}}."
+    ]
+  },
+  "q_syn_018": {
+    "topic_id": "bb_dna",
+    "fronts": [
+      "In DNA, A pairs with {{c1::T}} and G pairs with {{c1::C}}.",
+      "The two strands of DNA run {{c1::antiparallel}} and are complementary.",
+      "To write the complement of a DNA strand in the 5'→3' direction, what two steps do you take?"
+    ]
+  },
+  "q_syn_019": {
+    "topic_id": "cp_thermo",
+    "fronts": [
+      "Gibbs free energy: ΔG = ΔH − {{c1::T}}ΔS.",
+      "When ΔH > 0 and ΔS > 0, a reaction is spontaneous only at {{c1::high}} temperature.",
+      "When combining ΔH (in kJ) with ΔS (in J) in ΔG = ΔH − TΔS, first convert both to the {{c1::same energy unit}} (e.g., kJ → J)."
+    ]
+  },
+  "q_syn_020": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "For a reaction first order in A, doubling [A] multiplies the rate by {{c1::2}}.",
+      "In a rate law rate = k[A]^m[B]^n, the exponent on each reactant is its {{c1::order}}; the sum m+n is the overall order.",
+      "Method of initial rates: find a reactant's order by comparing experiments in which only {{c1::that reactant's}} concentration changes."
+    ]
+  },
+  "q_syn_021": {
+    "topic_id": "cp_kinetics",
+    "fronts": [
+      "Does a negative ΔG mean the reaction is fast?",
+      "A catalyst lowers the {{c1::activation energy}}; it does not change {{c1::ΔG}} or the equilibrium.",
+      "Thermodynamic favorability (ΔG) and reaction rate are {{c1::independent}} — a spontaneous reaction can still be very slow."
+    ]
+  },
+  "q_syn_022": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "Continuity for an incompressible fluid: A₁v₁ = {{c1::A₂v₂}} (volume flow rate is conserved).",
+      "By Bernoulli's principle, where fluid speed is higher, pressure is {{c1::lower}} (at constant height)."
+    ]
+  },
+  "q_syn_023": {
+    "topic_id": "cp_fluids",
+    "fronts": [
+      "Continuity for an incompressible fluid: A₁v₁ = {{c1::A₂v₂}} (volume flow rate is conserved)."
+    ]
+  },
+  "q_syn_024": {
+    "topic_id": "cp_acids_bases",
+    "fronts": [
+      "For a strong acid, pH = −log[H⁺]; a 0.010 M HCl solution has pH {{c1::2}}.",
+      "A strong acid ionizes {{c1::completely}} in water, whereas a weak acid at the same concentration ionizes only {{c1::partially}}."
+    ]
+  },
+  "q_syn_025": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "A {{c1::variable-ratio}} schedule reinforces behavior after an unpredictable number of responses.",
+      "A {{c1::variable-ratio}} schedule (e.g., gambling) produces a high, steady response rate that is highly resistant to extinction."
+    ]
+  },
+  "q_syn_026": {
+    "topic_id": "ps_learning",
+    "fronts": [
+      "Negative reinforcement {{c1::increases}} behavior by {{c1::removing}} an aversive stimulus.",
+      "How is negative reinforcement different from punishment?"
+    ]
+  },
+  "q_syn_027": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "The {{c1::fundamental attribution error}}: we over-credit others' behavior to personality and under-weight the situation.",
+      "{{c1::Actor–observer}} bias: we attribute our own behavior to the situation but others' behavior to their disposition (the latter overlaps the fundamental attribution error)."
+    ]
+  },
+  "q_syn_028": {
+    "topic_id": "ps_social",
+    "fronts": [
+      "{{c1::Cognitive dissonance}} is the discomfort from holding conflicting attitudes or acting against one's attitude."
+    ]
+  },
+  "q_syn_029": {
+    "topic_id": "ps_memory",
+    "fronts": [
+      "{{c1::Context-dependent}} memory: recall improves when the retrieval context matches encoding."
+    ]
+  },
+  "q_syn_030": {
+    "topic_id": "ps_demographics",
+    "fronts": [
+      "The social {{c1::gradient}} in health: outcomes tend to improve with higher socioeconomic status.",
+      "How does a social gradient in health differ from a simple poverty threshold?"
+    ]
+  }
+}

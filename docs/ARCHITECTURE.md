@@ -70,7 +70,8 @@ flowchart TB
 |-------|------------|----------------|
 | UI | Python / Qt | Memory mode, performance mode, dashboard |
 | Bridge | PyO3 / protobuf | Call Rust mastery query |
-| Collection | SQLite | Cards, revlog, custom perf tables |
+| Collection | SQLite | Cards, revlog, notes, decks |
+| Perf sidecar | SQLite (`mcat_perf.db`) | Performance questions/attempts — kept out of the synced collection |
 
 ### 3.2 Android (AnkiDroid fork)
 
@@ -118,7 +119,7 @@ Standard Anki notes/cards with tags: `topic:bb_glycolysis`
 
 ### 4.3 Performance questions
 
-Stored in collection custom table or sidecar JSON loaded at startup.
+Stored in the `perf_questions` table of the sidecar DB (`collection.mcat_perf.db`), loaded from `data/questions.json` at startup.
 
 ```json
 {
@@ -202,7 +203,7 @@ flowchart LR
 1. Filter questions: unlocked topics (+ CARS)  
 2. Order: interleaved or blocked (feature flag)  
 3. User answers → log attempt  
-4. On miss → error type  
+4. On miss → **re-check probe** (objective content oracle) → **confirm the hypothesis** (error type)  
 5. Recompute performance score + readiness + next action  
 
 **Rule:** never immediately after revealing the matching flashcard.
@@ -211,10 +212,18 @@ flowchart LR
 
 ## 7. Sync architecture
 
-- **Protocol:** stock Anki sync  
-- **Scope:** entire collection including custom perf tables in same DB  
-- **Attempts:** append-only — no merge conflicts  
-- **Revlog conflicts:** document rule (e.g. union revlogs → recompute FSRS)  
+Two independent channels (see [`DECISIONS.md` §22](DECISIONS.md)) — memory data rides stock Anki sync; performance data syncs via a separate custom bundle.
+
+**(a) Memory data — stock Anki Rust sync**
+
+- **Scope:** the standard collection only — cards, revlog, notes, decks  
+- **Revlog conflicts:** document rule (e.g. union revlogs → recompute FSRS); `cards` scheduling state is last-writer-wins by `mtime`  
+
+**(b) Performance data — separate sidecar + custom bundle**
+
+- **Storage:** sidecar `collection.mcat_perf.db`, deliberately kept **out** of the synced collection so a stock full sync can't silently wipe unknown custom tables (see §5)  
+- **Protocol:** custom versioned JSON export/import bundle (`format: "mcat_perf_bundle"`, `format_version: 1`) — **not** stock Anki sync  
+- **Attempts:** append-only — no merge conflicts; UNION-merged and deduped by a stable per-attempt `uuid` (idempotent + order-independent → both devices converge)  
 
 **Acceptance (7b):** 10 phone + 10 desktop offline reviews; same-card dual offline review.
 
@@ -228,6 +237,16 @@ flowchart LR
 | `passage_mapping` | Passage drills in topic |
 | `reasoning` | Hard Skill 2–4 interleaved set |
 | `misread` | Timed retry set |
+
+**Miss flow — probe + confirm the hypothesis (v2):** a miss does not ask for a
+blind self-report, nor silently auto-label. It runs a **re-check probe** (recall
+oracle for whether the content was held), then surfaces a **specific,
+evidence-backed hypothesis** the student **confirms or overrides** in one tap.
+The probe measures the objective content axis; the confirm captures the only
+un-inferable axis (careless *misread* vs. genuine *application* error) as a
+correctable hypothesis, not a verdict — so the next-action routing above lands on
+the right fix. Full rationale in [`DECISIONS.md` §9](DECISIONS.md); mechanism in
+[`ERROR-DIAGNOSIS-SPEC.md`](ERROR-DIAGNOSIS-SPEC.md).
 
 ---
 

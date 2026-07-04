@@ -35,6 +35,59 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
 
 ## Design — not yet settled
 
+- [ ] **"Not sure" (IDK) — richer version deferred; keep it a DIAGNOSTIC-only
+  tool that must NEVER leak into Readiness (demo decision, 2026-07-03).** For the
+  demo the "Not sure" opt-out is intentionally minimal: a non-CARS IDK maps
+  **immediately** to `content_gap` (CARS → `unresolved`), is **excluded** from
+  Performance accuracy + mastery-unlock, and is tracked as a plain `idk_count`
+  (no confidence weighting, no lucky-guess detection). See DECISIONS §30.
+  **Deferred richer version:** confidence-weighted scoring — treat a
+  **correct-but-low-confidence** answer as a *lucky-guess* signal (don't award
+  full mastery credit) and a **wrong-but-high-confidence** answer as a
+  *misconception* flag — plus distinguishing a true "no idea" from a "narrowed it
+  to two." **Real-MCAT caveat (load-bearing):** the actual MCAT has **NO guessing
+  penalty** — on test day you should **always** guess and never leave a blank. So
+  IDK here is deliberately a **diagnostic / mastery** instrument only: it must
+  **not** be trained into, rewarded by, or leak into the **Readiness** score
+  (which estimates the real 472–528 outcome). Any future IDK-derived signal stays
+  gated to the study/diagnostics view, not Readiness. **Also open (scores
+  worker):** the direct `perf_attempts` reads in `mcat_scores.py`
+  (`_section_attempt_counts`, `_provisional_range`, the coverage attempt branch)
+  still need an `idk = 0` filter so IDK rows can't slip into the Readiness range /
+  section gates / coverage; the `accuracy()`-based paths already exclude them.
+  Cross-refs: DECISIONS §30; `mcat_perf.py` (`accuracy()`, `idk_count()`,
+  `PerformanceSession.not_sure()`).
+- [ ] **Probe-confirmed IDK labeling — deferred Sunday refinement (2026-07-03).**
+  Today an IDK is *assumed* to be a `content_gap` (non-CARS route) and the
+  user-facing copy is deliberately hedged to "flagging a knowledge gap" precisely
+  because "I don't know" is ambiguous — it could be a genuine content gap OR an
+  application/reasoning gap (they know the facts but can't apply them). **Deferred
+  refinement:** optionally run the existing content re-check probe on an IDK to
+  *objectively* resolve which it is instead of assuming — probe **FAIL** → keep
+  `content_gap` (they truly lacked the content); probe **PASS** → they had the
+  content, so relabel to an application/reasoning gap and route accordingly. This
+  reuses the probe machinery already built for missed science items. Cross-refs:
+  DECISIONS §30 (refinement note); re-check probe items above;
+  `mcat_perf.py` (`resolve_probe_target`, `record_probe_outcome`).
+- [ ] **CARS misses skip the error-type confirm / self-diagnosis step (demo
+  decision, 2026-07-03).** For CARS **performance** questions the app does **not**
+  ask the user to pick or confirm an error type on a miss — the error-type
+  confirmation / self-diagnosis prompt is omitted for CARS specifically (a CARS
+  miss routes only to its objective skill-archetype + pacing track, not to the
+  error-type self-report fallback). **Why:** asking a CARS misser to confirm
+  *their own* error type partially undercuts this project's core premise that
+  users generally **can't reliably self-diagnose** *why* they missed — surfacing a
+  self-report step there quietly contradicts the thesis the whole error-diagnosis
+  design rests on. So for the demo we omit it. This is an **accepted temporary
+  gap** ("hole"), not a settled design. **Revisit later:** decide either (a) give
+  CARS a **different, non-self-report diagnosis path** (lean harder on the
+  objective skill-archetype + pacing signals, since CARS has no content oracle),
+  or (b) justify keeping an error-type confirm on the grounds that a **scaffolded
+  single-hypothesis confirmation** ("looks like X — right?") is materially
+  different from **open self-diagnosis** and may be reliable enough — the very
+  distinction DECISIONS §9 already draws for the science track. Cross-refs:
+  `ERROR-DIAGNOSIS-SPEC.md` → "CARS diagnosis" (demo note); DECISIONS §9
+  (confirm-a-hypothesis vs open self-report).
 - [x] **Application-practice bank exists AND is wired into the `application`
   remediation channel (done 2026-07-02).** The curated pool
   (`data/application-practice.json` — 45 science integration items, 3 per topic,
@@ -230,9 +283,13 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   not something we can pull for eval. So attempt-data **collection for eval goes
   through the read-only export path** (`tools/mcat_export_perf.py` / Tools →
   "MCAT: Export performance data…"), and an external telemetry backend is
-  **deferred**. Open: cross-device perf sync design (DECISIONS §5, build step 7) —
-  export/import vs self-hosted sync vs (only if cloud features are adopted) a
-  backend; reconcile or formally supersede the AGENTS lock.
+  **deferred**. *AGENTS lock reconciled (2026-07-03):* `AGENTS.md` (Locked
+  decisions), `ARCHITECTURE.md §7`, `PRD.md` S-2, and `.cursor/rules/anki-rust.mdc`
+  were updated to the sidecar + custom uuid-deduped JSON bundle model per
+  DECISIONS §22 — no doc still asserts "perf tables in the collection DB."
+  Still open: an external telemetry backend (only if cloud features are adopted)
+  remains deferred; cross-device perf sync ships via the export/import bundle
+  (DECISIONS §22, build step 7).
 - [x] **CARS track has no objective oracle.** *Resolved (2026-07-01):* CARS
   doesn't use the error-typing engine at all — generic types collapse there.
   Instead it uses **skill-archetype accuracy** (group by existing CARS

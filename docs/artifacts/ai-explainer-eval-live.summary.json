@@ -1,0 +1,88 @@
+{
+  "eval": "ai_post_answer_explainer",
+  "generated_utc": "2026-07-04T03:11:35+00:00",
+  "provider_under_test": "LIVE openai:gpt-4o-mini (network; real numbers)",
+  "provider_mode": "live",
+  "numbers_are": "live_measured",
+  "eval_split": "held_out",
+  "n_held_out_questions": 105,
+  "n_wrong_answer_paths": 315,
+  "pre_registered_cutoff": {
+    "min_accuracy": 0.9,
+    "max_wrong_answer_rate": 0.05,
+    "min_grounding_rate": 1.0,
+    "min_choice_specificity": 0.8
+  },
+  "cutoff_decision": {
+    "passed": true,
+    "reasons_if_failed": [],
+    "ai_path": "ENABLED"
+  },
+  "safety_gate_self_test": "PASS",
+  "methods": {
+    "ai": {
+      "method": "ai",
+      "n_paths": 315,
+      "accuracy": 1.0,
+      "wrong_answer_rate": 0.0,
+      "grounding_rate": 1.0,
+      "choice_specificity": 0.8603,
+      "variation_rate": 0.9619,
+      "blocked_to_static": 0,
+      "provider_errors": 0
+    },
+    "static": {
+      "method": "static",
+      "n_paths": 315,
+      "accuracy": 1.0,
+      "wrong_answer_rate": 0.0,
+      "grounding_rate": 1.0,
+      "choice_specificity": 0.0,
+      "variation_rate": 0.0,
+      "blocked_to_static": 0,
+      "provider_errors": 0
+    },
+    "tfidf": {
+      "method": "tfidf",
+      "n_paths": 315,
+      "accuracy": 0.4762,
+      "wrong_answer_rate": 0.2095,
+      "grounding_rate": 1.0,
+      "choice_specificity": 0.0095,
+      "variation_rate": 0.1333,
+      "blocked_to_static": 0,
+      "provider_errors": 0
+    }
+  },
+  "headline_differentiation_gap_ai_minus_best_baseline": 0.8508,
+  "source_traceability": {
+    "n_held_out": 105,
+    "has_source_name": 105,
+    "has_source_url": 98,
+    "has_source_location": 105,
+    "fully_grounded": 105,
+    "source_name_rate": 1.0,
+    "source_url_rate": 0.9333333333333333,
+    "source_location_rate": 1.0,
+    "fully_grounded_rate": 1.0,
+    "missing_source_name_ids": [],
+    "missing_source_url_ids": [
+      "q_ho_053",
+      "q_ho_054",
+      "q_ho_055",
+      "q_ho_056",
+      "q_ho_057",
+      "q_ho_058",
+      "q_ho_060"
+    ]
+  },
+  "leakage_check": {
+    "ok": true,
+    "issues": []
+  },
+  "goldset_validation": {
+    "passed": 9,
+    "total": 9
+  },
+  "reproduce": "py -3.12 scripts/ai_eval_explanations.py"
+}

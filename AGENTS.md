@@ -21,7 +21,7 @@ Anki fork + AnkiDroid companion with **three separate scores** (memory, performa
 - **Exam:** MCAT (472–528)
 - **Rust change:** per-topic mastery query
 - **Mobile:** Android / AnkiDroid only
-- **Sync:** stock Anki sync; perf tables in same collection DB
+- **Sync:** stock Anki sync for the collection; MCAT perf data in a separate sidecar DB synced via a custom uuid-deduped JSON bundle — see DECISIONS §22
 - **Performance gate:** ≥3 cards seen + ≥5 Good/Easy per topic
 - **CARS:** performance-only (no memory gate)
 - **Questions:** curated named sources; **AI off at runtime**

@@ -20,3 +20,10 @@ Thumbs.db
 # Common local overrides
 *.local
 .local/
+
+# generated eval scratch
+build/
+
+# python bytecode
+__pycache__/
+*.pyc

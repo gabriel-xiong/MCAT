@@ -181,13 +181,20 @@ Already verified: the MCAT runtime modules contain no network/LLM calls (only
 SQLite + AGPL header URLs). No re-capture needed unless you want it on camera —
 if so, grep the MCAT modules for `http`/`requests`/`openai` and show zero hits.
 
-### Phone review recording
+### Phone review recording — PENDING CAPTURE (video clip not yet in the repo)
 
-Already captured during the mobile track (AnkiDroid import + graded review on
-the emulator). Per the checklist it lives under **`MCAT/assets/`** — confirm the
-file is present there before assembling the packet (the `assets/` folder is not
-currently checked into the repo tree, so make sure the recording was saved/copied
-in before you zip the deliverables).
+**Not yet captured.** The mobile track produced still **screenshots** of the
+AnkiDroid import + graded review flow, and those are saved under
+**`MCAT/assets/`** (e.g. `ankidroid_import*.png`, `ankidroid_review2.png`,
+`ankidroid_answer.png`, `ankidroid_study1.png`). But the phone-review **video
+clip** — checklist item **R4** ("Phone review → desktop sync") — has **not** been
+recorded: `MCAT/assets/` holds **only screenshots, no video**, and no
+phone-review recording exists anywhere in either repo (the only video files
+present are unrelated upstream AnkiDroid test fixtures under
+`AnkiDroid/src/androidTest/assets/`). The clip **will live at `MCAT/assets/`** once
+captured. Record it per the R4 shot-list — tracked as an unchecked item in
+[`RECORDING-CHECKLIST.md`](RECORDING-CHECKLIST.md) — and confirm the file is
+present there before assembling the packet.
 
 ---
 
@@ -220,10 +227,53 @@ the LAN, same build serves both forks. Rationale in `SYNC-CONFLICT-RULE.md §5`.
   the same deck present (mobile track).
 - Know this machine's LAN IP: run `ipconfig` in Git Bash and read the IPv4 (was
   **`10.10.1.132`** on 2026-07-02; re-check, DHCP can change it).
-- Client endpoint URL to use:
-  - Desktop (same machine as server): `http://127.0.0.1:8080/`
-  - **Android emulator**: `http://10.0.2.2:8080/` (10.0.2.2 = host loopback alias)
-  - Physical phone on same Wi-Fi: `http://10.10.1.132:8080/`
+
+> **⚠️ Port 8080 collision when running desktop from source.** Because the
+> desktop fork is launched **from source** (`./run` → `tools/run.py`) with
+> QtWebEngine DevTools enabled, its remote-debugging port grabs
+> **`127.0.0.1:8080`** — the **same** port the self-hosted sync server
+> (`Anki.exe --syncserver`) binds on (`0.0.0.0:8080`). On Windows the DevTools
+> `127.0.0.1` binding **shadows the sync server on loopback**, so any client that
+> reaches the server over loopback lands on DevTools instead. Symptom: the
+> endpoint returns a QtWebEngine `/json/version` JSON payload (not the sync
+> server) and **sync silently fails on camera**. This breaks BOTH loopback-routed
+> endpoints — `http://127.0.0.1:8080/` (desktop) **and** `http://10.0.2.2:8080/`
+> (emulator, since `10.0.2.2` is just the host's `127.0.0.1` alias) — so neither
+> of the "obvious" endpoints works while running from source. (This only happens
+> with a from-source desktop + DevTools; a packaged build or AnkiWeb is fine.)
+>
+> **Working fix (verified working right now): point BOTH clients at the host LAN
+> IP.** Enter `http://<HOST_LAN_IP>:8080/` in the desktop client (`Preferences →
+> Syncing → Self-hosted sync server`) **and** in AnkiDroid (`Settings → Sync →
+> Custom sync server`) — including for the emulator. The LAN IP routes to the
+> real sync server (returns HTTP 200), bypassing the loopback DevTools port. Get
+> the current IP with `ipconfig` (IPv4). The value observed on 2026-07-02 was
+> **`10.10.1.132`**, but it is a **DHCP LAN IP and can change** — re-check before
+> filming and do NOT treat it as fixed. Log in with **`mcat` / `mcat`**.
+>
+> **Cleaner alternative (prefer this if you don't want the LAN-IP/DHCP
+> dependency): relaunch the sync server on a non-8080 port.** Set `SYNC_PORT` to
+> a port DevTools doesn't use (e.g. `27701`) in D.1, and the standard loopback
+> endpoints work per the rest of this runbook: `http://127.0.0.1:<port>/`
+> (desktop) and `http://10.0.2.2:<port>/` (emulator). This removes the DHCP-IP
+> dependency entirely.
+>
+> **First sync still needs a baseline.** The server is healthy (`/health`→200,
+> host key issued) but has **no collection yet**, so the first sync must be
+> **desktop Upload → phone Download** (D.2 then D.3). And remember: the custom
+> MCAT perf tables do **not** ride stock Anki sync by design (DECISIONS §22) — so
+> the phone's Performance/Readiness honestly showing **"not enough data"** after a
+> stock sync is **correct, not a bug**.
+
+- Client endpoint URL to use (see the ⚠️ note above — while running the desktop
+  from source use the **LAN IP** for every client, or move the server off 8080):
+  - Desktop (same machine as server): `http://<HOST_LAN_IP>:8080/` (e.g.
+    `http://10.10.1.132:8080/`) — **not** `http://127.0.0.1:8080/`, which hits
+    the DevTools port while running from source.
+  - **Android emulator**: `http://<HOST_LAN_IP>:8080/` — **not**
+    `http://10.0.2.2:8080/`, which also routes to the host loopback DevTools port.
+  - Physical phone on same Wi-Fi: `http://<HOST_LAN_IP>:8080/` (e.g.
+    `http://10.10.1.132:8080/`).
 
 ### D.1 Start the local sync server (Git Bash — uses the FROZEN build, no rebuild)
 
@@ -249,8 +299,12 @@ normal Anki data folder; the server keeps its own copy.)
 ### D.2 Point the desktop client at the local server
 
 1. In Anki: **Tools → Preferences → Syncing** (the "Syncing" tab).
-2. In the **Self-hosted sync server** field, enter: `http://127.0.0.1:8080/`
-   (trailing slash). Close Preferences.
+2. In the **Self-hosted sync server** field, enter the **host LAN IP**,
+   `http://<HOST_LAN_IP>:8080/` (e.g. `http://10.10.1.132:8080/`, trailing
+   slash). **Do NOT use `http://127.0.0.1:8080/`** while running from source — it
+   hits the QtWebEngine DevTools port, not the sync server (see the ⚠️ note in
+   D.0). Close Preferences. (Alternatively, if you moved the server off 8080 per
+   D.0, use `http://127.0.0.1:<port>/` here.)
 3. Click the **Sync** button (circular-arrows, top toolbar). Log in with
    **`mcat` / `mcat`**. Because the server is empty, choose **Upload to server**
    when prompted — this establishes the shared baseline.
@@ -258,9 +312,14 @@ normal Anki data folder; the server keeps its own copy.)
 ### D.3 Point the AnkiDroid client at the same server
 
 1. In AnkiDroid: **☰ / gear → Settings → Sync**.
-2. Tap **Custom sync server** → in **Sync URL** enter the emulator/phone URL:
-   `http://10.0.2.2:8080/` (emulator) or `http://10.10.1.132:8080/` (phone).
-   Leave the certificate field blank. Back out to save.
+2. Tap **Custom sync server** → in **Sync URL** enter the **host LAN IP**,
+   `http://<HOST_LAN_IP>:8080/` (e.g. `http://10.10.1.132:8080/`) — for **both**
+   the emulator and a physical phone. **Do NOT use `http://10.0.2.2:8080/`** for
+   the emulator while running the desktop from source: `10.0.2.2` is the host's
+   `127.0.0.1` alias, so it hits the QtWebEngine DevTools port, not the sync
+   server (see the ⚠️ note in D.0). Leave the certificate field blank. Back out to
+   save. (Alternatively, if you moved the server off 8080 per D.0, use
+   `http://10.0.2.2:<port>/` for the emulator.)
 3. Back on Settings → Sync, set the **AnkiWeb account** login to **`mcat` /
    `mcat`** (it authenticates against your custom server, despite the "AnkiWeb"
    label).

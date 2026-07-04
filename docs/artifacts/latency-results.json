@@ -1,0 +1,56 @@
+{
+  "env": {
+    "python": "3.13.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 189 Stepping 1, GenuineIntel",
+    "generated_at": 1783105650,
+    "deck": {
+      "cards": 198,
+      "reviews": 40,
+      "topics": 18
+    },
+    "note": "small-n, dev hardware, synthetic deck; NOT a 50k-scale bench"
+  },
+  "results": {
+    "mastery_query_all": {
+      "n": 200,
+      "min_ms": 0.8563,
+      "median_ms": 1.0367,
+      "p95_ms": 1.3205,
+      "max_ms": 4.3243,
+      "mean_ms": 1.0799
+    },
+    "mastery_query_one": {
+      "n": 200,
+      "min_ms": 0.856,
+      "median_ms": 1.0887,
+      "p95_ms": 1.2991,
+      "max_ms": 2.015,
+      "mean_ms": 1.0843
+    },
+    "perf_attempt_write": {
+      "n": 200,
+      "min_ms": 1.3561,
+      "median_ms": 1.6783,
+      "p95_ms": 2.7797,
+      "max_ms": 4.719,
+      "mean_ms": 1.8076
+    },
+    "perf_round_trip": {
+      "n": 200,
+      "min_ms": 1.6681,
+      "median_ms": 2.2775,
+      "p95_ms": 3.7892,
+      "max_ms": 6.7582,
+      "mean_ms": 2.4436
+    },
+    "perf_sync_round_trip": {
+      "n": 25,
+      "min_ms": 22.2235,
+      "median_ms": 26.0025,
+      "p95_ms": 28.3286,
+      "max_ms": 29.672,
+      "mean_ms": 25.8079
+    }
+  }
+}

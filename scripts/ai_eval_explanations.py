@@ -54,9 +54,12 @@ from ai_explain import (  # noqa: E402
     Explanation,
     OfflineDeterministicProvider,
     diagnose_choice,
+    live_provider_from_env,
     load_backing_concepts,
     load_questions,
     load_topic_names,
+    safety_block,
+    static_fallback_explanation,
 )
 
 # =========================================================================== #
@@ -221,17 +224,8 @@ def build_pairs(held: list[dict]) -> list[tuple[dict, int]]:
 # --------------------------------------------------------------------------- #
 # Safety gate + cutoff enforcement
 # --------------------------------------------------------------------------- #
-def safety_block(expl: Explanation, q: dict) -> bool:
-    """Return True if this AI output must be BLOCKED (then replaced by static).
-
-    Blocks anything that is ungrounded or names the wrong correct choice — the
-    two failures that would let AI misinform a student.
-    """
-    if not expl.is_grounded:
-        return True
-    if expl.asserted_correct_letter and expl.asserted_correct_letter != q["correct"]:
-        return True
-    return False
+# `safety_block` is the canonical gate, imported from ai_explain so the serving
+# path and this eval enforce identical rules (ungrounded / wrong-choice -> block).
 
 
 def gate_self_test(provider: OfflineDeterministicProvider, q: dict) -> bool:
@@ -250,26 +244,40 @@ def gate_self_test(provider: OfflineDeterministicProvider, q: dict) -> bool:
 # Metric computation for a provider
 # --------------------------------------------------------------------------- #
 def eval_ai(provider, pairs, questions_by_id):
+    """Score the (offline OR live) provider through the SAFETY GATE.
+
+    Every path runs the provider, then the gate. If the provider errors (live
+    model / network / bad JSON) or the gate blocks the output (ungrounded or
+    wrong choice), the SERVED explanation is the static fallback — exactly what
+    the student would see. Metrics are computed on what is served, so a live
+    model can never push numbers below the static floor, and the numbers are the
+    HONEST measured behavior of the provider (not by construction).
+    """
     per_q_texts: dict[str, list[str]] = {}
     records = []
+    blocked = errored = 0
     for q, idx in pairs:
-        expl = provider.explain(q, idx)
-        per_q_texts.setdefault(q["id"], []).append(expl.why_wrong)
-        records.append((q, idx, expl))
+        expl = None
+        try:
+            expl = provider.explain(q, idx)
+        except Exception:
+            errored += 1
+        was_blocked = expl is None or safety_block(expl, q)
+        if was_blocked:
+            blocked += 1
+            served = static_fallback_explanation(q, idx)  # gate -> static
+        else:
+            served = expl
+        per_q_texts.setdefault(q["id"], []).append(served.why_wrong)
+        records.append((q, idx, served))
 
     def q_varies(qid: str) -> bool:
         texts = per_q_texts[qid]
         return len(set(texts)) == len(texts)
 
     n = len(records)
-    acc = wrong = grounded = spec = blocked = 0
+    acc = wrong = grounded = spec = 0
     for q, idx, expl in records:
-        if safety_block(expl, q):
-            blocked += 1
-            # blocked -> replaced by static (still grounded, still correct)
-            grounded += 1
-            acc += 1
-            continue
         if expl.is_grounded:
             grounded += 1
         if identifies_correct(expl.asserted_correct_letter, q):
@@ -285,6 +293,7 @@ def eval_ai(provider, pairs, questions_by_id):
         "grounding_rate": grounded / n,
         "choice_specificity": spec / n,
         "blocked": blocked,
+        "errored": errored,
         "variation_rate": sum(q_varies(qid) for qid in per_q_texts)
         / len(per_q_texts),
     }
@@ -407,6 +416,46 @@ def validate_goldset(provider, questions_by_id) -> tuple[int, int, list[str]]:
     return passed, len(gold), fails
 
 
+def source_traceability(held: list[dict]) -> dict:
+    """Coverage of the spec claim "every AI output traces back to a named source".
+
+    Every offline/live explanation attaches the question's own ``source_name`` /
+    ``source_url`` / ``source_location`` (see ai_explain.Explanation), and the
+    safety gate BLOCKS any output whose ``source_name`` is empty. So the held_out
+    bank's source coverage is exactly the coverage of the served explanations.
+    Reports, over the held_out questions:
+      * has_source_name     — a NAMED source is present (the hard grounding rule)
+      * has_source_url      — a resolvable URL is present (nice-to-have)
+      * has_source_location — a page/section locator is present
+      * fully_grounded      — source_name AND (source_url OR source_location)
+    """
+    n = len(held)
+    has_name = sum(1 for q in held if (q.get("source_name") or "").strip())
+    has_url = sum(1 for q in held if (q.get("source_url") or "").strip())
+    has_loc = sum(1 for q in held if (q.get("source_location") or "").strip())
+    fully = sum(
+        1
+        for q in held
+        if (q.get("source_name") or "").strip()
+        and ((q.get("source_url") or "").strip() or (q.get("source_location") or "").strip())
+    )
+    missing_name = [q["id"] for q in held if not (q.get("source_name") or "").strip()]
+    missing_url = [q["id"] for q in held if not (q.get("source_url") or "").strip()]
+    return {
+        "n_held_out": n,
+        "has_source_name": has_name,
+        "has_source_url": has_url,
+        "has_source_location": has_loc,
+        "fully_grounded": fully,
+        "source_name_rate": (has_name / n) if n else 0.0,
+        "source_url_rate": (has_url / n) if n else 0.0,
+        "source_location_rate": (has_loc / n) if n else 0.0,
+        "fully_grounded_rate": (fully / n) if n else 0.0,
+        "missing_source_name_ids": missing_name,
+        "missing_source_url_ids": missing_url,
+    }
+
+
 def leakage_check(questions) -> tuple[bool, list[str]]:
     """Reuse the project's stem-dup logic + confirm goldset (dev) does not leak
     into held_out (by id or by near-duplicate stem)."""
@@ -500,21 +549,153 @@ def side_by_side(provider, retriever, held, n=4):
         print(f"  [tfidf]  {retriever.retrieve(query)}")
 
 
-def main() -> int:
+def _metrics_row(method: str, m: dict) -> dict:
+    """Flatten a method's metrics into a JSON/CSV-friendly row."""
+    return {
+        "method": method,
+        "n_paths": m["n"],
+        "accuracy": round(m["accuracy"], 4),
+        "wrong_answer_rate": round(m["wrong_answer_rate"], 4),
+        "grounding_rate": round(m["grounding_rate"], 4),
+        "choice_specificity": round(m["choice_specificity"], 4),
+        "variation_rate": round(m["variation_rate"], 4),
+        "blocked_to_static": m.get("blocked", 0),
+        "provider_errors": m.get("errored", 0),
+    }
+
+
+def write_artifacts(
+    out_stem: Path,
+    *,
+    provider_label: str,
+    src: str,
+    n_held_out: int,
+    n_paths: int,
+    cutoff: dict,
+    cutoff_passed: bool,
+    cutoff_reasons: list[str],
+    gate_pass: bool,
+    ai_m: dict,
+    static_m: dict,
+    tfidf_m: dict,
+    gap: float,
+    trace: dict,
+    leakage_ok: bool,
+    leakage_issues: list[str],
+    goldset_passed: int,
+    goldset_total: int,
+) -> tuple[Path, Path]:
+    """Emit a machine-readable ``.summary.json`` + ``.baselines.csv`` under
+    ``docs/artifacts/`` (mirrors eval_memory.py / eval_study_feature.py). Returns
+    the two written paths. This is the reproducible evidence artifact — every
+    number in docs/AI-FEATURE.md §5 comes from here."""
+    import csv
+    import datetime as _dt
+
+    out_stem.parent.mkdir(parents=True, exist_ok=True)
+    rows = [
+        _metrics_row("ai", ai_m),
+        _metrics_row("static", static_m),
+        _metrics_row("tfidf", tfidf_m),
+    ]
+    summary = {
+        "eval": "ai_post_answer_explainer",
+        "generated_utc": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
+        "provider_under_test": provider_label,
+        "provider_mode": src,  # "offline" | "live"
+        "numbers_are": (
+            "offline_deterministic_by_construction" if src == "offline" else "live_measured"
+        ),
+        "eval_split": "held_out",
+        "n_held_out_questions": n_held_out,
+        "n_wrong_answer_paths": n_paths,
+        "pre_registered_cutoff": cutoff,
+        "cutoff_decision": {
+            "passed": cutoff_passed,
+            "reasons_if_failed": cutoff_reasons,
+            "ai_path": "ENABLED" if cutoff_passed else "DISABLED (falls back to static)",
+        },
+        "safety_gate_self_test": "PASS" if gate_pass else "FAIL",
+        "methods": {
+            "ai": _metrics_row("ai", ai_m),
+            "static": _metrics_row("static", static_m),
+            "tfidf": _metrics_row("tfidf", tfidf_m),
+        },
+        "headline_differentiation_gap_ai_minus_best_baseline": round(gap, 4),
+        "source_traceability": trace,
+        "leakage_check": {"ok": leakage_ok, "issues": leakage_issues},
+        "goldset_validation": {"passed": goldset_passed, "total": goldset_total},
+        "reproduce": "py -3.12 scripts/ai_eval_explanations.py",
+    }
+    json_path = out_stem.with_suffix(".summary.json")
+    json_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+
+    csv_path = out_stem.with_suffix(".baselines.csv")
+    with csv_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    return json_path, csv_path
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+
+    ap = argparse.ArgumentParser(
+        description="AI post-answer explainer eval / baseline / attribution."
+    )
+    ap.add_argument(
+        "--provider",
+        choices=["offline", "live"],
+        default="offline",
+        help="offline = deterministic, reproducible, no network (default). "
+        "live = env-configured LLM (MCAT_LLM_PROVIDER=...); numbers are real, "
+        "gated, and fall back to static on any failure.",
+    )
+    ap.add_argument(
+        "--out",
+        type=Path,
+        default=ROOT / "docs" / "artifacts" / "ai-explainer-eval",
+        help="artifact path STEM (default docs/artifacts/ai-explainer-eval); "
+        "writes <stem>.summary.json + <stem>.baselines.csv.",
+    )
+    ap.add_argument(
+        "--no-write",
+        action="store_true",
+        help="do not write the machine-readable artifacts (console only).",
+    )
+    args = ap.parse_args(argv)
+
     questions = load_questions()
     questions_by_id = {q["id"]: q for q in questions}
     held = [q for q in questions if q.get("split") == "held_out"]
     topic_names = load_topic_names()
     backing = load_backing_concepts()
-    provider = OfflineDeterministicProvider(topic_names=topic_names, backing=backing)
+    offline_provider = OfflineDeterministicProvider(
+        topic_names=topic_names, backing=backing
+    )
     retriever = TfidfSourceRetriever(backing)
+
+    provider = offline_provider
+    provider_label = "offline_deterministic (NO network, reproducible)"
+    if args.provider == "live":
+        live = live_provider_from_env()
+        if live is None:
+            print(
+                "ERROR: --provider live requires MCAT_LLM_PROVIDER (openai|"
+                "anthropic) + a key in the environment. AI is OFF; nothing to "
+                "evaluate live. Run without --provider live for the offline eval."
+            )
+            return 2
+        provider = live
+        provider_label = f"LIVE {live.model_label} (network; real numbers)"
 
     has_expl = sum(1 for q in questions if q.get("explanation"))
 
     print("=" * 72)
     print("AI POST-ANSWER EXPLAINER — EVAL / BASELINE / ATTRIBUTION HARNESS")
     print("=" * 72)
-    print(f"Provider under test : offline_deterministic (NO network, reproducible)")
+    print(f"Provider under test : {provider_label}")
     print(f"Held-out questions  : {len(held)}  (eval split = project 'held_out')")
     print(f"Static explanation  : {'present' if has_expl else 'NOT YET PRESENT'} "
           f"in questions.json (sibling worker owns q['explanation'])")
@@ -525,8 +706,9 @@ def main() -> int:
     pairs = build_pairs(held)
     print(f"\nEvaluated wrong-answer paths (held_out distractors): {len(pairs)}")
 
-    # gate self-test
-    gpass = gate_self_test(provider, held[0])
+    # gate self-test (always exercised on the deterministic provider — it tests
+    # the GATE logic, not the model, and must never make a network call).
+    gpass = gate_self_test(offline_provider, held[0])
     print(f"Safety-gate self-test (blocks wrong-choice + ungrounded): "
           f"{'PASS' if gpass else 'FAIL'}")
 
@@ -534,11 +716,14 @@ def main() -> int:
     static_m = eval_static(pairs)
     tfidf_m = eval_tfidf(retriever, pairs)
 
-    print("\n--- RESULTS on held_out (all metrics, offline) ---")
-    print(fmt_row("AI (offline explainer)", ai_m))
+    src = "live" if args.provider == "live" else "offline"
+    ai_label = f"AI ({src} explainer)"
+    print(f"\n--- RESULTS on held_out (all metrics, {src}) ---")
+    print(fmt_row(ai_label, ai_m))
     print(fmt_row("baseline: static expl.", static_m))
     print(fmt_row("baseline: TF-IDF source", tfidf_m))
-    print(f"\n  AI outputs blocked by safety gate -> static: {ai_m['blocked']}")
+    print(f"\n  AI outputs blocked by safety gate -> static: {ai_m['blocked']}"
+          f"  (provider errors -> static: {ai_m.get('errored', 0)})")
 
     passed, reasons = check_cutoff(ai_m)
     print(f"\nCUTOFF DECISION: {'PASS — AI path ENABLED' if passed else 'FAIL'}")
@@ -560,12 +745,31 @@ def main() -> int:
           f"static={static_m['wrong_answer_rate']:.3f}  "
           f"tfidf={tfidf_m['wrong_answer_rate']:.3f}")
 
-    # Goldset (dev) validation
-    passed_g, total_g, fails = validate_goldset(provider, questions_by_id)
+    # Goldset (dev) validation — always on the deterministic provider: it checks
+    # exact error-mode + required-mention against hand labels and must not depend
+    # on (or spend) live calls.
+    passed_g, total_g, fails = validate_goldset(offline_provider, questions_by_id)
     print(f"\n--- Goldset validation (dev split, hand-labeled) ---")
     print(f"  {passed_g}/{total_g} gold items matched expected error mode + mention")
     for f in fails:
         print(f"   - {f}")
+
+    # Source traceability — "every AI output traces back to a named source".
+    trace = source_traceability(held)
+    print("\n--- Source traceability (held_out; every AI output cites a named source) ---")
+    print(f"  source_name present   : {trace['has_source_name']}/{trace['n_held_out']} "
+          f"({trace['source_name_rate']:.1%})  <- hard grounding rule (gate blocks empties)")
+    print(f"  source_location present: {trace['has_source_location']}/{trace['n_held_out']} "
+          f"({trace['source_location_rate']:.1%})")
+    print(f"  source_url present     : {trace['has_source_url']}/{trace['n_held_out']} "
+          f"({trace['source_url_rate']:.1%})")
+    print(f"  fully grounded (name + url/loc): {trace['fully_grounded']}/{trace['n_held_out']} "
+          f"({trace['fully_grounded_rate']:.1%})")
+    if trace["missing_source_url_ids"]:
+        preview = ", ".join(trace["missing_source_url_ids"][:8])
+        more = "" if len(trace["missing_source_url_ids"]) <= 8 else \
+            f" (+{len(trace['missing_source_url_ids']) - 8} more)"
+        print(f"  (no source_url, but named+located): {preview}{more}")
 
     # Leakage
     ok, issues = leakage_check(questions)
@@ -574,7 +778,35 @@ def main() -> int:
     for i in issues:
         print(f"   - {i}")
 
-    side_by_side(provider, retriever, held)
+    # Machine-readable artifact (docs/artifacts/) — the reproducible evidence.
+    if not args.no_write:
+        json_path, csv_path = write_artifacts(
+            args.out,
+            provider_label=provider_label,
+            src=src,
+            n_held_out=len(held),
+            n_paths=len(pairs),
+            cutoff=CUTOFF,
+            cutoff_passed=passed,
+            cutoff_reasons=reasons,
+            gate_pass=gpass,
+            ai_m=ai_m,
+            static_m=static_m,
+            tfidf_m=tfidf_m,
+            gap=gap,
+            trace=trace,
+            leakage_ok=ok,
+            leakage_issues=issues,
+            goldset_passed=passed_g,
+            goldset_total=total_g,
+        )
+        print(f"\n--- Artifacts written ---")
+        print(f"  {json_path.relative_to(ROOT)}")
+        print(f"  {csv_path.relative_to(ROOT)}")
+
+    # Side-by-side uses the deterministic provider so the illustrative sample is
+    # stable and network-free even when the headline metrics are from --live.
+    side_by_side(offline_provider, retriever, held)
 
     print("\n" + "=" * 72)
     final_ok = passed and ok and gap > 0 and gpass and (

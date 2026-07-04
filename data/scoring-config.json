@@ -5,6 +5,31 @@
     "min_good_or_easy_reviews": 5,
     "cars_bypasses_memory_gate": true
   },
+  "memory": {
+    "note": "Headline 'Recall strength' 0-100 = round(FSRS retrievability x deck maturity x 100). MEMORY-domain signals ONLY: retrievability + card-level maturity (scheduling interval). NEVER exam-topic coverage (that stays in Readiness). Hand-mirrored as constants MEMORY_* in anki-MCAT/pylib/anki/mcat_scores.py and McatScores.kt — keep in lockstep.",
+    "maturity_interval_days": 21,
+    "band_z": 1.96,
+    "score_formula": "round(retrievability * maturity * 100)",
+    "band_formula": "score +/- band_z * sqrt(R*(1-R)/n_started_cards) * maturity * 100, clamped [0,100]"
+  },
+  "performance": {
+    "note": "Headline 0-100 = round(posterior_mean * 100) where posterior_mean = (k + prior_a0) / (n + prior_a0 + prior_b0), a Bayesian shrinkage of first-attempt correctness. Converges to raw accuracy as n grows, pulls small n toward 50, never ~100 for tiny n. Hand-mirrored as constants PERF_* in anki-MCAT/pylib/anki/mcat_scores.py and McatScores.kt — keep in lockstep.",
+    "score": {
+      "method": "beta_shrinkage",
+      "prior_a0": 2.0,
+      "prior_b0": 2.0
+    },
+    "band": {
+      "note": "Headline credible band: normal approximation to the Beta(k+a0, (n-k)+b0) posterior credible interval; mean +/- z*sd, sd = sqrt(a*b/((a+b)^2*(a+b+1))). Consistent with the shrinkage score; narrows as n grows.",
+      "method": "beta_credible_normal_approx",
+      "z": 1.96
+    },
+    "interval": {
+      "note": "Wilson interval on RAW accuracy, kept as a secondary honest stat (not the headline band).",
+      "method": "wilson",
+      "z": 1.96
+    }
+  },
   "give_up": {
     "memory": {
       "min_total_reviews": 200,

@@ -1,0 +1,68 @@
+{
+  "_instructions": {
+    "what_this_is": "Lightweight human-validation sheet for data/qa-goldset.json. You VALIDATE (approve / edit / reject) each pre-authored fact_atom rather than authoring from scratch. This is deliberately cheap: open the matching gold item, read the source question, and mark each atom.",
+    "how_to_use": [
+      "1. Open data/qa-goldset.json and this file side by side (item ids match, e.g. g001).",
+      "2. For each gold item, open the referenced question in data/questions.json by its question_id and read the stem, choices, correct answer, explanation, and choice_feedback.",
+      "3. For each fact_atom, set atom_status to 'approve' (fact is correct AND derivable from the curated source), 'edit' (put a corrected wording in atom_fix), or 'reject' (atom is wrong or not supported -> remove it from the key).",
+      "4. Optionally review must_not_say entries the same way under must_not_say_review.",
+      "5. Set item_decision to 'approved' once every atom is approve/edit; then flip `validated` to true for that item in qa-goldset.json.",
+      "6. flagged_for_attention lists atoms the author was unsure about - check these first."
+    ],
+    "atom_status_values": ["approve", "edit", "reject", "unreviewed"],
+    "item_decision_values": ["approved", "needs_changes", "rejected", "unreviewed"],
+    "note": "Atom order in this template mirrors the fact_atoms array order in qa-goldset.json (0-indexed via atom_index)."
+  },
+  "flagged_for_attention": [
+    {
+      "item_id": "g007",
+      "atom_index": 3,
+      "atom": "pH = pKa = 4.74",
+      "why_flagged": "pKa=4.74 for acetic acid is taken directly from the question passage; confirm the numeric value is what you want treated as ground truth (it is stated in the stem, not independently derived)."
+    },
+    {
+      "item_id": "g018",
+      "atom_index": 1,
+      "atom": "adding X raises the apparent Km (from about 2 mM to about 6 mM)",
+      "why_flagged": "The 2 mM / 6 mM values are stated in the passage prose; verify they match the passage as the student sees it (approximate half-maximal values, not recomputed)."
+    },
+    {
+      "item_id": "g026",
+      "atom_index": 2,
+      "atom": "the rate quadruples (2.0 -> 8.0), and 2^n = 4 gives n = 2",
+      "why_flagged": "Arithmetic derived from the initial-rates table (Exp 1 vs Exp 3). Double-check the table reading; this is a multi-step atom."
+    }
+  ],
+  "items": [
+    {"item_id": "g001", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g002", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g003", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g004", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g005", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g006", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g007", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g008", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g009", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g010", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g011", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g012", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g013", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g014", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g015", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g016", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g017", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g018", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g019", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g020", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g021", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g022", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g023", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g024", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g025", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g026", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g027", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 3, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g028", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g029", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""},
+    {"item_id": "g030", "item_decision": "unreviewed", "atoms": [{"atom_index": 0, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 1, "atom_status": "unreviewed", "atom_fix": ""}, {"atom_index": 2, "atom_status": "unreviewed", "atom_fix": ""}], "must_not_say_review": "unreviewed", "notes": ""}
+  ]
+}

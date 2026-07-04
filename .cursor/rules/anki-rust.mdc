@@ -21,9 +21,9 @@ Deliverables:
 - Rewriting FSRS scheduling logic
 - Points-at-stake queue without mastery query shipped first
 
-## Custom data in collection
+## Custom data storage
 
-- Performance questions/attempts in **same SQLite collection** as Anki sync expects
+- Performance questions/attempts live in a **separate sidecar `collection.mcat_perf.db`**, kept out of the synced collection (a stock full sync would silently wipe unknown custom tables); cross-device perf sync is a custom uuid-deduped JSON bundle — see `DECISIONS.md` §22
 - Performance attempts: **append-only** (avoid sync merge conflicts)
 - Revlog conflicts: union entries and recompute FSRS — document the rule
 

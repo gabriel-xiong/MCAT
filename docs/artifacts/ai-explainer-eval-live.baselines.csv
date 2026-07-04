@@ -1,0 +1,4 @@
+method,n_paths,accuracy,wrong_answer_rate,grounding_rate,choice_specificity,variation_rate,blocked_to_static,provider_errors
+ai,315,1.0,0.0,1.0,0.8603,0.9619,0,0
+static,315,1.0,0.0,1.0,0.0,0.0,0,0
+tfidf,315,0.4762,0.2095,1.0,0.0095,0.1333,0,0

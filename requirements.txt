@@ -1,0 +1,15 @@
+# MCAT Speedrun — Python requirements
+#
+# CORE: the data/eval harness (scripts/*.py) is pure standard library. Nothing
+# below is required to run the app with AI OFF or the OFFLINE eval path.
+#
+# OPTIONAL — live LLM providers for the AI post-answer explainer seam
+# (scripts/ai_explain.py -> LLMProvider). These are imported LAZILY, only when
+# MCAT_LLM_PROVIDER is set at runtime, so the module and every offline/AI-off
+# path work fine even if these are not installed.
+#
+#   pip install -r requirements.txt        # installs the optional SDKs
+#
+# Pinned to the versions resolved on 2026-07-02 (kept optional at import time).
+openai==2.44.0
+anthropic==0.115.1

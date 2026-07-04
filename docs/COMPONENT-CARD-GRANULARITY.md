@@ -22,6 +22,43 @@ item's own answer were reframed or dropped:
   phrasing is the item's own answer, and the existing "catalyst lowers Ea, doesn't
   change ΔG/equilibrium" card already backs it.
 
+## Answer-leak audit — probe backing cards (whole-bank pass)
+
+The content re-check probe inverts `supports_question`: it shows a backing card's
+front so the student self-tests the **prerequisite**. A card *leaks* when its
+de-clozed front, on its own, states the linked question's **own answer/outcome** —
+a student could then "pass" the probe by recognizing the answer rather than by
+knowing the upstream concept.
+
+**Scope of the audit.** All 127 questions that have backing cards were compared
+(each card front vs. that question's correct choice + explanation). Recall items
+(`q_dev_*`, most `q_ho_*`) legitimately have card ≈ tested fact — there is no
+distinct upstream prerequisite, so those are *not* leaks. Leaks were found only on
+**application/synthesis** items where a single card encoded the derived directional
+or numeric outcome. Six cards were fixed (5 reframed, 1 unlinked); one prerequisite
+card was added.
+
+| Question(s) | Before (leaking front) | After (prerequisite front) |
+|-------------|------------------------|----------------------------|
+| `q_syn_007`, `q_ho_002` (electrochem) | "By the Nernst equation, raising the concentration of product ions **lowers the cell potential**." — verbatim answer (Ecell decreases) | "In the Nernst equation Ecell = E°cell − (RT/nF)ln Q, the reaction quotient is Q = **[products]/[reactants]**, so adding product ions **raises** Q." — teaches the governing equation + Q; student derives the −lnQ direction |
+| `q_syn_017` (osmosis) | "In osmosis, water moves toward the hypertonic side; **a cell in a hypotonic solution swells and may lyse**." — the item's own outcome | "…water moves toward the **hypertonic** (higher-solute) side." **+ added** tonicity-vocabulary card ("lower solute ⇒ **hypotonic**, higher solute ⇒ **hypertonic**"). Student predicts swelling/lysis |
+| `q_syn_024` (strong vs weak acid) | "A strong acid ionizes completely **(lower pH)**; a weak acid … only partially **(higher pH)**." — the comparative answer | "A strong acid ionizes **completely** in water, whereas a weak acid at the same concentration ionizes only **partially**." Student connects ionization → [H⁺] → pH |
+| `q_syn_009` (Henderson–Hasselbalch) | "Henderson–Hasselbalch: pH = pKa + log([A⁻]/[HA]); when [A⁻] = [HA], **pH = pKa**." — equals the answer (equal ⇒ pH = pKa) | "Henderson–Hasselbalch relates buffer pH to pKa: pH = pKa + log(**[A⁻]/[HA]**)." Student applies log(1)=0 |
+| `q_syn_011` (buffer ratio) | "…raising pH by 1 unit above the pKa multiplies the [A⁻]/[HA] ratio **by 10**." — the item's 10:1 answer | "Rearranging Henderson–Hasselbalch, the buffer ratio is [A⁻]/[HA] = **10^(pH − pKa)**." Student plugs pH − pKa = 1 |
+| `q_syn_020` (derive rate law) | shared card "For rate = k[A][B]², the overall reaction order is 3" — front shows the exact rate law `q_syn_020` must **derive from data** | **Unlinked** from `q_syn_020` (still backs `q_ho_013` recall). `q_syn_020` keeps the order-definition, first-order-scaling, and method-of-initial-rates cards |
+
+`data/paraphrase-test.json` anchors `card_front` for the two reworded trio
+concepts (`henderson_hasselbalch`, `strong_vs_weak_ionization`) were updated to
+match the reframed fronts. Coverage held: every one of the 127 previously-backed
+science questions still has ≥1 backing card (`q_syn_020` → 3, `q_ho_002` → 1).
+
+> Not flagged (deliberate): cards that teach a **governing law** an application item
+> must still *apply* (e.g. Bernoulli/continuity for `q_syn_022`, `ΔG° = −nFE°cell`
+> for `q_syn_006`, `E°cell = E°cathode − E°anode` for `q_syn_005`) — this is the
+> guardrail-approved "teach the equation, not the outcome" pattern. `q_syn_021`
+> ("thermodynamics and rate are independent") and `q_dev_016` (catalyst) remain as
+> previously decided.
+
 ## Eval trio — what was decomposed
 
 Cards added in this pass (all Cloze, all within-topic links):

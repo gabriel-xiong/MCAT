@@ -18,10 +18,21 @@ test**).
 
 Both forks run the **same Rust sync engine** (`rslib/src/sync/`). AnkiDroid does
 not reimplement sync — it calls the shared backend. So the merge behaviour is
-identical on both ends, and both are simply **clients of one sync server**. Per
-`docs/DECISIONS.md` and `AGENTS.md`, the perf tables live in the same collection
-DB and ride the stock Anki sync; the rules below are stock Anki collection-sync
-semantics, which we inherit unchanged.
+identical on both ends, and both are simply **clients of one sync server**.
+
+Per `docs/DECISIONS.md` §5 and §22, the fork carries a "review" across **two
+independent channels**, and this artifact documents only the first:
+
+- **(a) Memory data** — `revlog`, `cards`, and the rest of the collection — rides
+  the **stock Anki Rust sync engine**. The rules below (§1–§4) are exactly its
+  stock collection-sync semantics, which we inherit unchanged.
+- **(b) Performance data** (`perf_questions`, `perf_attempts`) lives in a separate
+  **local sidecar `collection.mcat_perf.db`** and does **not** ride stock Anki
+  sync (a full sync would silently wipe embedded custom tables — the §5 durability
+  reason for the sidecar). It syncs instead via a **custom export/import bundle**
+  that is **append-only UNION-merged and deduped by a stable per-attempt `uuid`**
+  (idempotent + order-independent → both devices converge). See `DECISIONS.md`
+  §22 for that merge; the merge rule below applies to channel (a) only.
 
 Decision for the demo: **self-hosted local sync server** (Anki's built-in
 `--syncserver`). See §5 for the recommendation rationale and the exact command.

@@ -42,6 +42,10 @@ REQUIRED_QUESTION_FIELDS = {
     # AI-off fallback / baseline for the AI explainer. Must be non-empty on
     # every question (checked below).
     "explanation",
+    # Static, NO-AI per-choice rationale aligned 1:1 with choices (same length
+    # and order). Every entry must be a non-empty string (checked below); the
+    # chosen distractor's line is the AI-off fallback / AI-explainer baseline.
+    "choice_feedback",
 }
 VALID_SPLITS = {"dev", "held_out"}
 VALID_SECTIONS = {"CP", "CARS", "BB", "PS"}
@@ -139,6 +143,7 @@ def validate_questions(path: Path, valid_topics: set[str]) -> list[str]:
             errors.append(
                 f"{path.name}[{i}]: explanation must be a non-empty string"
             )
+        errors.extend(_validate_choice_feedback(path.name, i, q))
 
         is_cars = q["section"] == CARS_SECTION
         errors.extend(_validate_cognitive_demand(path.name, i, q, is_cars))
@@ -161,6 +166,31 @@ def _validate_cognitive_demand(
             f"(allowed: {sorted(VALID_COGNITIVE_DEMAND)})"
         ]
     return []
+
+
+def _validate_choice_feedback(name: str, i: int, q: dict) -> list[str]:
+    """Static, NO-AI per-choice feedback. Required on every question: a list
+    aligned 1:1 with choices (same length/order) whose every entry is a
+    non-empty string. Unlike choice_diagnosis this applies to all sections
+    (including CARS) and has no correct-index exception — the correct choice
+    carries a 'why this is correct' line."""
+    errors: list[str] = []
+    fb = q.get("choice_feedback")
+    if not isinstance(fb, list):
+        errors.append(f"{name}[{i}]: choice_feedback must be a list")
+        return errors
+    if len(fb) != len(q["choices"]):
+        errors.append(
+            f"{name}[{i}]: choice_feedback length {len(fb)} "
+            f"!= choices {len(q['choices'])}"
+        )
+        return errors
+    for j, entry in enumerate(fb):
+        if not isinstance(entry, str) or not entry.strip():
+            errors.append(
+                f"{name}[{i}]: choice_feedback[{j}] must be a non-empty string"
+            )
+    return errors
 
 
 def _validate_choice_diagnosis(

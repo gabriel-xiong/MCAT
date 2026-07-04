@@ -1,0 +1,83 @@
+{
+  "generated_at": 1783105509,
+  "verdict": "PASS",
+  "passed": 15,
+  "total": 15,
+  "checks": [
+    {
+      "check": "revlog starts empty",
+      "pass": true,
+      "detail": "baseline=0"
+    },
+    {
+      "check": "reviewing N cards appends exactly N revlog rows",
+      "pass": true,
+      "detail": "0 -> 6 (N=6)"
+    },
+    {
+      "check": "each undo removes exactly one revlog row",
+      "pass": true,
+      "detail": "undo op label(s)=['Answer Card']"
+    },
+    {
+      "check": "after undoing all reviews, revlog returns to baseline (none lost/doubled)",
+      "pass": true,
+      "detail": "final=0, baseline=0"
+    },
+    {
+      "check": "redo re-applies exactly N reviews",
+      "pass": true,
+      "detail": "redone=6"
+    },
+    {
+      "check": "undo again returns to baseline (idempotent round-trip)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "question bank loaded",
+      "pass": true,
+      "detail": "10 questions selected"
+    },
+    {
+      "check": "logging K attempts yields exactly K rows",
+      "pass": true,
+      "detail": "count=10, K=10"
+    },
+    {
+      "check": "accuracy reflects logged attempts (no double count)",
+      "pass": true,
+      "detail": "attempts=10 correct=5 acc=0.5"
+    },
+    {
+      "check": "memory review+undo does NOT change perf attempt count (stores isolated)",
+      "pass": true,
+      "detail": "perf count still 10 after memory churn"
+    },
+    {
+      "check": "export bundle carries all K attempts",
+      "pass": true,
+      "detail": "bundle attempts=10"
+    },
+    {
+      "check": "first import adds exactly K attempts (union merge)",
+      "pass": true,
+      "detail": "added=10 skipped=0"
+    },
+    {
+      "check": "re-import is idempotent \u2014 adds 0, skips K (no double count)",
+      "pass": true,
+      "detail": "added=0 skipped=10"
+    },
+    {
+      "check": "second device converged to the exact union (K attempts)",
+      "pass": true,
+      "detail": "device-B count=10"
+    },
+    {
+      "check": "col.fix_integrity() reports OK",
+      "pass": true,
+      "detail": "Database rebuilt and optimized."
+    }
+  ]
+}

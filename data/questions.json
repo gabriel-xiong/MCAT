@@ -29,6 +29,12 @@
       }
     ],
     "explanation": "In the citric acid cycle the conversion of succinyl-CoA to succinate is the cycle's only substrate-level phosphorylation: energy from cleaving the high-energy thioester bond drives direct synthesis of one GTP (or ATP). The other listed steps are redox or hydration reactions that reduce NAD⁺/FAD rather than making a nucleoside triphosphate.",
+    "choice_feedback": [
+      "Incorrect — the isocitrate→α-ketoglutarate step is an oxidative decarboxylation that makes NADH and CO₂, not a nucleoside triphosphate.",
+      "Correct — succinyl-CoA→succinate is the cycle's only substrate-level phosphorylation; cleaving the high-energy thioester bond directly makes one GTP/ATP.",
+      "Incorrect — fumarate→malate is a hydration step; it adds water and produces no GTP/ATP.",
+      "Incorrect — malate→oxaloacetate is a redox step that reduces NAD⁺ to NADH; it makes no GTP/ATP."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7 Review Q9",
@@ -61,6 +67,12 @@
       null
     ],
     "explanation": "A high ADP level signals that the cell's energy charge is low, so ADP acts as an allosteric activator of key respiratory enzymes (such as isocitrate dehydrogenase), increasing their activity to accelerate ATP production. Abundant ATP would have the opposite, inhibitory effect.",
+    "choice_feedback": [
+      "Correct — high ADP signals low energy charge, so ADP allosterically activates key respiratory enzymes to speed ATP production.",
+      "Incorrect — this reverses the energy-charge signal; ATP (not ADP) is the inhibitor, while high ADP activates.",
+      "Incorrect — ADP is an allosteric regulator of respiration, so it does affect enzyme activity.",
+      "Incorrect — high ADP accelerates, not slows, the pathway to replenish ATP."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7 Review Q16",
@@ -96,6 +108,12 @@
       null
     ],
     "explanation": "Whether a reaction is endergonic (+ΔG) or exergonic (−ΔG) describes its thermodynamics — energy absorbed or released — not its speed. Reaction rate is set by the activation-energy barrier, so an exergonic reaction can be slow and an endergonic one need not be; that makes the speed-based statement the false comparison. The other statements correctly describe ΔG signs, energy flow, and the shared activation barrier.",
+    "choice_feedback": [
+      "Incorrect — this statement is true (endergonic +ΔG, exergonic −ΔG), so it is not the false comparison asked for.",
+      "Incorrect — this is a true statement (endergonic consume, exergonic release energy), so it isn't the false one.",
+      "Incorrect — this is true: both reaction types must overcome an activation barrier.",
+      "Correct — this is the false statement; ΔG describes thermodynamics, not speed, so an exergonic reaction can be slow and an endergonic one fast."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q7",
@@ -131,6 +149,12 @@
       }
     ],
     "explanation": "Activation energy governs kinetics, not thermodynamics, so it cannot be read from ΔG or spontaneity. Because a lower activation energy lets more collisions succeed per unit time, comparing the two reactions' rates is the best available proxy for their relative activation energies.",
+    "choice_feedback": [
+      "Incorrect — ΔG is a thermodynamic quantity and doesn't reveal the activation-energy barrier.",
+      "Correct — a lower activation energy lets more collisions succeed per unit time, so relative reaction rates are the best proxy for relative Ea.",
+      "Incorrect — ideal environmental conditions don't indicate the activation energy.",
+      "Incorrect — spontaneity is thermodynamic; a spontaneous reaction can still be slow, so it doesn't reveal Ea."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q8",
@@ -166,6 +190,12 @@
       }
     ],
     "explanation": "An allosteric inhibitor binds a site other than the active site and induces a conformational change that reshapes the active site, lowering its affinity for substrate. This distinguishes it from a competitive inhibitor, which binds the active site directly.",
+    "choice_feedback": [
+      "Incorrect — increasing affinity describes an allosteric activator, not an inhibitor.",
+      "Incorrect — binding the active site directly describes competitive inhibition, not allosteric.",
+      "Correct — an allosteric inhibitor binds away from the active site and reshapes it, lowering substrate affinity.",
+      "Incorrect — a substrate mimic that binds the active site is a competitive inhibitor, not an allosteric one."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6 Review Q14",
@@ -201,6 +231,12 @@
       }
     ],
     "explanation": "Ammonia ionizes as NH₃ + H₂O ⇌ NH₄⁺ + OH⁻. Adding HCl supplies H⁺ that neutralizes OH⁻ (and protonates NH₃), pulling the equilibrium toward NH₄⁺ by Le Châtelier's principle and increasing the percent converted. Adding NaOH, NH₄Cl, or more NH₃ would instead suppress conversion.",
+    "choice_feedback": [
+      "Incorrect — NaOH consumes H⁺ and shifts NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ backward, lowering conversion.",
+      "Correct — added HCl neutralizes OH⁻ and protonates NH₃, pulling the equilibrium toward NH₄⁺ and raising percent conversion.",
+      "Incorrect — NH₄Cl adds the common ion NH₄⁺, shifting back toward NH₃ and lowering conversion.",
+      "Incorrect — adding more NH₃ raises the amount but not the fraction converted to NH₄⁺."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14 Exercises Q48",
@@ -236,6 +272,12 @@
       }
     ],
     "explanation": "The weaker the acid, the stronger its conjugate base. HCN (Ka ≈ 6×10⁻¹⁰) is a much weaker acid than HF (Ka ≈ 7×10⁻⁴), so its conjugate base CN⁻ is the stronger base of the two.",
+    "choice_feedback": [
+      "Incorrect — this reverses the inverse relation; HF is the stronger acid, so F⁻ is the weaker conjugate base.",
+      "Correct — HCN is far weaker than HF, so its conjugate base CN⁻ is the stronger base.",
+      "Incorrect — the parent acids differ greatly in strength, so their conjugate bases are not equally strong.",
+      "Incorrect — conjugate bases of weak acids do act as bases in water."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14 Exercises Q44",
@@ -271,6 +313,12 @@
       }
     ],
     "explanation": "By definition, oxidation occurs at the anode, and the electrons it releases travel through the external wire to the cathode, where reduction occurs (mnemonic: 'an ox' oxidation at the anode, 'red cat' reduction at the cathode).",
+    "choice_feedback": [
+      "Correct — oxidation occurs at the anode and electrons travel through the wire to the cathode ('an ox, red cat').",
+      "Incorrect — this reverses both roles; oxidation is at the anode, not the cathode.",
+      "Incorrect — electrons flow to the cathode, not back to the anode.",
+      "Incorrect — oxidation occurs at the anode, not the cathode."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -306,6 +354,12 @@
       }
     ],
     "explanation": "Because ΔG° = −nFE°cell, a positive E°cell makes ΔG° negative, so the reaction as written is spontaneous under standard conditions. This is why a galvanic cell delivers electrical work without an external power source.",
+    "choice_feedback": [
+      "Incorrect — this reverses the relation; ΔG° = −nFE°cell, so a positive E° gives a negative ΔG°.",
+      "Correct — a positive E°cell makes ΔG° negative, so the reaction is spontaneous as written.",
+      "Incorrect — a nonzero E° means the cell is not at equilibrium (equilibrium is E = 0).",
+      "Incorrect — a spontaneous galvanic cell delivers work without an external power source; that describes electrolysis."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
@@ -338,6 +392,12 @@
       }
     ],
     "explanation": "As the cell operates, one half-cell tends to build up positive charge and the other negative; the salt bridge lets ions migrate between them to keep each half-cell electrically neutral so current can continue. It does not carry electrons or catalyze the electrode reactions.",
+    "choice_feedback": [
+      "Incorrect — electrons travel through the external wire, not the salt bridge.",
+      "Correct — the salt bridge lets ions migrate to keep each half-cell electrically neutral so current continues.",
+      "Incorrect — the salt bridge maintains neutrality; it doesn't raise voltage without limit.",
+      "Incorrect — the salt bridge doesn't catalyze the electrode reactions."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -373,6 +433,12 @@
       }
     ],
     "explanation": "A buffer resists pH change because it contains appreciable amounts of both a weak acid and its conjugate base: the conjugate base neutralizes added acid and the weak acid neutralizes added base. A strong acid/base pair would simply react to completion and provide no buffering.",
+    "choice_feedback": [
+      "Incorrect — a strong acid/base pair reacts to completion and provides no buffering.",
+      "Correct — a weak acid with its conjugate base neutralizes added base and acid respectively, resisting pH change.",
+      "Incorrect — fully neutralizing a weak acid with equal moles of strong base leaves no reserve of weak acid to buffer.",
+      "Incorrect — a neutral salt in pure water has no conjugate acid/base pair and cannot buffer."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers",
@@ -408,6 +474,12 @@
       }
     ],
     "explanation": "From ΔG = ΔH − TΔS, ΔG is negative at every temperature only when ΔH is negative and ΔS is positive, because then both terms drive ΔG negative regardless of T. Any other sign combination makes spontaneity temperature-dependent or impossible.",
+    "choice_feedback": [
+      "Correct — with ΔH negative and ΔS positive, ΔG = ΔH − TΔS is negative at every temperature.",
+      "Incorrect — this combination gives a positive ΔG at all T (never spontaneous).",
+      "Incorrect — ΔH<0, ΔS<0 is spontaneous only at low temperature, not all T.",
+      "Incorrect — ΔH>0, ΔS>0 is spontaneous only at high temperature, not all T."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -443,6 +515,12 @@
       }
     ],
     "explanation": "The Gibbs free-energy change at constant temperature is defined as ΔG = ΔH − TΔS, combining the enthalpy change with the temperature-weighted entropy change.",
+    "choice_feedback": [
+      "Incorrect — the entropy term is subtracted, not added.",
+      "Correct — at constant temperature, ΔG = ΔH − TΔS.",
+      "Incorrect — the terms are rearranged and the sign inverted; the correct form is ΔH − TΔS.",
+      "Incorrect — the entropy term is subtracted, not multiplied."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -478,6 +556,12 @@
       }
     ],
     "explanation": "A spontaneous process proceeds on its own once initiated, without a continuous external supply of energy. Spontaneity says nothing about speed and does not require heat release or a catalyst.",
+    "choice_feedback": [
+      "Correct — a spontaneous process proceeds on its own once started, without continuous external energy input.",
+      "Incorrect — spontaneity says nothing about speed; spontaneous reactions can be slow.",
+      "Incorrect — spontaneity doesn't require heat release; endothermic processes can be spontaneous.",
+      "Incorrect — a catalyst is not required for spontaneity."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.3 Spontaneity",
@@ -513,6 +597,12 @@
       }
     ],
     "explanation": "Raising the temperature broadens the molecular energy distribution so a larger fraction of collisions meet or exceed the activation energy, increasing the reaction rate. Temperature does not lower Ea or change ΔG.",
+    "choice_feedback": [
+      "Incorrect — temperature doesn't raise ΔG, and ΔG isn't what sets the rate.",
+      "Correct — higher temperature broadens the energy distribution so more collisions meet or exceed Ea.",
+      "Incorrect — temperature doesn't lower Ea; only a catalyst does that.",
+      "Incorrect — temperature doesn't make the reaction more exothermic (ΔH is fixed)."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -548,6 +638,12 @@
       }
     ],
     "explanation": "A catalyst speeds a reaction by providing an alternative pathway with a lower activation energy, so more collisions succeed. It does not shift the equilibrium position or change ΔG — it only helps the system reach equilibrium faster.",
+    "choice_feedback": [
+      "Incorrect — a catalyst doesn't work by heating the system.",
+      "Correct — a catalyst provides an alternate pathway with lower activation energy, so more collisions succeed.",
+      "Incorrect — a catalyst doesn't change ΔH or make the reaction more exothermic.",
+      "Incorrect — a catalyst speeds both directions equally and doesn't shift the equilibrium position."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.7 Catalysis",
@@ -580,6 +676,12 @@
       }
     ],
     "explanation": "The rate constant k is independent of reactant concentrations; it depends on temperature (via the Arrhenius equation) and on whether a catalyst is present. Concentrations affect the rate through the rate law, not through k itself.",
+    "choice_feedback": [
+      "Incorrect — concentrations change the rate through the rate law, not the value of k.",
+      "Correct — k depends on temperature (Arrhenius) and on whether a catalyst is present.",
+      "Incorrect — container volume alone doesn't set k.",
+      "Incorrect — k doesn't change as the reaction proceeds over time."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -612,6 +714,12 @@
       null
     ],
     "explanation": "By the equation of continuity (A·v = constant) for an incompressible fluid, when the cross-sectional area decreases the speed must increase to keep the volume flow rate constant.",
+    "choice_feedback": [
+      "Correct — by the equation of continuity (A·v constant), narrowing the pipe increases the fluid speed.",
+      "Incorrect — this reverses continuity; a smaller area means faster, not slower, flow.",
+      "Incorrect — speed must change to keep the volume flow rate constant when area changes.",
+      "Incorrect — the fluid keeps flowing; its speed increases rather than dropping to zero."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity",
@@ -641,6 +749,12 @@
       null
     ],
     "explanation": "A constant volume flow rate (Q = A·v) in a pipe of varying width follows directly from conservation of mass for an incompressible fluid — the equation of continuity. Bernoulli's principle instead relates speed to pressure.",
+    "choice_feedback": [
+      "Incorrect — Bernoulli relates speed to pressure, not the constancy of volume flow rate.",
+      "Correct — constant Q = A·v follows from conservation of mass, the equation of continuity.",
+      "Incorrect — Pascal's principle concerns transmitted pressure, not flow rate.",
+      "Incorrect — Archimedes' principle concerns buoyancy, not flow continuity."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity",
@@ -673,6 +787,12 @@
       null
     ],
     "explanation": "Glycolysis invests 2 ATP in its early phase and generates 4 ATP by substrate-level phosphorylation, for a net gain of 2 ATP per glucose.",
+    "choice_feedback": [
+      "Correct — glycolysis makes 4 ATP but invests 2, for a net gain of 2 ATP per glucose.",
+      "Incorrect — 4 is the gross ATP produced; the net (after the 2-ATP investment) is 2.",
+      "Incorrect — ~36 is the total aerobic yield including oxidative phosphorylation, not glycolysis alone.",
+      "Incorrect — glycolysis does net a positive 2 ATP, not zero."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -702,6 +822,12 @@
       null
     ],
     "explanation": "Glycolysis occurs in the cytosol (cytoplasm) and requires no membranes or organelles, unlike the citric acid cycle (mitochondrial matrix) and oxidative phosphorylation.",
+    "choice_feedback": [
+      "Incorrect — the mitochondrial matrix hosts the citric acid cycle, not glycolysis.",
+      "Correct — glycolysis occurs in the cytosol and needs no membranes or organelles.",
+      "Incorrect — glycolysis is cytosolic, not nuclear.",
+      "Incorrect — glycolysis does not occur in the endoplasmic reticulum."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -737,6 +863,12 @@
       }
     ],
     "explanation": "Besides a net 2 ATP, glycolysis reduces NAD⁺ to NADH (2 per glucose) at the glyceraldehyde-3-phosphate dehydrogenase step. NADPH and FADH₂ are not products of glycolysis.",
+    "choice_feedback": [
+      "Incorrect — FADH₂ is produced by the citric acid cycle, not glycolysis.",
+      "Incorrect — NADPH is an anabolic / pentose-phosphate carrier, not a glycolytic product.",
+      "Correct — glycolysis reduces NAD⁺ to NADH at the glyceraldehyde-3-phosphate dehydrogenase step.",
+      "Incorrect — GTP is a nucleotide, not a reduced electron carrier."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -772,6 +904,12 @@
       }
     ],
     "explanation": "Each turn of the citric acid cycle begins when acetyl-CoA combines with oxaloacetate to form citrate and ends by regenerating oxaloacetate, which is then free to accept another acetyl group.",
+    "choice_feedback": [
+      "Incorrect — citrate is the first product formed, not the regenerated acceptor.",
+      "Correct — oxaloacetate is regenerated each turn to accept another acetyl group.",
+      "Incorrect — pyruvate is upstream of the cycle, not the acetyl acceptor.",
+      "Incorrect — acetyl-CoA is the group donated, not the acceptor that is regenerated."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -807,6 +945,12 @@
       }
     ],
     "explanation": "Vmax is the maximum rate reached when the substrate concentration is high enough to saturate all enzyme active sites, so adding still more substrate cannot increase the rate further.",
+    "choice_feedback": [
+      "Incorrect — at low substrate the rate is far below Vmax; saturation requires high [S].",
+      "Correct — Vmax is reached when all enzyme active sites are saturated with substrate.",
+      "Incorrect — a denatured enzyme loses activity and never reaches Vmax.",
+      "Incorrect — a competitive inhibitor lowers the apparent rate, not producing Vmax."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -836,6 +980,12 @@
       null
     ],
     "explanation": "The plasma membrane's basic structural framework is the phospholipid bilayer, within which proteins, cholesterol, and carbohydrates are embedded (the fluid-mosaic model). Peptidoglycan and cellulose are cell-wall materials, not the animal-cell membrane framework.",
+    "choice_feedback": [
+      "Incorrect — peptidoglycan is a bacterial cell wall, not the membrane framework.",
+      "Correct — the phospholipid bilayer is the membrane's structural framework (fluid-mosaic model).",
+      "Incorrect — cellulose is a plant cell-wall material, not the membrane.",
+      "Incorrect — glycogen is a storage polysaccharide, not a membrane framework."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -871,6 +1021,12 @@
       }
     ],
     "explanation": "A membrane phospholipid is amphipathic: its phosphate-containing head is hydrophilic (polar) and its fatty-acid tails are hydrophobic (nonpolar). This dual character drives spontaneous bilayer formation in water.",
+    "choice_feedback": [
+      "Incorrect — this reverses it; the phosphate head is hydrophilic and the tails hydrophobic.",
+      "Correct — the phosphate head is hydrophilic (polar) and the fatty-acid tails are hydrophobic (nonpolar).",
+      "Incorrect — the nonpolar fatty-acid tails are hydrophobic, not hydrophilic.",
+      "Incorrect — the polar phosphate head is hydrophilic, not hydrophobic."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -903,6 +1059,12 @@
       null
     ],
     "explanation": "Replication is semiconservative because each daughter double helix keeps one original (parental) template strand paired with one newly synthesized strand, as shown by Meselson and Stahl.",
+    "choice_feedback": [
+      "Incorrect — two new strands describes the conservative model, which was disproven.",
+      "Correct — each daughter helix keeps one parental template strand paired with one new strand.",
+      "Incorrect — both strands parental would mean no synthesis occurred.",
+      "Incorrect — DNA replication produces DNA, not RNA."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.3 Basics of DNA Replication",
@@ -938,6 +1100,12 @@
       }
     ],
     "explanation": "DNA polymerase adds nucleotides only to the 3′ end of a growing strand, synthesizing in the 5′→3′ direction. Helicase unwinds the helix, primase lays RNA primers, and ligase seals nicks.",
+    "choice_feedback": [
+      "Incorrect — helicase unwinds the helix; it doesn't synthesize DNA.",
+      "Correct — DNA polymerase adds nucleotides to the 3′ end, synthesizing 5′→3′.",
+      "Incorrect — primase lays down RNA primers, not the DNA strand.",
+      "Incorrect — ligase joins fragments; it doesn't synthesize new strands."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -973,6 +1141,12 @@
       }
     ],
     "explanation": "DNA ligase forms the phosphodiester bonds that join adjacent Okazaki fragments on the lagging strand into a continuous strand. Polymerase extends strands, primase makes primers, and helicase unwinds the helix.",
+    "choice_feedback": [
+      "Incorrect — helicase unwinds DNA; it doesn't join fragments.",
+      "Incorrect — primase makes RNA primers, not phosphodiester joins.",
+      "Correct — DNA ligase forms the phosphodiester bonds joining Okazaki fragments.",
+      "Incorrect — polymerase extends strands, but ligase seals the final nick."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -1008,6 +1182,12 @@
       }
     ],
     "explanation": "A monohybrid cross of two heterozygotes (Aa × Aa) gives a 3:1 phenotypic ratio (3 dominant : 1 recessive), because only the homozygous-recessive quarter shows the recessive phenotype. The 1:2:1 ratio is genotypic and 9:3:3:1 is a dihybrid ratio.",
+    "choice_feedback": [
+      "Incorrect — 1:1 is a testcross ratio, not a heterozygote × heterozygote cross.",
+      "Correct — Aa × Aa gives a 3:1 phenotypic ratio (only the aa quarter shows the recessive trait).",
+      "Incorrect — 9:3:3:1 is a dihybrid (two-gene) ratio.",
+      "Incorrect — 1:2:1 is the genotypic, not phenotypic, ratio."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -1037,6 +1217,12 @@
       null
     ],
     "explanation": "An organism's genotype is its genetic (allelic) makeup, whereas its phenotype is its observable characteristics arising from that genotype interacting with the environment.",
+    "choice_feedback": [
+      "Incorrect — this swaps the terms; genotype is the genetic makeup, phenotype the observable traits.",
+      "Correct — genotype is the genetic makeup and phenotype is the observable characteristics.",
+      "Incorrect — allele/gene don't mean 'genetic makeup' versus 'observable traits.'",
+      "Incorrect — gamete/zygote are cell types, not the makeup-versus-traits distinction."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -1066,6 +1252,12 @@
       }
     ],
     "explanation": "Memory involves three basic processes: encoding (getting information in), storage (retaining it over time), and retrieval (accessing it when needed).",
+    "choice_feedback": [
+      "Incorrect — sensation/perception/cognition are broad cognitive processes, not the memory stages.",
+      "Correct — memory's three basic processes are encoding, storage, and retrieval.",
+      "Incorrect — input/output/feedback is a systems metaphor, not the memory model.",
+      "Incorrect — acquisition/extinction/recovery are conditioning (learning) terms, not memory stages."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -1095,6 +1287,12 @@
       null
     ],
     "explanation": "Classic work by George Miller estimated the capacity of short-term (working) memory at about seven, plus or minus two, items — 'the magical number seven.'",
+    "choice_feedback": [
+      "Correct — Miller's classic estimate is about seven, plus or minus two, items.",
+      "Incorrect — unlimited capacity describes long-term, not short-term, memory.",
+      "Incorrect — one item drastically underestimates short-term capacity.",
+      "Incorrect — about 100 items far exceeds short-term memory's limited span."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.2 Parts of the Brain Involved in Memory",
@@ -1127,6 +1325,12 @@
       null
     ],
     "explanation": "Keeping information active in short-term memory by repeating it is (maintenance) rehearsal. Chunking instead groups items into larger units, and encoding is the initial entry of information.",
+    "choice_feedback": [
+      "Incorrect — chunking groups items into larger units; it isn't simple repetition.",
+      "Correct — maintaining information by repetition is (maintenance) rehearsal.",
+      "Incorrect — retrieval is getting information out, not maintaining it.",
+      "Incorrect — encoding failure is a failure to store, not a maintenance strategy."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -1162,6 +1366,12 @@
       }
     ],
     "explanation": "In Pavlov's paradigm the food automatically triggers salivation without prior learning, so it is the unconditioned stimulus; the salivation it elicits is the unconditioned response.",
+    "choice_feedback": [
+      "Incorrect — the food is unlearned, so it's the unconditioned (not conditioned) stimulus.",
+      "Correct — food naturally elicits salivation without learning, making it the unconditioned stimulus.",
+      "Incorrect — the food is a stimulus, not a response.",
+      "Incorrect — food innately triggers salivation, so it isn't neutral."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -1194,6 +1404,12 @@
       }
     ],
     "explanation": "By definition a reinforcer increases the likelihood of the behavior it follows — whether by adding a pleasant stimulus (positive) or removing an aversive one (negative). Punishment, by contrast, decreases behavior.",
+    "choice_feedback": [
+      "Incorrect — decreasing behavior describes punishment, not reinforcement.",
+      "Correct — a reinforcer increases the likelihood of the behavior it follows.",
+      "Incorrect — by definition a reinforcer changes behavior frequency.",
+      "Incorrect — reinforcement is not the same as physical punishment."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -1226,6 +1442,12 @@
       }
     ],
     "explanation": "Extinction occurs when the conditioned stimulus is presented repeatedly without the unconditioned stimulus, so the conditioned response gradually weakens and disappears.",
+    "choice_feedback": [
+      "Correct — presenting the CS repeatedly without the US weakens and eliminates the CR (extinction).",
+      "Incorrect — introducing a new unconditioned stimulus doesn't define extinction.",
+      "Incorrect — reinforcers belong to operant conditioning, not classical extinction.",
+      "Incorrect — a permanent response is the opposite of extinction."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -1258,6 +1480,12 @@
       null
     ],
     "explanation": "The fundamental attribution error is the tendency to over-attribute others' behavior to internal dispositions while underweighting situational causes. The self-serving bias instead concerns how we explain our own outcomes.",
+    "choice_feedback": [
+      "Incorrect — the self-serving bias concerns explaining one's own outcomes, not others' behavior.",
+      "Correct — over-attributing others' behavior to internal traits is the fundamental attribution error.",
+      "Incorrect — the just-world hypothesis is the belief that people get what they deserve.",
+      "Incorrect — the bystander effect concerns helping in groups, not attribution."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.1 What Is Social Psychology?",
@@ -1290,6 +1518,12 @@
       }
     ],
     "explanation": "Conformity is adjusting one's behavior or thinking to match a group standard. Obedience differs in that it involves following the orders of an authority.",
+    "choice_feedback": [
+      "Incorrect — obedience is following an authority's orders, not matching group norms.",
+      "Correct — adjusting to match a group standard is conformity.",
+      "Incorrect — aggression is behavior intended to harm, unrelated to matching a group.",
+      "Incorrect — persuasion is attitude change via argument, not aligning to a group standard."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -1322,6 +1556,12 @@
       null
     ],
     "explanation": "Health disparities are preventable differences in health outcomes linked to social, economic, or environmental disadvantage across groups — not random or purely genetic differences.",
+    "choice_feedback": [
+      "Incorrect — health disparities follow social patterns; they aren't random.",
+      "Correct — health disparities are preventable differences in outcomes across social groups.",
+      "Incorrect — disparities reflect social determinants, not genetics alone.",
+      "Incorrect — disparities are measurable, e.g., by comparing group outcomes."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -1351,6 +1591,12 @@
       null
     ],
     "explanation": "Social determinants of health are the conditions in which people live and work — such as access to education, income, and safe housing — that shape health. Blood type, mutations, and eye color are biological, not social, factors.",
+    "choice_feedback": [
+      "Incorrect — blood type is an inherited biological trait, not a social determinant.",
+      "Correct — education, income, and safe housing are social determinants of health.",
+      "Incorrect — a genetic mutation is a biological, not social, factor.",
+      "Incorrect — eye color is a biological trait, not a social determinant."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -1380,6 +1626,12 @@
       null
     ],
     "explanation": "Pascal's principle states that a pressure change applied to an enclosed, incompressible fluid is transmitted undiminished to every portion of the fluid and the walls of its container — the basis of hydraulic systems.",
+    "choice_feedback": [
+      "Correct — Pascal's principle: pressure applied to an enclosed fluid is transmitted undiminished throughout.",
+      "Incorrect — the applied pressure is transmitted, not lost as heat.",
+      "Incorrect — this confuses Pascal's principle with thermal/gas behavior.",
+      "Incorrect — pressure is not zero at the bottom; it's transmitted everywhere."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.5 Pascal's Principle",
@@ -1412,6 +1664,12 @@
       }
     ],
     "explanation": "Cognitive dissonance is the psychological discomfort that arises when a person holds two conflicting cognitions or acts in a way that clashes with an attitude, motivating them to reduce the inconsistency.",
+    "choice_feedback": [
+      "Correct — cognitive dissonance is the discomfort from holding conflicting cognitions or acting against an attitude.",
+      "Incorrect — being rewarded relates to reinforcement, not dissonance.",
+      "Incorrect — a repeated neutral stimulus relates to habituation/conditioning, not dissonance.",
+      "Incorrect — group consensus relates to conformity/groupthink, not dissonance."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -1444,6 +1702,12 @@
       null
     ],
     "explanation": "In codominance the heterozygote expresses both alleles fully and simultaneously (e.g., type AB blood), rather than showing a blended intermediate (incomplete dominance) or only the dominant allele.",
+    "choice_feedback": [
+      "Incorrect — an intermediate blend describes incomplete dominance, not codominance.",
+      "Correct — in codominance the heterozygote expresses both alleles fully and simultaneously (e.g., AB blood).",
+      "Incorrect — expressing only the dominant allele is complete dominance.",
+      "Incorrect — codominant heterozygotes are viable and express both alleles."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance",
@@ -1463,6 +1727,12 @@
     "section": "CARS",
     "skill": "1",
     "explanation": "The passage explicitly redefines objectivity as 'not the absence of perspective but the disciplined awareness of it,' concluding that a historian who acknowledges and tests her assumptions comes closer to truth. That is the central claim; the author expressly denies that history is 'mere fiction.'",
+    "choice_feedback": [
+      "Incorrect — the author expressly denies that history is 'mere fiction.'",
+      "Correct — the passage redefines objectivity as disciplined awareness of perspective, tested against evidence.",
+      "Incorrect — the passage doesn't advise avoiding documents; it discusses which to trust.",
+      "Incorrect — the passage never claims only eyewitnesses can write accurate history."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q1",
@@ -1482,6 +1752,12 @@
     "section": "CARS",
     "skill": "1",
     "explanation": "The passage states outright that freedom 'is not simply the quantity of available options but the capacity to choose well among them,' directly supporting the 'choose well' reading over the mere-number or no-constraints interpretations.",
+    "choice_feedback": [
+      "Incorrect — the passage explicitly says freedom is 'not simply the quantity of available options.'",
+      "Correct — the passage defines freedom as the capacity to choose well among options.",
+      "Incorrect — absence of constraints is not the passage's definition of freedom.",
+      "Incorrect — avoiding decisions is not what the passage means by freedom."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q1",
@@ -1501,6 +1777,12 @@
     "section": "CARS",
     "skill": "3",
     "explanation": "The closing sentence says a historian who acknowledges and tests her assumptions 'comes closer to truth than one who pretends to have none,' so the author treats pretending to have no assumptions as an obstacle to truth, not a mark of objectivity.",
+    "choice_feedback": [
+      "Incorrect — the author treats pretending to have no assumptions as an obstacle, not a virtue.",
+      "Correct — the closing line says such a historian is less likely to reach truth than one who examines her assumptions.",
+      "Incorrect — the passage says the opposite: pretending to have none yields less reliable history.",
+      "Incorrect — the passage doesn't endorse trusting such a historian without question."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q2",
@@ -1520,6 +1802,12 @@
     "section": "CARS",
     "skill": "3",
     "explanation": "'Expand liberty in name while eroding it in practice' contrasts freedom as merely labeled with freedom as actually experienced, so the author means nominal freedom can increase even as real freedom declines.",
+    "choice_feedback": [
+      "Correct — the phrase contrasts nominal freedom with real freedom, so the two can diverge.",
+      "Incorrect — the passage denies that liberty equals the number of choices.",
+      "Incorrect — the author clearly cares about practical outcomes ('in practice').",
+      "Incorrect — the passage doesn't call for prohibiting choices."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q2",
@@ -1539,6 +1827,12 @@
     "section": "CARS",
     "skill": "4",
     "explanation": "The passage's thesis is that too many options can paralyze, reduce enjoyment, and prompt second-guessing. The overwhelmed diner who takes long to order and later regrets the choice mirrors this 'paradox of choice' exactly; the other scenarios involve few or no options.",
+    "choice_feedback": [
+      "Incorrect — two easy options and satisfaction is the opposite of the paralysis the passage describes.",
+      "Correct — the overwhelmed diner who takes long and later regrets mirrors the paradox of choice.",
+      "Incorrect — a closed store gives no options, not an excess of them.",
+      "Incorrect — having no options isn't the passage's point about having too many."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q3",
@@ -1558,6 +1852,12 @@
     "section": "CARS",
     "skill": "4",
     "explanation": "The passage praises the historian who tests her assumptions 'against evidence that might overturn them,' so actively seeking disconfirming evidence best applies its logic. Ignoring conflicting sources or following popularity would do the opposite.",
+    "choice_feedback": [
+      "Incorrect — ignoring conflicting sources is the opposite of testing one's assumptions.",
+      "Correct — actively seeking disconfirming evidence applies the passage's logic for objectivity.",
+      "Incorrect — writing without primary documents wouldn't test one's assumptions against evidence.",
+      "Incorrect — adopting the popular interpretation isn't the disciplined self-testing the passage praises."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q3",
@@ -1593,6 +1893,12 @@
       }
     ],
     "explanation": "The reducing agent is the species that is oxidized (loses electrons) and thereby reduces the other. Zn(s) → Zn²⁺ loses electrons, reducing Cu²⁺ to Cu, so Zn is the reducing agent.",
+    "choice_feedback": [
+      "Correct — Zn is oxidized (loses electrons), reducing Cu²⁺, so it is the reducing agent.",
+      "Incorrect — Cu²⁺ is reduced, making it the oxidizing agent, not the reducing agent.",
+      "Incorrect — Zn²⁺ is the already-oxidized product, not the reducing agent.",
+      "Incorrect — Cu(s) is the product of reduction, not the reducing agent."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -1628,6 +1934,12 @@
       }
     ],
     "explanation": "By the Nernst equation, Ecell = E°cell − (RT/nF)·lnQ. Raising the concentration of product ions increases the reaction quotient Q, which lowers Ecell. E° itself is a constant and does not change.",
+    "choice_feedback": [
+      "Incorrect — raising product-ion concentration raises Q, which lowers (not raises) Ecell.",
+      "Correct — higher product-ion concentration increases Q, so by the Nernst equation Ecell decreases.",
+      "Incorrect — the Nernst equation makes Ecell depend on ion concentrations.",
+      "Incorrect — E° is a fixed constant; concentration changes affect Ecell, not E°'s sign."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
@@ -1663,6 +1975,12 @@
       }
     ],
     "explanation": "In electrolysis an external power source supplies electrical energy to drive a nonspontaneous (ΔG > 0, E°cell < 0) redox reaction — the reverse of a galvanic cell, which produces electricity from a spontaneous reaction.",
+    "choice_feedback": [
+      "Incorrect — producing energy from a spontaneous reaction describes a galvanic cell.",
+      "Correct — electrolysis uses external electrical energy to drive a nonspontaneous redox reaction.",
+      "Incorrect — electrolysis still involves oxidation–reduction.",
+      "Incorrect — electrolysis drives reactions with negative E°cell, not positive."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.7 Electrolysis",
@@ -1692,6 +2010,12 @@
       null
     ],
     "explanation": "By definition, reduction (gain of electrons) always occurs at the cathode in any electrochemical cell, galvanic or electrolytic; oxidation occurs at the anode.",
+    "choice_feedback": [
+      "Incorrect — oxidation, not reduction, occurs at the anode.",
+      "Correct — reduction always occurs at the cathode in any electrochemical cell.",
+      "Incorrect — the salt bridge maintains neutrality; it isn't an electrode.",
+      "Incorrect — the electrolyte is the ion medium, not the site of reduction."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells",
@@ -1727,6 +2051,12 @@
       }
     ],
     "explanation": "HCl is a strong acid that ionizes completely, so [H⁺] = 0.010 M = 10⁻² M and pH = −log(10⁻²) = 2.0.",
+    "choice_feedback": [
+      "Correct — HCl ionizes fully, so [H⁺] = 10⁻² M and pH = −log(10⁻²) = 2.0.",
+      "Incorrect — pH 1.0 would require [H⁺] = 0.10 M; here it is 0.010 M.",
+      "Incorrect — 12.0 is the pOH, not the pH of this acidic solution.",
+      "Incorrect — 0.010 is the concentration; you must take −log[H⁺]."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 pH and pOH",
@@ -1762,6 +2092,12 @@
       }
     ],
     "explanation": "A conjugate acid–base pair differs by exactly one H⁺. H₂CO₃ and HCO₃⁻ differ by a single proton, so they are a conjugate pair; the other options are not related by transfer of one proton.",
+    "choice_feedback": [
+      "Incorrect — HCl and NaOH aren't related by one proton, so they aren't a conjugate pair.",
+      "Correct — H₂CO₃ and HCO₃⁻ differ by exactly one H⁺, a conjugate acid–base pair.",
+      "Incorrect — H₃O⁺ and O²⁻ differ by more than one proton.",
+      "Incorrect — CH₃COOH and Cl⁻ are unrelated, not a conjugate pair."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.2 Brønsted-Lowry Acids and Bases",
@@ -1794,6 +2130,12 @@
       }
     ],
     "explanation": "In neutral water [H⁺] = [OH⁻], and since Kw = [H⁺][OH⁻] = 1.0×10⁻¹⁴, each equals the square root, 1.0×10⁻⁷ M.",
+    "choice_feedback": [
+      "Correct — with [H⁺]=[OH⁻] and Kw=10⁻¹⁴, each is the square root, 1.0×10⁻⁷ M.",
+      "Incorrect — 10⁻¹⁴ is Kw itself, not [H⁺]; take its square root.",
+      "Incorrect — 1.0 M would be extremely acidic, not neutral.",
+      "Incorrect — water autoionizes, so [H⁺] isn't zero."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.1 Ionization of Water",
@@ -1826,6 +2168,12 @@
       null
     ],
     "explanation": "Each pH unit is a tenfold change in [H⁺]. A difference of two pH units (6 − 4) corresponds to 10² = 100 times greater [H⁺], so pH 4 is 100× more acidic than pH 6.",
+    "choice_feedback": [
+      "Incorrect — the pH scale is logarithmic; you can't just subtract (6−4=2).",
+      "Incorrect — 10 would be a one-unit difference; here the difference is two units.",
+      "Correct — two pH units means 10² = 100 times greater [H⁺].",
+      "Incorrect — 1000 corresponds to a three-unit difference, not two."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 pH and pOH",
@@ -1861,6 +2209,12 @@
       }
     ],
     "explanation": "With ΔG = ΔH − TΔS, a positive ΔH and positive ΔS give a negative ΔG only when T is large enough that the TΔS term outweighs ΔH — so the reaction becomes spontaneous at high temperature.",
+    "choice_feedback": [
+      "Correct — with ΔH>0 and ΔS>0, ΔG turns negative only when TΔS outweighs ΔH, i.e., at high T.",
+      "Incorrect — at low T the positive ΔH dominates, so it is nonspontaneous.",
+      "Incorrect — it isn't spontaneous at all temperatures, only above a threshold.",
+      "Incorrect — it does become spontaneous once T is high enough."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1896,6 +2250,12 @@
       }
     ],
     "explanation": "A negative ΔG indicates a thermodynamically favorable (spontaneous) reaction. It says nothing about rate, and the reaction can be spontaneous whether it is exothermic or endothermic.",
+    "choice_feedback": [
+      "Correct — a negative ΔG marks a thermodynamically favorable (spontaneous) reaction.",
+      "Incorrect — ΔG says nothing about rate; spontaneous reactions can be slow.",
+      "Incorrect — the ΔG sign is about free energy, not enthalpy; the reaction can be exo- or endothermic.",
+      "Incorrect — equilibrium corresponds to ΔG = 0, not negative."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1931,6 +2291,12 @@
       }
     ],
     "explanation": "At equilibrium the forward and reverse processes are balanced and there is no net driving force, so ΔG = 0. (This is distinct from ΔG°, which is generally nonzero.)",
+    "choice_feedback": [
+      "Correct — at equilibrium there is no net driving force, so ΔG = 0.",
+      "Incorrect — a large negative ΔG indicates a spontaneous drive, not equilibrium.",
+      "Incorrect — a large positive ΔG indicates a nonspontaneous direction, not equilibrium.",
+      "Incorrect — ΔG equals ΔG° only at standard conditions, not generally at equilibrium."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy",
@@ -1960,6 +2326,12 @@
       null
     ],
     "explanation": "Entropy (S) measures the dispersal of energy and matter — the number of accessible microstates, often described as disorder. It is not the system's total energy or its rate.",
+    "choice_feedback": [
+      "Incorrect — entropy measures dispersal of energy/matter, not total energy.",
+      "Correct — entropy measures the dispersal (disorder) of energy and matter.",
+      "Incorrect — reaction rate is a kinetic quantity, unrelated to entropy's definition.",
+      "Incorrect — activation energy is a kinetic barrier, not entropy."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.2 Entropy",
@@ -1992,6 +2364,12 @@
       null
     ],
     "explanation": "The overall reaction order is the sum of the exponents in the rate law: 1 (for A) + 2 (for B) = 3.",
+    "choice_feedback": [
+      "Incorrect — 1 counts only A's order; overall order sums all exponents.",
+      "Incorrect — 2 is the order in B alone, not the overall order.",
+      "Correct — overall order is 1 (A) + 2 (B) = 3.",
+      "Incorrect — the reaction isn't zero order; the exponents are nonzero."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -2027,6 +2405,12 @@
       }
     ],
     "explanation": "For a reaction first order in A, rate ∝ [A]¹, so doubling [A] doubles the rate (a factor of 2).",
+    "choice_feedback": [
+      "Correct — first order means rate ∝ [A], so doubling [A] doubles the rate.",
+      "Incorrect — a factor of 4 would be second order, not first.",
+      "Incorrect — a first-order rate does change with [A]; it isn't unchanged.",
+      "Incorrect — doubling [A] increases the rate; it doesn't halve it."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -2062,6 +2446,12 @@
       }
     ],
     "explanation": "A zero-order reaction has rate = k[A]⁰ = k, so the rate is constant and independent of reactant concentration.",
+    "choice_feedback": [
+      "Incorrect — proportional to [A] is first order, not zero order.",
+      "Correct — zero order means rate = k[A]⁰ = k, independent of concentration.",
+      "Incorrect — proportional to [A]² is second order.",
+      "Incorrect — 'zero order' refers to the exponent, not a literally zero rate."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.4 Integrated Rate Laws",
@@ -2097,6 +2487,12 @@
       }
     ],
     "explanation": "The activation energy is the minimum energy colliding reactants must have to reach the transition state and form products. It is not the reactant–product energy difference (that is ΔH/ΔG) and is not lowered simply by heating.",
+    "choice_feedback": [
+      "Incorrect — the products−reactants energy difference is ΔH/ΔG, not Ea.",
+      "Correct — Ea is the minimum energy colliding reactants need to reach the transition state.",
+      "Incorrect — Ea is a kinetic barrier, distinct from ΔG.",
+      "Incorrect — heating raises the fraction of molecules with ≥Ea but doesn't lower Ea itself."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -2129,6 +2525,12 @@
       null
     ],
     "explanation": "Bernoulli's equation for an ideal fluid at constant height requires that where the fluid's speed is higher, its pressure is lower, since the kinetic and pressure terms trade off to keep the total constant.",
+    "choice_feedback": [
+      "Incorrect — this reverses Bernoulli; faster flow means lower, not higher, pressure.",
+      "Correct — by Bernoulli, where speed is higher the pressure is lower (at constant height).",
+      "Incorrect — pressure does change with speed per Bernoulli.",
+      "Incorrect — pressure decreases but doesn't drop to zero."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.2 Bernoulli's Equation",
@@ -2161,6 +2563,12 @@
       }
     ],
     "explanation": "An object floats in equilibrium when the upward buoyant force equals its own weight; by Archimedes' principle that buoyant force equals the weight of the displaced fluid, not the entire fluid.",
+    "choice_feedback": [
+      "Correct — an object floats when the buoyant force equals its own weight.",
+      "Incorrect — a zero buoyant force would let the object sink, not float.",
+      "Incorrect — buoyant force equals the weight of displaced fluid, not the entire fluid.",
+      "Incorrect — atmospheric pressure isn't what balances weight for floating."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.7 Archimedes' Principle",
@@ -2196,6 +2604,12 @@
       }
     ],
     "explanation": "Glycolysis converts one glucose to two molecules of pyruvate; under aerobic conditions the pyruvate enters the mitochondrion (where it is converted to acetyl-CoA). Lactate and ethanol form only under anaerobic fermentation.",
+    "choice_feedback": [
+      "Correct — glycolysis yields two pyruvate per glucose, which enter the mitochondrion aerobically.",
+      "Incorrect — lactate forms in anaerobic fermentation, not under aerobic conditions.",
+      "Incorrect — pyruvate becomes acetyl-CoA only after entering the mitochondrion, and it is 2 per glucose.",
+      "Incorrect — ethanol is a yeast fermentation product, not human aerobic glycolysis."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -2228,6 +2642,12 @@
       null
     ],
     "explanation": "Phosphofructokinase-1 catalyzes the committed, rate-limiting step of glycolysis (fructose-6-phosphate → fructose-1,6-bisphosphate) and is the pathway's key regulatory control point.",
+    "choice_feedback": [
+      "Incorrect — hexokinase catalyzes the first step, not the committed rate-limiting one.",
+      "Correct — PFK-1 catalyzes the committed, rate-limiting step of glycolysis.",
+      "Incorrect — pyruvate kinase acts at the last step, not the rate-limiting control point.",
+      "Incorrect — aldolase cleaves the six-carbon sugar; it isn't the regulatory step."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -2257,6 +2677,12 @@
       null
     ],
     "explanation": "The early 'energy investment' phase of glycolysis uses 2 ATP (at the hexokinase and PFK-1 steps) to phosphorylate the sugar before the energy-payoff phase generates ATP.",
+    "choice_feedback": [
+      "Correct — the energy-investment phase uses 2 ATP (hexokinase and PFK-1 steps).",
+      "Incorrect — 4 ATP is the payoff-phase output, not the investment.",
+      "Incorrect — the investment phase does consume ATP, not zero.",
+      "Incorrect — 6 overstates the investment; only 2 ATP are used."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.2 Glycolysis",
@@ -2289,6 +2715,12 @@
       null
     ],
     "explanation": "In human muscle under anaerobic conditions, lactate fermentation reduces pyruvate to lactate, regenerating the NAD⁺ needed to keep glycolysis running. Ethanol fermentation occurs in yeast, not humans.",
+    "choice_feedback": [
+      "Incorrect — ethanol is produced by yeast, not human muscle.",
+      "Correct — human muscle reduces pyruvate to lactate anaerobically, regenerating NAD⁺.",
+      "Incorrect — pyruvate→acetyl-CoA is the aerobic route and doesn't regenerate NAD⁺ anaerobically.",
+      "Incorrect — citrate is a citric-acid-cycle intermediate, not the fermentation product."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-2-glycolysis",
     "source_location": "Ch. 7.5 Fermentation",
@@ -2321,6 +2753,12 @@
       null
     ],
     "explanation": "Each turn of the citric acid cycle releases 2 CO₂ molecules, at the isocitrate dehydrogenase and α-ketoglutarate dehydrogenase steps.",
+    "choice_feedback": [
+      "Incorrect — one turn releases two CO₂, not one.",
+      "Correct — each turn releases 2 CO₂ (isocitrate DH and α-ketoglutarate DH steps).",
+      "Incorrect — three CO₂ overcounts; only two are released per turn.",
+      "Incorrect — the cycle does release CO₂, not zero."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -2353,6 +2791,12 @@
       }
     ],
     "explanation": "Most of the energy harvested by the citric acid cycle is stored in the reduced electron carriers NADH and FADH₂ (which later drive the electron transport chain); only a small amount is captured directly as GTP/ATP.",
+    "choice_feedback": [
+      "Incorrect — the cycle captures little energy as ATP directly.",
+      "Correct — most energy is stored in the reduced electron carriers NADH and FADH₂.",
+      "Incorrect — heat is a byproduct, not the captured energy form.",
+      "Incorrect — only 1 GTP per turn is made; most energy is in NADH/FADH₂."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -2379,6 +2823,12 @@
       null
     ],
     "explanation": "Per acetyl-CoA, one turn of the citric acid cycle produces 3 NADH (plus 1 FADH₂ and 1 GTP/ATP).",
+    "choice_feedback": [
+      "Incorrect — one turn makes 3 NADH, not 1.",
+      "Incorrect — 2 undercounts; the cycle makes 3 NADH per acetyl-CoA.",
+      "Correct — one turn produces 3 NADH (plus 1 FADH₂ and 1 GTP/ATP).",
+      "Incorrect — 4 overcounts NADH; it is 3 (the FADH₂ is a separate carrier)."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.3 Citric Acid Cycle",
@@ -2408,6 +2858,12 @@
       null
     ],
     "explanation": "The active site is the region of an enzyme where substrate binds and catalysis occurs; the allosteric site is a separate regulatory site elsewhere on the enzyme.",
+    "choice_feedback": [
+      "Incorrect — the allosteric site is regulatory, not where catalysis occurs.",
+      "Correct — the active site is where substrate binds and catalysis occurs.",
+      "Incorrect — an R group is an amino-acid side chain, not the catalytic region.",
+      "Incorrect — the peptide backbone is structural, not the substrate-binding site."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -2443,6 +2899,12 @@
       }
     ],
     "explanation": "In the induced-fit model, substrate binding causes the enzyme's active site to change shape to fit the substrate more snugly, enhancing catalysis. The enzyme is not consumed and the substrate is chemically transformed.",
+    "choice_feedback": [
+      "Incorrect — enzymes are catalysts and are regenerated, not consumed.",
+      "Correct — in induced fit the active site changes shape to fit the substrate more snugly.",
+      "Incorrect — the substrate is chemically converted to product, not left unchanged.",
+      "Incorrect — enzymes lower activation energy, not raise it."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -2472,6 +2934,12 @@
       null
     ],
     "explanation": "Heating well above an enzyme's optimum disrupts the noncovalent interactions that maintain its three-dimensional shape (denaturation), distorting the active site and decreasing activity.",
+    "choice_feedback": [
+      "Incorrect — above the optimum, heat denatures the enzyme rather than boosting activity endlessly.",
+      "Correct — excessive heat denatures the enzyme, distorting the active site and lowering activity.",
+      "Incorrect — temperature strongly affects enzyme activity.",
+      "Incorrect — extreme heat denatures the enzyme, not merely lowering Km."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -2507,6 +2975,12 @@
       }
     ],
     "explanation": "Simple diffusion moves a small nonpolar molecule such as O₂ directly through the bilayer down its concentration gradient, requiring neither ATP nor a transport protein.",
+    "choice_feedback": [
+      "Incorrect — simple diffusion needs no ATP; that's active transport.",
+      "Correct — a small nonpolar molecule diffuses through the bilayer down its gradient without energy.",
+      "Incorrect — needing a transport protein describes facilitated diffusion.",
+      "Incorrect — diffusion moves down, not against, the gradient."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.2 Passive Transport",
@@ -2542,6 +3016,12 @@
       }
     ],
     "explanation": "Active transport moves solutes against their concentration gradient and therefore requires an energy input (e.g., ATP). Diffusion and osmosis are passive and move substances down their gradients.",
+    "choice_feedback": [
+      "Incorrect — simple diffusion is passive and moves down the gradient.",
+      "Incorrect — facilitated diffusion is also passive, down-gradient, and needs no energy.",
+      "Correct — active transport moves solutes against their gradient and requires energy.",
+      "Incorrect — osmosis is passive water movement, not energy-requiring solute transport."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.3 Active Transport",
@@ -2571,6 +3051,12 @@
       }
     ],
     "explanation": "In animal cell membranes cholesterol acts as a fluidity buffer: it restrains movement at high temperatures and prevents tight packing at low temperatures, keeping the membrane appropriately fluid.",
+    "choice_feedback": [
+      "Incorrect — cholesterol doesn't store genetic information.",
+      "Correct — cholesterol buffers membrane fluidity across a range of temperatures.",
+      "Incorrect — glycolysis is catalyzed by cytosolic enzymes, not cholesterol.",
+      "Incorrect — cholesterol sits among the tails; it doesn't form the hydrophilic heads."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.1 Components and Structure",
@@ -2603,6 +3089,12 @@
       }
     ],
     "explanation": "Osmosis is specifically the diffusion of water across a selectively permeable membrane, moving from higher water (lower solute) toward lower water (higher solute) concentration.",
+    "choice_feedback": [
+      "Incorrect — osmosis is water movement, not solute diffusion.",
+      "Correct — osmosis is the diffusion of water across a selectively permeable membrane.",
+      "Incorrect — proteins don't diffuse osmotically across the membrane.",
+      "Incorrect — osmosis specifically refers to water, not ions."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.2 Passive Transport",
@@ -2638,6 +3130,12 @@
       }
     ],
     "explanation": "By complementary base pairing, adenine pairs with thymine (two hydrogen bonds) and guanine pairs with cytosine (three hydrogen bonds).",
+    "choice_feedback": [
+      "Correct — adenine pairs with thymine and guanine with cytosine.",
+      "Incorrect — this swaps the partners; A–T and G–C are correct.",
+      "Incorrect — uracil is an RNA base, and G pairs with C, not with uracil.",
+      "Incorrect — G pairs with C, not with adenine (two purines can't pair)."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.2 DNA Structure",
@@ -2673,6 +3171,12 @@
       }
     ],
     "explanation": "Helicase unwinds and separates the two strands of the double helix at the replication fork; ligase, polymerase, and primase act on the exposed strands afterward.",
+    "choice_feedback": [
+      "Incorrect — ligase seals nicks; it doesn't unwind the helix.",
+      "Correct — helicase unwinds and separates the two strands at the replication fork.",
+      "Incorrect — polymerase synthesizes DNA; it doesn't unwind it.",
+      "Incorrect — primase lays RNA primers; it doesn't unwind the helix."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -2702,6 +3206,12 @@
       null
     ],
     "explanation": "Because DNA polymerase synthesizes only 5′→3′, the lagging strand is made discontinuously as short Okazaki fragments, whereas the leading strand is synthesized continuously.",
+    "choice_feedback": [
+      "Incorrect — the leading strand is synthesized continuously, not as fragments.",
+      "Correct — Okazaki fragments form on the lagging strand, made discontinuously.",
+      "Incorrect — 'template-only' isn't a strand where fragments are made.",
+      "Incorrect — Okazaki fragments are DNA, not RNA."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.4 DNA Replication in Prokaryotes",
@@ -2734,6 +3244,12 @@
       }
     ],
     "explanation": "The two strands of a DNA double helix run antiparallel (opposite 5′→3′ orientations) and are complementary (A–T, G–C), held together by hydrogen bonds between the paired bases.",
+    "choice_feedback": [
+      "Incorrect — the strands are complementary and antiparallel, not identical and parallel.",
+      "Correct — DNA strands run antiparallel and are complementary (A–T, G–C).",
+      "Incorrect — DNA strands are DNA, not RNA.",
+      "Incorrect — paired bases are held by hydrogen bonds, not covalent bonds."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.2 DNA Structure",
@@ -2769,6 +3285,12 @@
       }
     ],
     "explanation": "A monohybrid cross Aa × Aa gives the genotypic ratio 1 AA : 2 Aa : 1 aa; the 3:1 ratio is the phenotypic (not genotypic) outcome.",
+    "choice_feedback": [
+      "Correct — Aa × Aa gives the genotypic ratio 1 AA : 2 Aa : 1 aa.",
+      "Incorrect — 3:1 is the phenotypic, not genotypic, ratio.",
+      "Incorrect — 1:1 is a testcross ratio.",
+      "Incorrect — segregation produces AA and aa too, not all Aa."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -2804,6 +3326,12 @@
       }
     ],
     "explanation": "Mendel's law of segregation states that the two alleles of a gene separate during gamete formation so each gamete carries only one. Independent assortment is the separate law dealing with different genes.",
+    "choice_feedback": [
+      "Incorrect — that describes independent assortment, a separate law.",
+      "Correct — segregation: the two alleles of a gene separate during gamete formation.",
+      "Incorrect — dominance doesn't imply an allele is more common.",
+      "Incorrect — blending inheritance was refuted by Mendel's work."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -2836,6 +3364,12 @@
       null
     ],
     "explanation": "A testcross pairs an individual of unknown genotype with a homozygous-recessive individual, because the recessive parent contributes only recessive alleles and lets the unknown's alleles show up directly in the offspring phenotypes.",
+    "choice_feedback": [
+      "Incorrect — a homozygous dominant partner would mask recessive alleles.",
+      "Correct — a testcross uses a homozygous-recessive partner so the unknown's alleles show up.",
+      "Incorrect — a heterozygous partner wouldn't cleanly reveal the unknown genotype.",
+      "Incorrect — a haploid partner isn't the standard testcross setup."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits",
@@ -2871,6 +3405,12 @@
       }
     ],
     "explanation": "Genes far apart on the same chromosome are frequently separated by crossing over during meiosis, so they recombine often and assort nearly independently, behaving almost as if on different chromosomes.",
+    "choice_feedback": [
+      "Incorrect — genes far apart are frequently separated by crossing over.",
+      "Correct — distant genes recombine often, assorting nearly independently.",
+      "Incorrect — far-apart genes recombine frequently, not never.",
+      "Incorrect — the premise states they are on the same chromosome."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance",
@@ -2903,6 +3443,12 @@
       null
     ],
     "explanation": "Long-term memory is the relatively permanent store with essentially unlimited capacity, in contrast to the brief, limited sensory and short-term stores.",
+    "choice_feedback": [
+      "Incorrect — sensory memory is brief and fleeting, not permanent.",
+      "Incorrect — short-term memory is limited and lasts seconds.",
+      "Correct — long-term memory is the relatively permanent, essentially unlimited store.",
+      "Incorrect — iconic memory is a brief visual sensory store."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -2938,6 +3484,12 @@
       }
     ],
     "explanation": "Retrieval improves when the recall context matches the encoding context — context-dependent memory, an instance of the encoding-specificity principle.",
+    "choice_feedback": [
+      "Incorrect — the misinformation effect is a memory distortion, not context matching.",
+      "Correct — matching recall and encoding contexts is context-dependent memory (encoding specificity).",
+      "Incorrect — proactive interference is old memories disrupting new ones.",
+      "Incorrect — the self-reference effect is better memory for self-relevant information."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.3 Ways to Enhance Memory",
@@ -2970,6 +3522,12 @@
       }
     ],
     "explanation": "The serial position effect is the tendency to remember items at the beginning (primacy) and end (recency) of a list better than those in the middle.",
+    "choice_feedback": [
+      "Incorrect — the spacing effect concerns distributed practice, not list position.",
+      "Correct — better recall of the first and last items is the serial position effect.",
+      "Incorrect — the misinformation effect is memory distortion.",
+      "Incorrect — priming is implicit activation, not list-position recall."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -3002,6 +3560,12 @@
       null
     ],
     "explanation": "Explicit (declarative) memory covers facts and events that can be consciously and intentionally recalled. Skills like riding a bicycle are implicit (procedural) memory.",
+    "choice_feedback": [
+      "Incorrect — riding a bike is implicit (procedural) memory.",
+      "Correct — explicit memory covers consciously recalled facts and events.",
+      "Incorrect — conditioned reflexes are implicit memory.",
+      "Incorrect — motor skills are procedural (implicit), not explicit."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.1 How Memory Functions",
@@ -3037,6 +3601,12 @@
       }
     ],
     "explanation": "A previously neutral stimulus that, after repeated pairing with the unconditioned stimulus, comes to elicit a response is the conditioned stimulus.",
+    "choice_feedback": [
+      "Incorrect — the newly learned trigger is the conditioned, not unconditioned, stimulus.",
+      "Correct — a previously neutral stimulus that elicits a response after pairing is the conditioned stimulus.",
+      "Incorrect — this is a stimulus, not a response.",
+      "Incorrect — 'reinforcer' is an operant-conditioning term, not classical."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.2 Classical Conditioning",
@@ -3072,6 +3642,12 @@
       }
     ],
     "explanation": "Negative reinforcement increases a behavior by removing an aversive stimulus (e.g., a seatbelt alarm stops when you buckle up). 'Negative' refers to removal, not to decreasing behavior — that would be punishment.",
+    "choice_feedback": [
+      "Incorrect — that describes positive punishment (adding a stimulus to decrease behavior).",
+      "Correct — negative reinforcement increases behavior by removing an aversive stimulus.",
+      "Incorrect — reinforcement increases behavior; decreasing it would be punishment.",
+      "Incorrect — adding a stimulus describes positive reinforcement, not negative."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -3107,6 +3683,12 @@
       }
     ],
     "explanation": "A variable-ratio schedule delivers reinforcement after an unpredictable (varying) number of responses and produces high, steady response rates that resist extinction — as seen in gambling.",
+    "choice_feedback": [
+      "Incorrect — fixed-ratio reinforces after a predictable count, not an unpredictable one.",
+      "Correct — reinforcement after an unpredictable number of responses is a variable-ratio schedule.",
+      "Incorrect — fixed-interval is time-based, not response-count based.",
+      "Incorrect — continuous reinforces every response, not after a varying number."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -3139,6 +3721,12 @@
       }
     ],
     "explanation": "Milgram's shock experiments demonstrated obedience — willingness to follow the commands of an authority figure even against one's conscience. Conformity involves matching peers, not following an authority's orders.",
+    "choice_feedback": [
+      "Incorrect — conformity is matching peers, not following an authority.",
+      "Correct — Milgram's shock studies demonstrated obedience to authority.",
+      "Incorrect — the bystander effect concerns helping, not following orders.",
+      "Incorrect — groupthink is consensus-seeking, not obedience to an authority."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.5 Obedience",
@@ -3171,6 +3759,12 @@
       null
     ],
     "explanation": "The bystander effect describes how the presence of other people decreases the likelihood that any single individual will help, largely through diffusion of responsibility.",
+    "choice_feedback": [
+      "Incorrect — this reverses the effect; more onlookers decrease individual helping.",
+      "Correct — the bystander effect: more people present decreases any one person's likelihood of helping.",
+      "Incorrect — the number of bystanders does affect helping.",
+      "Incorrect — the presence of others reduces, and certainly doesn't guarantee, helping."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.6 Prosocial Behavior",
@@ -3203,6 +3797,12 @@
       null
     ],
     "explanation": "An attitude is an evaluation — favorable or unfavorable — of a person, object, or idea. It is a learned evaluative stance, not a genetic trait, a reflex, or a type of memory.",
+    "choice_feedback": [
+      "Incorrect — attitudes are learned evaluations, not fixed genetic traits.",
+      "Correct — an attitude is a favorable or unfavorable evaluation of a person, object, or idea.",
+      "Incorrect — an attitude is an evaluative stance, not an involuntary reflex.",
+      "Incorrect — an attitude is not a type of memory."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion",
@@ -3229,6 +3829,12 @@
       null
     ],
     "explanation": "Socioeconomic status is conventionally measured by a combination of income, education, and occupation — not by biological features such as blood type or height.",
+    "choice_feedback": [
+      "Incorrect — blood type is biological, not a component of SES.",
+      "Correct — SES is measured by income, education, and occupation.",
+      "Incorrect — height is a biological trait, not an SES measure.",
+      "Incorrect — personality type isn't a standard SES component."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -3264,6 +3870,12 @@
       }
     ],
     "explanation": "A social gradient in health means health outcomes improve stepwise at each higher rung of the socioeconomic ladder — affecting the whole population, not only the very poorest, and not explained away as random or purely genetic.",
+    "choice_feedback": [
+      "Correct — a social gradient means health improves stepwise up the socioeconomic ladder.",
+      "Incorrect — the gradient shows health is clearly related to social position.",
+      "Incorrect — the gradient affects the whole population, not only the poorest.",
+      "Incorrect — the gradient is an association across SES, not wealth directly causing disease."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness",
@@ -3283,6 +3895,12 @@
     "section": "CARS",
     "skill": "1",
     "explanation": "In context the passage uses 'vantage point' figuratively to mean the historian's particular perspective or standpoint (her 'own moment'), not a literal physical location or a historical period.",
+    "choice_feedback": [
+      "Incorrect — the passage uses 'vantage point' figuratively, not as a physical location.",
+      "Correct — in context it means the historian's particular perspective or standpoint.",
+      "Incorrect — 'vantage point' isn't used to mean a factual error.",
+      "Incorrect — it refers to perspective, not a historical period."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q4",
@@ -3302,6 +3920,12 @@
     "section": "CARS",
     "skill": "2",
     "explanation": "The author grants that we assume more options make us freer but argues they can paralyze and erode real freedom — an attitude of cautious skepticism, not enthusiasm, total rejection, or indifference.",
+    "choice_feedback": [
+      "Incorrect — the author is wary of more options, not unqualifiedly enthusiastic.",
+      "Correct — the author shows cautious skepticism about simply adding options.",
+      "Incorrect — the author doesn't reject all choice, only excess without judgment.",
+      "Incorrect — the author is engaged and argumentative, not indifferent."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q4",
@@ -3321,6 +3945,12 @@
     "section": "CARS",
     "skill": "3",
     "explanation": "Having argued that all history reflects perspective, the author immediately heads off the obvious misreading — that history is therefore just fiction — by denying it, so the sentence anticipates and rebuts a likely objection.",
+    "choice_feedback": [
+      "Incorrect — the sentence denies, rather than concedes, that history is fiction.",
+      "Correct — it anticipates and rebuts the likely misreading that history is just fiction.",
+      "Incorrect — it stays on topic, addressing a natural objection.",
+      "Incorrect — it supports, not contradicts, the passage's thesis."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q5",
@@ -3340,6 +3970,12 @@
     "section": "CARS",
     "skill": "3",
     "explanation": "The passage opens with the common assumption that more options mean more freedom, then qualifies it by redefining freedom as the capacity to choose well — so its structure is to qualify an assumption through redefinition.",
+    "choice_feedback": [
+      "Incorrect — the passage doesn't reject meaningful choice; it redefines freedom.",
+      "Correct — it qualifies the common assumption by redefining freedom as choosing well.",
+      "Incorrect — it doesn't lay out steps of decision-making.",
+      "Incorrect — it isn't comparing two product brands."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q5",
@@ -3359,6 +3995,12 @@
     "section": "CARS",
     "skill": "4",
     "explanation": "The author's claim is that excessive options paralyze and reduce satisfaction. Evidence that people given many options consistently decide easily and report greater satisfaction directly contradicts that causal claim, weakening it most.",
+    "choice_feedback": [
+      "Correct — evidence that many options bring easy decisions and greater satisfaction directly contradicts the thesis.",
+      "Incorrect — longer decision time actually supports, not weakens, the argument.",
+      "Incorrect — some people disliking shopping is irrelevant to the options-paralysis claim.",
+      "Incorrect — that judgment can be taught is consistent with, not damaging to, the argument."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q6",
@@ -3378,6 +4020,12 @@
     "section": "CARS",
     "skill": "4",
     "explanation": "The passage's logic is that disciplined awareness of one's perspective, tested against evidence, yields objectivity. A journalist who acknowledges her biases and checks them against evidence is the closest parallel; an error-free calculator has no perspective to examine.",
+    "choice_feedback": [
+      "Correct — a journalist checking her biases against evidence parallels the passage's disciplined self-awareness.",
+      "Incorrect — an error-free calculator has no perspective to examine.",
+      "Incorrect — a witness refusing to testify doesn't illustrate testing one's assumptions.",
+      "Incorrect — a novelist inventing fiction is the opposite of evidence-tested objectivity."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage A (History & Objectivity), Q6",
@@ -3410,6 +4058,12 @@
       }
     ],
     "explanation": "The pascal is defined as one newton per square meter (N/m²), i.e., force per unit area. kg·m/s² is the newton (a force) and N·m is the joule (energy).",
+    "choice_feedback": [
+      "Correct — the pascal is one newton per square meter (force per area).",
+      "Incorrect — kg·m/s² is the newton, a unit of force, not pressure.",
+      "Incorrect — J·s is not a pressure unit.",
+      "Incorrect — N·m is the joule (energy/torque), not pressure."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 11.2 Pressure",
@@ -3429,6 +4083,12 @@
     "section": "CARS",
     "skill": "2",
     "explanation": "The shopper facing dozens of nearly identical products concretely illustrates the passage's thesis that an excess of options can raise effort and reduce satisfaction — it is not a claim that all shopping is harmful or a description of the author's own habits.",
+    "choice_feedback": [
+      "Incorrect — the example illustrates a point, not that all shopping is harmful.",
+      "Correct — the shopper concretely illustrates how an excess of options can reduce satisfaction.",
+      "Incorrect — the passage doesn't argue for banning products.",
+      "Incorrect — it's an illustrative example, not the author's personal habits."
+    ],
     "source_name": "Original passage (CC0, MCAT Speedrun)",
     "source_url": "",
     "source_location": "Passage B (Choice & Freedom), Q7",
@@ -3464,6 +4124,12 @@
       }
     ],
     "explanation": "A Brønsted–Lowry acid donates a proton (H⁺). In NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, water gives up an H⁺ to ammonia, so H₂O is the acid (and NH₃, which accepts the proton, is the base).",
+    "choice_feedback": [
+      "Correct — water donates a proton to ammonia, so H₂O is the Brønsted–Lowry acid.",
+      "Incorrect — NH₃ accepts the proton, making it the base, not the acid.",
+      "Incorrect — NH₄⁺ is a product (the conjugate acid), not the reactant donor.",
+      "Incorrect — OH⁻ is water's conjugate base, not the proton donor."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.1 Brønsted-Lowry Acids and Bases",
@@ -3499,6 +4165,12 @@
       }
     ],
     "explanation": "In the Brønsted–Lowry framework a base is a proton (H⁺) acceptor, while an acid is a proton donor. This is broader than the Arrhenius definition, so a base need not release OH⁻ directly.",
+    "choice_feedback": [
+      "Incorrect — donating a proton defines an acid, the opposite of a base.",
+      "Correct — a Brønsted–Lowry base accepts a proton.",
+      "Incorrect — increasing [H⁺] is the effect of adding an acid.",
+      "Incorrect — that is the narrower Arrhenius definition; Brønsted–Lowry bases needn't release OH⁻."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.1 Brønsted-Lowry Acids and Bases",
@@ -3534,6 +4206,12 @@
       }
     ],
     "explanation": "Acid strength and conjugate-base strength are inversely related: the more completely an acid donates its proton, the more stable and less basic its conjugate base. HCl ionizes essentially completely, so Cl⁻ is an extremely weak, effectively non-basic species.",
+    "choice_feedback": [
+      "Correct — HCl ionizes completely, so its conjugate base Cl⁻ is extremely weak.",
+      "Incorrect — this reverses the inverse relationship; a strong acid gives a weak conjugate base.",
+      "Incorrect — Cl⁻ has no proton to donate, so it isn't an acid.",
+      "Incorrect — Cl⁻ is essentially inert, not amphoteric."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 Relative Strengths of Acids and Bases",
@@ -3569,6 +4247,12 @@
       }
     ],
     "explanation": "A buffer needs a weak acid together with its conjugate base (or a weak base with its conjugate acid). Acetic acid (CH₃COOH) and acetate (from CH₃COONa) form exactly such a conjugate pair, so the mixture resists pH change when small amounts of acid or base are added.",
+    "choice_feedback": [
+      "Incorrect — a strong acid and its salt have no weak-acid/conjugate-base equilibrium to buffer.",
+      "Correct — acetic acid and acetate form a conjugate pair, so the mixture buffers pH.",
+      "Incorrect — a strong base plus a neutral salt lacks a conjugate weak pair.",
+      "Incorrect — a neutral salt alone can't buffer pH."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers",
@@ -3604,6 +4288,12 @@
       }
     ],
     "explanation": "At 25 °C, Kw = 1.0×10⁻¹⁴ and neutrality means [H⁺] = [OH⁻] = 1.0×10⁻⁷ M. Thus pH = −log(1.0×10⁻⁷) = 7, independent of how much water is present.",
+    "choice_feedback": [
+      "Incorrect — pH 0 is strongly acidic, not neutral.",
+      "Correct — neutral water has [H⁺]=10⁻⁷ M, so pH = 7.",
+      "Incorrect — pH 14 is strongly basic, not neutral.",
+      "Incorrect — pH depends on [H⁺], not on the quantity of water."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.2 pH and pOH",
@@ -3639,6 +4329,12 @@
       }
     ],
     "explanation": "A strong monoprotic acid ionizes completely, so [H⁺] equals its concentration, 1.0×10⁻³ M. pH = −log(1.0×10⁻³) = 3.",
+    "choice_feedback": [
+      "Incorrect — pH 1 would need 0.1 M; the concentration is 10⁻³ M.",
+      "Incorrect — pH 2 would need 10⁻² M, not 10⁻³ M.",
+      "Correct — a strong acid gives [H⁺]=10⁻³ M, so pH = 3.",
+      "Incorrect — 11 has the wrong sign; a strong acid is acidic (pH 3), not basic."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.2 pH and pOH",
@@ -3674,6 +4370,12 @@
       }
     ],
     "explanation": "A conjugate base is formed by removing one H⁺. Taking a proton from HCO₃⁻ gives CO₃²⁻ (adding a proton would instead give the conjugate acid H₂CO₃).",
+    "choice_feedback": [
+      "Incorrect — H₂CO₃ is the conjugate acid (adds a proton), not the conjugate base.",
+      "Correct — removing one H⁺ from HCO₃⁻ gives the conjugate base CO₃²⁻.",
+      "Incorrect — CO₂ is a decomposition product, not the species one proton removed.",
+      "Incorrect — OH⁻ is a generic base, not the conjugate of HCO₃⁻."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.1 Brønsted-Lowry Acids and Bases",
@@ -3709,6 +4411,12 @@
       }
     ],
     "explanation": "pH = −log[H⁺], so each 10-fold rise in [H⁺] lowers pH by 1 unit. A 1000-fold (10³) increase lowers the pH by 3 units.",
+    "choice_feedback": [
+      "Correct — pH = −log[H⁺], so a 10³-fold rise in [H⁺] lowers pH by 3 units.",
+      "Incorrect — more [H⁺] lowers pH, not raises it.",
+      "Incorrect — pH is logarithmic, so it changes by 3 units, not 1000.",
+      "Incorrect — changing [H⁺] does change pH."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.2 pH and pOH",
@@ -3744,6 +4452,12 @@
       }
     ],
     "explanation": "By the Henderson–Hasselbalch equation, pH = pKa + log([A⁻]/[HA]). When [A⁻] = [HA] the ratio is 1 and log 1 = 0, so pH = pKa.",
+    "choice_feedback": [
+      "Correct — when [A⁻]=[HA], the log term is 0, so pH = pKa.",
+      "Incorrect — pH 7 ignores the acid's pKa; equal concentrations give pH = pKa.",
+      "Incorrect — a 1:1 ratio gives log 1 = 0, so pH = pKa, not pKa + 1.",
+      "Incorrect — 14 − pKa is a pOH/pKb-style relation that doesn't apply here."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers (Henderson–Hasselbalch)",
@@ -3779,6 +4493,12 @@
       }
     ],
     "explanation": "Formate (HCOO⁻) is the conjugate base produced when formic acid ionizes (HCOOH ⇌ HCOO⁻ + H⁺). Adding formate — a common ion — shifts the equilibrium back toward the un-ionized acid (Le Chatelier), so the acid's percent ionization decreases.",
+    "choice_feedback": [
+      "Correct — added formate (a common ion) shifts ionization back toward the un-ionized acid, lowering percent ionization.",
+      "Incorrect — added ions shift the equilibrium backward; percent ionization decreases.",
+      "Incorrect — formate is the common ion and does affect the equilibrium.",
+      "Incorrect — the solution becomes less ionized, so percent ionization drops rather than rises."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers; Le Chatelier (common-ion effect)",
@@ -3814,6 +4534,12 @@
       }
     ],
     "explanation": "At equal concentration, a strong acid ionizes essentially completely (higher [H⁺], lower pH) while a weak acid ionizes only partially (lower [H⁺], higher pH). So the weak-acid solution has the higher pH.",
+    "choice_feedback": [
+      "Incorrect — weak acids ionize partially, so this reverses the strong/weak distinction.",
+      "Correct — the weak acid ionizes only partially, giving lower [H⁺] and higher pH.",
+      "Incorrect — equal concentration doesn't mean equal pH when ionization differs.",
+      "Incorrect — a weak acid ionizes partially, not 'not at all.'"
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 Relative Strengths of Acids and Bases",
@@ -3849,6 +4575,12 @@
       }
     ],
     "explanation": "Enzymes are catalysts: they provide a pathway with a lower activation energy, speeding the reaction without changing ΔG, the equilibrium position, or the temperature.",
+    "choice_feedback": [
+      "Correct — an enzyme lowers the activation energy, speeding the reaction.",
+      "Incorrect — enzymes don't change ΔG or make a reaction more exergonic.",
+      "Incorrect — enzymes don't work by heating the cell.",
+      "Incorrect — enzymes speed both directions and don't shift the equilibrium position."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -3884,6 +4616,12 @@
       }
     ],
     "explanation": "By convention, ΔG > 0 marks an endergonic reaction that requires (absorbs) energy and is nonspontaneous as written; ΔG < 0 marks an exergonic, energy-releasing, spontaneous reaction.",
+    "choice_feedback": [
+      "Incorrect — exergonic means ΔG<0; this reaction has ΔG>0.",
+      "Correct — ΔG>0 marks an endergonic, energy-requiring reaction.",
+      "Incorrect — ΔG>0 is nonspontaneous as written.",
+      "Incorrect — a positive-ΔG reaction isn't impossible; energy input or coupling can drive it."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.3 The Laws of Thermodynamics; Ch. 6.5 Enzymes",
@@ -3919,6 +4657,12 @@
       }
     ],
     "explanation": "A competitive inhibitor resembles the substrate and binds reversibly in the active site, directly competing with substrate; allosteric inhibitors instead bind elsewhere and change the enzyme's conformation.",
+    "choice_feedback": [
+      "Correct — a competitive inhibitor binds the active site, blocking substrate access.",
+      "Incorrect — binding away from the active site describes noncompetitive/allosteric inhibition.",
+      "Incorrect — covalent, permanent binding is irreversible inhibition, not competitive.",
+      "Incorrect — competitive inhibition works by occupying the active site, not by lowering temperature."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (inhibition)",
@@ -3954,6 +4698,12 @@
       }
     ],
     "explanation": "At saturating substrate, essentially every enzyme active site is occupied and turning over as fast as it can, so adding more substrate cannot increase the rate — the reaction reaches its maximum velocity, Vmax.",
+    "choice_feedback": [
+      "Correct — the Vmax plateau occurs because all active sites are saturated with substrate.",
+      "Incorrect — the plateau is simple saturation, not substrate inhibition.",
+      "Incorrect — the enzyme is a catalyst and isn't consumed.",
+      "Incorrect — activation energy doesn't rise with substrate to cause the plateau."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (Michaelis–Menten; saturation)",
@@ -3989,6 +4739,12 @@
       }
     ],
     "explanation": "The pocket where substrate binds and is chemically transformed is the active site; a mutation there directly affects catalysis. Allosteric sites and other structural features lie elsewhere.",
+    "choice_feedback": [
+      "Correct — the substrate-binding, catalytic pocket is the active site.",
+      "Incorrect — the allosteric site is regulatory, not the substrate-binding pocket.",
+      "Incorrect — a distant disulfide bridge isn't the catalytic binding pocket.",
+      "Incorrect — a signal peptide is a targeting sequence, not the active site."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (active site)",
@@ -4024,6 +4780,12 @@
       }
     ],
     "explanation": "In the induced-fit model, substrate binding induces a conformational change in the enzyme's active site so it wraps more snugly around the substrate — unlike the static, pre-formed complementarity of lock-and-key.",
+    "choice_feedback": [
+      "Correct — induced fit proposes the active site changes shape as substrate binds.",
+      "Incorrect — a rigid, pre-formed match is the older lock-and-key view.",
+      "Incorrect — both models require physical binding contact.",
+      "Incorrect — induced fit is a conformational change, not a change to the amino-acid sequence."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (induced fit)",
@@ -4059,6 +4821,12 @@
       }
     ],
     "explanation": "Well above the optimum temperature, the noncovalent interactions holding an enzyme's tertiary structure break down; the enzyme denatures, its active site is disrupted, and activity falls sharply.",
+    "choice_feedback": [
+      "Correct — far above the optimum the enzyme denatures and activity drops sharply.",
+      "Incorrect — activity doesn't rise indefinitely; denaturation halts it.",
+      "Incorrect — temperature strongly affects activity.",
+      "Incorrect — denaturation destroys the active site rather than exposing more."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (temperature, denaturation)",
@@ -4094,6 +4862,12 @@
       }
     ],
     "explanation": "Competitive inhibitors bind reversibly in the active site, so they compete with substrate. Flooding the system with excess substrate outcompetes the inhibitor and restores the reaction rate toward Vmax.",
+    "choice_feedback": [
+      "Correct — excess substrate outcompetes a competitive inhibitor, restoring the rate toward Vmax.",
+      "Incorrect — removing substrate would only slow the reaction further.",
+      "Incorrect — lowering enzyme just reduces total activity, not relieving inhibition.",
+      "Incorrect — adding more inhibitor deepens, not reverses, the inhibition."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (competitive inhibition)",
@@ -4129,6 +4903,12 @@
       }
     ],
     "explanation": "An enzyme (and any inhibitor of it) affects only kinetics — how fast equilibrium is reached — not the position of equilibrium. Keq and ΔG are thermodynamic properties set by the reactants and products, unchanged by a catalyst or its inhibitor.",
+    "choice_feedback": [
+      "Correct — an inhibitor changes rate (kinetics) but not Keq or ΔG.",
+      "Incorrect — slowing a reaction doesn't lower its equilibrium constant.",
+      "Incorrect — the inhibitor doesn't alter product thermodynamic stability.",
+      "Incorrect — Keq is independent of substrate concentration."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes; Ch. 6.3 (ΔG / equilibrium)",
@@ -4164,6 +4944,12 @@
       }
     ],
     "explanation": "Km, the Michaelis constant, is defined as the substrate concentration at which the reaction velocity equals one-half of Vmax; it is an inverse index of the enzyme's affinity for substrate.",
+    "choice_feedback": [
+      "Correct — Km is the substrate concentration giving half of Vmax.",
+      "Incorrect — Km corresponds to half-maximal, not full, velocity.",
+      "Incorrect — Km isn't where the rate is zero.",
+      "Incorrect — Km isn't the point of maximum velocity."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (Km, Michaelis–Menten)",
@@ -4199,6 +4985,12 @@
       }
     ],
     "explanation": "Km is the substrate concentration giving half-maximal velocity. A higher Km means more substrate is needed to half-saturate the enzyme, i.e., the enzyme binds substrate less tightly — lower affinity.",
+    "choice_feedback": [
+      "Correct — a higher Km means more substrate is needed to half-saturate, i.e., lower affinity.",
+      "Incorrect — this reverses it; a higher Km means weaker, not tighter, binding.",
+      "Incorrect — Km and Vmax are independent; a higher Km doesn't imply higher Vmax.",
+      "Incorrect — a higher Km requires more substrate to saturate, not less."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (Km and affinity)",
@@ -4234,6 +5026,12 @@
       }
     ],
     "explanation": "A catalyst lowers the activation energy for both the forward and reverse steps by the same amount, so it speeds attainment of equilibrium without changing the equilibrium position, Keq, or the final amounts of product.",
+    "choice_feedback": [
+      "Correct — a catalyst speeds forward and reverse equally, leaving the equilibrium position unchanged.",
+      "Incorrect — a catalyst doesn't shift equilibrium toward products.",
+      "Incorrect — a catalyst doesn't shift equilibrium toward reactants.",
+      "Incorrect — a catalyst doesn't change the equilibrium amount of product."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.7 Catalysis",
@@ -4269,6 +5067,12 @@
       }
     ],
     "explanation": "Temperature raises the average kinetic energy, so a greater fraction of colliding molecules meet or exceed the activation-energy threshold. The activation energy itself is not lowered by heating (that is a catalyst's role).",
+    "choice_feedback": [
+      "Correct — higher temperature gives more collisions with energy ≥ Ea, speeding the reaction.",
+      "Incorrect — temperature doesn't lower Ea; only a catalyst does.",
+      "Incorrect — the rate increase is kinetic, not from a ΔG change.",
+      "Incorrect — molecular size doesn't change with temperature to affect rate."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory",
@@ -4304,6 +5108,12 @@
       }
     ],
     "explanation": "The rate constant k depends on temperature (and on whether a catalyst is present), not on reactant concentrations. Changing concentration, volume, or pressure changes the rate but leaves k itself unchanged at constant temperature.",
+    "choice_feedback": [
+      "Correct — temperature (and a catalyst) changes the value of k.",
+      "Incorrect — concentration changes the rate but not k.",
+      "Incorrect — volume changes concentrations, not k.",
+      "Incorrect — pressure at constant T changes concentrations, not k."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory; Ch. 12.4 Rate Laws",
@@ -4339,6 +5149,12 @@
       }
     ],
     "explanation": "The overall order is the sum of the exponents in the rate law: 2 (for X) + 1 (for Y) = 3.",
+    "choice_feedback": [
+      "Incorrect — 1 counts one reactant; overall order sums the exponents.",
+      "Incorrect — 2 is the order in X alone, not the overall order.",
+      "Correct — overall order is 2 (X) + 1 (Y) = 3.",
+      "Incorrect — the exponents are nonzero, so it isn't zero order."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -4374,6 +5190,12 @@
       }
     ],
     "explanation": "For a reaction first order in A, rate ∝ [A]¹. Tripling [A] multiplies the rate by 3¹ = 3.",
+    "choice_feedback": [
+      "Correct — first order means rate ∝ [A], so tripling [A] triples the rate.",
+      "Incorrect — doubling would apply only if [A] doubled; here it triples.",
+      "Incorrect — a factor of 9 would be second order (3²), not first.",
+      "Incorrect — a first-order rate does change with [A]."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws (order and rate)",
@@ -4409,6 +5231,12 @@
       }
     ],
     "explanation": "A zero-order reaction has rate = k[A]⁰ = k, independent of [A]. Changing the concentration of A therefore has no effect on the rate.",
+    "choice_feedback": [
+      "Correct — zero order means rate = k, independent of [A].",
+      "Incorrect — doubling the rate would be first-order behavior.",
+      "Incorrect — quadrupling would be second order.",
+      "Incorrect — zero-order rate doesn't change, let alone halve."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.4 Integrated Rate Laws (zero order)",
@@ -4444,6 +5272,12 @@
       }
     ],
     "explanation": "Activation energy (Ea) is the minimum energy that colliding molecules must have for a reaction to occur; it sets the height of the kinetic barrier and is distinct from thermodynamic quantities like ΔG or ΔH.",
+    "choice_feedback": [
+      "Correct — the minimum energy colliding molecules need to react is the activation energy.",
+      "Incorrect — ΔG is a thermodynamic quantity, not the kinetic barrier.",
+      "Incorrect — bond dissociation enthalpy is a specific bond quantity, not the reaction's barrier.",
+      "Incorrect — ΔH is the enthalpy change, not the barrier to reacting."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.5 Collision Theory (activation energy)",
@@ -4479,6 +5313,12 @@
       }
     ],
     "explanation": "In a rate law, the exponent on each reactant is that reactant's reaction order (determined experimentally); m is the order with respect to A. It is not necessarily the stoichiometric coefficient.",
+    "choice_feedback": [
+      "Correct — the exponent m is the reaction order with respect to A (determined experimentally).",
+      "Incorrect — the exponent isn't necessarily the stoichiometric coefficient.",
+      "Incorrect — m is an order, not the rate constant.",
+      "Incorrect — m isn't an equilibrium concentration."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws",
@@ -4514,6 +5354,12 @@
       }
     ],
     "explanation": "Adding X leaves Vmax unchanged (both curves approach ~100 µmol/min) but raises the apparent Km (from ~2 mM to ~6 mM). A higher Km with an unchanged Vmax is the signature of competitive inhibition, which can be overcome by high substrate.",
+    "choice_feedback": [
+      "Correct — an unchanged Vmax with a raised apparent Km (2→6 mM) is the signature of competitive inhibition.",
+      "Incorrect — noncompetitive inhibition would lower Vmax and leave Km unchanged, but Vmax here is unchanged.",
+      "Incorrect — uncompetitive inhibition lowers both Vmax and Km, contrary to the data.",
+      "Incorrect — a raised apparent Km with recoverable Vmax indicates reversible competitive, not irreversible covalent, inhibition."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes (inhibition; Michaelis–Menten)",
@@ -4549,6 +5395,12 @@
       }
     ],
     "explanation": "Because X is competitive, high substrate concentrations outcompete the inhibitor for the active site, so at saturating [S] the velocity approaches the same Vmax as the uninhibited enzyme — consistent with the data, where both curves converge near 100 µmol/min.",
+    "choice_feedback": [
+      "Correct — competitive inhibition is overcome by saturating substrate, so velocity approaches the same Vmax (~100).",
+      "Incorrect — at saturating [S] the inhibited curve converges to Vmax, not staying below everywhere.",
+      "Incorrect — substrate can't push velocity past Vmax.",
+      "Incorrect — velocity becomes [S]-independent only near saturation, not at all concentrations."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes",
@@ -4584,6 +5436,12 @@
       }
     ],
     "explanation": "To attribute any velocity difference to inhibitor X, every quantity other than the independent variable ([S]) and the treatment (X) must be held constant. The total amount of enzyme is the critical control — differing enzyme amounts would change velocity independently of X.",
+    "choice_feedback": [
+      "Incorrect — [S] is the independent variable, deliberately varied, not a control.",
+      "Correct — the total amount of enzyme must be held constant so any velocity difference is attributable to X.",
+      "Incorrect — velocity is the measured outcome (dependent variable), not a control.",
+      "Incorrect — X's presence is the treatment being compared, so it can't be held constant."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes; experimental design (AAMC Skill 4)",
@@ -4619,6 +5477,12 @@
       }
     ],
     "explanation": "Enzymes and their inhibitors affect only the rate (kinetics) of a reaction, not its thermodynamics. X changes the apparent Km but leaves ΔG and Keq unchanged, since those depend only on the free-energy difference between reactants and products.",
+    "choice_feedback": [
+      "Incorrect — a kinetic inhibitor doesn't change thermodynamic favorability.",
+      "Correct — X changes rate/kinetics (apparent Km) but not ΔG or Keq.",
+      "Incorrect — Km is kinetic and Keq thermodynamic; changing Km doesn't change Keq.",
+      "Incorrect — ΔG doesn't depend on substrate concentration."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/6-5-enzymes",
     "source_location": "Ch. 6.5 Enzymes; Ch. 6.3 (ΔG / spontaneity)",
@@ -4654,6 +5518,12 @@
       }
     ],
     "explanation": "The half-cell with the higher (more positive) reduction potential is reduced and serves as the cathode, so Cu²⁺/Cu (+0.34 V) is the cathode. E°cell = E°cathode − E°anode = 0.34 − (−0.76) = +1.10 V.",
+    "choice_feedback": [
+      "Correct — the more positive half-cell (Cu²⁺/Cu, +0.34 V) is reduced (cathode); E°cell = 0.34 − (−0.76) = +1.10 V.",
+      "Incorrect — Zn has the more negative potential, so it's the anode, not the cathode.",
+      "Incorrect — +0.42 V comes from adding rather than subtracting the potentials.",
+      "Incorrect — the sign is wrong; E°cell is +1.10 V, giving a spontaneous cell."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.2 Galvanic Cells; Ch. 17.3 Standard Reduction Potentials",
@@ -4689,6 +5559,12 @@
       }
     ],
     "explanation": "Using ΔG° = −nFE°cell with n = 2, F ≈ 96,500 C/mol, and E°cell = +1.10 V: ΔG° = −(2)(96,500)(1.10) ≈ −2.12×10⁵ J ≈ −212 kJ. The negative value means the reaction is spontaneous.",
+    "choice_feedback": [
+      "Correct — ΔG° = −(2)(96,500)(1.10) ≈ −212 kJ, so the reaction is spontaneous.",
+      "Incorrect — the sign is wrong; with +E°cell, ΔG° is negative (spontaneous).",
+      "Incorrect — this uses n = 1; the balanced reaction transfers n = 2 electrons.",
+      "Incorrect — a standard cell with nonzero E° is not at equilibrium."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 Potential, Free Energy, and Equilibrium",
@@ -4724,6 +5600,12 @@
       }
     ],
     "explanation": "By the Nernst equation, raising the product-ion concentration (Zn²⁺) increases Q and therefore lowers the actual cell potential Ecell. E°cell is a standard constant and does not change.",
+    "choice_feedback": [
+      "Correct — raising the product ion Zn²⁺ increases Q, lowering Ecell per the Nernst equation.",
+      "Incorrect — this is the wrong direction; more product lowers Ecell.",
+      "Incorrect — E°cell is a fixed standard constant, not the quantity that changes.",
+      "Incorrect — ion concentrations do affect the actual potential Ecell."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4 (Nernst equation)",
@@ -4759,6 +5641,12 @@
       }
     ],
     "explanation": "As a galvanic cell discharges toward equilibrium its driving force fades: Ecell decreases toward 0 (a 'dead battery') and ΔG rises toward 0. At equilibrium there is no further net reaction.",
+    "choice_feedback": [
+      "Correct — as the cell discharges toward equilibrium, Ecell → 0 and ΔG → 0.",
+      "Incorrect — an operating cell loses driving force; Ecell doesn't increase.",
+      "Incorrect — approaching equilibrium isn't returning to standard conditions.",
+      "Incorrect — Ecell → 0 is right, but ΔG rises toward 0, not toward a large negative value."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/17-2-galvanic-cells",
     "source_location": "Ch. 17.4; Ch. 16.4 Free Energy",
@@ -4791,6 +5679,12 @@
       null
     ],
     "explanation": "By the Henderson–Hasselbalch equation, pH = pKa + log([A⁻]/[HA]). With equal concentrations of acetate and acetic acid the log term is 0, so pH = pKa = 4.74.",
+    "choice_feedback": [
+      "Correct — with equal [A⁻] and [HA], Henderson–Hasselbalch gives pH = pKa = 4.74.",
+      "Incorrect — equal concentrations don't force pH 7; pH equals the pKa.",
+      "Incorrect — 9.26 comes from a 14 − pKa or inverted-ratio error.",
+      "Incorrect — 2.37 isn't produced by the correct Henderson–Hasselbalch calculation."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers (Henderson–Hasselbalch)",
@@ -4826,6 +5720,12 @@
       }
     ],
     "explanation": "A buffer resists but does not eliminate pH change. The added H⁺ is consumed by acetate (A⁻ + H⁺ → HA), so the pH drops only slightly rather than sharply as it would in unbuffered water.",
+    "choice_feedback": [
+      "Incorrect — a buffer resists change; pH doesn't drop as sharply as in pure water.",
+      "Correct — acetate consumes the added H⁺ (A⁻ + H⁺ → HA), so pH decreases only slightly.",
+      "Incorrect — adding acid can't raise the pH.",
+      "Incorrect — buffers resist but don't perfectly hold pH constant."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers",
@@ -4861,6 +5761,12 @@
       }
     ],
     "explanation": "By Henderson–Hasselbalch, pH = pKa + log([A⁻]/[HA]); one unit above the pKa requires log([A⁻]/[HA]) = 1, i.e., a [CH₃COO⁻]:[CH₃COOH] ratio of 10:1.",
+    "choice_feedback": [
+      "Incorrect — 1:10 is inverted; one unit above the pKa needs more base than acid.",
+      "Correct — one pH unit above pKa requires log([A⁻]/[HA]) = 1, a 10:1 ratio.",
+      "Incorrect — a 1:1 ratio gives pH = pKa, not one unit above.",
+      "Incorrect — 100:1 gives two units above the pKa, not one."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers",
@@ -4896,6 +5802,12 @@
       }
     ],
     "explanation": "Adding the common ion acetate shifts the equilibrium CH₃COOH ⇌ CH₃COO⁻ + H⁺ to the left (Le Châtelier / common-ion effect), decreasing acetic acid's percent dissociation and lowering [H⁺], so the pH rises.",
+    "choice_feedback": [
+      "Correct — added acetate (common ion) shifts the equilibrium left, lowering percent dissociation and raising pH.",
+      "Incorrect — a common ion shifts left, not right; it doesn't release more H⁺.",
+      "Incorrect — acetate is the common ion here, not a mere spectator.",
+      "Incorrect — the leftward shift lowers [H⁺], so pH rises rather than drops."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.6 Buffers; Le Chatelier (common-ion effect)",
@@ -4931,6 +5843,12 @@
       }
     ],
     "explanation": "Because the genes assort independently, use the product rule: P(yy) = 1/4 and P(rr) = 1/4, so P(yyrr) = 1/4 × 1/4 = 1/16.",
+    "choice_feedback": [
+      "Correct — P(yyrr) = P(yy)×P(rr) = 1/4 × 1/4 = 1/16.",
+      "Incorrect — 9/16 is the both-dominant phenotype fraction, not both-recessive.",
+      "Incorrect — 1/4 is the probability for one gene; both genes together give 1/16.",
+      "Incorrect — 3/16 is a one-dominant/one-recessive class, not yyrr."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance (independent assortment; product rule)",
@@ -4966,6 +5884,12 @@
       }
     ],
     "explanation": "Independent assortment gives P(yellow, Y_) = 3/4 and P(wrinkled, rr) = 1/4, so P(yellow and wrinkled) = 3/4 × 1/4 = 3/16.",
+    "choice_feedback": [
+      "Correct — P(Y_)×P(rr) = 3/4 × 1/4 = 3/16.",
+      "Incorrect — 9/16 is both-dominant, ignoring that shape is recessive here.",
+      "Incorrect — 1/16 is both-recessive, not one dominant and one recessive.",
+      "Incorrect — 3/4 is only the color probability, not the combined fraction."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.3 Laws of Inheritance",
@@ -5001,6 +5925,12 @@
       }
     ],
     "explanation": "Offspring were ½ yellow : ½ green, so the yellow parent is Yy (Yy × yy → 1:1). All offspring were round despite the rr tester, so the parent contributes only R and must be homozygous RR. The genotype is therefore YyRR.",
+    "choice_feedback": [
+      "Correct — ½ yellow : ½ green shows Yy; all round despite the rr tester shows RR — so YyRR.",
+      "Incorrect — this maps the ratios to the wrong genes.",
+      "Incorrect — YyRr would give some wrinkled offspring, but all were round.",
+      "Incorrect — YYRR would give all yellow, but offspring were ½ green."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/12-2-characteristics-and-traits",
     "source_location": "Ch. 12.2 Characteristics and Traits (testcross); Ch. 12.3",
@@ -5033,6 +5963,12 @@
       null
     ],
     "explanation": "Counting only substrate-level phosphorylation: glycolysis nets 2 ATP, pyruvate→acetyl-CoA yields none, and the citric acid cycle makes 1 GTP/ATP per acetyl-CoA × 2 = 2, for a total of 4. The 30–36 figures include oxidative phosphorylation, which is excluded here.",
+    "choice_feedback": [
+      "Incorrect — 2 counts only glycolysis; the two TCA turns add 2 more GTP.",
+      "Correct — substrate-level only: 2 (glycolysis) + 0 (pyruvate→acetyl-CoA) + 2 (TCA) = 4.",
+      "Incorrect — ~36 includes oxidative phosphorylation, which is excluded here.",
+      "Incorrect — 30 also includes oxidative phosphorylation, not counted here."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/7-3-oxidation-of-pyruvate-and-the-citric-acid-cycle",
     "source_location": "Ch. 7.2 Glycolysis; Ch. 7.3 Citric Acid Cycle",
@@ -5068,6 +6004,12 @@
       }
     ],
     "explanation": "The cell interior (300 mOsm) is hypertonic to the 100 mOsm surroundings, so water moves osmotically into the cell, causing it to swell and potentially lyse. The membrane is not freely permeable to the solutes, so they do not simply diffuse out.",
+    "choice_feedback": [
+      "Incorrect — this reverses osmosis; the cell interior is hypertonic, so water enters.",
+      "Correct — the 300 mOsm interior is hypertonic to the 100 mOsm bath, so water enters and the cell may lyse.",
+      "Incorrect — 300 vs 100 mOsm are not equal, so the solutions aren't isotonic.",
+      "Incorrect — water (not solute) crosses; the membrane isn't freely permeable to the solutes."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/5-1-components-and-structure",
     "source_location": "Ch. 5.2 Passive Transport (osmosis, tonicity)",
@@ -5103,6 +6045,12 @@
       }
     ],
     "explanation": "Pairing antiparallel and complementary (A–T, G–C), the complement of 3′-ATGCCT-5′ read in the conventional 5′→3′ direction is 5′-TCCGTA-3′. DNA uses thymine, not uracil, ruling out the U-containing option.",
+    "choice_feedback": [
+      "Correct — the antiparallel complement of 5′-TACGGA-3′, written 5′→3′, is 5′-TCCGTA-3′.",
+      "Incorrect — this is the base complement but written in the wrong (3′→5′) orientation.",
+      "Incorrect — this just copies the template rather than pairing complementary bases.",
+      "Incorrect — DNA uses thymine, not uracil."
+    ],
     "source_name": "OpenStax Biology 2e",
     "source_url": "https://openstax.org/books/biology-2e/pages/14-3-basics-of-dna-replication",
     "source_location": "Ch. 14.2 DNA Structure (base pairing, antiparallel strands)",
@@ -5135,6 +6083,12 @@
       }
     ],
     "explanation": "Spontaneity requires ΔG = ΔH − TΔS < 0, i.e., T > ΔH/ΔS. With ΔH = 50,000 J/mol and ΔS = 150 J/(mol·K), T > 50,000/150 ≈ 333 K.",
+    "choice_feedback": [
+      "Correct — T > ΔH/ΔS = 50,000/150 ≈ 333 K.",
+      "Incorrect — this fails to convert ΔH to joules (a unit error).",
+      "Incorrect — 3.0 K comes from mishandling the exponents/units.",
+      "Incorrect — with ΔS>0 the TΔS term wins at high T, so it does become spontaneous."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/16-4-free-energy",
     "source_location": "Ch. 16.4 Free Energy (ΔG=ΔH−TΔS; temperature dependence)",
@@ -5170,6 +6124,12 @@
       }
     ],
     "explanation": "Comparing Exp 1→2, doubling [A] doubles the rate → first order in A. Comparing Exp 1→3, doubling [B] quadruples the rate → second order in B. So rate = k[A][B]².",
+    "choice_feedback": [
+      "Correct — doubling [A] doubles rate (1st order in A); doubling [B] quadruples it (2nd order in B), so rate = k[A][B]².",
+      "Incorrect — this transposes the orders; A is first order and B is second.",
+      "Incorrect — B is second order (rate ×4 when [B] doubles), not first.",
+      "Incorrect — A is first order (rate ×2 when [A] doubles), not second."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 12.3 Rate Laws (method of initial rates)",
@@ -5205,6 +6165,12 @@
       }
     ],
     "explanation": "ΔG governs thermodynamic favorability, not speed. A very negative ΔG with a high activation energy means the reaction is spontaneous yet kinetically slow; a catalyst would speed it by lowering Ea, not by changing ΔG.",
+    "choice_feedback": [
+      "Incorrect — slow doesn't mean nonspontaneous; ΔG is truly −100 kJ/mol.",
+      "Correct — a very negative ΔG with a high activation energy is spontaneous yet kinetically slow.",
+      "Incorrect — slow isn't the same as being at equilibrium.",
+      "Incorrect — a catalyst lowers Ea, not ΔG."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
     "source_location": "Ch. 16.4 Free Energy; Ch. 12.5 Collision Theory / 12.7 Catalysis",
@@ -5240,6 +6206,12 @@
       }
     ],
     "explanation": "By continuity, halving the area doubles the speed (A₁v₁ = A₂v₂). By Bernoulli's equation at constant height, the faster-moving fluid in the narrow section has lower pressure.",
+    "choice_feedback": [
+      "Correct — halving the area doubles the speed (continuity); faster flow means lower pressure (Bernoulli).",
+      "Incorrect — narrowing speeds the flow, not slows it.",
+      "Incorrect — speed doubling is right, but faster flow lowers pressure, not raises it.",
+      "Incorrect — speed does change; halving the area doubles it."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity; Ch. 12.2 Bernoulli's Equation",
@@ -5272,6 +6244,12 @@
       null
     ],
     "explanation": "By continuity A₁v₁ = A₂v₂: v₂ = (6.0 cm² × 2.0 m/s)/2.0 cm² = 6.0 m/s.",
+    "choice_feedback": [
+      "Correct — v₂ = A₁v₁/A₂ = (6.0 × 2.0)/2.0 = 6.0 m/s.",
+      "Incorrect — this inverts the area ratio.",
+      "Incorrect — speed changes when the area changes; it isn't unchanged.",
+      "Incorrect — 18 m/s misapplies the area ratio."
+    ],
     "source_name": "OpenStax College Physics",
     "source_url": "https://openstax.org/books/college-physics/pages/12-2-bernoullis-equation",
     "source_location": "Ch. 12.1 Flow Rate and Continuity",
@@ -5307,6 +6285,12 @@
       }
     ],
     "explanation": "At equal concentration the strong acid HCl ionizes completely to give the full [H⁺], whereas weak acetic acid only partially ionizes. HCl therefore has the higher [H⁺] and the lower pH.",
+    "choice_feedback": [
+      "Incorrect — equal concentration doesn't give equal pH when ionization differs.",
+      "Correct — HCl ionizes completely, giving higher [H⁺] and the lower pH.",
+      "Incorrect — acetic acid is the weaker acid, so it has the higher pH.",
+      "Incorrect — acids aren't pH-neutral."
+    ],
     "source_name": "OpenStax Chemistry 2e",
     "source_url": "https://openstax.org/books/chemistry-2e/pages/14-2-bronsted-lowry-acids-and-bases",
     "source_location": "Ch. 14.3 pH and pOH; Ch. 14.2 (strong vs weak acids)",
@@ -5342,6 +6326,12 @@
       }
     ],
     "explanation": "Reinforcement after an unpredictable number of responses is a variable-ratio schedule, which produces high, steady response rates that resist extinction — exactly the gambling pattern described.",
+    "choice_feedback": [
+      "Incorrect — a slot machine is response-based (ratio), not time-based (interval).",
+      "Correct — payout after an unpredictable number of plays is a variable-ratio schedule.",
+      "Incorrect — this is a reinforcement schedule, not negative reinforcement.",
+      "Incorrect — the payout count is unpredictable (variable), not fixed."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning (reinforcement schedules)",
@@ -5377,6 +6367,12 @@
       }
     ],
     "explanation": "The behavior (taking aspirin) increases because it removes an aversive stimulus (the headache). Removing something unpleasant to strengthen a behavior is negative reinforcement, not positive reinforcement or punishment.",
+    "choice_feedback": [
+      "Incorrect — no pleasant stimulus is added; an aversive one (the headache) is removed.",
+      "Correct — removing the aversive headache strengthens the behavior — negative reinforcement.",
+      "Incorrect — the behavior increases, so it's reinforcement, not punishment.",
+      "Incorrect — nothing pleasant is taken away; this is negative reinforcement."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/6-1-what-is-learning",
     "source_location": "Ch. 6.3 Operant Conditioning",
@@ -5406,6 +6402,12 @@
       null
     ],
     "explanation": "Judging the classmate's stumble as 'clumsy' (a dispositional cause) is the fundamental attribution error. Blaming the floor for one's own stumble while attributing others' to disposition is the actor–observer bias.",
+    "choice_feedback": [
+      "Correct — judging another as clumsy is the fundamental attribution error; blaming the floor for one's own trip is the actor–observer bias.",
+      "Incorrect — this reverses the two biases.",
+      "Incorrect — neither the just-world hypothesis nor conformity fits these attribution judgments.",
+      "Incorrect — the bystander effect and obedience don't describe these attributions."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.1 What Is Social Psychology? (attribution)",
@@ -5438,6 +6440,12 @@
       }
     ],
     "explanation": "The smoker holds conflicting cognitions (valuing health yet smoking) and eases the discomfort by changing a belief ('the risks are exaggerated'). Resolving that tension by altering a cognition is reduction of cognitive dissonance.",
+    "choice_feedback": [
+      "Correct — resolving conflicting cognitions by changing a belief is reduction of cognitive dissonance.",
+      "Incorrect — this is attitude change, not associative (classical) learning.",
+      "Incorrect — the bystander effect is unrelated to belief change.",
+      "Incorrect — this is a cognitive process, not operant reinforcement."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/12-2-self-presentation",
     "source_location": "Ch. 12.3 Attitudes and Persuasion (cognitive dissonance)",
@@ -5473,6 +6481,12 @@
       }
     ],
     "explanation": "Recall is best when the test environment matches the study environment and reverses when it does not — the encoding-specificity / context-dependent memory effect, not interference or chunking.",
+    "choice_feedback": [
+      "Incorrect — this is about matching context, not list position.",
+      "Correct — recall best when the test context matches the study context is context-dependent (encoding-specificity) memory.",
+      "Incorrect — proactive interference is competing memories, not context matching.",
+      "Incorrect — chunking is an encoding strategy, not a retrieval-context effect."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/8-1-how-memory-functions",
     "source_location": "Ch. 8.3 Ways to Enhance Memory (context-dependent memory)",
@@ -5508,6 +6522,12 @@
       }
     ],
     "explanation": "Mortality falls at each step up the income quintiles, not just for the poorest — the hallmark of a social gradient in health. It implies SES is systematically related to health across the whole distribution, not randomly or only at a threshold.",
+    "choice_feedback": [
+      "Correct — mortality falls at each income step, the hallmark of a social gradient in health.",
+      "Incorrect — the data show a clear monotonic pattern, not randomness.",
+      "Incorrect — risk falls at every step, not only at the very bottom.",
+      "Incorrect — a social-gradient pattern reflects social determinants, not genetics alone."
+    ],
     "source_name": "OpenStax Psychology 2e",
     "source_url": "https://openstax.org/books/psychology-2e/pages/14-3-stress-and-illness",
     "source_location": "Ch. 14.3 Stress and Illness (SES, social determinants)",
