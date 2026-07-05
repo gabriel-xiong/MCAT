@@ -40,7 +40,7 @@ Off" header pill and a graceful offline fallback.
 | MCAT | `.env.example` | **modified** | `MCAT_AI_PROXY_URL` / `MCAT_AI_PROXY_TOKEN` docs |
 | MCAT | `Makefile` | **modified** (shared*) | `test-ai-proxy`, `proxy-mock` targets |
 | MCAT | `docs/AI-PROXY-SETUP.md` | untracked (new) | ~10-min deploy runbook (spend cap first) |
-| MCAT | `docs/DECISIONS.md` | **modified** (shared*) | §31 "Hosted AI proxy — keyless live AI" |
+| MCAT | `docs/DECISIONS.md` | **modified** (shared*) | §32 "Hosted AI proxy — keyless live AI" |
 | anki-MCAT | `qt/aqt/mcat/ai_bridge.py` | **modified** | `ai_provider_configured()` (network-free config check) |
 | anki-MCAT | `qt/aqt/mcat/performance_dialog.py` | **modified** | honest pill/status + key-agnostic copy |
 

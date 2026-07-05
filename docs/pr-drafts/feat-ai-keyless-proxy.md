@@ -36,7 +36,7 @@ claiming "On" while the panel said "not configured."
 - `Makefile` — `test-ai-proxy` and `proxy-mock` targets. *(Shared file.)*
 - `docs/AI-PROXY-SETUP.md` — ~10-min deploy runbook (**hard spend cap first**,
   throwaway/scoped key, deploy, paste URL+token, `/health` check).
-- `docs/DECISIONS.md` §31 "Hosted AI proxy — keyless live AI." *(Shared file.)*
+- `docs/DECISIONS.md` §32 "Hosted AI proxy — keyless live AI." *(Shared file.)*
 
 **MCAT (tests)**
 - `proxy/test_mcat_ai_proxy.py` — 12 proxy-server tests: token (constant-time),
