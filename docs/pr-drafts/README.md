@@ -5,10 +5,13 @@ recently-committed work as **clean, feature-scoped branches + PRs**, so the
 Speedrun grader sees a real engineering workflow (feature branches → PRs → green
 CI) instead of one monolithic dump.
 
-> **Status of this doc:** written by the "engineering-workflow" pass. It is
-> **documentation only** — no branches were created, nothing was committed, no
-> git write/stash ran. The branches below are a *plan* to execute later, by hand
-> or with the reference commands in `docs/FINAL-SUBMISSION-PLAN.md §5`.
+> **Status of this doc (updated 2026-07-05):** originally written by the
+> "engineering-workflow" pass as a *plan*. The 8 feature branches below have
+> since been **created and committed** locally (each = its baseline + its
+> commit(s), 0 behind), but **nothing is pushed** (`MCAT` still has no remote) —
+> so the descriptions below remain the ready-to-paste PR bodies and the push /
+> remote-auth setup in `docs/FINAL-SUBMISSION-PLAN.md §5` is still pending. The
+> verified branch → commit map is in `SUBMISSION-READINESS-AUDIT.md §6`.
 
 The decomposition is grounded in a **read-only** inspection of all three repos on
 2026-07-04 (`git status`, `git diff --stat`, `git log`, `git ls-files`). It spans
