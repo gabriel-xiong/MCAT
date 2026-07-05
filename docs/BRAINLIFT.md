@@ -1,5 +1,8 @@
 # BrainLift — MCAT Speedrun (one page)
 
+> **Grader verification:** see [`HOW-TO-VERIFY.md`](HOW-TO-VERIFY.md) — one-page
+> claim → evidence table, 5-minute `make ci-local` path, and explicit GAPS.
+
 **Thesis:** MCAT prep tools confuse *recall* with *exam performance*. Students
 overestimate how well they know material and cannot reliably say *why* they missed
 a question. MCAT Speedrun separates the two jobs — flashcard memory vs curated

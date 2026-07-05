@@ -1,0 +1,97 @@
+{
+  "mode": "collection",
+  "param_source": "FSRS-6 DEFAULT_PARAMETERS (no deck_config table) -- WARNING: not the collection's optimised weights; calibration reflects defaults",
+  "train_ratio": 0.7,
+  "n_train": 94,
+  "n_test": 38,
+  "n_total_affecting": 135,
+  "brier": 0.0028251883218884384,
+  "log_loss": 0.05461723426256233,
+  "ece": 0.0531525006174538,
+  "mean_predicted": 0.9468474993825462,
+  "mean_observed": 1.0,
+  "bins": [
+    {
+      "lo": 0.0,
+      "hi": 0.1,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.2,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.3,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.3,
+      "hi": 0.4,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.4,
+      "hi": 0.5,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.5,
+      "hi": 0.6,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.6,
+      "hi": 0.7,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.7,
+      "hi": 0.8,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.8,
+      "hi": 0.9,
+      "n": 0,
+      "mean_pred": null,
+      "obs_recall": null
+    },
+    {
+      "lo": 0.9,
+      "hi": 1.0,
+      "n": 38,
+      "mean_pred": 0.9468474993825462,
+      "obs_recall": 1.0
+    }
+  ],
+  "recall_definition": "ease >= 2 (any button that is not 'Again')",
+  "predicted_R_definition": "FSRS power-forgetting curve at days-elapsed since prior review",
+  "label": "REAL n=1 participant alt (NOT synthetic)",
+  "is_real_data": true,
+  "synthetic": false,
+  "participant": "alt",
+  "n_participants": 1,
+  "source_bundle": "out/tester-data/MCAT-data_alt_2026-07-05.perf_bundle.json",
+  "bundle_exported_at_unix": 1783279964,
+  "bundle_exported_at_iso": "2026-07-05T19:32:44+00:00",
+  "memory_revlog_rows": 135,
+  "honesty_note": "Only 135 graded reviews (<200); strict Memory score would be WITHHELD per scoring-config. FSRS uses default parameters (not collection-tuned weights)."
+}

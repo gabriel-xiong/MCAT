@@ -1,5 +1,9 @@
 # MCAT Speedrun — SUBMISSION-READINESS AUDIT
 
+> **Start here for grading:** [`HOW-TO-VERIFY.md`](HOW-TO-VERIFY.md) consolidates
+> this audit into a single claim → evidence table with Pass/Fail/Gap status and a
+> 5-minute verifier path (`make ci-local`, artifact JSONs).
+
 _Authored 2026-07-05 (overnight hardening pass). Read-only audit of the actual
 repos + a fresh green re-verification. Maps every **grader ask** and every **core
 product claim** to concrete evidence, flags gaps/weak spots, and ends with a

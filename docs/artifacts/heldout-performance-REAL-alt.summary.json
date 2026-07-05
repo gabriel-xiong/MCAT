@@ -1,0 +1,42 @@
+{
+  "artifact": "heldout_performance_real_alt",
+  "label": "REAL n=1 participant alt (NOT synthetic)",
+  "is_real_data": true,
+  "synthetic": false,
+  "participant": "alt",
+  "n_participants": 1,
+  "source_bundle": "out/tester-data/MCAT-data_alt_2026-07-05.perf_bundle.json",
+  "bundle_exported_at_iso": "2026-07-05T19:32:44+00:00",
+  "eval_split_target": "held_out",
+  "scorable": false,
+  "real_scorer": "scripts/score_heldout.py (score + wilson_ci)",
+  "why_not_scored": "Bundle contains 37 in-app performance attempts, all mapped to split=dev in data/questions.json; 0 attempts on held_out items. score_heldout.py / pool_heldout.py require a frozen held_out answer sheet (letter per qid), not the perf_bundle attempt log.",
+  "bundle_question_inventory": {
+    "questions_in_bundle": 62,
+    "dev_in_bundle": 11,
+    "held_out_in_bundle": 51
+  },
+  "attempt_split_breakdown": {
+    "dev": 37
+  },
+  "dev_practice_only": {
+    "n_attempts": 37,
+    "n_correct": 27,
+    "accuracy": 0.7297,
+    "note": "Dev practice accuracy is NOT held-out performance; do not report as Sunday headline metric."
+  },
+  "held_out_metrics": null,
+  "coverage": {
+    "answered_held_out_attempts": 0,
+    "n_held_out_questions_in_bank": 105,
+    "attempt_coverage_pct": 0.0,
+    "strict_attempt_gate_pass": false
+  },
+  "pipelines_not_run": {
+    "pool_heldout.py": "No heldout-answers_*.json answer sheet for participant alt.",
+    "score_heldout.py": "Same \u2014 needs volunteer answer sheet on frozen held_out set.",
+    "eval_paraphrase.py": "Instrument pairs dev + held_out rewordings; alt has 10/41 manifest dev-side hits but 0 held_out paraphrase attempts and no --recall JSON export in bundle."
+  },
+  "missing_data_note": "Real tester alt exported revlog + dev performance sessions only. Independent held_out scoring needs a separate answer sheet return.",
+  "single_next_action": "Send participant alt the blank held_out template (py -3.12 scripts/score_heldout.py --make-template ...) and pool with py -3.12 scripts/pool_heldout.py build/heldout-answers_alt.json --summary-json docs/artifacts/heldout-performance-REAL-alt.summary.json"
+}

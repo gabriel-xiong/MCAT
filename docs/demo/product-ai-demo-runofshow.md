@@ -14,7 +14,10 @@ the miss reveals the three scores, the error-typing, the AI tutor + its offline
 fallback, and the observability — sync is one short beat near the end.
 
 **Setup before recording**
-- Graded (strict) build installed; deck preloaded; dashboard visible.
+- **Graded MSI installed** (`MCAT-Speedrun-graded.msi`) — not a from-source `./run` build.
+- Open the seeded folder and double-click **`Start MCAT Speedrun.cmd`** (preloaded deck,
+  strict profile, auto-sync off). See `docs/GRADED-QUICKSTART.md`.
+- Dashboard visible on MCAT home screen.
 - AI proxy deployed so the pill reads **"AI: On"** (have the offline-fallback path
   ready to show too — know how to toggle it).
 - A known science question the demo account will **miss** (rehearse the exact wrong
@@ -47,11 +50,14 @@ performance mode. Move quickly.
 > unlocks for a topic after you've actually studied it — at least three cards seen
 > and five rated Good or Easy — except **CARS**, which is reasoning-only, so it has
 > no flashcard gate. That's the surface from the MVP; the interesting part is what
-> happens when you *miss*."
+> happens when you *miss* — and everything below is **post-MVP**."
 
 > Time-budget guard: if you're past ~1:30 here, stop talking and go to §2.
 
 ## 2. Three honest scores + abstention as a feature (1:30–3:00, ~1.5 min) — POST-MVP
+
+**MVP vs final callout:** MVP showed three score *slots*; final adds **coverage map**,
+**strict abstention** (graded profile), and **next-action card**. See `docs/MVP-TO-FINAL.md`.
 
 [DO] Open the three-score dashboard. Point to each score, the coverage bar, the
 "not enough data yet" states, and the single next-action card.
@@ -101,6 +107,9 @@ application-practice set.
 
 ## 4. AI Assistant — folds into the SAME miss (5:00–6:15, ~1.25 min) — POST-MVP
 
+**MVP vs final callout:** AI was not in Wednesday MVP; final adds proxy + baselines +
+offline fallback. Memory *score* fix (maturity basis) is dashboard-only — mention in §2.
+
 [DO] On the same wrong choice, open the ✨ Assistant. Show the per-choice
 explanation + source citation. Point at the "AI: On" pill. Then toggle AI off (or
 note an unreachable proxy) and show the identical source-grounded static answer.
@@ -123,30 +132,29 @@ note an unreachable proxy) and show the identical source-grounded static answer.
 > for the baselines. That's in `QA-BASELINE-COMPARISON.md`, with the small-n caveats
 > stated."
 
-## 5. Observability / honesty instrumentation (6:15–6:45, ~0.5 min) — POST-MVP
+## 5. Observability / export (6:15–6:45, ~0.5 min) — POST-MVP
 
-[DO] Show the local sidecar export / calibration export briefly (a file or the
-export action), then gesture toward the CI/PR tabs.
-
-[SAY]
-> "Underneath, every attempt logs a full feature vector to a **local** sidecar — no
-> telemetry, no network, and **no AI in the scoring path at runtime.** The read-only
-> export and the probe-labeled calibration export are exactly what feeds the eval
-> you'll see next. And the whole thing ships as real engineering — feature branches,
-> pull requests, and a **green CI check** — which I'll hand to the results demo."
-
-## 6. Sync — a SHORT beat, not the show (6:45–7:15, ~0.5 min)
-
-[DO] 30–45s max. Phone review → desktop reflects it. One sentence on the bundle.
-Do **not** demo edge cases.
+[DO] **Tools → MCAT: Export performance data** (or bundle export). Show JSON sidecar
+briefly; mention `make ci-local` + `docs/HOW-TO-VERIFY.md` for graders.
 
 [SAY]
-> "Sync, briefly: I review on the phone, and the desktop reflects it — memory rides
-> **stock Anki sync**, and the MCAT performance data moves in a portable
-> **export/import bundle** that merges append-only and de-duplicates by UUID. That's
-> it — moving on."
+> "Underneath, every attempt logs to a **local** sidecar — no telemetry, no AI in the
+> scoring path. This export is what feeds the eval artifacts — held-out scorer,
+> leakage check, memory calibration. Proof packet is one page: **`HOW-TO-VERIFY.md`**."
 
-## 7. Close on honesty (7:15–8:00, ~0.75 min)
+## 6. Sync — OPTIONAL addendum (skip in main demo)
+
+**Do not dwell on sync in the 6–8 min cut.** If you recorded sync separately, use
+`docs/SYNC-DEMO-SCRIPT.md` (~4 min). Otherwise one sentence:
+
+[SAY]
+> "Memory sync is stock Anki; performance data uses a uuid-deduped bundle. The merge
+> rule is written in `SYNC-CONFLICT-RULE.md` — we did not capture a two-device
+> recording for this submission."
+
+[DO] Skip unless you have a clip ready.
+
+## 7. Close on honesty (6:45–8:00, ~0.75 min)
 
 [DO] Back to the dashboard.
 
@@ -161,9 +169,9 @@ Do **not** demo edge cases.
 ---
 
 ## Cut list (if running long, drop in this order)
-1. Sync beat (§6) → compress to the single sentence above.
-2. Observability (§5) → fold its one line into the close.
-3. Product basics (§1) → compress to ~30s (one review, one mode-switch, no gate detail).
+1. Sync mention (§6) — already skipped by default.
+2. Observability (§5) — fold its one line into the close.
+3. Product basics (§1) — compress to ~30s (one review, one mode-switch, no gate detail).
 
 ## Do-not-do (honesty guardrails)
 - Never blend the three scores or show a bare readiness number.
