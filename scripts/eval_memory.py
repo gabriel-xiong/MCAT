@@ -1075,6 +1075,15 @@ def main(argv: list[str] | None = None) -> int:
         "recall_definition": "ease >= 2 (any button that is not 'Again')",
         "predicted_R_definition": "FSRS power-forgetting curve at days-elapsed since prior review",
     }
+    if args.synthetic:
+        summary["missing_data_note"] = (
+            "Synthetic revlog with injected miscalibration (gamma=1.35); "
+            "not a builder's real review history."
+        )
+        summary["next_action"] = (
+            "Replace with real collection revlog: "
+            "make eval-memory MCAT_COLLECTION=/path/to/collection.anki2"
+        )
     json_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     print(f"\n{chart_note}")

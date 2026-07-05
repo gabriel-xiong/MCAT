@@ -51,6 +51,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 MANIFEST = DATA / "paraphrase-test.json"
+DEFAULT_SUMMARY = ROOT / "docs" / "artifacts" / "paraphrase-gap.summary.json"
 
 # Report uses § and — ; force UTF-8 so it renders on a Windows cp1252 console.
 try:
@@ -140,7 +141,7 @@ def _mean(xs: list[float]) -> float:
     return sum(xs) / len(xs) if xs else float("nan")
 
 
-def report(result: dict, source: str) -> None:
+def report(result: dict, source: str) -> dict[str, object]:
     rows = result["rows"]
     scored = [r for r in rows if r["_gap"] is not None]
     skipped = [r for r in rows if r["_gap"] is None]
@@ -194,15 +195,54 @@ def report(result: dict, source: str) -> None:
         ids = ", ".join(r["concept"] for r in skipped)
         print(f"  note: {len(skipped)} concept(s) lacked recall/attempt data: {ids}")
 
+    verdict_text = ""
+    if scored:
+        if g >= 0.15:
+            verdict_text = ("LARGE gap: recall outstrips transfer — the performance "
+                            "score is NOT just parroting memory.")
+        elif g >= 0.05:
+            verdict_text = ("MODERATE gap: some transfer loss between memorized cards "
+                            "and reworded questions.")
+        else:
+            verdict_text = ("SMALL gap: question accuracy tracks recall closely — "
+                            "warn that performance may be echoing memory.")
+
+    return {
+        "n_manifest": len(rows),
+        "n_scored": len(scored),
+        "n_skipped": len(skipped),
+        "mean_recall": mr if scored else None,
+        "mean_question_accuracy": mq if scored else None,
+        "paraphrase_gap": g if scored else None,
+        "verdict": verdict_text,
+        "per_topic": [
+            {
+                "topic_id": t,
+                "n": len([r for r in scored if r["topic_id"] == t]),
+                "mean_recall": _mean([r["_recall"] for r in scored if r["topic_id"] == t]),
+                "mean_question_accuracy": _mean([r["_qacc"] for r in scored if r["topic_id"] == t]),
+                "paraphrase_gap": _mean([r["_gap"] for r in scored if r["topic_id"] == t]),
+            }
+            for t in sorted({r["topic_id"] for r in scored})
+        ],
+    }
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="§7d paraphrase-gap scorer")
     ap.add_argument("--manifest", type=Path, default=MANIFEST)
     ap.add_argument("--recall", type=Path, help="memory recall JSON")
     ap.add_argument("--attempts", type=Path, help="performance attempts JSON")
+    ap.add_argument(
+        "--summary-json",
+        type=Path,
+        default=DEFAULT_SUMMARY,
+        help="write machine-readable summary JSON",
+    )
     args = ap.parse_args()
 
     concepts = load_manifest(args.manifest)
+    synthetic = not (args.recall and args.attempts)
 
     if args.recall and args.attempts:
         recall = coerce_recall(json.loads(args.recall.read_text(encoding="utf-8")))
@@ -218,7 +258,30 @@ def main() -> int:
         source = "synthetic demo — deterministic, no real user data yet"
 
     result = score(concepts, recall, attempts)
-    report(result, source)
+    agg = report(result, source)
+
+    summary = {
+        "artifact": "paraphrase_gap",
+        "mode": "synthetic" if synthetic else "real",
+        "is_real_data": not synthetic,
+        "source": source,
+        **agg,
+        "missing_data_note": (
+            "Recall and attempt rates are deterministic demo signals derived from "
+            "the manifest; no real user recall/performance sessions yet."
+            if synthetic else
+            "Real recall + performance attempt files supplied."
+        ),
+        "next_action": (
+            "Replace with real per-concept recall JSON + held_out attempts: "
+            "py -3.12 scripts/eval_paraphrase.py --recall R.json --attempts A.json"
+            if synthetic else
+            "Collect more concepts / widen the eval trio for stronger n."
+        ),
+    }
+    args.summary_json.parent.mkdir(parents=True, exist_ok=True)
+    args.summary_json.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print(f"\nsummary JSON: {args.summary_json}")
     return 0
 
 

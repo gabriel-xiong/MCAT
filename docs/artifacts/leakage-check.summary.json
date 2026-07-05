@@ -1,0 +1,15 @@
+{
+  "artifact": "leakage_check",
+  "timestamp_utc": "2026-07-05T17:25:27.593597+00:00",
+  "pass": true,
+  "n_dev": 65,
+  "n_held_out": 105,
+  "n_paraphrase_pairs_checked": 28,
+  "max_paraphrase_pair_jaccard": 0.5625,
+  "paraphrase_max_jaccard_threshold": 0.7,
+  "pool_near_dup_jaccard_threshold": 0.6,
+  "n_issues": 0,
+  "issues": [],
+  "missing_data_note": "Static bank scan only; does not prove runtime session leakage.",
+  "next_action": "Re-run after any new questions enter the bank: make eval-leakage"
+}

@@ -16,10 +16,12 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+DEFAULT_SUMMARY = ROOT / "docs" / "artifacts" / "leakage-check.summary.json"
 
 # Jaccard token-overlap at or above this ratio flags a near-duplicate stem.
 NEAR_DUP_JACCARD = 0.60
@@ -99,7 +101,7 @@ def check_pool_vs_questions(questions: list[dict]) -> list[str]:
     return leaks
 
 
-def check_paraphrase_pairs(questions: list[dict]) -> list[str]:
+def check_paraphrase_pairs(questions: list[dict]) -> tuple[list[str], float, int]:
     """Confirm each §7d paraphrase pair is genuinely reworded: the two linked
     stems must not be exact/substring duplicates and must fall below the
     near-identical token-overlap threshold. (This is the opposite intent from
@@ -107,7 +109,7 @@ def check_paraphrase_pairs(questions: list[dict]) -> list[str]:
     manifest = DATA / "paraphrase-test.json"
     if not manifest.exists():
         print("No paraphrase-test.json — skipping paraphrase-pair check")
-        return []
+        return [], 0.0, 0
 
     doc = json.loads(manifest.read_text(encoding="utf-8"))
     rows = doc.get("concepts") if isinstance(doc, dict) else doc
@@ -141,32 +143,70 @@ def check_paraphrase_pairs(questions: list[dict]) -> list[str]:
         f"paraphrase pairs: {checked} checked, max stem jaccard={max_j:.2f} "
         f"(threshold {PARAPHRASE_MAX_JACCARD})"
     )
-    return leaks
+    return leaks, max_j, checked
 
 
 def main() -> int:
+    import argparse
+
+    ap = argparse.ArgumentParser(description="Scan for question leakage")
+    ap.add_argument(
+        "--summary-json",
+        type=Path,
+        default=DEFAULT_SUMMARY,
+        help="write machine-readable pass/fail summary (default: docs/artifacts/leakage-check.summary.json)",
+    )
+    args = ap.parse_args()
+
     path = DATA / "questions.json"
     if not path.exists():
         print("No questions.json — nothing to scan")
         return 0
 
     questions = json.loads(path.read_text(encoding="utf-8"))
+    n_dev = sum(1 for q in questions if q.get("split") == "dev")
+    n_held = sum(1 for q in questions if q.get("split") == "held_out")
 
     leaks = check_dev_vs_held(questions)
     leaks.extend(check_pool_vs_questions(questions))
-    leaks.extend(check_paraphrase_pairs(questions))
+    pair_leaks, max_paraphrase_j, n_pairs = check_paraphrase_pairs(questions)
+    leaks.extend(pair_leaks)
 
+    passed = not leaks
     if leaks:
         print("Leakage check FAILED:")
         for line in leaks:
             print(f"  - {line}")
-        return 1
+    else:
+        print(
+            "Leakage check OK (dev/held_out exact/substring; "
+            f"pool exact/substring + jaccard<{NEAR_DUP_JACCARD})"
+        )
 
-    print(
-        "Leakage check OK (dev/held_out exact/substring; "
-        f"pool exact/substring + jaccard<{NEAR_DUP_JACCARD})"
-    )
-    return 0
+    summary = {
+        "artifact": "leakage_check",
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "pass": passed,
+        "n_dev": n_dev,
+        "n_held_out": n_held,
+        "n_paraphrase_pairs_checked": n_pairs,
+        "max_paraphrase_pair_jaccard": round(max_paraphrase_j, 4),
+        "paraphrase_max_jaccard_threshold": PARAPHRASE_MAX_JACCARD,
+        "pool_near_dup_jaccard_threshold": NEAR_DUP_JACCARD,
+        "n_issues": len(leaks),
+        "issues": leaks,
+        "missing_data_note": (
+            "Static bank scan only; does not prove runtime session leakage."
+        ),
+        "next_action": (
+            "Re-run after any new questions enter the bank: make eval-leakage"
+        ),
+    }
+    args.summary_json.parent.mkdir(parents=True, exist_ok=True)
+    args.summary_json.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    print(f"summary JSON: {args.summary_json}")
+
+    return 0 if passed else 1
 
 
 if __name__ == "__main__":

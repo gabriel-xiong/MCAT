@@ -83,5 +83,7 @@
     }
   ],
   "recall_definition": "ease >= 2 (any button that is not 'Again')",
-  "predicted_R_definition": "FSRS power-forgetting curve at days-elapsed since prior review"
+  "predicted_R_definition": "FSRS power-forgetting curve at days-elapsed since prior review",
+  "missing_data_note": "Synthetic revlog with injected miscalibration (gamma=1.35); not a builder's real review history.",
+  "next_action": "Replace with real collection revlog: make eval-memory MCAT_COLLECTION=/path/to/collection.anki2"
 }

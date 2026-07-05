@@ -2,13 +2,13 @@
 
 
 
-.PHONY: bench eval-memory eval-performance eval-leakage eval-ai eval-ai-live eval-qa-goldset eval-qa-goldset-live eval-qa-goldset-judge eval-qa-baseline study test validate-data sync-curation help
+.PHONY: bench eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic eval-leakage eval-ai eval-ai-live eval-qa-goldset eval-qa-goldset-live eval-qa-goldset-judge eval-qa-baseline study test test-eval-step2 eval-all-synthetic validate-data sync-curation help
 
 
 
 help:
 
-	@echo "Targets: validate-data, sync-curation, eval-leakage, bench, eval-memory, eval-performance, study, eval-ai, eval-ai-live, eval-qa-goldset, eval-qa-goldset-live, eval-qa-goldset-judge, eval-qa-baseline, test"
+	@echo "Targets: validate-data, sync-curation, eval-leakage, bench, eval-memory, eval-performance, eval-heldout-synthetic, eval-step2-synthetic, eval-all-synthetic, study, eval-ai, eval-ai-live, eval-qa-goldset, eval-qa-goldset-live, eval-qa-goldset-judge, eval-qa-baseline, test, test-eval-step2"
 
 
 
@@ -56,6 +56,19 @@ eval-memory:
 eval-performance:
 
 	py -3.12 scripts/eval_paraphrase.py
+
+# Synthetic held-out performance: 3-tester sheets + pooled summary (PIPELINE DEMO).
+eval-heldout-synthetic:
+	py -3.12 scripts/gen_synthetic_heldout.py
+	py -3.12 scripts/pool_heldout.py build/heldout-SYNTHETIC_tester*.json --summary-json docs/artifacts/heldout-performance-SYNTHETIC.summary.json
+
+# Step 2: predict held-out correctness from mastery/difficulty/timing/coverage (SYNTHETIC).
+eval-step2-synthetic:
+	py -3.12 scripts/eval_step2_prediction.py
+
+# Full synthetic eval battery (no credentials, no network).
+eval-all-synthetic: validate-data eval-leakage eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic study eval-ai
+	@echo "Synthetic eval battery complete — see docs/artifacts/ and docs/SUBMISSION-RESULTS.md"
 
 
 
@@ -118,6 +131,10 @@ eval-qa-goldset-judge:
 test:
 
 	py -3.12 -m unittest scripts.test_ai_explain_live scripts.test_ai_qa scripts.test_ai_judge -v
+
+test-eval-step2:
+
+	py -3.12 -m unittest scripts.test_eval_step2_prediction -v
 
 smoke-ai-qa:
 

@@ -1,0 +1,38 @@
+{
+  "artifact": "paraphrase_gap",
+  "mode": "synthetic",
+  "is_real_data": false,
+  "source": "synthetic demo \u2014 deterministic, no real user data yet",
+  "n_manifest": 28,
+  "n_scored": 28,
+  "n_skipped": 0,
+  "mean_recall": 0.8281071428571429,
+  "mean_question_accuracy": 0.6693035714285714,
+  "paraphrase_gap": 0.15880357142857143,
+  "verdict": "LARGE gap: recall outstrips transfer \u2014 the performance score is NOT just parroting memory.",
+  "per_topic": [
+    {
+      "topic_id": "bb_enzymes",
+      "n": 10,
+      "mean_recall": 0.8432000000000001,
+      "mean_question_accuracy": 0.67255,
+      "paraphrase_gap": 0.17065000000000002
+    },
+    {
+      "topic_id": "cp_acids_bases",
+      "n": 10,
+      "mean_recall": 0.8168,
+      "mean_question_accuracy": 0.6643,
+      "paraphrase_gap": 0.15250000000000002
+    },
+    {
+      "topic_id": "cp_kinetics",
+      "n": 8,
+      "mean_recall": 0.823375,
+      "mean_question_accuracy": 0.6715,
+      "paraphrase_gap": 0.15187499999999998
+    }
+  ],
+  "missing_data_note": "Recall and attempt rates are deterministic demo signals derived from the manifest; no real user recall/performance sessions yet.",
+  "next_action": "Replace with real per-concept recall JSON + held_out attempts: py -3.12 scripts/eval_paraphrase.py --recall R.json --attempts A.json"
+}
