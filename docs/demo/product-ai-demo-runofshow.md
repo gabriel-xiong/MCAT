@@ -1,8 +1,13 @@
-# Demo run-of-show — combined product + AI (~6–8 min)
+# Demo run-of-show — combined product + AI (~6–8 min, timed narration script)
 
 _Grader feedback baked in: **combine the product + AI demos** (they build on each
 other), keep the **product basics short**, spend most time on **features that
 changed since the MVP**, and **do not dwell on sync.**_
+
+**How to use this doc.** It is a **near-word-for-word script**. `[SAY]` blocks are
+the narration (read them almost verbatim; they're timed to fit). `[DO]` lines are
+the on-screen action for that beat. Total target **7:00**, hard cap **8:00**. If
+you fall behind, use the **Cut list** at the bottom.
 
 **One arc, not two demos.** Everything flows from a single performance-mode miss:
 the miss reveals the three scores, the error-typing, the AI tutor + its offline
@@ -10,103 +15,155 @@ fallback, and the observability — sync is one short beat near the end.
 
 **Setup before recording**
 - Graded (strict) build installed; deck preloaded; dashboard visible.
-- AI proxy deployed so the pill reads **"AI: On"** (have the offline-fallback
-  path ready to show too).
-- A known science question the demo account will **miss** (rehearse the choice).
-- Screen at legible zoom; hide secrets; `mcat-ai-proxy.json` has **no key**.
+- AI proxy deployed so the pill reads **"AI: On"** (have the offline-fallback path
+  ready to show too — know how to toggle it).
+- A known science question the demo account will **miss** (rehearse the exact wrong
+  choice so the miss is one confident click).
+- Screen at legible zoom; hide secrets; `mcat-ai-proxy.json` has **no key** visible.
 
 ---
 
 ## 0. Cold open — the one-sentence thesis (0:00–0:25)
 
-> "Anki tells you what you *remember*. It can't tell you if you're *exam-ready* —
-> and it never tells you *why* you missed. MCAT Speedrun adds three honest scores
-> and a why-you-missed loop on top of the engine you already use."
+[DO] Dashboard already on screen, static.
 
-Say the exam up front: **MCAT (472–528)**, prototype on ~15–25 topics — not a
-full prep course.
+[SAY]
+> "Anki tells you what you *remember*. It can't tell you whether you're *exam-ready*
+> — and it never tells you *why* you missed. MCAT Speedrun adds three honest scores
+> and a why-you-missed loop on top of the Anki engine you already use. The exam is
+> the **MCAT, scored 472 to 528**; this is a prototype on about **20 topics**, not a
+> full prep course."
 
 ## 1. Product basics — KEEP SHORT (0:25–1:30, ~1 min)
 
-Fast, don't linger (this is the MVP-era surface):
-- Two **separate** modes: **Memory** (normal Anki reviews) and **Performance**
-  (curated, topic-gated exam questions). One line each.
-- Topic gate in one breath: performance unlocks only after real reviews
-  (≥3 cards seen, ≥5 Good/Easy); **CARS** is performance-only.
-- Show a single memory review, then switch to performance mode. Move on.
+[DO] Point at the two mode entry points; do one flashcard review; switch to
+performance mode. Move quickly.
 
-> Time budget guard: if you're past ~1:30 here, cut to §2 — the basics are not
-> the story.
+[SAY]
+> "Two separate modes. **Memory** is just normal Anki spaced-repetition review —
+> here's one card. **Performance** is a separate session of curated, exam-style
+> multiple-choice questions from named sources. They're kept apart on purpose: I
+> never flip a flashcard and immediately quiz you on it. Performance mode only
+> unlocks for a topic after you've actually studied it — at least three cards seen
+> and five rated Good or Easy — except **CARS**, which is reasoning-only, so it has
+> no flashcard gate. That's the surface from the MVP; the interesting part is what
+> happens when you *miss*."
+
+> Time-budget guard: if you're past ~1:30 here, stop talking and go to §2.
 
 ## 2. Three honest scores + abstention as a feature (1:30–3:00, ~1.5 min) — POST-MVP
 
-- Open the **three-score dashboard**: **Memory / Performance / Readiness**,
-  shown **separately, never blended**.
-- Point at the **coverage bar** and the **"not enough data yet"** states — frame
-  abstention as **the honesty feature**: "It would rather withhold than show you
-  a flattering guess." Readiness shows a **472–528 range** with coverage % and
-  confidence, or it **abstains** — never a bare number.
-- Show the **single next-action** card (what to do next, not three vague scores).
-- One honest line: in the graded strict build, Memory abstains until a card
-  matures (~3 weeks) and Readiness abstains until its inputs justify a range —
-  **that's intended.**
+[DO] Open the three-score dashboard. Point to each score, the coverage bar, the
+"not enough data yet" states, and the single next-action card.
+
+[SAY]
+> "Here are the three scores, and this is the biggest change since the MVP. **Memory,
+> Performance, and Readiness — shown separately and never blended into one vanity
+> number.** Memory is FSRS recall from your reviews. Performance is accuracy on the
+> exam questions. Readiness is a mapped **472–528 range** with a coverage percentage
+> and a confidence band — *or it abstains.*
+>
+> Look at what it's doing right now: it's **withholding**. Memory says 'calibration
+> looks good but no card is mature yet.' Readiness says 'I don't have enough to give
+> you a range.' In the graded build that abstention is **intended** — Memory needs a
+> card to survive to a three-week interval, and Readiness won't invent precision from
+> immature memory and a self-graded split. **It would rather tell you what's missing
+> than show you a flattering guess.** And instead of three vague numbers, it gives you
+> one **next action** — this card — right here."
 
 ## 3. Performance miss → why-you-missed (the marquee change) (3:00–5:00, ~2 min) — POST-MVP
 
-This is the heart of the demo. Miss the rehearsed science question, then:
-- The app runs an **objective re-check probe** (did you still recall the backing
-  content?) and presents a **specific, evidence-backed hypothesis** about the
-  error type — **"Looks like: *application* · NN%"** — to **confirm or override**
-  in one tap. Emphasize **"infer, don't ask"** and *hypothesis, not verdict.*
-- Show the error-type buckets driving different next actions (content_gap →
-  review specific cards; application → drill applied items; misread → timed set).
-- Show the **"Not sure" (IDK)** opt-out: it's **not scored** right/wrong and earns
-  **no coverage credit** — the item-level mirror of readiness abstention.
-- Show **application-practice remediation** launching a real, **unscored**
-  practice set (visibly distinct from graded questions).
+[DO] Enter performance mode, answer the rehearsed question **wrong**. Let the
+re-check probe fire; show the error-type hypothesis chip; confirm/override in one
+tap; show the buckets → next actions; show the IDK opt-out; launch an
+application-practice set.
+
+[SAY]
+> "This is the heart of it. I'll answer this chemistry question — and I'll miss it
+> on purpose. Watch what happens instead of just 'wrong, here's the answer.'
+>
+> First it runs an **objective re-check probe**: it asks a quick backing-content
+> question to test whether I actually still *know* the underlying fact. Then it
+> shows a **hypothesis**, not a verdict — 'Looks like: **application**, 72%' — and I
+> can **confirm or override it in one tap**. The design rule is *infer, don't
+> interrogate*: it guesses from evidence and lets me correct it, rather than making
+> me fill out a form.
+>
+> Why it matters: the error type drives **different next actions**. A **content gap**
+> sends me back to specific flashcards. An **application** error drills applied
+> problems. A **misread** pushes a timed set. Same wrong answer, different fix.
+>
+> Two honesty touches. This **'Not sure'** button — if I genuinely don't know, I
+> tap it; that attempt is **not scored right or wrong and earns no coverage credit.**
+> It's the item-level version of the dashboard's abstention. And **remediation** here
+> launches a **separate, unscored practice set** — visibly different from the graded
+> questions, so practice never contaminates the score."
 
 ## 4. AI Assistant — folds into the SAME miss (5:00–6:15, ~1.25 min) — POST-MVP
 
-- On that same wrong choice, open the **✨ Assistant** → a **live, per-choice**
-  explanation of why **that specific distractor** is wrong + the correct
-  solution, **cited to the named source** (OpenStax).
-- Call out the **keyless hosted proxy**: "no API key on the grader's machine —
-  the key stays server-side." Point at the honest **"AI: On"** pill.
-- **Show the AI-off fallback:** toggle off (or note an unreachable proxy) → the
-  **same source-grounded** static explanation appears; the app never breaks.
-- One evidence line: on the hard differentiation set the AI **beats** the static
-  and keyword baselines under a cross-model judge
-  (`docs/QA-BASELINE-COMPARISON.md`) — choice-specificity 1.000 vs 0.000/~0.01.
+[DO] On the same wrong choice, open the ✨ Assistant. Show the per-choice
+explanation + source citation. Point at the "AI: On" pill. Then toggle AI off (or
+note an unreachable proxy) and show the identical source-grounded static answer.
+
+[SAY]
+> "Now the AI tutor — and notice it's on the **same miss**, not a separate demo. I
+> open the Assistant and it explains why **this specific distractor** I chose is
+> wrong, gives the correct reasoning, and **cites the named OpenStax source**.
+>
+> Two things I want to call out. One: see this **'AI: On'** pill? The key is **not on
+> this machine** — it lives server-side behind a hosted proxy, so a grader runs live
+> AI with **no key to enter**. Two — and this is the honest part — watch what happens
+> when I **turn AI off**." [DO: toggle off] "The **same source-grounded explanation**
+> appears from the static fallback. The app never breaks and never goes blank; AI is
+> an enhancement, not a crutch.
+>
+> And it's measured, not asserted: on the hard follow-up set, under a **cross-model
+> judge**, the AI beats the static and keyword baselines — **90.7% versus 59.6% and
+> 45%** atom coverage — and its per-choice specificity is **1.0 versus basically zero**
+> for the baselines. That's in `QA-BASELINE-COMPARISON.md`, with the small-n caveats
+> stated."
 
 ## 5. Observability / honesty instrumentation (6:15–6:45, ~0.5 min) — POST-MVP
 
-- Briefly: every attempt logs a full feature vector to a local sidecar; the
-  read-only **export** + **calibration export** (probe-labeled rows) power the
-  eval — **no telemetry, no network, no AI at runtime for scoring.**
-- Mention the **green CI check + PR list** as the engineering-workflow evidence
-  (hand off to the results demo, §6 of the results outline).
+[DO] Show the local sidecar export / calibration export briefly (a file or the
+export action), then gesture toward the CI/PR tabs.
+
+[SAY]
+> "Underneath, every attempt logs a full feature vector to a **local** sidecar — no
+> telemetry, no network, and **no AI in the scoring path at runtime.** The read-only
+> export and the probe-labeled calibration export are exactly what feeds the eval
+> you'll see next. And the whole thing ships as real engineering — feature branches,
+> pull requests, and a **green CI check** — which I'll hand to the results demo."
 
 ## 6. Sync — a SHORT beat, not the show (6:45–7:15, ~0.5 min)
 
-- ~30–45s only: phone review → desktop reflects it (memory via stock Anki sync),
-  and performance data via the portable **export/import bundle**
-  (append-only union merge, uuid-deduped). Don't dwell; don't demo edge cases.
+[DO] 30–45s max. Phone review → desktop reflects it. One sentence on the bundle.
+Do **not** demo edge cases.
+
+[SAY]
+> "Sync, briefly: I review on the phone, and the desktop reflects it — memory rides
+> **stock Anki sync**, and the MCAT performance data moves in a portable
+> **export/import bundle** that merges append-only and de-duplicates by UUID. That's
+> it — moving on."
 
 ## 7. Close on honesty (7:15–8:00, ~0.75 min)
 
-> "Three scores, never blended. Performance is real and leakage-free. Memory
-> *calibration* is real but the *score* abstains — no mature cards yet. Readiness
-> abstains, and says exactly what's missing. That restraint is the product."
+[DO] Back to the dashboard.
 
-Point to the proof packet (held-out results + leakage OK + AI-vs-baseline +
-green CI + PRs) and hand to the **results demo**.
+[SAY]
+> "So: **three scores, never blended.** Performance is real and **leakage-free**.
+> Memory *calibration* is real, but the *score* abstains — no mature cards yet.
+> Readiness abstains and tells you exactly what's missing. That restraint — being
+> real where it can be, and honest about where it can't — **is the product.** Here's
+> the proof packet: held-out results, the leakage check, AI-versus-baseline, and the
+> green CI with the PRs — over to the results demo."
 
 ---
 
 ## Cut list (if running long, drop in this order)
-1. Sync beat (§6) → mention in one sentence.
-2. Observability (§5) → fold into the close.
-3. Product basics (§1) → compress to 30s.
+1. Sync beat (§6) → compress to the single sentence above.
+2. Observability (§5) → fold its one line into the close.
+3. Product basics (§1) → compress to ~30s (one review, one mode-switch, no gate detail).
 
 ## Do-not-do (honesty guardrails)
 - Never blend the three scores or show a bare readiness number.
