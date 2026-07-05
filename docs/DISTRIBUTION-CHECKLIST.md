@@ -37,11 +37,13 @@ assembled), and
 
 ---
 
-## 1. (If needed) Rebuild the preseeded base
+## 1. Reseed the preseeded base — clean, right before every upload
 
-Only necessary if `MCAT/data/*` (deck CSVs or `questions.json`) changed since the
-package was seeded. Runs headlessly against the fork's own build venv and
-**refuses** to touch the live `%APPDATA%/Anki2` profile:
+Rebuild whenever `MCAT/data/*` (deck CSVs or `questions.json`) changed **and
+always immediately before zipping a bundle to upload** (see the ship-clean rule
+below). Runs headlessly against the fork's own build venv, **refuses** to touch
+the live `%APPDATA%/Anki2` profile, and wipes + recreates `out/tester-dist` — so
+a fresh run always starts from an empty base:
 
 ```bash
 cd /c/Users/gpdxi/Downloads/alphaProjects/anki-MCAT
@@ -51,6 +53,38 @@ out/pyenv/Scripts/python.exe tools/mcat_seed_tester.py
 
 Confirm the printed counts look right (notes / cards / topic-tagged / questions /
 remediation).
+
+> **Ship-clean rule (learned the hard way — a bundle once went out with the
+> builder's own review/attempt data baked into it).** NEVER launch the app
+> against the shippable `out/tester-dist/.../mcat-base`: doing so writes *your*
+> revlog + perf attempts into the base, and that history then gets zipped and
+> shipped to the tester. Self-test only on a **throwaway extracted copy** (unzip
+> somewhere else and launch *that*), and **reseed fresh immediately before
+> zipping** for upload.
+
+**Verify the base is empty before you zip** — every history counter must be `0`
+(Python `sqlite3`, read-only; the `sqlite3` CLI isn't installed on this box):
+
+```bash
+cd /c/Users/gpdxi/Downloads/alphaProjects/anki-MCAT
+python - "out/tester-dist/MCAT-Speedrun/mcat-base/User 1" <<'PY'
+import sqlite3, sys
+p = sys.argv[1]
+a = sqlite3.connect(f"file:{p}/collection.anki2?mode=ro", uri=True)
+print("revlog       :", a.execute("SELECT COUNT(*) FROM revlog").fetchone()[0], "(want 0)")
+print("cards reps>0 :", a.execute("SELECT COUNT(*) FROM cards WHERE reps>0").fetchone()[0], "(want 0)")
+print("cards ivl>0  :", a.execute("SELECT COUNT(*) FROM cards WHERE ivl>0").fetchone()[0], "(want 0)")
+print("cards total  :", a.execute("SELECT COUNT(*) FROM cards").fetchone()[0], "(want 66)")
+d = sqlite3.connect(f"file:{p}/collection.mcat_perf.db?mode=ro", uri=True)
+print("perf_attempts:", d.execute("SELECT COUNT(*) FROM perf_attempts").fetchone()[0], "(want 0)")
+print("perf_quest.  :", d.execute("SELECT COUNT(*) FROM perf_questions").fetchone()[0], "(want 62)")
+PY
+```
+
+If any history counter is non-zero, **STOP** — do not upload; reseed again on a
+base no app has opened, then re-verify. (Reps `> 0` / a populated FSRS
+memory-state imply reviews happened, so `revlog == 0` + `reps > 0 == 0` is the
+quick tell.)
 
 ## 2. Desktop — zip and host
 
@@ -116,6 +150,9 @@ single most important check:
 
 ## 5. Pre-send verification list
 
+- [ ] **Bundle freshly reseeded + verified empty** before zipping (§1): `revlog`,
+      `reps>0`, `ivl>0`, `perf_attempts` all **0**; cards **66**, questions
+      **62**. Never zip a base the app was launched against.
 - [ ] Download links work from a **logged-out** browser / incognito (not just
       your own account).
 - [ ] Both desktop files are hosted: `anki-26.05-win-x64.msi` **and**
