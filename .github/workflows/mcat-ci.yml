@@ -1,0 +1,75 @@
+name: mcat-ci
+
+# Small, fast, deterministic CI for the MCAT Speedrun measurement layer.
+#
+# Scope (deliberate): this runs ONLY the fast, pure-Python MCAT unit tests and
+# the offline/deterministic eval + data-integrity checks. It does NOT build the
+# Anki desktop app or AnkiDroid (those inherit upstream's heavy, secret/runner-
+# dependent workflows and are the wrong "CI evidence" on a fork). Every step
+# here was confirmed green locally before being pinned, so the first run is
+# green. See docs/pr-drafts/README.md for the branch/PR that introduces this.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Cancel superseded runs on the same ref so the badge reflects the latest commit.
+concurrency:
+  group: mcat-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: MCAT tests + offline eval
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Optional live-LLM SDKs (openai/anthropic). They are lazy-imported and
+      # only used when MCAT_LLM_PROVIDER is set at runtime, so nothing below
+      # touches the network or needs a key. Installing them exercises the real
+      # declared dependency set.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # --- Data integrity + split discipline (REAL, read-only over data/) ---
+      - name: Validate question bank + outline
+        run: python scripts/validate_data.py
+
+      - name: Leakage check (dev vs held_out, pool, paraphrase pairs)
+        run: python scripts/eval_leakage.py
+
+      # --- Eval harness self-tests (deterministic; synthetic clearly labelled) ---
+      - name: Held-out scorer self-test (synthetic, deterministic)
+        run: python scripts/score_heldout.py --demo
+
+      - name: AI explainer eval vs baselines (offline provider)
+        run: python scripts/ai_eval_explanations.py
+
+      - name: Paraphrase memory-vs-performance gap (synthetic, seeded)
+        run: python scripts/eval_paraphrase.py
+
+      # --- Unit tests: AI explainer/QA/judge, proxy client, proxy server ---
+      # Mocked LLMs + a local mock proxy on an ephemeral port; no network, no key.
+      - name: Unit tests
+        run: >-
+          python -m unittest
+          scripts.test_ai_explain_live
+          scripts.test_ai_qa
+          scripts.test_ai_judge
+          scripts.test_ai_proxy_client
+          proxy.test_mcat_ai_proxy
+          -v
