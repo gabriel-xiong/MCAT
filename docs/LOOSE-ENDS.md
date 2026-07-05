@@ -59,13 +59,17 @@ Not build tasks (those live in `WEDNESDAY-CHECKLIST.md` / specs) — this is the
   IDK here is deliberately a **diagnostic / mastery** instrument only: it must
   **not** be trained into, rewarded by, or leak into the **Readiness** score
   (which estimates the real 472–528 outcome). Any future IDK-derived signal stays
-  gated to the study/diagnostics view, not Readiness. **Also open (scores
-  worker):** the direct `perf_attempts` reads in `mcat_scores.py`
-  (`_section_attempt_counts`, `_provisional_range`, the coverage attempt branch)
-  still need an `idk = 0` filter so IDK rows can't slip into the Readiness range /
-  section gates / coverage; the `accuracy()`-based paths already exclude them.
-  Cross-refs: DECISIONS §30; `mcat_perf.py` (`accuracy()`, `idk_count()`,
-  `PerformanceSession.not_sure()`).
+  gated to the study/diagnostics view, not Readiness. **DONE — scores-worker
+  Readiness isolation shipped (verified 2026-07-05):** the direct `perf_attempts`
+  reads in `mcat_scores.py` (`_section_attempt_counts`, `_provisional_range`, and
+  the coverage attempt branch in `coverage_summary`) now all carry the
+  `AND a.idk = 0` filter, so IDK rows can't slip into the Readiness range /
+  section gates / coverage; the `accuracy()`-based paths already excluded them.
+  Sealed by regression test
+  `pylib/tests/test_mcat_scores.py::test_idk_rows_are_invisible_to_readiness`
+  (filter shipped in `mcat_scores.py` at `anki-MCAT main@e2e5183d6`, part of the
+  `2757868ab` baseline). Cross-refs: DECISIONS §30 (Refinement, 2026-07-03);
+  `mcat_perf.py` (`accuracy()`, `idk_count()`, `PerformanceSession.not_sure()`).
 - [ ] **Probe-confirmed IDK labeling — deferred Sunday refinement (2026-07-03).**
   Today an IDK is *assumed* to be a `content_gap` (non-CARS route) and the
   user-facing copy is deliberately hedged to "flagging a knowledge gap" precisely

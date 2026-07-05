@@ -775,11 +775,13 @@ Performance; abstaining removes that noise honestly — the item-level mirror of
 the system-level readiness abstention rule. Kept deliberately minimal for the
 demo ("IDK = content_gap immediately").
 
-**Coordination (scores worker):** full Readiness isolation additionally needs an
-`idk = 0` filter on the **direct** `perf_attempts` reads in `mcat_scores.py`
-(`_section_attempt_counts`, `_provisional_range`, and the coverage attempt
-branch), which still count every row; the `accuracy()`-derived paths already
-exclude IDK. `mcat_scores.py` was left untouched here (owned by that worker).
+**Coordination (scores worker) — DONE (verified 2026-07-05):** full Readiness
+isolation additionally needs an `idk = 0` filter on the **direct** `perf_attempts`
+reads in `mcat_scores.py` (`_section_attempt_counts`, `_provisional_range`, and
+the coverage attempt branch in `coverage_summary`); those now all carry
+`AND a.idk = 0` (the `accuracy()`-derived paths already excluded IDK). See the
+**Refinement** note below and its regression test
+`test_idk_rows_are_invisible_to_readiness` — leave those filters sealed.
 
 **Files:** `anki-MCAT/pylib/anki/mcat_perf.py` (idk column + migration,
 `log_attempt(idk=…)`, `accuracy()` exclusion, `idk_count()`,
