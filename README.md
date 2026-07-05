@@ -1,5 +1,7 @@
 # MCAT Speedrun — Anki Measurement Layer
 
+[![mcat-ci](https://github.com/gabriel-xiong/MCAT/actions/workflows/mcat-ci.yml/badge.svg)](https://github.com/gabriel-xiong/MCAT/actions/workflows/mcat-ci.yml)
+
 **Exam:** MCAT (472–528 total; sections 118–132 each)
 **Owner:** Gabriel Xiong
 **License:** AGPL-3.0-or-later (Anki fork — credit [Anki](https://github.com/ankitects/anki) and [AnkiDroid](https://github.com/ankidroid/Anki-Android))
