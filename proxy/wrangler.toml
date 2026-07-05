@@ -1,0 +1,34 @@
+# MCAT Speedrun — hosted AI proxy (Cloudflare Worker) deploy config.
+#
+# Deploy in ~10 min (full steps: MCAT/docs/AI-PROXY-SETUP.md):
+#   npm install -g wrangler        # needs wrangler >= 4.36 for stable ratelimits
+#   cd MCAT/proxy
+#   wrangler login
+#   wrangler secret put OPENAI_API_KEY     # paste your throwaway/scoped key
+#   wrangler secret put BUNDLE_TOKEN       # paste the shared app token you invent
+#   wrangler deploy                        # prints your https://...workers.dev URL
+#
+# NOTHING SECRET lives in this file. OPENAI_API_KEY and BUNDLE_TOKEN are set as
+# encrypted secrets (above), never here. Set a HARD monthly spend cap on the
+# OpenAI key in the OpenAI dashboard — that is the real cost backstop.
+
+name = "mcat-ai-proxy"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+
+# Non-secret tunables. Override models/limits here without touching code.
+[vars]
+ALLOWED_MODELS = "gpt-4o-mini"
+UPSTREAM_URL = "https://api.openai.com/v1/chat/completions"
+MAX_PROMPT_CHARS = "12000"
+MAX_MESSAGES = "8"
+
+# Native per-IP rate limiting (GA; requires wrangler >= 4.36.0). 20 requests per
+# 60s per client IP. namespace_id is any integer unique within your account.
+[[ratelimits]]
+name = "MCAT_RATE_LIMITER"
+namespace_id = "1101"
+
+  [ratelimits.simple]
+  limit = 20
+  period = 60

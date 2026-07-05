@@ -1,0 +1,6 @@
+{
+  "_comment": "MCAT Speedrun AI proxy config. Copy to 'mcat-ai-proxy.json' next to the launcher and paste your deployed values. NO API key goes here — the key lives ONLY on the proxy host. See MCAT/docs/AI-PROXY-SETUP.md.",
+  "proxy_url": "REPLACE_WITH_YOUR_PROXY_URL",
+  "bundle_token": "REPLACE_WITH_YOUR_BUNDLE_TOKEN",
+  "model": "gpt-4o-mini"
+}
