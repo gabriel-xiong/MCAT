@@ -873,6 +873,115 @@ retrievability exists), tests in `pylib/tests/test_mcat_scores.py` +
 
 ---
 
+## 32. Hosted AI proxy — keyless live AI for the graded build
+
+**2026-07-04 —** Added a **server-side proxy** path so the in-app AI assistant
+can run on **graders' own machines with NO API key entered by them**. This is a
+**user-directed decision for the GRADED build only**: it intentionally enables
+live AI at runtime, overriding the earlier "AI off at runtime / no key bundled"
+default (DECISIONS §29, tester build). The friend build is unchanged.
+
+**Why.** Graders won't have (and shouldn't need) an LLM key. A proxy that holds
+the key server-side lets the app do live, per-choice explanations + follow-up
+Q&A without shipping or asking for any key. Scores/questions/flashcards remain
+**fully local** — only the AI call touches the network.
+
+**Architecture (config-driven).**
+- **Proxy** (`MCAT/proxy/`): a thin authenticated relay to OpenAI chat
+  completions. It receives the SAME `system`+`user` messages the app already
+  builds (`ai_explain.LLM_SYSTEM_PROMPT` / `ai_qa.QA_SYSTEM_PROMPT` +
+  `build_prompt`), so responses render identically (`LLMProvider.parse` /
+  `parse_followup` unchanged). Two implementations, one wire contract:
+  `worker.js` (**Cloudflare Worker — recommended host**) and `mcat_ai_proxy.py`
+  (Python stdlib reference + `--mock` for keyless local verification / optional
+  self-host).
+- **Contract:** `POST <url>` with header `X-MCAT-Bundle-Token`, body
+  `{model, messages}` → `200 {content, model}`; any non-200 → client falls back.
+  `GET /health` for deploy verification.
+- **Client** (`scripts/ai_explain.py`): a new **proxy provider** selected by
+  `build_live_call_model_from_env` when no direct provider is set but a proxy is
+  configured (`load_proxy_config` reads `MCAT_AI_PROXY_URL/TOKEN` **or** a
+  `mcat-ai-proxy.json` bundle file). Label `proxy:<model>`; needs **no user key**.
+  The existing 15s client timeout + safety gate + graceful static fallback all
+  still apply (unreachable/timeout/error/blocked → source-based explanation;
+  never hangs/crashes). The `mcat_ai_enabled` toggle semantics are preserved.
+- **Config, not compiled:** the URL + token live in `mcat-ai-proxy.json` shipped
+  **next to the launcher** (placeholder until filled). The launcher exports
+  `MCAT_ROOT` + `MCAT_AI_PROXY_CONFIG`, so the URL can be set/changed **without
+  an MSI rebuild** (`mcat_seed_tester.py --with-ai-proxy` assembles this).
+
+**Security posture (endpoint is internet-reachable).** Enforced in the proxy:
+shared **bundle-token** header (constant-time), **per-IP rate limiting** (20/60s),
+upstream **model allowlist** (`gpt-4o-mini`), **oversized-prompt rejection**,
+bounded upstream timeout, forced `temperature=0`+`max_tokens`, minimal key-safe
+logging. Human-side (mandatory, documented in `docs/AI-PROXY-SETUP.md`): a
+**hard monthly spend cap** + a **throwaway/scoped** upstream key. The key is
+**server-side only** — never in the app, bundle, config, or git. Residual abuse
+risk (token ships to graders → constrained relay) is bounded by the spend cap +
+rate limit + token rotation / taking the Worker down after grading.
+
+**Honesty / UI.** `ai_bridge.ai_provider_configured()` (toggle-independent,
+network-free config check) drives an honest header pill: **"AI: On"** only when
+a backend is actually configured, **"AI: Not set up"** when the toggle is on but
+nothing is configured, **"AI: Off"** when toggled off — fixing the earlier
+cosmetic mismatch (pill "On" while the panel said "not configured"). The
+status/fallback notes are now key-agnostic (no "add an API key", since the
+graded build is keyless).
+
+**Scope guardrails.** No scheduler / three-score changes. **`SCORE_PROFILE` is
+untouched** — the proxy is orthogonal to the score profile and works under
+either; the graded build still needs `SCORE_PROFILE=strict` set + a rebuild as a
+**separate** assembly step (not part of this change). Adding the capability is
+**harmless/dormant** for friends: with the placeholder config the app behaves
+exactly like the friend build (offline, source-grounded).
+
+**MSI note.** The proxy *provider code* is a source change in the compiled app
+(`ai_explain.py` proxy provider is delegated to by the compiled `ai_bridge.py`;
+plus the pill/status honesty in `performance_dialog.py`), so shipping the
+**capability** required **one** MSI rebuild. After that rebuild the **URL/token
+stay config-driven** (no further rebuilds to set/change them).
+
+**Files.** `MCAT/proxy/{worker.js,wrangler.toml,mcat_ai_proxy.py,README.md,
+mcat-ai-proxy.example.json,test_mcat_ai_proxy.py}`, `MCAT/scripts/ai_explain.py`
+(proxy provider + `load_proxy_config`), `MCAT/scripts/test_ai_proxy_client.py`,
+`MCAT/.env.example`, `MCAT/docs/AI-PROXY-SETUP.md`, `MCAT/docs/TESTER-QUICKSTART.md`
+(graded-build note); `anki-MCAT/qt/aqt/mcat/ai_bridge.py`
+(`ai_provider_configured`), `anki-MCAT/qt/aqt/mcat/performance_dialog.py` (honest
+pill/status), `anki-MCAT/tools/mcat_seed_tester.py` (`--with-ai-proxy`).
+
+**Verification.** 12 proxy unit tests + 11 app-side provider tests (mocked
+upstream / real local mock server), incl. app→proxy→rendered explanation,
+follow-up Q&A, and unreachable/bad-token→static fallback — all green; existing
+33 AI tests unaffected. No secrets committed.
+
+---
+
+## 33. Engineering workflow — feature branches → PRs → green CI
+
+**2026-07-04 —** The final-submission work is landed as **feature-scoped
+branches → one PR per feature → a green `mcat-ci` check**, not a single squashed
+dump, so the history reads as a real engineering workflow for the grader.
+
+- **Branches (`MCAT`):** `feat/honest-eval-artifacts`, `feat/ai-keyless-proxy`,
+  `feat/graded-strict-build`, `ci/github-actions`, `docs/final-submission`. The
+  two app-touching features open **paired** branches of the same name in
+  `anki-MCAT` (`feat/ai-keyless-proxy`, `feat/graded-strict-build`);
+  `feat/android-three-scores` lives in `anki-android-MCAT`.
+- **Disjoint file sets** per branch. Files touched by more than one concern
+  (`Makefile`, `docs/DECISIONS.md`) are assigned **whole** to their single
+  most-relevant branch to avoid merge conflicts — see the branch→files map in
+  `docs/pr-drafts/README.md`.
+- **Ordering / CI dependency:** `.github/workflows/mcat-ci.yml` runs the proxy
+  tests (`proxy.test_mcat_ai_proxy`, `scripts.test_ai_proxy_client`), so
+  `ci/github-actions` must merge **after** `feat/ai-keyless-proxy` (and the eval
+  PR) or its two proxy steps fail with `ModuleNotFoundError`.
+- **Non-destructive discipline:** every commit was staged by explicit path with
+  `git diff --cached --name-only` verified clean of `.env*`/keys/build artifacts;
+  no history rewrite, no force; publishing is done by the maintainer via the
+  VSCode GitHub extension.
+
+---
+
 ## 18. References
 
 - [`PRD.md`](PRD.md)  

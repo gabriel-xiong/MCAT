@@ -1,14 +1,14 @@
-# Eval and bench targets â€” implement after Anki fork exists
+# Eval and bench targets — implement after Anki fork exists
 
 
 
-.PHONY: bench eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic eval-leakage eval-ai eval-ai-live eval-qa-goldset eval-qa-goldset-live eval-qa-goldset-judge eval-qa-baseline study test test-eval-step2 eval-all-synthetic validate-data sync-curation help
+.PHONY: bench eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic eval-leakage eval-ai eval-ai-live eval-qa-goldset eval-qa-goldset-live eval-qa-goldset-judge eval-qa-baseline study test test-eval-step2 eval-all-synthetic test-ai-proxy proxy-mock ci-local validate-data sync-curation help
 
 
 
 help:
 
-	@echo "Targets: validate-data, sync-curation, eval-leakage, bench, eval-memory, eval-performance, eval-heldout-synthetic, eval-step2-synthetic, eval-all-synthetic, study, eval-ai, eval-ai-live, eval-qa-goldset, eval-qa-goldset-live, eval-qa-goldset-judge, eval-qa-baseline, test, test-eval-step2"
+	@echo "Targets: validate-data, sync-curation, eval-leakage, bench, eval-memory, eval-performance, eval-heldout-synthetic, eval-step2-synthetic, eval-all-synthetic, study, eval-ai, eval-ai-live, eval-qa-goldset, eval-qa-goldset-live, eval-qa-goldset-judge, eval-qa-baseline, test, test-eval-step2, test-ai-proxy, proxy-mock, ci-local"
 
 
 
@@ -58,6 +58,7 @@ eval-performance:
 	py -3.12 scripts/eval_paraphrase.py
 
 # Synthetic held-out performance: 3-tester sheets + pooled summary (PIPELINE DEMO).
+# See docs/EVAL-SUMMARY-HELDOUT-SYNTHETIC.md.
 eval-heldout-synthetic:
 	py -3.12 scripts/gen_synthetic_heldout.py
 	py -3.12 scripts/pool_heldout.py build/heldout-SYNTHETIC_tester*.json --summary-json docs/artifacts/heldout-performance-SYNTHETIC.summary.json
@@ -68,12 +69,12 @@ eval-step2-synthetic:
 
 # Full synthetic eval battery (no credentials, no network).
 eval-all-synthetic: validate-data eval-leakage eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic study eval-ai
-	@echo "Synthetic eval battery complete â€” see docs/artifacts/ and docs/SUBMISSION-RESULTS.md"
+	@echo "Synthetic eval battery complete — see docs/artifacts/ and docs/SUBMISSION-RESULTS.md"
 
 
 
 # Study-feature 3-build ablation: interleaved vs blocked performance sessions vs
-# plain Anki, on PERFORMANCE outcome at EQUAL STUDY TIME (PRD Â§6.9 SF-1..SF-4).
+# plain Anki, on PERFORMANCE outcome at EQUAL STUDY TIME (PRD §6.9 SF-1..SF-4).
 # Set MCAT_STUDY_MANIFEST=/path/study.json to score real tester data; with none
 # set it runs the documented synthetic demo (assumed effect sizes, fixed seed).
 # Writes docs/artifacts/study-feature.{png,summary.json,arms.csv}; see
@@ -102,7 +103,7 @@ eval-qa-goldset:
 
 
 
-# "AI beats a simpler method?" â€” score the saved live OpenAI answers against two
+# "AI beats a simpler method?" — score the saved live OpenAI answers against two
 # AI-OFF baselines (static explanation/choice_feedback + keyword retrieval) using
 # the SAME token scorer as ai_eval_qa.py. No API calls; fully reproducible.
 # Writes docs/QA-BASELINE-COMPARISON.md.
@@ -130,7 +131,36 @@ eval-qa-goldset-judge:
 
 test:
 
-	py -3.12 -m unittest scripts.test_ai_explain_live scripts.test_ai_qa scripts.test_ai_judge -v
+	py -3.12 -m unittest scripts.test_ai_explain_live scripts.test_ai_qa scripts.test_ai_judge scripts.test_ai_proxy_client -v
+
+
+
+# Hosted AI proxy: app-side provider tests + proxy server tests (mocked upstream,
+# real local mock server). No network, no key. See docs/AI-PROXY-SETUP.md.
+test-ai-proxy:
+
+	py -3.12 -m unittest scripts.test_ai_proxy_client proxy.test_mcat_ai_proxy -v
+
+
+
+# Run the LOCAL MOCK proxy (no real key) for manual end-to-end checks. Point the
+# app/tests at it via MCAT_AI_PROXY_URL=http://127.0.0.1:8787/ + MCAT_AI_PROXY_TOKEN.
+proxy-mock:
+
+	py -3.12 proxy/mcat_ai_proxy.py --mock --token testtoken --port 8787
+
+# Mirror the mcat-ci GitHub Actions workflow locally (no network, no key): data
+# integrity + leakage + held-out demo + offline AI eval + paraphrase gap, then
+# the full unit-test set incl. the proxy client + server. See
+# .github/workflows/mcat-ci.yml and docs/pr-drafts/ci-github-actions.md.
+ci-local:
+
+	py -3.12 scripts/validate_data.py
+	py -3.12 scripts/eval_leakage.py
+	py -3.12 scripts/score_heldout.py --demo
+	py -3.12 scripts/ai_eval_explanations.py
+	py -3.12 scripts/eval_paraphrase.py
+	py -3.12 -m unittest scripts.test_ai_explain_live scripts.test_ai_qa scripts.test_ai_judge scripts.test_ai_proxy_client proxy.test_mcat_ai_proxy -v
 
 test-eval-step2:
 
@@ -139,5 +169,6 @@ test-eval-step2:
 smoke-ai-qa:
 
 	py -3.12 scripts/smoke_ai_qa.py
+
 
 

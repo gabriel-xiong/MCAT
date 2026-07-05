@@ -686,6 +686,152 @@ def _make_anthropic_caller(
     return call
 
 
+# --------------------------------------------------------------------------- #
+# Hosted proxy provider (keyless clients — the grader build)
+# --------------------------------------------------------------------------- #
+# A hosted proxy lets the app do live AI WITHOUT any per-user API key: the app
+# POSTs the SAME system+user messages this module already builds to a small
+# server that holds the upstream key server-side, and gets back the model's
+# completion. The prompt contract is unchanged, so LLMProvider.parse /
+# ai_qa.parse_followup render the response identically to a direct call.
+#
+# The proxy URL + bundle token are read from a BUNDLE CONFIG FILE (or env), NOT
+# hardcoded, so the URL can be set after deploy with no rebuild. AI stays OFF
+# (returns None) when no proxy is configured, so this is dormant/harmless in the
+# friend build and only lights up once a real URL+token are pasted in.
+
+# A placeholder/empty URL must NOT enable the proxy (so a shipped template can
+# sit inertly until the human pastes a real URL). These markers flag templates.
+_PROXY_PLACEHOLDER_MARKERS = (
+    "REPLACE_WITH",
+    "PASTE_",
+    "YOUR_",
+    "<",
+    "example.com",
+    "changeme",
+)
+
+# Header the app sends so the proxy can gate non-app traffic (a low-grade shared
+# secret, not a real credential — see docs/AI-PROXY-SETUP.md security posture).
+PROXY_TOKEN_HEADER = "X-MCAT-Bundle-Token"
+
+
+def _looks_like_placeholder(url: str) -> bool:
+    low = url.lower()
+    return any(m.lower() in low for m in _PROXY_PLACEHOLDER_MARKERS)
+
+
+def _proxy_config_file_candidates(env: dict) -> list[Path]:
+    """Ordered paths to look for ``mcat-ai-proxy.json`` (first hit wins).
+
+    Priority: an explicit ``MCAT_AI_PROXY_CONFIG`` path (set by the launcher),
+    then ``MCAT_ROOT``, the repo root, its parent, and the CWD. This lets the
+    tester bundle drop the JSON next to the launcher and point at it, while a
+    developer can just keep one in the repo/CWD.
+    """
+    paths: list[Path] = []
+    explicit = (env.get("MCAT_AI_PROXY_CONFIG") or "").strip()
+    if explicit:
+        paths.append(Path(explicit).expanduser())
+    mcat_root_env = (env.get("MCAT_ROOT") or "").strip()
+    dirs: list[Path] = []
+    if mcat_root_env:
+        dirs.append(Path(mcat_root_env).expanduser())
+    dirs.extend([ROOT, ROOT.parent])
+    try:
+        dirs.append(Path.cwd())
+    except Exception:
+        pass
+    for d in dirs:
+        paths.append(d / "mcat-ai-proxy.json")
+    return paths
+
+
+def _read_proxy_config_file(env: dict) -> dict:
+    """Best-effort read of the first existing proxy-config JSON. Never raises."""
+    for path in _proxy_config_file_candidates(env):
+        try:
+            if path.is_file():
+                with path.open(encoding="utf-8") as f:
+                    data = json.load(f)
+                if isinstance(data, dict):
+                    return data
+        except Exception:
+            continue
+    return {}
+
+
+def load_proxy_config(env: dict | None = None, *, allow_file: bool = True) -> dict | None:
+    """Resolve hosted-proxy config, or None when no usable proxy is configured.
+
+    Precedence (each field independently): environment variables
+    (``MCAT_AI_PROXY_URL`` / ``MCAT_AI_PROXY_TOKEN`` / ``MCAT_AI_PROXY_MODEL``)
+    override the JSON config file (``mcat-ai-proxy.json`` with keys
+    ``proxy_url`` / ``bundle_token`` / ``model``). A missing or placeholder URL
+    yields None (proxy OFF). ``allow_file`` is False for hermetic unit tests
+    that pass an explicit env dict and must not read a stray file.
+    """
+    if env is None:
+        env = os.environ
+    url = (env.get("MCAT_AI_PROXY_URL") or "").strip()
+    token = (env.get("MCAT_AI_PROXY_TOKEN") or "").strip()
+    model = (env.get("MCAT_AI_PROXY_MODEL") or "").strip()
+    if allow_file and not (url and token):
+        cfg = _read_proxy_config_file(env)
+        url = url or str(cfg.get("proxy_url") or "").strip()
+        token = token or str(cfg.get("bundle_token") or "").strip()
+        model = model or str(cfg.get("model") or "").strip()
+    if not url or _looks_like_placeholder(url):
+        return None
+    return {
+        "url": url,
+        "token": token,
+        "model": model or DEFAULT_MODELS["openai"],
+    }
+
+
+def _make_proxy_caller(
+    proxy_url: str,
+    token: str,
+    model: str,
+    *,
+    system_prompt: str = LLM_SYSTEM_PROMPT,
+    timeout: float = LLM_TIMEOUT_SECONDS,
+):
+    """Build a ``call_model(prompt) -> str`` that routes through the hosted proxy.
+
+    Sends the same system+user messages a direct provider would, plus the bundle
+    token header, and returns the proxy's ``content`` (the model's JSON text).
+    Any transport/HTTP failure surfaces as ``ProviderUnavailable`` (via
+    ``_http_post_json``) so callers fall back to the static explanation; the
+    token is sent as a header and never logged.
+    """
+    headers = {PROXY_TOKEN_HEADER: token} if token else {}
+
+    def call(prompt: str) -> str:
+        data = _http_post_json(
+            proxy_url,
+            headers,
+            {
+                "model": model,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt},
+                ],
+            },
+            timeout,
+        )
+        if not isinstance(data, dict):
+            raise ProviderUnavailable("proxy returned a non-JSON-object body")
+        content = data.get("content")
+        if content is None:
+            err = data.get("error") or "proxy returned no content"
+            raise ProviderUnavailable(f"proxy error: {err}")
+        return str(content)
+
+    return call
+
+
 def build_live_call_model_from_env(
     env: dict | None = None,
     *,
@@ -696,14 +842,20 @@ def build_live_call_model_from_env(
     return (None, "") when AI is OFF (no provider configured).
 
     Env contract:
-      MCAT_LLM_PROVIDER : "openai" | "anthropic"  (unset -> AI OFF)
+      MCAT_LLM_PROVIDER : "openai" | "anthropic"  (unset -> try hosted proxy)
       MCAT_LLM_MODEL    : model id (optional; a sensible default is used)
       key               : MCAT_LLM_API_KEY, else OPENAI_API_KEY /
                           ANTHROPIC_API_KEY (read from env ONLY; never logged).
 
+    Hosted-proxy fallback (keyless clients): when no direct provider is set but a
+    proxy is configured (``MCAT_AI_PROXY_URL``/``MCAT_AI_PROXY_TOKEN`` or a
+    ``mcat-ai-proxy.json`` bundle file), a proxy-backed caller is returned with
+    label ``proxy:<model>`` — no per-user API key needed.
+
     Returns (callable_or_None, model_label). SDKs are imported lazily inside the
     callable, so this is safe to call with AI OFF or the SDKs not installed.
     """
+    env_was_none = env is None
     if env is None:
         try:
             from mcat_env import ensure_mcat_env_loaded
@@ -712,8 +864,23 @@ def build_live_call_model_from_env(
         except Exception:
             pass
         env = os.environ
+    call_timeout = timeout if timeout is not None else _timeout_from_env(env)
     provider = (env.get("MCAT_LLM_PROVIDER") or "").strip().lower()
     if not provider:
+        # No direct provider/key -> try the keyless hosted proxy. Only scan the
+        # JSON config file when env was resolved from the real environment, so
+        # hermetic tests that pass an explicit env dict aren't perturbed by a
+        # stray file on disk.
+        proxy = load_proxy_config(env, allow_file=env_was_none)
+        if proxy is not None:
+            caller = _make_proxy_caller(
+                proxy["url"],
+                proxy["token"],
+                proxy["model"],
+                system_prompt=system_prompt,
+                timeout=call_timeout,
+            )
+            return caller, f"proxy:{proxy['model']}"
         return None, ""  # AI OFF — caller uses offline/static
     if provider not in ("openai", "anthropic"):
         raise ValueError(
@@ -727,7 +894,6 @@ def build_live_call_model_from_env(
             f"{'OPENAI_API_KEY' if provider == 'openai' else 'ANTHROPIC_API_KEY'} "
             "in the environment (never commit it)."
         )
-    call_timeout = timeout if timeout is not None else _timeout_from_env(env)
     if provider == "openai":
         caller = _make_openai_caller(
             model, api_key, system_prompt=system_prompt, timeout=call_timeout
