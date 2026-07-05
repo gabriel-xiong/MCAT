@@ -1,6 +1,6 @@
 {
   "eval": "ai_post_answer_explainer",
-  "generated_utc": "2026-07-05T17:25:28+00:00",
+  "generated_utc": "2026-07-05T19:51:18+00:00",
   "provider_under_test": "offline_deterministic (NO network, reproducible)",
   "provider_mode": "offline",
   "numbers_are": "offline_deterministic_by_construction",

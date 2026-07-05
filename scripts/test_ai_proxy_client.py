@@ -97,6 +97,14 @@ class TestProxyConfig(unittest.TestCase):
             {"MCAT_AI_PROXY_URL": "REPLACE_WITH_YOUR_PROXY_URL"}, allow_file=False))
         self.assertIsNone(ax.load_proxy_config(
             {"MCAT_AI_PROXY_URL": ""}, allow_file=False))
+        self.assertIsNone(ax.load_proxy_config(
+            {"MCAT_AI_PROXY_URL": "not-a-url", "MCAT_AI_PROXY_TOKEN": "tok"},
+            allow_file=False,
+        ))
+
+    def test_http_post_rejects_blank_url(self):
+        with self.assertRaises(ax.ProviderUnavailable):
+            ax._http_post_json("", {}, {}, 5.0)
 
     def test_json_file_config(self):
         import tempfile

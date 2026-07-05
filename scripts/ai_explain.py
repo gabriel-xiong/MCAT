@@ -567,6 +567,8 @@ def _http_post_json(
     package. Any HTTP or transport failure is surfaced as ``ProviderUnavailable``
     (the API key is never included in the message).
     """
+    if not _usable_http_url(url):
+        raise ProviderUnavailable("proxy URL not configured")
     import urllib.error
     import urllib.request
 
@@ -721,6 +723,15 @@ def _looks_like_placeholder(url: str) -> bool:
     return any(m.lower() in low for m in _PROXY_PLACEHOLDER_MARKERS)
 
 
+def _usable_http_url(url: str) -> bool:
+    """True when *url* is a non-placeholder http(s) endpoint we may POST to."""
+    u = (url or "").strip()
+    if not u or _looks_like_placeholder(u):
+        return False
+    low = u.lower()
+    return low.startswith("http://") or low.startswith("https://")
+
+
 def _proxy_config_file_candidates(env: dict) -> list[Path]:
     """Ordered paths to look for ``mcat-ai-proxy.json`` (first hit wins).
 
@@ -781,7 +792,7 @@ def load_proxy_config(env: dict | None = None, *, allow_file: bool = True) -> di
         url = url or str(cfg.get("proxy_url") or "").strip()
         token = token or str(cfg.get("bundle_token") or "").strip()
         model = model or str(cfg.get("model") or "").strip()
-    if not url or _looks_like_placeholder(url):
+    if not _usable_http_url(url):
         return None
     return {
         "url": url,
@@ -806,6 +817,8 @@ def _make_proxy_caller(
     ``_http_post_json``) so callers fall back to the static explanation; the
     token is sent as a header and never logged.
     """
+    if not _usable_http_url(proxy_url):
+        raise ProviderUnavailable("proxy URL not configured")
     headers = {PROXY_TOKEN_HEADER: token} if token else {}
 
     def call(prompt: str) -> str:
