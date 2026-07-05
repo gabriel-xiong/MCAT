@@ -1,0 +1,6 @@
+{
+  "_comment": "Fill in after deploying the Cloudflare Worker (see docs/AI-PROXY-DEPLOY-NOW.md). Copy to mcat-ai-proxy.json next to Start MCAT Speedrun.cmd in the graded bundle. NO OpenAI API key goes here.",
+  "proxy_url": "https://mcat-ai-proxy.YOUR_SUBDOMAIN.workers.dev/",
+  "bundle_token": "PASTE_THE_SAME_BUNDLE_TOKEN_YOU_SET_WITH_wrangler_secret_put",
+  "model": "gpt-4o-mini"
+}
