@@ -1,0 +1,622 @@
+{
+  "artifact": "pooled_heldout_performance",
+  "synthetic": true,
+  "is_real_data": false,
+  "warning": "PIPELINE DEMONSTRATION ONLY \u2014 NOT a real performance/learning claim.",
+  "real_scorer": "scripts/score_heldout.py (score + wilson_ci)",
+  "eval_split": "held_out",
+  "n_held_out_questions": 105,
+  "sheets": [
+    "build\\heldout-SYNTHETIC_testerA.json",
+    "build\\heldout-SYNTHETIC_testerB.json",
+    "build\\heldout-SYNTHETIC_testerC.json"
+  ],
+  "per_sheet": [
+    {
+      "n_graded": 105,
+      "n_correct": 62,
+      "accuracy": 0.5905,
+      "wilson95_ci": [
+        0.4948,
+        0.6797
+      ],
+      "by_section": [
+        {
+          "section": "BB",
+          "n": 38,
+          "correct": 22,
+          "accuracy": 0.5789
+        },
+        {
+          "section": "CARS",
+          "n": 7,
+          "correct": 6,
+          "accuracy": 0.8571
+        },
+        {
+          "section": "CP",
+          "n": 45,
+          "correct": 24,
+          "accuracy": 0.5333
+        },
+        {
+          "section": "PS",
+          "n": 15,
+          "correct": 10,
+          "accuracy": 0.6667
+        }
+      ],
+      "by_topic": [
+        {
+          "topic_id": "bb_citric_acid",
+          "n": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "bb_dna",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_enzymes",
+          "n": 18,
+          "correct": 10,
+          "accuracy": 0.5556
+        },
+        {
+          "topic_id": "bb_genetics",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_glycolysis",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_membranes",
+          "n": 5,
+          "correct": 3,
+          "accuracy": 0.6
+        },
+        {
+          "topic_id": "cars_comprehension",
+          "n": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "cars_reasoning_beyond",
+          "n": 2,
+          "correct": 1,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cars_reasoning_within",
+          "n": 2,
+          "correct": 2,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "cp_acids_bases",
+          "n": 20,
+          "correct": 6,
+          "accuracy": 0.3
+        },
+        {
+          "topic_id": "cp_electrochem",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "cp_fluids",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cp_kinetics",
+          "n": 13,
+          "correct": 10,
+          "accuracy": 0.7692
+        },
+        {
+          "topic_id": "cp_thermo",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "ps_demographics",
+          "n": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "ps_learning",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "ps_memory",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "ps_social",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        }
+      ],
+      "sections_covered": 4,
+      "topics_covered": 18,
+      "file": "build\\heldout-SYNTHETIC_testerA.json",
+      "synthetic": true
+    },
+    {
+      "n_graded": 105,
+      "n_correct": 62,
+      "accuracy": 0.5905,
+      "wilson95_ci": [
+        0.4948,
+        0.6797
+      ],
+      "by_section": [
+        {
+          "section": "BB",
+          "n": 38,
+          "correct": 22,
+          "accuracy": 0.5789
+        },
+        {
+          "section": "CARS",
+          "n": 7,
+          "correct": 3,
+          "accuracy": 0.4286
+        },
+        {
+          "section": "CP",
+          "n": 45,
+          "correct": 27,
+          "accuracy": 0.6
+        },
+        {
+          "section": "PS",
+          "n": 15,
+          "correct": 10,
+          "accuracy": 0.6667
+        }
+      ],
+      "by_topic": [
+        {
+          "topic_id": "bb_citric_acid",
+          "n": 3,
+          "correct": 1,
+          "accuracy": 0.3333
+        },
+        {
+          "topic_id": "bb_dna",
+          "n": 4,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "topic_id": "bb_enzymes",
+          "n": 18,
+          "correct": 11,
+          "accuracy": 0.6111
+        },
+        {
+          "topic_id": "bb_genetics",
+          "n": 4,
+          "correct": 4,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "bb_glycolysis",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "bb_membranes",
+          "n": 5,
+          "correct": 3,
+          "accuracy": 0.6
+        },
+        {
+          "topic_id": "cars_comprehension",
+          "n": 3,
+          "correct": 1,
+          "accuracy": 0.3333
+        },
+        {
+          "topic_id": "cars_reasoning_beyond",
+          "n": 2,
+          "correct": 1,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cars_reasoning_within",
+          "n": 2,
+          "correct": 1,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cp_acids_bases",
+          "n": 20,
+          "correct": 11,
+          "accuracy": 0.55
+        },
+        {
+          "topic_id": "cp_electrochem",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cp_fluids",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "cp_kinetics",
+          "n": 13,
+          "correct": 8,
+          "accuracy": 0.6154
+        },
+        {
+          "topic_id": "cp_thermo",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "ps_demographics",
+          "n": 3,
+          "correct": 2,
+          "accuracy": 0.6667
+        },
+        {
+          "topic_id": "ps_learning",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "ps_memory",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "ps_social",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        }
+      ],
+      "sections_covered": 4,
+      "topics_covered": 18,
+      "file": "build\\heldout-SYNTHETIC_testerB.json",
+      "synthetic": true
+    },
+    {
+      "n_graded": 105,
+      "n_correct": 52,
+      "accuracy": 0.4952,
+      "wilson95_ci": [
+        0.4015,
+        0.5893
+      ],
+      "by_section": [
+        {
+          "section": "BB",
+          "n": 38,
+          "correct": 23,
+          "accuracy": 0.6053
+        },
+        {
+          "section": "CARS",
+          "n": 7,
+          "correct": 1,
+          "accuracy": 0.1429
+        },
+        {
+          "section": "CP",
+          "n": 45,
+          "correct": 20,
+          "accuracy": 0.4444
+        },
+        {
+          "section": "PS",
+          "n": 15,
+          "correct": 8,
+          "accuracy": 0.5333
+        }
+      ],
+      "by_topic": [
+        {
+          "topic_id": "bb_citric_acid",
+          "n": 3,
+          "correct": 3,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "bb_dna",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_enzymes",
+          "n": 18,
+          "correct": 9,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_genetics",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "bb_glycolysis",
+          "n": 4,
+          "correct": 4,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "bb_membranes",
+          "n": 5,
+          "correct": 3,
+          "accuracy": 0.6
+        },
+        {
+          "topic_id": "cars_comprehension",
+          "n": 3,
+          "correct": 1,
+          "accuracy": 0.3333
+        },
+        {
+          "topic_id": "cars_reasoning_beyond",
+          "n": 2,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "topic_id": "cars_reasoning_within",
+          "n": 2,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "topic_id": "cp_acids_bases",
+          "n": 20,
+          "correct": 7,
+          "accuracy": 0.35
+        },
+        {
+          "topic_id": "cp_electrochem",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "cp_fluids",
+          "n": 4,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "topic_id": "cp_kinetics",
+          "n": 13,
+          "correct": 8,
+          "accuracy": 0.6154
+        },
+        {
+          "topic_id": "cp_thermo",
+          "n": 4,
+          "correct": 3,
+          "accuracy": 0.75
+        },
+        {
+          "topic_id": "ps_demographics",
+          "n": 3,
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        {
+          "topic_id": "ps_learning",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        },
+        {
+          "topic_id": "ps_memory",
+          "n": 4,
+          "correct": 4,
+          "accuracy": 1.0
+        },
+        {
+          "topic_id": "ps_social",
+          "n": 4,
+          "correct": 2,
+          "accuracy": 0.5
+        }
+      ],
+      "sections_covered": 4,
+      "topics_covered": 18,
+      "file": "build\\heldout-SYNTHETIC_testerC.json",
+      "synthetic": true
+    }
+  ],
+  "pooled": {
+    "n_graded": 315,
+    "n_correct": 176,
+    "accuracy": 0.5587,
+    "wilson95_ci": [
+      0.5035,
+      0.6125
+    ],
+    "by_section": [
+      {
+        "section": "BB",
+        "n": 114,
+        "correct": 67,
+        "accuracy": 0.5877
+      },
+      {
+        "section": "CARS",
+        "n": 21,
+        "correct": 10,
+        "accuracy": 0.4762
+      },
+      {
+        "section": "CP",
+        "n": 135,
+        "correct": 71,
+        "accuracy": 0.5259
+      },
+      {
+        "section": "PS",
+        "n": 45,
+        "correct": 28,
+        "accuracy": 0.6222
+      }
+    ],
+    "by_topic": [
+      {
+        "topic_id": "bb_citric_acid",
+        "n": 9,
+        "correct": 7,
+        "accuracy": 0.7778
+      },
+      {
+        "topic_id": "bb_dna",
+        "n": 12,
+        "correct": 4,
+        "accuracy": 0.3333
+      },
+      {
+        "topic_id": "bb_enzymes",
+        "n": 54,
+        "correct": 30,
+        "accuracy": 0.5556
+      },
+      {
+        "topic_id": "bb_genetics",
+        "n": 12,
+        "correct": 8,
+        "accuracy": 0.6667
+      },
+      {
+        "topic_id": "bb_glycolysis",
+        "n": 12,
+        "correct": 9,
+        "accuracy": 0.75
+      },
+      {
+        "topic_id": "bb_membranes",
+        "n": 15,
+        "correct": 9,
+        "accuracy": 0.6
+      },
+      {
+        "topic_id": "cars_comprehension",
+        "n": 9,
+        "correct": 5,
+        "accuracy": 0.5556
+      },
+      {
+        "topic_id": "cars_reasoning_beyond",
+        "n": 6,
+        "correct": 2,
+        "accuracy": 0.3333
+      },
+      {
+        "topic_id": "cars_reasoning_within",
+        "n": 6,
+        "correct": 3,
+        "accuracy": 0.5
+      },
+      {
+        "topic_id": "cp_acids_bases",
+        "n": 60,
+        "correct": 24,
+        "accuracy": 0.4
+      },
+      {
+        "topic_id": "cp_electrochem",
+        "n": 12,
+        "correct": 7,
+        "accuracy": 0.5833
+      },
+      {
+        "topic_id": "cp_fluids",
+        "n": 12,
+        "correct": 5,
+        "accuracy": 0.4167
+      },
+      {
+        "topic_id": "cp_kinetics",
+        "n": 39,
+        "correct": 26,
+        "accuracy": 0.6667
+      },
+      {
+        "topic_id": "cp_thermo",
+        "n": 12,
+        "correct": 9,
+        "accuracy": 0.75
+      },
+      {
+        "topic_id": "ps_demographics",
+        "n": 9,
+        "correct": 5,
+        "accuracy": 0.5556
+      },
+      {
+        "topic_id": "ps_learning",
+        "n": 12,
+        "correct": 6,
+        "accuracy": 0.5
+      },
+      {
+        "topic_id": "ps_memory",
+        "n": 12,
+        "correct": 10,
+        "accuracy": 0.8333
+      },
+      {
+        "topic_id": "ps_social",
+        "n": 12,
+        "correct": 7,
+        "accuracy": 0.5833
+      }
+    ],
+    "sections_covered": 4,
+    "topics_covered": 18
+  },
+  "coverage": {
+    "answered_attempts": 315,
+    "possible_attempts": 315,
+    "attempt_coverage_pct": 100.0,
+    "sections_covered": 4,
+    "sections_total": 4,
+    "topics_covered": 18,
+    "topics_total": 18,
+    "strict_attempt_gate_pass": true
+  },
+  "missing_data_note": "Attempts are SYNTHETIC (documented responder + seed); no real independent held_out run exists yet.",
+  "single_next_action": "Replace with real independent held-out answers: py -3.12 scripts/pool_heldout.py build/heldout-answers_*.json"
+}
