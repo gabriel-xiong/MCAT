@@ -873,7 +873,7 @@ retrievability exists), tests in `pylib/tests/test_mcat_scores.py` +
 
 ---
 
-## 31. Hosted AI proxy — keyless live AI for the graded build
+## 32. Hosted AI proxy — keyless live AI for the graded build
 
 **2026-07-04 —** Added a **server-side proxy** path so the in-app AI assistant
 can run on **graders' own machines with NO API key entered by them**. This is a
@@ -956,7 +956,7 @@ follow-up Q&A, and unreachable/bad-token→static fallback — all green; existi
 
 ---
 
-## 32. Engineering workflow — feature branches → PRs → green CI
+## 33. Engineering workflow — feature branches → PRs → green CI
 
 **2026-07-04 —** The final-submission work is landed as **feature-scoped
 branches → one PR per feature → a green `mcat-ci` check**, not a single squashed
