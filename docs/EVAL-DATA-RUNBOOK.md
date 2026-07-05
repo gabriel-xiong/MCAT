@@ -231,15 +231,49 @@ by topic and overall. A large positive gap = the performance score is measuring
 transfer, not parroted memory. (`make eval-performance` runs the synthetic demo
 version with no real data.)
 
-### B.4 Proven
+### B.4 Multiple testers + pooling (per-tester AND pooled — never merge files)
+
+When more than one volunteer returns a sheet, score each **individually** and
+also **pool** them with `scripts/pool_heldout.py` (a thin wrapper that reuses
+`score_heldout.py`'s own `score()` + `wilson_ci()` — no separate grading logic):
+
+```bash
+py -3.12 scripts/pool_heldout.py build/heldout-answers_*.json \
+  --summary-json docs/artifacts/heldout-performance-REAL.summary.json
+```
+
+It prints each sheet's accuracy + Wilson CI, then the pooled accuracy + CI +
+per-section/topic + coverage + honesty fields. Keep one file per person (the
+pool unions the attempts; it never overwrites per-tester attribution).
+
+### B.5 SYNTHETIC stopgap (pipeline demo only — NOT real data)
+
+If real answers are not yet available, the pipeline can be demonstrated with a
+**documented, seeded synthetic responder** — clearly labelled and **never a real
+score**:
+
+```bash
+py -3.12 scripts/gen_synthetic_heldout.py                       # 3 SYNTHETIC sheets + audit meta
+py -3.12 scripts/pool_heldout.py build/heldout-SYNTHETIC_tester*.json
+```
+
+Method, parameters, seed, and the labelled result are in
+[`EVAL-SUMMARY-HELDOUT-SYNTHETIC.md`](EVAL-SUMMARY-HELDOUT-SYNTHETIC.md). The
+synthetic sheets share the volunteer schema, so swapping in real data is the
+**same command** pointed at `build/heldout-answers_*.json` (B.4) — no code
+changes. Do **not** report the synthetic accuracy as a real number.
+
+### B.6 Proven
 
 `score_heldout.py` was run end-to-end: `--help`, `--make-template` (105-question
 blank sheet, no key), `--demo` (deterministic synthetic answers → 0.733 overall,
 Wilson CI, per-section + per-topic tables), a mixed-format real round-trip
 (letter + exact-text + integer-index all graded correctly; blank → unanswered;
 unknown id flagged), and `--emit-attempts` → `eval_paraphrase.py` accepted the
-attempts and printed a full §7d gap report. Only the **volunteer's real answers**
-are the human step. See the parent report for the pasted proof output.
+attempts and printed a full §7d gap report. The multi-tester `pool_heldout.py`
+path and the labelled `gen_synthetic_heldout.py` stopgap were run end-to-end
+(3×105 → pooled 176/315, Wilson CI, full coverage). Only the **volunteer's real
+answers** are the human step. See the parent report for the pasted proof output.
 
 ---
 

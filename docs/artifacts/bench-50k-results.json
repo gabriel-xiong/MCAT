@@ -3,41 +3,41 @@
     "python": "3.13.13",
     "platform": "Windows-11-10.0.26200-SP0",
     "processor": "Intel64 Family 6 Model 189 Stepping 1, GenuineIntel",
-    "generated_at": 1783112218,
+    "generated_at": 1783272087,
     "deck": {
-      "cards": 49986,
-      "reviews": 5000,
+      "cards": 4986,
+      "reviews": 4986,
       "topics": 18,
-      "seed_add_s": 96.22,
-      "seed_review_s": 6.2
+      "seed_add_s": 4.29,
+      "seed_review_s": 4.62
     },
-    "revlog_rows": 5000,
+    "revlog_rows": 4986,
     "note": "synthetic ~50k-scale deck; single dev machine, no isolation; prebuilt fork backend (no fresh Rust rebuild). Scale sanity test."
   },
   "results": {
     "mastery_query_all": {
-      "n": 25,
-      "min_ms": 286.4127,
-      "median_ms": 303.9454,
-      "p95_ms": 355.0108,
-      "max_ms": 368.1089,
-      "mean_ms": 311.7493
+      "n": 3,
+      "min_ms": 18.7586,
+      "median_ms": 18.8634,
+      "p95_ms": 20.477,
+      "max_ms": 20.477,
+      "mean_ms": 19.3663
     },
     "mastery_query_one": {
-      "n": 25,
-      "min_ms": 297.3056,
-      "median_ms": 329.1981,
-      "p95_ms": 415.8649,
-      "max_ms": 432.6355,
-      "mean_ms": 334.0254
+      "n": 3,
+      "min_ms": 17.627,
+      "median_ms": 17.764,
+      "p95_ms": 21.6048,
+      "max_ms": 21.6048,
+      "mean_ms": 18.9986
     },
     "dashboard_data": {
-      "n": 15,
-      "min_ms": 2503.4415,
-      "median_ms": 2893.342,
-      "p95_ms": 5189.2987,
-      "max_ms": 5189.2987,
-      "mean_ms": 3263.9942
+      "n": 20,
+      "min_ms": 135.741,
+      "median_ms": 140.4299,
+      "p95_ms": 147.5882,
+      "max_ms": 147.5882,
+      "mean_ms": 140.1934
     }
   }
 }

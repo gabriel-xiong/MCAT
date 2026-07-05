@@ -1,0 +1,42 @@
+{
+  "artifact": "step2_heldout_prediction",
+  "mode": "synthetic",
+  "is_real_data": false,
+  "warning": "PIPELINE DEMONSTRATION ONLY \u2014 NOT a validated prediction model.",
+  "eval_split": "held_out",
+  "seed": 20260705,
+  "n_attempts": 105,
+  "n_topics": 18,
+  "n_topics_covered_mock": 10,
+  "feature_definitions": {
+    "topic_mastery": "mock FSRS-like [0.35,0.85] from topic_id + seed (not live mastery proto)",
+    "difficulty": "cognitive_demand proxy (recall/application/synthesis/passage)",
+    "timing_fast": "mock normalized speed [0.15,0.85] from question_id + seed",
+    "coverage": "1 if topic in mock covered set (~70% of topics), else 0"
+  },
+  "model": {
+    "type": "logistic (fixed transparent weights \u2014 not ML-trained)",
+    "weights": {
+      "intercept": -0.35,
+      "topic_mastery": 2.4,
+      "difficulty": -1.5,
+      "timing_fast": -0.45,
+      "coverage": 0.55
+    }
+  },
+  "metrics": {
+    "brier": 0.21875286633910904,
+    "log_loss": 0.6243683149558894,
+    "mean_predicted_p": 0.6364359586876994,
+    "observed_accuracy": 0.5904761904761905,
+    "accuracy_at_threshold_0.5": 0.6666666666666666,
+    "accuracy_at_threshold_n": 105,
+    "accuracy_at_threshold_k": 70,
+    "wilson95_ci": [
+      0.5720259532944062,
+      0.7495422706199794
+    ]
+  },
+  "missing_data_note": "attempts and feature snapshots are fully synthetic (seeded). No real held-out attempts paired with live mastery snapshots exist yet.",
+  "next_action": "Replace with real held-out attempts + mastery snapshots exported at attempt time; rerun: py -3.12 scripts/eval_step2_prediction.py --attempts build/heldout-answers_<who>.json"
+}

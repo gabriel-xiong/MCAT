@@ -178,6 +178,13 @@ harness reports:
 
 This confirms the harness does **not** manufacture an effect when none is modeled.
 
+### §8 failure criterion (Sunday rubric)
+
+The study feature **does not ship as a proven win** unless real multi-arm data
+shows interleaved > blocked at equal study time with p < 0.05; until then the
+synthetic borderline interleaved−blocked result (p=0.057) stands as the honest
+**failure-to-demonstrate** at realistic n, not as evidence against interleaving.
+
 ---
 
 ## Limitations / what didn't work

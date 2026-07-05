@@ -1,0 +1,64 @@
+##########################################################################
+#  POOLED HELD-OUT PERFORMANCE   [SYNTHETIC — PIPELINE DEMO ONLY, NOT REAL DATA]
+##########################################################################
+#  WARNING: at least one sheet is SYNTHETIC. The pooled accuracy
+#  below is a METHODOLOGY DEMONSTRATION, not a performance or
+#  learning claim. Do not report it as a real score.
+##########################################################################
+
+held_out questions in bank : 105
+sheets scored              : 3
+
+PER-SHEET (never merged — independent runs):
+  heldout-SYNTHETIC_testerA.json  [SYNTHETIC]
+    accuracy 0.590 (62/105)   Wilson 95% CI [0.495, 0.680]
+  heldout-SYNTHETIC_testerB.json  [SYNTHETIC]
+    accuracy 0.590 (62/105)   Wilson 95% CI [0.495, 0.680]
+  heldout-SYNTHETIC_testerC.json  [SYNTHETIC]
+    accuracy 0.495 (52/105)   Wilson 95% CI [0.401, 0.589]
+
+POOLED (all sheets, union of independent attempts):
+  accuracy 0.559 (176/315)   Wilson 95% CI [0.504, 0.613]
+
+  by section
+    section       n  correct     acc
+    --------------------------------
+    BB          114       67   0.588
+    CARS         21       10   0.476
+    CP          135       71   0.526
+    PS           45       28   0.622
+  by topic
+    topic_id                  n  correct     acc
+    --------------------------------------------
+    bb_citric_acid            9        7   0.778
+    bb_dna                   12        4   0.333
+    bb_enzymes               54       30   0.556
+    bb_genetics              12        8   0.667
+    bb_glycolysis            12        9   0.750
+    bb_membranes             15        9   0.600
+    cars_comprehension        9        5   0.556
+    cars_reasoning_beyond     6        2   0.333
+    cars_reasoning_within     6        3   0.500
+    cp_acids_bases           60       24   0.400
+    cp_electrochem           12        7   0.583
+    cp_fluids                12        5   0.417
+    cp_kinetics              39       26   0.667
+    cp_thermo                12        9   0.750
+    ps_demographics           9        5   0.556
+    ps_learning              12        6   0.500
+    ps_memory                12       10   0.833
+    ps_social                12        7   0.583
+
+COVERAGE (honesty fields):
+  answered attempts        : 315 of 315 possible (100.0%)
+  sections covered         : 4/4
+  topics covered           : 18/18
+  strict attempt gate (>=30): PASS (>=30)
+
+MISSING-DATA NOTE:
+  These attempts are SYNTHETIC (documented Bernoulli responder,
+  stated per-section accuracy + seed). No real independent tester
+  has answered the frozen held_out set yet.
+SINGLE NEXT ACTION:
+  Replace with real independent held-out answers (collection kit ready):
+  py -3.12 scripts/pool_heldout.py build/heldout-answers_*.json

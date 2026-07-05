@@ -273,3 +273,27 @@ make eval-memory
 make eval-performance
 make eval-leakage
 ```
+
+---
+
+## 2b. Step 2 held-out prediction harness (`scripts/eval_step2_prediction.py`) — SYNTHETIC DEMO
+
+**Question:** Given topic mastery, item difficulty, timing, and outline coverage
+flags at attempt time, can we **calibrate** a prediction of held-out question
+correctness?
+
+This is a **methodology demonstration only** — mock feature snapshots + synthetic
+attempts. It does **not** claim a trained ML model or real predictive validity.
+
+```bash
+py -3.12 scripts/eval_step2_prediction.py
+make eval-step2-synthetic
+```
+
+Outputs: Brier, log-loss, accuracy @ p≥0.5 + Wilson 95% CI on
+``docs/artifacts/step2-prediction-SYNTHETIC.summary.json`` (``mode: synthetic``,
+``missing_data_note``, ``next_action``). Full spec:
+``docs/STEP2-PREDICTION.md``.
+
+**Never-blend rationale:** Step 2 reads **performance attempts only**; it never
+mixes Memory or Readiness inputs into a single headline score.
