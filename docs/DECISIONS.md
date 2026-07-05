@@ -49,7 +49,7 @@
 
 **Decision:** Demo on ~15–25 outline topics, ~200–500 cards, ~30–100 performance questions.
 
-**Rationale:** Speedrun grades measurement honesty and architecture, not curriculum completeness. Coverage map uses **full outline as denominator** to show partial coverage.
+**Rationale:** Speedrun grades measurement honesty and architecture, not curriculum completeness. Coverage map uses **full AAMC exam outline as denominator** (`data/mcat-outline.full.json`, 49 topics in v1) — **not** the ~18-topic prototype subset. Numerator = outline topics where the deck has tagged cards and/or the question bank has questions (content presence, not user study progress). Prototype content yields ~6–37% coverage → Readiness correctly abstains below the 50% gate.
 
 ---
 

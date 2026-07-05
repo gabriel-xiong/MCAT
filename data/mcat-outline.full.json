@@ -1,0 +1,276 @@
+{
+  "exam": "MCAT",
+  "version": "full-aamc-v1",
+  "description": "Full AAMC-style MCAT content outline for coverage denominator. Prototype v1 topics (18) plus official content categories. Coverage % = outline topics with deck cards or bank questions / this full list. NOT the same as the v1-subset shipped scope.",
+  "sections": [
+    {
+      "id": "CP",
+      "name": "Chemical and Physical Foundations of Biological Systems",
+      "topics": [
+        {
+          "id": "cp_electrochem",
+          "name": "Electrochemistry",
+          "weight": 1.0
+        },
+        {
+          "id": "cp_acids_bases",
+          "name": "Acids, Bases, and Buffers",
+          "weight": 1.0
+        },
+        {
+          "id": "cp_thermo",
+          "name": "Thermodynamics and Spontaneity",
+          "weight": 1.0
+        },
+        {
+          "id": "cp_kinetics",
+          "name": "Chemical Kinetics",
+          "weight": 1.0
+        },
+        {
+          "id": "cp_fluids",
+          "name": "Fluids and Circulation (physics)",
+          "weight": 0.8
+        },
+        {
+          "id": "aamc_cp_4a",
+          "name": "Translational motion, forces, work, energy, and equilibrium",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_4b",
+          "name": "Fluids for blood circulation, gas movement, and gas exchange",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_4c",
+          "name": "Electrochemistry and electrical circuits",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_4d",
+          "name": "How light and sound interact with matter",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_4e",
+          "name": "Atoms, nuclear decay, electronic structure, and atomic behavior",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_5a",
+          "name": "Unique nature of water and its solutions",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_5b",
+          "name": "Nature of molecules and intermolecular interactions",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_5c",
+          "name": "Separation and purification methods",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_5d",
+          "name": "Structure, function, and reactivity of biologically relevant molecules",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_cp_5e",
+          "name": "Principles of chemical thermodynamics and kinetics",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "CARS",
+      "name": "Critical Analysis and Reasoning Skills",
+      "topics": [
+        {
+          "id": "cars_comprehension",
+          "name": "Foundations of Comprehension",
+          "weight": 1.0
+        },
+        {
+          "id": "cars_reasoning_within",
+          "name": "Reasoning Within the Text",
+          "weight": 1.0
+        },
+        {
+          "id": "cars_reasoning_beyond",
+          "name": "Reasoning Beyond the Text",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "BB",
+      "name": "Biological and Biochemical Foundations of Living Systems",
+      "topics": [
+        {
+          "id": "bb_glycolysis",
+          "name": "Glycolysis and Glucose Metabolism",
+          "weight": 1.0
+        },
+        {
+          "id": "bb_citric_acid",
+          "name": "Citric Acid Cycle and Oxidative Phosphorylation",
+          "weight": 1.0
+        },
+        {
+          "id": "bb_enzymes",
+          "name": "Enzyme Kinetics and Regulation",
+          "weight": 1.0
+        },
+        {
+          "id": "bb_membranes",
+          "name": "Membrane Structure and Transport",
+          "weight": 1.0
+        },
+        {
+          "id": "bb_dna",
+          "name": "DNA Structure and Replication",
+          "weight": 1.0
+        },
+        {
+          "id": "bb_genetics",
+          "name": "Mendelian Genetics and Inheritance",
+          "weight": 0.9
+        },
+        {
+          "id": "aamc_bb_1a",
+          "name": "Structure and function of proteins and amino acids",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_1b",
+          "name": "Transmission of genetic information from gene to protein",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_1c",
+          "name": "Transmission of heritable information and genetic diversity",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_1d",
+          "name": "Principles of bioenergetics and fuel molecule metabolism",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_2a",
+          "name": "Assemblies of molecules, cells, and groups of cells",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_2b",
+          "name": "Structure, growth, physiology, and genetics of prokaryotes and viruses",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_2c",
+          "name": "Processes of cell division, differentiation, and specialization",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_3a",
+          "name": "Nervous and endocrine systems and organ coordination",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_bb_3b",
+          "name": "Structure and integrative functions of main organ systems",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "id": "PS",
+      "name": "Psychological, Social, and Biological Foundations of Behavior",
+      "topics": [
+        {
+          "id": "ps_memory",
+          "name": "Memory and Cognition",
+          "weight": 1.0
+        },
+        {
+          "id": "ps_learning",
+          "name": "Learning and Conditioning",
+          "weight": 1.0
+        },
+        {
+          "id": "ps_social",
+          "name": "Social Processes and Behavior",
+          "weight": 1.0
+        },
+        {
+          "id": "ps_demographics",
+          "name": "Demographics and Health Disparities",
+          "weight": 0.8
+        },
+        {
+          "id": "aamc_ps_6a",
+          "name": "Sensing the environment",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_6b",
+          "name": "Making sense of the environment",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_6c",
+          "name": "Responding to the world",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_7a",
+          "name": "Individual influences on behavior",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_7b",
+          "name": "Social processes that influence human behavior",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_7c",
+          "name": "Attitude and behavior change",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_8a",
+          "name": "Self-identity",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_8b",
+          "name": "Social thinking",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_8c",
+          "name": "Social interactions",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_9a",
+          "name": "Understanding social structure",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_9b",
+          "name": "Demographic characteristics and processes",
+          "weight": 1.0
+        },
+        {
+          "id": "aamc_ps_10a",
+          "name": "Social inequality",
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

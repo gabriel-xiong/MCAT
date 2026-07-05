@@ -1,7 +1,7 @@
 {
   "exam": "MCAT",
   "version": "v1-subset",
-  "description": "Representative topic subset for speedrun v1. Coverage % uses this list as denominator — not the full AAMC outline.",
+  "description": "Representative topic subset for speedrun v1 shipped content (~18 coarse topics). Coverage denominator is mcat-outline.full.json — NOT this file.",
   "sections": [
     {
       "id": "CP",
