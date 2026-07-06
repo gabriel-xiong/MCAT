@@ -1,5 +1,7 @@
 # Submission results — unified eval report (2026-07-05)
 
+**Screen-share walkthrough:** [`demo/EVAL-WALKTHROUGH.md`](demo/EVAL-WALKTHROUGH.md)
+
 Local pass executed from `MCAT/` with `py -3.12` / Makefile targets. **No API
 keys, no network, no push.** Synthetic runs are labelled; three scores are never
 blended.

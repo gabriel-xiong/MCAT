@@ -1,4 +1,4 @@
-# Eval and bench targets — implement after Anki fork exists
+# Eval and bench targets ï¿½ implement after Anki fork exists
 
 
 
@@ -69,12 +69,12 @@ eval-step2-synthetic:
 
 # Full synthetic eval battery (no credentials, no network).
 eval-all-synthetic: validate-data eval-leakage eval-memory eval-performance eval-heldout-synthetic eval-step2-synthetic study eval-ai
-	@echo "Synthetic eval battery complete — see docs/artifacts/ and docs/SUBMISSION-RESULTS.md"
+	@echo "Synthetic eval battery complete ï¿½ see docs/artifacts/ and docs/SUBMISSION-RESULTS.md"
 
 
 
 # Study-feature 3-build ablation: interleaved vs blocked performance sessions vs
-# plain Anki, on PERFORMANCE outcome at EQUAL STUDY TIME (PRD §6.9 SF-1..SF-4).
+# plain Anki, on PERFORMANCE outcome at EQUAL STUDY TIME (PRD ï¿½6.9 SF-1..SF-4).
 # Set MCAT_STUDY_MANIFEST=/path/study.json to score real tester data; with none
 # set it runs the documented synthetic demo (assumed effect sizes, fixed seed).
 # Writes docs/artifacts/study-feature.{png,summary.json,arms.csv}; see
@@ -103,7 +103,7 @@ eval-qa-goldset:
 
 
 
-# "AI beats a simpler method?" — score the saved live OpenAI answers against two
+# "AI beats a simpler method?" ï¿½ score the saved live OpenAI answers against two
 # AI-OFF baselines (static explanation/choice_feedback + keyword retrieval) using
 # the SAME token scorer as ai_eval_qa.py. No API calls; fully reproducible.
 # Writes docs/QA-BASELINE-COMPARISON.md.

@@ -1,8 +1,11 @@
 # MCAT Speedrun — Sunday critical path (~4 hours)
 
-_Generated: **2026-07-05 15:00 CDT**. Assumes ~4 hours until submission deadline.
-Graded bundle at `anki-MCAT/out/tester-dist-graded/` already has live
-`mcat-ai-proxy.json` filled by builder._
+_Generated: **2026-07-05 15:00 CDT**; updated **16:00 CDT** after verification pack.
+Graded bundle at `anki-MCAT/out/tester-dist-graded/` — **`mcat-ai-proxy.json` still
+has placeholders** until you paste deployed URL + token._
+
+> **Grader entry point:** [`HOW-TO-VERIFY.md`](HOW-TO-VERIFY.md) — 22-row claim→evidence
+> table, 5-minute verifier path, honest GAPS. Demo narration: [`MVP-TO-FINAL.md`](MVP-TO-FINAL.md).
 
 > **Honest gaps you must label in the submission (not bugs):**
 > - **No sync recording** — two-way sync proof is doc + code, not a captured video.
@@ -24,9 +27,10 @@ Graded bundle at `anki-MCAT/out/tester-dist-graded/` already has live
 | anki-MCAT `ai_bridge.py` blank-URL fix | **Committed** `8e997d0c3` (not pushed — auth blocked) |
 | MCAT `ai_explain.py` blank-URL guard | **Committed** `2f277df` on `chore/pre-demo-verification` |
 | `data/mcat-outline.full.json` | **Committed** `9f38e86` on `chore/pre-demo-verification` |
-| PR #3 (anki-MCAT) | **OPEN, MERGEABLE** — needs push + merge |
-| Graded MSI | **STALE** (Jul 4, 619 MB) — rebuild required |
-| Push to GitHub | **BLOCKED** — `git push` prompts for HTTPS credentials |
+| PR #3 (anki-MCAT) | **MERGED** on `main` (coverage + AI toggle) |
+| Verification pack | **DONE** — `HOW-TO-VERIFY.md`, `MVP-TO-FINAL.md`, `SYNC-DEMO-SCRIPT.md`; MCAT `1116623`, anki-MCAT `9c4e8ca04` (local) |
+| Graded MSI | **PARTIAL** — `MCAT-Speedrun-graded.msi` copy dated Jul 5 but **byte-identical to Jul 4 dist**; run full `tools/build-installer.bat` (package step) with `SCORE_PROFILE = "strict"` |
+| Push to GitHub | MCAT `chore/pre-demo-verification` unpushed; anki-MCAT `main` may be pushed |
 
 ---
 
@@ -77,9 +81,12 @@ out\pyenv\Scripts\python.exe tools\mcat_seed_tester.py --out out\tester-dist-gra
 out\pyenv\Scripts\python.exe out\_verify_history_clean.py out\tester-dist-graded\MCAT-Speedrun\mcat-base
 ```
 
-**Expect:** revlog=0, perf_attempts=0, 66 cards, 62 perf Qs.
+**Expect:** revlog=0, perf_attempts=0, 66 cards, 62 perf Qs, seed line
+`auto-sync : off` (`autoSync=False` in prefs — manual Sync still works).
 
-**Proxy JSON:** User already filled `out/tester-dist-graded/MCAT-Speedrun/mcat-ai-proxy.json`.
+**Proxy JSON:** Still **`REPLACE_WITH_…`** in
+`out/tester-dist-graded/MCAT-Speedrun/mcat-ai-proxy.json` — paste deployed values
+per [`AI-PROXY-DEPLOY-NOW.md`](AI-PROXY-DEPLOY-NOW.md), then re-zip if uploading bundle.
 Reseed with `--keep` if you need to preserve it:
 
 ```powershell
@@ -154,8 +161,11 @@ make ci-local
 make test
 ```
 
-**Label in submission:** all held-out / memory / paraphrase numbers in
-`docs/artifacts/` are **SYNTHETIC** unless you have real tester sheets.
+**Label in submission:** held-out perf and study ablation are **SYNTHETIC**; **REAL**
+memory calibration for participant alt is in
+[`memory-calibration-alt.summary.json`](artifacts/memory-calibration-alt.summary.json).
+Held-out perf for alt is **`scorable: false`** — see
+[`heldout-performance-REAL-alt.summary.json`](artifacts/heldout-performance-REAL-alt.summary.json).
 
 **Real held-out (if sheet arrives):**
 
@@ -175,10 +185,10 @@ py -3.12 scripts/score_heldout.py build/heldout-REAL_tester1.json
 | 2 | 1:30–3:30 | Performance miss → error typing → AI Assistant (live or offline fallback) |
 | 3 | 3:30–4:15 | Memory mode flashcard review (separate from performance) |
 | 4 | 4:15–5:00 | Export data button → show sidecar JSON |
-| 5 | 5:00–6:30 | **Proof slide:** leakage OK, synthetic eval labelled, CI green screenshot |
-| 6 | 6:30–8:00 | Honest gaps: no sync video, readiness abstains, small-n |
+| 5 | 5:00–6:30 | **Proof slide:** open `HOW-TO-VERIFY.md` — leakage OK, REAL alt memory, synthetic labelled |
+| 6 | 6:30–8:00 | MVP→final callouts per [`MVP-TO-FINAL.md`](MVP-TO-FINAL.md); honest gaps (no sync video) |
 
-Numbers to cite: [`demo/results-demo-outline.md`](demo/results-demo-outline.md)
+Numbers to cite: [`SUBMISSION-RESULTS.md`](SUBMISSION-RESULTS.md), [`HOW-TO-VERIFY.md`](HOW-TO-VERIFY.md)
 
 ---
 
@@ -186,13 +196,16 @@ Numbers to cite: [`demo/results-demo-outline.md`](demo/results-demo-outline.md)
 
 | Artifact | Path | Notes |
 |----------|------|-------|
-| Graded MSI | `anki-MCAT/out/graded-build/MCAT-Speedrun-graded.msi` | Strict profile; rebuild today |
-| Graded bundle ZIP | `anki-MCAT/out/tester-dist-graded/MCAT-Speedrun/` | Includes filled `mcat-ai-proxy.json` |
+| Graded MSI | `anki-MCAT/out/graded-build/MCAT-Speedrun-graded.msi` | Must be **new package** (dist MSI mtime Jul 5+), not Jul 4 copy |
+| Graded bundle ZIP | `anki-MCAT/out/tester-dist-graded/MCAT-Speedrun/` | Placeholder `mcat-ai-proxy.json` — fill before demo |
 | Friend MSI (optional) | `out/graded-build/MCAT-Speedrun-friend.msi` | Tester profile; stale Jul 4 |
 | Demo video | your recording | 6–8 min per outline above |
 | CI screenshot | GitHub Actions green run | [mcat-ci workflow](https://github.com/gabriel-xiong/MCAT/actions) |
 | PR links | anki-MCAT #1–3, MCAT #1–5 | Show feature-branch workflow |
-| Eval docs | `docs/SUBMISSION-RESULTS.md`, `docs/EVAL-SUMMARY-GRADED.md` | Label synthetic |
+| **Grader hub** | `docs/HOW-TO-VERIFY.md` | **Lead with this** — 5 min + 30 min paths |
+| Eval docs | `docs/SUBMISSION-RESULTS.md`, `docs/EVAL-SUMMARY-GRADED.md` | REAL alt memory + synthetic labels |
+| MVP delta | `docs/MVP-TO-FINAL.md` | Demo narration |
+| Graded handoff | `anki-MCAT/docs/GRADED-HANDOFF.md` | MSI install, strict profile, auto-sync off |
 | BrainLift | `docs/BRAINLIFT.md` | Thesis + error typing |
 | Quickstarts | `docs/GRADED-QUICKSTART.md`, `docs/TESTER-QUICKSTART.md` | Grader vs friend |
 | Leakage proof | `docs/artifacts/leakage-check.summary.json` | Jaccard 0.56 < 0.70 |
@@ -203,18 +216,15 @@ Numbers to cite: [`demo/results-demo-outline.md`](demo/results-demo-outline.md)
 ## Ordered checklist — run NOW
 
 ```
-[ ] 1. git push anki-MCAT feat/dashboard-ai-toggle  (auth required)
-[ ] 2. gh pr merge 3 -R gabriel-xiong/anki-MCAT --merge
-[ ] 3. git pull origin main  (anki-MCAT)
-[ ] 4. Edit mcat_scores.py line 52 → SCORE_PROFILE = "strict"
-[ ] 5. Reseed: mcat_seed_tester.py --out out/tester-dist-graded --with-ai-proxy --keep
-[ ] 6. Verify clean: _verify_history_clean.py
-[ ] 7. START MSI build (only if ninja ready): tools\run.bat then tools\build-installer.bat
-[ ] 8. REVERT mcat_scores.py line 52 → "tester" after MSI done
-[ ] 9. Smoke test graded MSI (30 min checklist)
-[ ] 10. make eval-all-synthetic && make ci-local  (MCAT repo)
-[ ] 11. Record demo video (6–8 min)
-[ ] 12. Upload package list above
+[x] 1. PR #3 merged on anki-MCAT main
+[ ] 2. Full MSI **package** (not copy-only) — `SCORE_PROFILE = "strict"`, close Anki first, then `tools/build-installer.bat`
+[ ] 3. Fill mcat-ai-proxy.json in out/tester-dist-graded/MCAT-Speedrun/
+[ ] 4. git push MCAT chore/pre-demo-verification  (verification pack commit 1116623)
+[ ] 5. git push anki-MCAT main  (GRADED-HANDOFF 9c4e8ca04; SCORE_PROFILE reverted to tester)
+[ ] 6. Smoke test graded MSI (30 min checklist)
+[ ] 7. make eval-all-synthetic && make ci-local  (MCAT repo)
+[ ] 8. Record demo video — script in demo/product-ai-demo-runofshow.md + MVP-TO-FINAL.md
+[ ] 9. Upload package list above; cite HOW-TO-VERIFY.md in cover note
 ```
 
 ---
@@ -226,18 +236,18 @@ Numbers to cite: [`demo/results-demo-outline.md`](demo/results-demo-outline.md)
 | anki-MCAT | `feat/dashboard-ai-toggle` | `8e997d0c3` | fix(ai): treat blank proxy URL as "off" |
 | anki-MCAT | (same branch, prior) | `91deeef69`, `c8de416c9` | Memory abstain fixes |
 | MCAT | `chore/pre-demo-verification` | `2f277df` | fix(ai): reject blank/malformed proxy URLs |
+| MCAT | `chore/pre-demo-verification` | `1116623` | HOW-TO-VERIFY + REAL alt eval artifacts |
 | MCAT | (same branch, prior) | `9f38e86` | full AAMC exam outline |
+| anki-MCAT | `main` | `9c4e8ca04` | GRADED-HANDOFF.md |
 
 ---
 
 ## Blockers
 
-1. **Git push auth** — `git push` prompts for GitHub username/password. Use PAT,
-   SSH remote, or `gh auth login` before merge.
-2. **MSI rebuild** — Jul 4 MSIs predate today's merges; graded build mandatory.
-3. **PR #3 not merged yet** — dashboard coverage + AI toggle not on `main`.
-4. **No real held-out tester data** — Performance score abstains; use synthetic
-   demo with honest labels.
+1. **Fill proxy JSON** — graded bundle still has placeholders; blocks live AI demo.
+2. **MCAT branch push** — verification pack local only until `chore/pre-demo-verification` pushed.
+3. **No real held-out tester data** — Performance score abstains; alt bundle `scorable: false`.
+4. **No sync recording** — optional script in `SYNC-DEMO-SCRIPT.md`; label gap in submission.
 
 ---
 

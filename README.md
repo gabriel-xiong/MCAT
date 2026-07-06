@@ -281,6 +281,7 @@ No readiness score without: evidence behind the number, what data is missing, a 
 
 ## Documentation map
 
+- BrainLift (submission): [`docs/BRAINLIFT.md`](docs/BRAINLIFT.md) · grader path: [`docs/HOW-TO-VERIFY.md`](docs/HOW-TO-VERIFY.md)
 - Product: [`docs/PRD.md`](docs/PRD.md) · [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/DECISIONS.md`](docs/DECISIONS.md) · [`docs/MODELS.md`](docs/MODELS.md)
 - AI: [`docs/AI-FEATURE.md`](docs/AI-FEATURE.md) · [`docs/QA-GOLDSET.md`](docs/QA-GOLDSET.md) · [`docs/QA-BASELINE-COMPARISON.md`](docs/QA-BASELINE-COMPARISON.md)
 - Sync & error typing: [`docs/SYNC-CONFLICT-RULE.md`](docs/SYNC-CONFLICT-RULE.md) · [`docs/ERROR-DIAGNOSIS-SPEC.md`](docs/ERROR-DIAGNOSIS-SPEC.md)

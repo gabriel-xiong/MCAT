@@ -1,5 +1,7 @@
 # How to verify MCAT Speedrun (grader-facing)
 
+**Full grader packet (~5–6 pp):** [`demo/GRADER-PACKET.html`](demo/GRADER-PACKET.html)
+
 _Single page for graders and reviewers. Last updated: **2026-07-05**._
 
 This doc maps **every Speedrun rubric item** (§7a–7h, §8–10) and the core product

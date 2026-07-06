@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCAT Speedrun — Grader Packet</title>
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --muted: #444;
+      --border: #ccc;
+      --real: #0d5c4b;
+      --real-bg: #e8f5f1;
+      --synth: #8a5a00;
+      --synth-bg: #fff8e6;
+      --gap: #7a1f1f;
+      --gap-bg: #fdecea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      color: var(--text);
+      max-width: 7.5in;
+      margin: 0 auto;
+      padding: 0.6in 0.75in;
+      background: #fff;
+    }
+    h1 {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 22pt;
+      font-weight: 700;
+      margin: 0 0 0.25em;
+      line-height: 1.2;
+    }
+    h2 {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 14pt;
+      font-weight: 600;
+      margin: 1.4em 0 0.5em;
+      padding-bottom: 0.15em;
+      border-bottom: 1px solid var(--border);
+      page-break-after: avoid;
+    }
+    h3 {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 11.5pt;
+      font-weight: 600;
+      margin: 1em 0 0.35em;
+      page-break-after: avoid;
+    }
+    p { margin: 0.5em 0; }
+    .meta {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 9.5pt;
+      color: var(--muted);
+      margin-bottom: 1.2em;
+    }
+    .lead { font-size: 11.5pt; }
+    ul, ol { margin: 0.4em 0 0.6em 1.25em; }
+    li { margin: 0.2em 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 9.5pt;
+      margin: 0.6em 0 0.8em;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.35em 0.45em;
+      vertical-align: top;
+      text-align: left;
+    }
+    th { background: #f3f3f3; font-weight: 600; }
+    code, .mono {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9pt;
+      background: #f5f5f5;
+      padding: 0.05em 0.25em;
+    }
+    .formula {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9.5pt;
+      background: #f8f8f8;
+      border-left: 3px solid #888;
+      padding: 0.5em 0.75em;
+      margin: 0.5em 0;
+    }
+    .tag {
+      display: inline-block;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.1em 0.45em;
+      border-radius: 2px;
+    }
+    .tag-real { color: var(--real); background: var(--real-bg); }
+    .tag-synth { color: var(--synth); background: var(--synth-bg); }
+    .tag-gap { color: var(--gap); background: var(--gap-bg); }
+    .page-break { page-break-before: always; }
+    @media print {
+      body { padding: 0; max-width: none; }
+      h2 { break-after: avoid; }
+      table, .formula { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>MCAT Speedrun — Grader Packet</h1>
+<p class="meta">Gabriel Xiong · MCAT (472–528) · AGPL Anki fork · Last updated 2026-07-05 · Companion: <code>docs/HOW-TO-VERIFY.md</code>, <code>docs/SUBMISSION-RESULTS.md</code></p>
+
+<!-- §1 Executive summary -->
+<h2>1. Executive summary</h2>
+<p class="lead">MCAT Speedrun is an Anki fork plus AnkiDroid companion that measures the gap between flashcard recall and exam-style performance. Students review in <strong>memory mode</strong> (standard FSRS scheduling) and practice curated OpenStax MCQs in a separate <strong>performance mode</strong>. The dashboard shows <strong>three scores that are never blended</strong>: Memory (FSRS recall strength), Performance (attempt accuracy on gated topics), and Readiness (section-mapped 472–528 range with explicit uncertainty). v1 is a measurement prototype, not a full prep course: shipped content covers <strong>18 coarse topics</strong> (~200–500 cards, 170 performance questions) while the coverage denominator uses the full exam outline of <strong>49 topics</strong> (<code>data/mcat-outline.full.json</code>). Prototype content presence yields roughly <strong>6–37% outline coverage</strong>, so Readiness correctly <strong>abstains</strong> below the 50% gate rather than projecting readiness from a tiny slice of the MCAT. Every computed score carries a range or credible band, coverage context, a missing-data note when withheld, and a single next action—honesty over flattery is an automatic fail criterion for this submission.</p>
+
+<!-- §2 Model descriptions -->
+<h2>2. Score models</h2>
+<p>Implementation: <code>anki-MCAT/pylib/anki/mcat_scores.py</code> (hand-mirrored in AnkiDroid). Full prose: <code>docs/MODELS.md</code>. Policy: <code>docs/DECISIONS.md</code> §7 (three scores), §8 (readiness direction), §14 (give-up thresholds), §31 (tester vs strict profiles).</p>
+
+<h3>2.1 Memory — FSRS recall strength</h3>
+<p><strong>Question:</strong> How strong is flashcard recall right now, using memory-domain signals only (never outline coverage)?</p>
+<p><strong>Signals:</strong> Mean FSRS predicted retrievability <code>R</code> over all started cards with memory state; deck maturity <code>Mat</code> = fraction of started cards with scheduling interval ≥ 21 days.</p>
+<div class="formula">
+  Strict (graded) headline: MemoryScore = round(R × Mat × 100)<br>
+  Tester (engagement) headline: MemoryScore = round(R × 100) — maturity factor forced to 1.0
+</div>
+<p><strong>Uncertainty band:</strong> Wilson interval on mean recall probability, scaled by the maturity factor (replaces normal SE, which collapses to ±0 at R≈1 right after review). Band widens at small card counts.</p>
+
+<table>
+  <caption>Memory abstain gates — two pre-registered profiles (<code>SCORE_PROFILE</code>)</caption>
+  <thead>
+    <tr><th>Gate</th><th>Strict (graded claims)</th><th>Tester (friend engagement only)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Graded reviews</td><td>≥ 200 total revlog rows</td><td>≥ 10</td></tr>
+    <tr><td>Card maturity</td><td>≥ 1 card at interval ≥ 21 days</td><td>Not required</td></tr>
+    <tr><td>Started-card floor</td><td>(governed by maturity)</td><td>≥ 10 started cards</td></tr>
+    <tr><td>Score basis</td><td>R × Mat (long-term recall strength)</td><td>R only (“early recall strength”)</td></tr>
+    <tr><td>UI label when computed</td><td>Measured (if gates pass)</td><td><strong>Provisional</strong> badge — not a graded claim</td></tr>
+  </tbody>
+</table>
+<p>The graded MSI build sets <code>SCORE_PROFILE = "strict"</code>. Tester thresholds exist solely so a ~15–20 minute session can populate provisional tiles; they do <em>not</em> change graded eval claims (DECISIONS §31). Empty profiles (0 data) always abstain on all three scores.</p>
+
+<h3>2.2 Performance — Bayesian shrinkage accuracy</h3>
+<p><strong>Question:</strong> On first-attempt exam-style questions in unlocked topics, what accuracy should we expect? Deliberately <em>not</em> memory × constant and not coverage-derived.</p>
+<div class="formula">
+  k = correct attempts, n = scored attempts (IDK excluded)<br>
+  Prior: Beta(2, 2) — mean 0.5, effective prior n = 4<br>
+  PerfScore = round(100 × (k + 2) / (n + 4))<br>
+  Credible band: normal approximation to the same Beta posterior (±1.96·sd), displayed 0–100
+</div>
+<p><strong>Section accuracy</strong> is computed per topic via <code>PerfStore.accuracy()</code>; the headline uses pooled first-attempt correctness. <strong>Topic gate</strong> (performance unlock): ≥ 3 distinct cards seen AND ≥ 5 Good/Easy on that topic; CARS is always unlocked (no memory gate). <strong>IDK (“Not sure”):</strong> excluded from accuracy numerator and denominator; logged separately; non-CARS IDK routes to content_gap remediation without a scored attempt (DECISIONS §30).</p>
+<p><strong>Question bank split:</strong> 170 items — 65 <code>dev</code> (tuning) / 105 <code>held_out</code> (frozen before tuning; friend eval target). Runtime reads local bank only — no live LLM during scoring.</p>
+<table>
+  <thead>
+    <tr><th>Gate</th><th>Strict</th><th>Tester</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Scored attempts</td><td>≥ 30</td><td>≥ 8</td></tr>
+    <tr><td>Unlocked topics</td><td>≥ 1</td><td>≥ 1</td></tr>
+  </tbody>
+</table>
+
+<h3>2.3 Readiness — mapped range with coverage penalty</h3>
+<p><strong>Question:</strong> If the exam were today, what total score <em>range</em> is plausible?</p>
+<ol>
+  <li>For each section (CP, CARS, BB, PS), compute mean scored attempt accuracy (IDK excluded).</li>
+  <li>Map accuracy → section score: <code>118 + accuracy × (132 − 118)</code> (118–132 per section).</li>
+  <li>Sum section scores → center on 472–528 scale; apply half-width band.</li>
+  <li><strong>Abstain</strong> if any give-up gate fails (table below).</li>
+</ol>
+<div class="formula">
+  half_width = 6 + round(18 × max(0, (30 − n) / 30))   /* n = perf attempts */<br>
+  range = [clamp(center − half_width, 472), clamp(center + half_width, 528)]<br>
+  confidence = round(100 × (0.4·cov + 0.4·(n/(n+60)) + 0.2·(1 − min(width,30)/30)))<br>
+  bucket: &lt;40 low · 40–69 moderate · ≥70 high
+</div>
+<p>Confidence uses readiness-domain inputs only (coverage fraction, attempt count, range width)—never Memory or Performance headline scores.</p>
+
+<table>
+  <caption>Readiness abstain / give-up gates (all must pass to show a range)</caption>
+  <thead>
+    <tr><th>Condition</th><th>Strict threshold</th><th>Tester threshold</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Memory reviews</td><td>≥ 200</td><td>≥ 10</td></tr>
+    <tr><td>Performance attempts (scored)</td><td>≥ 30</td><td>≥ 8</td></tr>
+    <tr><td>Exam outline coverage</td><td>≥ 50% of 49 topics</td><td>≥ 50% (unchanged)</td></tr>
+    <tr><td>CP / BB / PS attempts each</td><td>≥ 5 per shipped section</td><td>≥ 3 per shipped section</td></tr>
+    <tr><td>CARS attempts</td><td>≥ 5</td><td>≥ 3</td></tr>
+  </tbody>
+</table>
+<p><strong>Coverage semantics (DECISIONS §2):</strong> Denominator = full 49-topic AAMC outline. Numerator = topics where the deck has tagged cards <em>or</em> the question bank has ≥1 question—<strong>content presence, not user study progress</strong>. With ~18 shipped topics represented in content, coverage stays well below 50%, so strict Readiness abstains by design until curriculum expands or the user is told honestly that the proxy cannot fire yet.</p>
+
+<div class="page-break"></div>
+
+<!-- §3 Design decisions -->
+<h2>3. Locked design decisions</h2>
+<p>Bullet summary with decision-log references (<code>docs/DECISIONS.md</code>):</p>
+<ol>
+  <li><strong>Product shape (§1):</strong> Anki fork + measurement layer—not add-on-only or greenfield app. Shared Rust engine for desktop + AnkiDroid.</li>
+  <li><strong>Scope (§2, §3):</strong> ~15–25 prototype topics for shipped deck/UI; 49-topic full outline as coverage denominator only.</li>
+  <li><strong>Performance gate (§6, §8):</strong> ≥3 cards seen + ≥5 Good/Easy per topic; separate sessions from memory reviews.</li>
+  <li><strong>CARS (§9):</strong> Performance-only lane—no flashcard prerequisite.</li>
+  <li><strong>Three scores (§7):</strong> Memory, Performance, Readiness always separate with ranges; never blended into one “% ready.”</li>
+  <li><strong>Sidecar sync (§5, §22):</strong> Stock Anki sync for collection; performance data in local <code>mcat_perf.db</code>; cross-device perf via uuid-deduped export/import bundle (not embedded in collection DB).</li>
+  <li><strong>Question bank (§10, §13):</strong> Curated OpenStax with named sources; <code>dev</code> vs <code>held_out</code> frozen before tuning.</li>
+  <li><strong>AI at runtime for scores (§12, §23–§24):</strong> Wednesday deliverable = zero AI on critical path. Scores and question bank run fully offline. Optional post-answer explainer uses static <code>explanation</code> fields; live/proxy AI is a separate graded-build seam and falls back to static on block/error.</li>
+  <li><strong>Error typing — BrainLift (§9, §21):</strong> Ship 4 self-report types Wednesday; v2 infers 3-bucket taxonomy (<code>content_gap</code>, <code>application</code>, <code>misread</code>) with probe + confirm hypothesis UX; drives dashboard next action.</li>
+  <li><strong>Study feature (§11):</strong> Interleaved vs blocked vs plain Anki performance sessions at equal study time; 3-build ablation (Kornell &amp; Bjork reference).</li>
+  <li><strong>IDK anti-guessing (§30):</strong> “Not sure” excluded from accuracy; passive readiness effect via no coverage credit on IDK-only topics.</li>
+  <li><strong>Profiles (§31):</strong> Strict gates for graded claims; tester gates for engagement only, with provisional labels and wide CIs.</li>
+</ol>
+
+<!-- §4 Evaluations -->
+<h2>4. Evaluations and test results</h2>
+<p>Unified table from <code>docs/SUBMISSION-RESULTS.md</code> and <code>docs/artifacts/*.summary.json</code>. Labels: <span class="tag tag-real">REAL</span> participant or static bank data · <span class="tag tag-synth">SYNTHETIC</span> pipeline demo · <span class="tag tag-gap">GAP</span> honest blocker.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artifact / command</th>
+      <th>Label</th>
+      <th>Result</th>
+      <th>Key numbers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>make validate-data</code></td>
+      <td><span class="tag tag-real">REAL</span></td>
+      <td>PASS</td>
+      <td>170 Q (65 dev / 105 held_out); 28 paraphrase concepts</td>
+    </tr>
+    <tr>
+      <td><code>leakage-check.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> static scan</td>
+      <td>PASS</td>
+      <td>0 issues; max paraphrase Jaccard <strong>0.563</strong> (&lt; 0.70)</td>
+    </tr>
+    <tr>
+      <td><code>memory-calibration.summary.json</code></td>
+      <td><span class="tag tag-synth">SYNTHETIC</span></td>
+      <td>PASS</td>
+      <td>Brier <strong>0.1407</strong>, log-loss <strong>0.4496</strong>, ECE <strong>0.0324</strong>, n_test <strong>1472</strong></td>
+    </tr>
+    <tr>
+      <td><code>memory-calibration-real.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> builder</td>
+      <td>PASS (calibration)</td>
+      <td>Brier <strong>0.0082</strong>, log-loss <strong>0.0949</strong>, n_test <strong>39</strong> (403 reviews); strict Memory score still withheld (no mature cards / n&lt;200)</td>
+    </tr>
+    <tr>
+      <td><code>memory-calibration-alt.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> participant alt</td>
+      <td>PASS (calibration)</td>
+      <td>Brier <strong>0.0028</strong>, log-loss <strong>0.0546</strong>, n_test <strong>38</strong> (135 reviews); strict Memory score withheld</td>
+    </tr>
+    <tr>
+      <td><code>heldout-performance-REAL-alt.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> alt bundle</td>
+      <td><span class="tag tag-gap">NOT SCORABLE</span></td>
+      <td>37 dev attempts (72.7% — not held_out); <strong>0</strong> held_out attempts; <code>scorable: false</code></td>
+    </tr>
+    <tr>
+      <td><code>paraphrase-gap.summary.json</code></td>
+      <td><span class="tag tag-synth">SYNTHETIC</span></td>
+      <td>PASS (instrument)</td>
+      <td>Gap <strong>+0.16</strong> (recall 0.83 − acc 0.67), n=28 concepts</td>
+    </tr>
+    <tr>
+      <td><code>heldout-performance-SYNTHETIC.summary.json</code></td>
+      <td><span class="tag tag-synth">SYNTHETIC</span></td>
+      <td>PASS (pipeline)</td>
+      <td>Pooled acc <strong>55.9%</strong> (176/315), Wilson <strong>[0.504, 0.613]</strong>; 3 synthetic testers × 105 Q</td>
+    </tr>
+    <tr>
+      <td><code>step2-prediction-SYNTHETIC.summary.json</code></td>
+      <td><span class="tag tag-synth">SYNTHETIC</span></td>
+      <td>PASS (harness)</td>
+      <td>Brier <strong>0.219</strong>, log-loss <strong>0.624</strong>, acc@0.5 <strong>66.7%</strong> (70/105), Wilson <strong>[0.572, 0.750]</strong></td>
+    </tr>
+    <tr>
+      <td><code>study-feature.summary.json</code></td>
+      <td><span class="tag tag-synth">SYNTHETIC</span></td>
+      <td>PASS (inconclusive headline)</td>
+      <td>Interleaved <strong>71.7%</strong> vs blocked <strong>60.0%</strong> → Δ <strong>+11.7 pts, p=0.057</strong> (not sig.); interleaved vs plain <strong>p=0.001</strong>*</td>
+    </tr>
+    <tr>
+      <td><code>ai-explainer-eval.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> harness / offline</td>
+      <td>PASS</td>
+      <td>held_out wrong-path acc <strong>1.000</strong>, choice_spec <strong>1.000</strong> vs static <strong>0.000</strong></td>
+    </tr>
+    <tr>
+      <td><code>ai-explainer-eval-live.summary.json</code></td>
+      <td><span class="tag tag-real">REAL</span> live API</td>
+      <td>PASS</td>
+      <td>choice_spec <strong>0.860</strong> live (315 paths)</td>
+    </tr>
+    <tr>
+      <td><code>make ci-local</code></td>
+      <td><span class="tag tag-real">REAL</span></td>
+      <td>PASS</td>
+      <td><strong>57</strong> unit tests (validate + leakage + held-out demo + AI eval + paraphrase + proxy)</td>
+    </tr>
+    <tr>
+      <td><code>undo-integrity-results.json</code></td>
+      <td><span class="tag tag-real">REAL</span></td>
+      <td>PASS</td>
+      <td><strong>15/15</strong> checks (revlog append/undo/redo/convergence)</td>
+    </tr>
+    <tr>
+      <td><code>cargo test -p anki mcat</code></td>
+      <td><span class="tag tag-real">REAL</span></td>
+      <td>PASS</td>
+      <td><strong>4/4</strong> Rust mastery query tests</td>
+    </tr>
+    <tr>
+      <td><code>make bench</code> (~5k smoke)</td>
+      <td><span class="tag tag-synth">SYNTHETIC</span> scale</td>
+      <td>PASS locally</td>
+      <td>dashboard p50 <strong>140 ms</strong>; historical ~50k row: p50 <strong>~2.9 s</strong> (misses §10 target)</td>
+    </tr>
+  </tbody>
+</table>
+<p><em>* Study ablation: only interleaved−plain Anki significant at α=0.05; headline interleaved−blocked contrast fails pre-registered §8 win criterion (p≥0.05). See <code>docs/STUDY-FEATURE-RESULTS.md</code>.</em></p>
+
+<div class="page-break"></div>
+
+<!-- §5 Measured vs didn't -->
+<h2>5. What we measured vs. what we did not</h2>
+
+<h3>Measured (with evidence)</h3>
+<ul>
+  <li>FSRS calibration pipeline on synthetic revlog (Brier/log-loss/ECE) and on <strong>two real collections</strong> (builder n=39 test; alt participant n=38 test)—calibration only; strict Memory headline still abstains.</li>
+  <li>Held-out scoring <strong>pipeline</strong> (synthetic 3-tester pool)—proves <code>pool_heldout.py</code> / Wilson CI path works.</li>
+  <li>Paraphrase-gap <strong>instrument</strong> (synthetic demo)—recall vs reworded-question accuracy diverge (+0.16).</li>
+  <li>Step 2 prediction <strong>harness</strong> (synthetic features)—transparent logistic weights, not trained ML.</li>
+  <li>Leakage scan on 170-item bank; AI explainer eval vs static/TF-IDF baselines (offline + one live run).</li>
+  <li>Rust mastery query + undo integrity (4 + 15 automated checks); three-score separation in code and UI.</li>
+</ul>
+
+<h3>Not measured (stated honestly)</h3>
+<ul>
+  <li><strong>Independent held_out performance score</strong> — participant alt exported dev practice only (<code>scorable: false</code>).</li>
+  <li><strong>Study feature causal claim</strong> — synthetic interleaved vs blocked inconclusive (p=0.057); no real equal-time 3-build data.</li>
+  <li><strong>Real paraphrase gap</strong> — no paired recall JSON + held_out attempts from a volunteer yet.</li>
+  <li><strong>Step 2 on live snapshots</strong> — no real held_out attempts with mastery at attempt time.</li>
+  <li><strong>Two-device memory sync recording</strong> — rule documented; not captured on video.</li>
+  <li><strong>MCAT outcome validation</strong> — readiness is an early proxy; AAMC full-lengths remain external gold standard.</li>
+</ul>
+
+<!-- §6 How to verify -->
+<h2>6. How to verify (5-minute path)</h2>
+<p>Full rubric map: <code>docs/HOW-TO-VERIFY.md</code>. From repo root <code>MCAT/</code> with Python 3.12:</p>
+<ol>
+  <li><code>make ci-local</code> — data validation, leakage, held-out demo, offline AI eval, paraphrase gap, <strong>57 tests</strong>.</li>
+  <li><code>make eval-all-synthetic</code> — full synthetic battery (memory, performance, held-out pool, step 2, study, leakage).</li>
+  <li>Inspect JSON under <code>docs/artifacts/</code> (all paths listed in HOW-TO-VERIFY § “All summary.json files”).</li>
+  <li>Optional fork checks: <code>cd ../anki-MCAT &amp;&amp; cargo test -p anki mcat</code>; <code>mcat_undo_integrity_check.py</code> → 15/15.</li>
+  <li>Product smoke: install graded MSI per <code>docs/GRADED-QUICKSTART.md</code>; confirm three abstaining scores + coverage bar on strict profile.</li>
+</ol>
+
+<!-- §7 Limitations -->
+<h2>7. Known limitations and post-submission backlog</h2>
+<ul>
+  <li><strong>No scorable held_out sheet</strong> — graded Performance remains ABSTAIN until a frozen answer template is returned and pooled.</li>
+  <li><strong>Strict Readiness abstains</strong> on prototype coverage (~6–37% of 49-topic outline)—by design, not a bug.</li>
+  <li><strong>50k dashboard latency</strong> — historical bench ~2.9 s p50 at ~50k cards; mastery query alone stays fast (~19–300 ms).</li>
+  <li><strong>Study feature</strong> — pipeline proven; headline hypothesis not supported at synthetic n (p=0.057).</li>
+  <li><strong>MSI may be stale</strong> — graded installer rebuild may lag merged fork; verify commit in <code>docs/GRADED-QUICKSTART.md</code> / <code>docs/PRE-DEMO-VERIFICATION.md</code> before claiming “latest build.”</li>
+  <li><strong>Mentor feedback (post-Sunday)</strong> — captured in <code>docs/feedback/2026-07-05-demo.md</code> (simplify miss UX toward binary prompts, real multi-arm study data, sync recording, live Step 2 snapshots). Not in submission scope unless reprioritized.</li>
+</ul>
+
+<p class="meta" style="margin-top: 2em;">End of grader packet · Import: open this file in a browser → Select all (Ctrl+A) → Copy → paste into Google Docs, or File → Import in Google Drive.</p>
+
+</body>
+</html>

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCAT Speedrun — Eval Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1c2430;
+      --text: #e8ecf1;
+      --text-muted: #8b97a8;
+      --accent: #3d9a8b;
+      --accent-dim: rgba(61, 154, 139, 0.15);
+      --real-participant: #4ecdc4;
+      --real-participant-bg: rgba(78, 205, 196, 0.14);
+      --real-static: #5b8def;
+      --real-static-bg: rgba(91, 141, 239, 0.14);
+      --synthetic: #e8a838;
+      --synthetic-bg: rgba(232, 168, 56, 0.14);
+      --danger: #e85d5d;
+      --danger-bg: rgba(232, 93, 93, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      font-size: 18px;
+    }
+
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 6rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .slide::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    h1, h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: 3.25rem; line-height: 1.15; margin-bottom: 0.75rem; }
+    h2 { font-size: 2.1rem; margin-bottom: 1rem; }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 44rem;
+    }
+
+    .meta {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+      margin-left: 0.45rem;
+      vertical-align: middle;
+    }
+
+    .badge-real-participant { background: var(--real-participant-bg); color: var(--real-participant); }
+    .badge-real-static { background: var(--real-static-bg); color: var(--real-static); }
+    .badge-synthetic { background: var(--synthetic-bg); color: var(--synthetic); }
+    .badge-gap { background: var(--danger-bg); color: var(--danger); }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .three-scores {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 1rem;
+      max-width: 56rem;
+    }
+
+    .score-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .score-box h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .score-box p { font-size: 0.9rem; color: var(--text-muted); }
+
+    .no-blend {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--danger);
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      max-width: 56rem;
+      margin-top: 1rem;
+    }
+
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      height: 320px;
+      position: relative;
+    }
+
+    .chart-wrap.tall { height: 360px; }
+    .chart-wrap.wide { max-width: 56rem; }
+
+    .stat-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat-value {
+      font-size: 1.65rem;
+      font-weight: 600;
+      font-family: "Source Serif 4", Georgia, serif;
+    }
+
+    .stat-detail { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    .callout {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.1rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+      max-width: 56rem;
+    }
+
+    .callout-warn {
+      background: var(--synthetic-bg);
+      border-left-color: var(--synthetic);
+    }
+
+    .callout-danger {
+      background: var(--danger-bg);
+      border-left-color: var(--danger);
+    }
+
+    .gap-list {
+      list-style: none;
+      max-width: 52rem;
+      margin-top: 0.5rem;
+    }
+
+    .gap-list li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .gap-list li:last-child { border-bottom: none; }
+
+    .gap-num {
+      flex-shrink: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .compare-table {
+      width: 100%;
+      max-width: 56rem;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 0.75rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table th {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .compare-table td:first-child { font-weight: 500; }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1.5rem;
+      max-width: 56rem;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    .artifact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .artifact-row span:first-child { color: var(--text-muted); }
+
+    .backlog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 2rem;
+      max-width: 56rem;
+      margin-top: 0.5rem;
+    }
+
+    .backlog-item {
+      padding: 0.65rem 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .backlog-item strong { color: var(--text); font-weight: 500; }
+
+    .verify-slide {
+      text-align: center;
+      align-items: center;
+    }
+
+    .verify-slide h2 { font-size: 2.5rem; }
+    .verify-slide .subtitle { max-width: 32rem; margin: 0 auto; }
+
+    .title-slide {
+      background: linear-gradient(145deg, #0f1419 0%, #152028 50%, #0f1814 100%);
+    }
+
+    .title-slide h1 { font-size: 3.75rem; }
+
+    .nav-hint {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      .slide { padding: 3rem 2rem; }
+      .chart-row, .three-scores, .backlog-grid, .artifact-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 01 Title -->
+  <section class="slide title-slide" data-num="01 / 13">
+    <h1>MCAT Speedrun<br>Eval Results</h1>
+    <p class="subtitle">Three separate scores. Honest REAL vs SYNTHETIC labels. No AI in the scoring path.</p>
+    <p class="meta">2026-07-05 evaluation pass</p>
+    <div class="legend">
+      <span><span class="badge badge-real-participant">Real participant</span> human revlog or bundle</span>
+      <span><span class="badge badge-real-static">Real static / harness</span> bank scan or eval script on real bank</span>
+      <span><span class="badge badge-synthetic">Synthetic</span> pipeline demo — not a learning claim</span>
+    </div>
+  </section>
+
+  <!-- 02 Three scores -->
+  <section class="slide" data-num="02 / 13">
+    <h2>Three Scores — Never Blended</h2>
+    <div class="three-scores">
+      <div class="score-box">
+        <h3>Memory</h3>
+        <p>FSRS recall calibration on flashcard revlog</p>
+      </div>
+      <div class="score-box">
+        <h3>Performance</h3>
+        <p>Accuracy on curated held_out MCQs (independent answer sheet)</p>
+      </div>
+      <div class="score-box">
+        <h3>Readiness</h3>
+        <p>Mapped score range with coverage penalty; abstains below ~50%</p>
+      </div>
+    </div>
+    <div class="no-blend">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+      Computed and displayed independently — no composite headline
+    </div>
+  </section>
+
+  <!-- 03 Leakage -->
+  <section class="slide" data-num="03 / 13">
+    <h2>Question Bank Split <span class="badge badge-real-static">Real static</span></h2>
+    <div class="chart-row">
+      <div class="chart-wrap">
+        <canvas id="chart-leakage"></canvas>
+      </div>
+      <div class="stat-panel">
+        <div class="stat">
+          <div class="stat-label">Total questions</div>
+          <div class="stat-value">170</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Leakage issues</div>
+          <div class="stat-value" style="color:var(--real-participant)">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Max paraphrase Jaccard</div>
+          <div class="stat-value">0.563</div>
+          <div class="stat-detail">Threshold 0.70 · 28 pairs · PASS</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">Static bank scan only — proves dev/held_out split integrity, not runtime session leakage.</div>
+  </section>
+
+  <!-- 04 AI explainer -->
+  <section class="slide" data-num="04 / 13">
+    <h2>AI Explainer — Choice Specificity <span class="badge badge-real-static">Real harness</span></h2>
+    <p class="subtitle">315 wrong-answer paths on held_out · cutoff ≥ 0.80 · scoring path has no AI</p>
+    <div class="chart-wrap tall wide">
+      <canvas id="chart-ai"></canvas>
+    </div>
+    <div class="callout">Offline deterministic PASS (1.000) · Live gpt-4o-mini PASS (0.860) · Static baseline 0.000</div>
+  </section>
+
+  <!-- 05 Memory calibration -->
+  <section class="slide" data-num="05 / 13">
+    <h2>Memory Calibration — Brier Score</h2>
+    <p class="subtitle">Lower is better · FSRS predicted recall vs observed (ease ≥ 2)</p>
+    <div class="chart-wrap tall wide">
+      <canvas id="chart-memory"></canvas>
+    </div>
+    <div class="callout callout-warn">
+      Alt participant REAL Brier 0.003 but n_test=38 (&lt;200 gate) — strict Memory headline still withheld.
+      Builder REAL n_test=39. Synthetic demo n_test=1472 proves the script only.
+    </div>
+  </section>
+
+  <!-- 06 Paraphrase gap -->
+  <section class="slide" data-num="06 / 13">
+    <h2>Paraphrase Gap <span class="badge badge-synthetic">Synthetic</span></h2>
+    <p class="subtitle">Recall on cards vs accuracy on reworded held_out questions · n=28 concepts</p>
+    <div class="chart-row">
+      <div class="chart-wrap">
+        <canvas id="chart-paraphrase"></canvas>
+      </div>
+      <div class="stat-panel">
+        <div class="stat">
+          <div class="stat-label">Mean recall</div>
+          <div class="stat-value">82.8%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Mean question accuracy</div>
+          <div class="stat-value">66.9%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Paraphrase gap</div>
+          <div class="stat-value" style="color:var(--accent)">+15.9 pts</div>
+          <div class="stat-detail">Recall outstrips transfer — Performance is not parroting Memory</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Step 2 prediction -->
+  <section class="slide" data-num="07 / 13">
+    <h2>Step 2 — Held-Out Prediction <span class="badge badge-synthetic">Synthetic</span></h2>
+    <p class="subtitle">Logistic model from mock mastery + difficulty + timing + coverage · n=105 attempts</p>
+    <div class="chart-row">
+      <div class="chart-wrap">
+        <canvas id="chart-step2"></canvas>
+      </div>
+      <div class="stat-panel">
+        <div class="stat">
+          <div class="stat-label">Brier score</div>
+          <div class="stat-value">0.219</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Accuracy @ threshold 0.5</div>
+          <div class="stat-value">66.7%</div>
+          <div class="stat-detail">70/105 · Wilson [0.572, 0.750]</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Observed accuracy</div>
+          <div class="stat-value">59.0%</div>
+          <div class="stat-detail">Harness only — mock features, not live snapshots</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Study ablation -->
+  <section class="slide" data-num="08 / 13">
+    <h2>Study Feature — 3-Build Ablation <span class="badge badge-synthetic">Synthetic</span></h2>
+    <p class="subtitle">Equal study time (1800 s) · outcome = held_out accuracy · n_test=120 per arm</p>
+    <div class="chart-row">
+      <div class="chart-wrap">
+        <canvas id="chart-study"></canvas>
+      </div>
+      <div class="stat-panel">
+        <div class="stat">
+          <div class="stat-label">Interleaved − Blocked</div>
+          <div class="stat-value">+11.7 pts</div>
+          <div class="stat-detail">p = 0.057 — <strong style="color:var(--synthetic)">not significant</strong></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Interleaved − Plain Anki</div>
+          <div class="stat-value">+21.7 pts</div>
+          <div class="stat-detail">p = 0.001 · secondary contrast only</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 Held-out performance -->
+  <section class="slide" data-num="09 / 13">
+    <h2>Held-Out Performance</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Run</th>
+          <th>Label</th>
+          <th>Headline</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pooled synthetic</td>
+          <td><span class="badge badge-synthetic">Synthetic</span></td>
+          <td><strong>55.9%</strong> (176/315)</td>
+          <td>Wilson [0.504, 0.613] · 3 testers × 105 Q · pipeline demo</td>
+        </tr>
+        <tr>
+          <td>Participant alt</td>
+          <td><span class="badge badge-real-participant">Real participant</span></td>
+          <td><strong style="color:var(--danger)">scorable: false</strong></td>
+          <td>0 held_out attempts · dev practice 73.0% — not held-out performance</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="chart-wrap wide" style="margin-top:1.5rem;height:280px;">
+      <canvas id="chart-heldout"></canvas>
+    </div>
+  </section>
+
+  <!-- 10 Artifact index -->
+  <section class="slide" data-num="10 / 13">
+    <h2>All Artifact Summaries</h2>
+    <p class="subtitle">12 summary JSON files under docs/artifacts/ — every data point labelled</p>
+    <div class="artifact-grid">
+      <div class="artifact-row"><span>leakage-check</span><span class="badge badge-real-static">Real static</span></div>
+      <div class="artifact-row"><span>memory-calibration</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>memory-calibration-synthetic</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>memory-calibration-real</span><span class="badge badge-real-participant">Real participant</span></div>
+      <div class="artifact-row"><span>memory-calibration-alt</span><span class="badge badge-real-participant">Real participant</span></div>
+      <div class="artifact-row"><span>paraphrase-gap</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>heldout-performance-SYNTHETIC</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>heldout-performance-REAL-alt</span><span class="badge badge-real-participant">Real participant</span></div>
+      <div class="artifact-row"><span>step2-prediction-SYNTHETIC</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>study-feature</span><span class="badge badge-synthetic">Synthetic</span></div>
+      <div class="artifact-row"><span>ai-explainer-eval</span><span class="badge badge-real-static">Real harness</span></div>
+      <div class="artifact-row"><span>ai-explainer-eval-live</span><span class="badge badge-real-static">Real harness</span></div>
+    </div>
+    <div class="callout" style="margin-top:1.25rem;">Supporting (non-summary): undo-integrity 15/15 PASS</div>
+  </section>
+
+  <!-- 11 Honest GAPS -->
+  <section class="slide" data-num="11 / 13">
+    <h2>Honest Gaps</h2>
+    <ul class="gap-list">
+      <li>
+        <span class="gap-num">1</span>
+        <span><strong style="color:var(--danger)">Performance abstain</strong> — alt bundle scorable: false, 0 held_out attempts. Synthetic pooled 55.9% is not a real learning claim.</span>
+      </li>
+      <li>
+        <span class="gap-num">2</span>
+        <span><strong style="color:var(--synthetic)">Study inconclusive</strong> — interleaved vs blocked p = 0.057; pre-registered headline fails; no real multi-arm data.</span>
+      </li>
+      <li>
+        <span class="gap-num">3</span>
+        <span><strong>Readiness</strong> — app abstains below ~50% outline coverage (product demo, not JSON scroll).</span>
+      </li>
+      <li>
+        <span class="gap-num">4</span>
+        <span><strong>Undo integrity</strong> <span class="badge badge-real-static">Real</span> — 15/15 automated checks PASS; 20-kill GUI crash test not recorded.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 12 Backlog -->
+  <section class="slide" data-num="12 / 13">
+    <h2>Not Yet Measured</h2>
+    <p class="subtitle">Post-Sunday backlog — instrument exists, real data pending</p>
+    <div class="backlog-grid">
+      <div class="backlog-item"><strong>Real held_out sheet</strong> — blank template → pool → replace synthetic row</div>
+      <div class="backlog-item"><strong>Real study arms</strong> — equal-time 3-build manifest</div>
+      <div class="backlog-item"><strong>Paraphrase gap</strong> — real recall JSON + held_out attempts</div>
+      <div class="backlog-item"><strong>Step 2 prediction</strong> — live mastery snapshots at attempt time</div>
+      <div class="backlog-item"><strong>Sync recording</strong> — two-device offline reviews + conflict winner</div>
+      <div class="backlog-item"><strong>Gold set</strong> — think-aloud held_out items → override rate</div>
+    </div>
+  </section>
+
+  <!-- 13 Verify -->
+  <section class="slide verify-slide" data-num="13 / 13">
+    <h2>Verify &amp; Reproduce</h2>
+    <p class="subtitle">Full artifact paths, commands, and rubric map:</p>
+    <p class="subtitle" style="margin-top:1.5rem;font-size:1.35rem;color:var(--accent);font-weight:600;">HOW-TO-VERIFY.md</p>
+  </section>
+
+  <div class="nav-hint">Scroll ↓ for next slide</div>
+
+  <script>
+    Chart.defaults.color = '#8b97a8';
+    Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+    Chart.defaults.font.family = '"IBM Plex Sans", system-ui, sans-serif';
+
+    const gridColor = 'rgba(255,255,255,0.06)';
+    const C = {
+      synthetic: '#e8a838',
+      realParticipant: '#4ecdc4',
+      realStatic: '#5b8def',
+      muted: '#6b7280',
+      accent: '#3d9a8b'
+    };
+
+    new Chart(document.getElementById('chart-leakage'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Dev (practice)', 'Held out (frozen)'],
+        datasets: [{
+          data: [65, 105],
+          backgroundColor: [C.accent, C.realStatic],
+          borderWidth: 0,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+          title: {
+            display: true,
+            text: '170 questions · 0 leakage issues',
+            color: '#e8ecf1',
+            font: { size: 14, weight: '600' }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-ai'), {
+      type: 'bar',
+      data: {
+        labels: ['Static', 'TF-IDF', 'AI offline', 'AI live'],
+        datasets: [{
+          label: 'Choice specificity',
+          data: [0.0, 0.0095, 1.0, 0.8603],
+          backgroundColor: [C.muted, C.muted, C.realStatic, C.realParticipant],
+          borderRadius: 6,
+          barThickness: 48
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, max: 1.05, grid: { color: gridColor }, ticks: { callback: v => v.toFixed(2) } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Cutoff: 0.80 (both AI paths PASS)', color: '#8b97a8', font: { size: 12 } }
+        }
+      },
+      plugins: [{
+        id: 'cutoffLine',
+        afterDraw(chart) {
+          const { ctx, chartArea, scales } = chart;
+          const y = scales.y.getPixelForValue(0.8);
+          ctx.save();
+          ctx.strokeStyle = C.synthetic;
+          ctx.setLineDash([6, 4]);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(chartArea.left, y);
+          ctx.lineTo(chartArea.right, y);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }]
+    });
+
+    new Chart(document.getElementById('chart-memory'), {
+      type: 'bar',
+      data: {
+        labels: ['Synthetic demo', 'Builder REAL', 'Alt REAL'],
+        datasets: [{
+          label: 'Brier score',
+          data: [0.1407, 0.0082, 0.0028],
+          backgroundColor: [C.synthetic, C.realParticipant, C.realParticipant],
+          borderRadius: 6,
+          barThickness: 56
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, grid: { color: gridColor }, title: { display: true, text: 'Brier (lower = better)', color: '#8b97a8' } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              afterLabel(ctx) {
+                return ['n_test=1472', 'n_test=39', 'n_test=38'][ctx.dataIndex];
+              }
+            }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-paraphrase'), {
+      type: 'bar',
+      data: {
+        labels: ['Mean recall', 'Question accuracy'],
+        datasets: [{
+          data: [82.8, 66.9],
+          backgroundColor: [C.realParticipant, C.synthetic],
+          borderRadius: 6,
+          barThickness: 64
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, max: 100, grid: { color: gridColor }, ticks: { callback: v => v + '%' } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Gap +15.9 pts (28 concepts)', color: '#8b97a8', font: { size: 12 } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-step2'), {
+      type: 'bar',
+      data: {
+        labels: ['Brier', 'Log-loss × 100'],
+        datasets: [{
+          data: [0.219, 62.4],
+          backgroundColor: [C.synthetic, C.muted],
+          borderRadius: 6,
+          barThickness: 56
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, grid: { color: gridColor } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Log-loss 0.624 (scaled for chart)', color: '#8b97a8', font: { size: 12 } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-study'), {
+      type: 'bar',
+      data: {
+        labels: ['Interleaved', 'Blocked', 'Plain Anki'],
+        datasets: [{
+          label: 'Accuracy',
+          data: [71.7, 60.0, 50.0],
+          backgroundColor: [C.accent, C.realStatic, C.muted],
+          borderRadius: 6,
+          barThickness: 52
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, max: 85, grid: { color: gridColor }, ticks: { callback: v => v + '%' } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label(ctx) {
+                const details = ['86/120', '72/120', '60/120'];
+                return ctx.parsed.y + '% · ' + details[ctx.dataIndex];
+              }
+            }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chart-heldout'), {
+      type: 'bar',
+      data: {
+        labels: ['Synthetic pooled', 'Real alt (held_out)'],
+        datasets: [{
+          label: 'Accuracy',
+          data: [55.9, null],
+          backgroundColor: [C.synthetic, '#e85d5d'],
+          borderRadius: 6,
+          barThickness: 64
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true, max: 100, grid: { color: gridColor }, ticks: { callback: v => v + '%' } },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            filter(item) { return item.dataIndex === 0; },
+            callbacks: { label() { return '55.9% (176/315) · Wilson [0.504, 0.613]'; } }
+          }
+        }
+      },
+      plugins: [{
+        id: 'notScorable',
+        afterDraw(chart) {
+          const { ctx, chartArea, scales } = chart;
+          const x = scales.x.getPixelForValue(1);
+          const y = chartArea.top + (chartArea.bottom - chartArea.top) * 0.45;
+          ctx.save();
+          ctx.fillStyle = '#e85d5d';
+          ctx.font = 'bold 15px IBM Plex Sans';
+          ctx.textAlign = 'center';
+          ctx.fillText('scorable: false', x, y);
+          ctx.font = '12px IBM Plex Sans';
+          ctx.fillStyle = '#8b97a8';
+          ctx.fillText('0 held_out attempts', x, y + 22);
+          ctx.restore();
+        }
+      }]
+    });
+  </script>
+</body>
+</html>
